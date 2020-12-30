@@ -8,7 +8,7 @@ body {
 }
 
 .page .navbar {
-    border: 1px solid #c5c6c7;
+
 }
 
 .page .navbar .navitem {
@@ -16,7 +16,8 @@ body {
     float: left;
     padding: 10px 20px;
     margin-right:20px;
-    color: #c5c6c7;
+    color: #0b0c10;
+    background-color: #66fcf1;
 }
 
 .page .content {
