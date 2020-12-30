@@ -6,12 +6,11 @@ body {
     border: 1px solid #000;
 }
 
-.navbar .image {
+.navbar .navitem {
     border: 1px solid #000;
     float: left;
 }
 
-.navbar .navitem {
-    border: 1px solid #000;
-    float: left;
+.content {
+    margin-top: 20px;
 }
