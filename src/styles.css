@@ -1,18 +1,23 @@
 body {
-    padding: 50px;
+
 }
 
-.navbar {
+.page {
+    width:800px; 
+    margin:0 auto;
+}
+
+.page .navbar {
     border: 1px solid #000;
 }
 
-.navbar .navitem {
+.page .navbar .navitem {
     border: 1px solid #000;
     float: left;
     padding: 10px 20px;
     margin-right:20px;
 }
 
-.content {
+.page .content {
     margin-top: 20px;
 }
