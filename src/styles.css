@@ -33,3 +33,35 @@ body {
     height: 200px;
     float: left;
 }
+
+.project {
+    margin-bottom: 20px;
+}
+
+.project .project-title {
+    font-size: 22px;
+    color: #66fcf1;
+    margin-bottom: 20px;
+}
+
+.project .project-container {
+
+}
+
+.project .project-container .project-image {
+    border: 1px solid #c5c6c7;
+    color: #c5c6c7;
+    padding: 20px;
+    width: 200px;
+    height: 200px;
+    float: left;
+}
+
+.project .project-container .project-description {
+    border: 1px solid #c5c6c7;
+    color: #c5c6c7;
+    padding: 20px;
+    width: 400px;
+    height: 200px;
+    float: left;
+}
