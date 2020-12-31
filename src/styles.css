@@ -24,3 +24,12 @@ body {
     margin-top: 20px;
     color: #c5c6c7;
 }
+
+.page .content .otherme {
+    border: 1px solid #c5c6c7;
+    color: #c5c6c7;
+    padding: 20px;
+    width: 200px;
+    height: 200px;
+    float: left;
+}
