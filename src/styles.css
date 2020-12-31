@@ -20,6 +20,14 @@ body {
     background-color: #66fcf1;
 }
 
+.page .navbar .navitem:hover {
+    background-color: #45a29e !important;
+}
+
+.page .navbar .navitem-selected {
+    background-color: #45a29e !important;
+}
+
 .page .content {
     margin-top: 20px;
     color: #c5c6c7;
