@@ -41,9 +41,18 @@ h1 {
     border: 1px solid #c5c6c7;
     color: #c5c6c7;
     padding: 20px;
-    width: 200px;
-    height: 200px;
+    margin-bottom: 20px;
+    width: 338px;
+    height: 100px;
     float: left;
+    text-align: center;
+    font-size: 18px;
+    color: #0b0c10;
+    background-color: #66fcf1;
+}
+
+.page .content .otherme:hover {
+    background-color: #45a29e !important;
 }
 
 .project {
