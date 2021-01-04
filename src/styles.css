@@ -70,18 +70,15 @@ h1 {
 }
 
 .project .project-container .project-image {
-    border: 1px solid #c5c6c7;
     color: #c5c6c7;
-    padding: 20px;
     width: 200px;
     height: 200px;
     float: left;
 }
 
 .project .project-container .project-description {
-    border: 1px solid #c5c6c7;
     color: #c5c6c7;
-    padding: 20px;
+    padding: 0px 20px;
     width: 400px;
     height: 200px;
     float: left;
