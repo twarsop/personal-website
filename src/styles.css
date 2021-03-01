@@ -101,15 +101,16 @@ nav {
 }
 nav li {
 	display:block;
-	width:120px;
+	width:33.33333%;
 	float:left;
-	margin-left:2px;
-	border:1px solid #000;
+	border:0px solid #000;
+    text-align:center;
+    margin-top: 20px;
 }
 
 nav a {
 	display:block;
-	padding:3px;
+	padding:10px 3px;
 	text-decoration:none;
 	background-color:#fff;
 	color:#009;
