@@ -77,7 +77,7 @@ h1 {
 
 .project .project-title {
     font-size: 22px;
-    color: #66fcf1;
+    color: #0b0c10;
     margin-bottom: 20px;
 }
 
@@ -86,14 +86,14 @@ h1 {
 }
 
 .project .project-container .project-image {
-    color: #c5c6c7;
+    color: #0b0c10;
     width: 200px;
     height: 200px;
     float: left;
 }
 
 .project .project-container .project-description {
-    color: #c5c6c7;
+    color: #0b0c10;
     padding: 0px 20px;
     width: 400px;
     height: 200px;
