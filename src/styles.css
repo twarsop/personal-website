@@ -142,4 +142,5 @@ nav .selected {
     background-color: #009;
     padding: 20px;
     flex-shrink: 0;
+    color: #c5c6c7;
 }
