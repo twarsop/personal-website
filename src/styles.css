@@ -112,7 +112,7 @@ nav li {
 	float:left;
 	border:0px solid #000;
     text-align:center;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 nav a {
@@ -121,6 +121,13 @@ nav a {
 	text-decoration:none;
 	background-color:#fff;
 	color:#009;
+    margin: 10px;
+    height: 30px;
+    font-size: 20px;
+    line-height: 30px;
+    -webkit-border-radius: 5px; 
+    -moz-border-radius: 5px; 
+    border-radius: 5px; 
 }
 
 nav a:hover {
