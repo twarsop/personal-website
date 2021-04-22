@@ -72,32 +72,46 @@ h1 {
 }
 
 .project {
-    margin-bottom: 20px;
+    border:1px solid #000; 
+    border-radius: 5px; 
+    -webkit-border-radius: 5px; 
+    -moz-border-radius: 5px;
 }
 
-.project .project-title {
-    font-size: 22px;
-    color: #0b0c10;
-    margin-bottom: 20px;
+.project .image-container {
+    float:left; 
+    width: 40%;
 }
 
-.project .project-container {
-
+.project .content-container {
+    float:left; 
+    width: 60%;
 }
 
-.project .project-container .project-image {
-    color: #0b0c10;
-    width: 200px;
-    height: 200px;
-    float: left;
+.project .content-container .title {
+    font-weight: bold; 
+    font-size: 30px; 
+    padding: 5px; 
+    background-color: #aaa;
 }
 
-.project .project-container .project-description {
-    color: #0b0c10;
-    padding: 0px 20px;
-    width: 400px;
-    height: 200px;
-    float: left;
+.project .content-container .status-label {
+    padding: 5px; 
+    background-color: #aaa;
+}
+
+.project .content-container .progress-bar-container {
+    padding: 5px; 
+    background-color: #aaa;
+}
+
+.project .content-container .progress-bar-container .progress-bar {
+    width: 100%;
+}
+
+.project .content-container .description-container {
+    padding: 5px; 
+    background-color: #999;
 }
 
 nav {
