@@ -72,11 +72,12 @@ h1 {
 }
 
 .project {
-    border:1px solid #000; 
+    border:5px solid #999; 
     border-radius: 5px; 
     -webkit-border-radius: 5px; 
     -moz-border-radius: 5px;
     margin-bottom: 20px;
+    background-color: #aaa;
 }
 
 .project .image-container {
@@ -92,18 +93,15 @@ h1 {
 .project .content-container .title {
     font-weight: bold; 
     font-size: 30px; 
-    padding: 5px; 
-    background-color: #aaa;
+    padding: 5px 20px;     
 }
 
 .project .content-container .status-label {
-    padding: 5px; 
-    background-color: #aaa;
+    padding: 5px 20px; 
 }
 
 .project .content-container .progress-bar-container {
-    padding: 5px; 
-    background-color: #aaa;
+    padding: 5px 20px; 
 }
 
 .project .content-container .progress-bar-container .progress-bar {
@@ -111,8 +109,7 @@ h1 {
 }
 
 .project .content-container .description-container {
-    padding: 5px; 
-    background-color: #999;
+    padding: 5px 20px; 
 }
 
 nav {
