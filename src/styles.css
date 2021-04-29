@@ -55,19 +55,28 @@ h1 {
     color: #0b0c10;
 }
 
-.page .content .otherme {
-    color: #c5c6c7;
-    padding: 20px;
+.page .content .otherme-container {
     margin-bottom: 20px;
-    width: 338px;
+    width: 25%;
     height: 100px;
     float: left;
+}
+
+.page .content .otherme-container .otherme {
+    width:auto;
+    height:100px;
+    padding:10px;
+}
+
+.page .content .otherme-container .otherme .otherme-content {
+    color: #c5c6c7;    
     text-align: center;
     font-size: 18px;
     background-color: #009;
+    height: 100%;
 }
 
-.page .content .otherme:hover {
+.page .content .otherme .otherme-content:hover {
     background-color: #00e !important;
 }
 
