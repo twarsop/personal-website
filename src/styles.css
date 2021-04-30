@@ -80,6 +80,10 @@ h1 {
     background-color: #00e !important;
 }
 
+.page .content .otherme-container .otherme .otherme-content .otherme-logo {
+    margin-top: 10px;
+}
+
 .project {
     border:5px solid #999; 
     border-radius: 5px; 
