@@ -63,13 +63,13 @@ h1 {
 .page .content .otherme-container {
     margin-bottom: 20px;
     width: 33.3333333333%;
-    height: 100px;
+    height: 125px;
     float: left;
 }
 
 .page .content .otherme-container .otherme {
     width:auto;
-    height:100px;
+    height:125px;
     padding:10px;
 }
 
@@ -77,12 +77,12 @@ h1 {
     color: #c5c6c7;    
     text-align: center;
     font-size: 18px;
-    background-color: #009;
+    background-color: #0066cc;
     height: 100%;
 }
 
 .page .content .otherme .otherme-content:hover {
-    background-color: #00e !important;
+    background-color: #2424b5 !important;
 }
 
 .page .content .otherme-container .otherme .otherme-content .otherme-logo {
