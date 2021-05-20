@@ -25,7 +25,7 @@ header .title {
 }
 
 .page {
-    width:800px; 
+    width:1000px; 
     margin:0 auto;
 }
 
@@ -194,8 +194,8 @@ nav .selected:after {
 }
 
 .sticky-footer {
-    background-color: #009;
+    background-color: #424242;
     padding: 20px;
     flex-shrink: 0;
-    color: #c5c6c7;
+    color: #fff;
 }
