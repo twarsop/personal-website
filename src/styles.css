@@ -4,11 +4,11 @@ html {
 }
 
 body {
-    background-color: #c5c6c7;
     margin: 0px;
     height: 100%;
     display: flex;
     flex-direction: column;
+    background-color: #e3e3e3;
 }
 
 header {
@@ -89,45 +89,71 @@ h1 {
     margin-top: 10px;
 }
 
-.project {
-    border:5px solid #999; 
-    border-radius: 5px; 
-    -webkit-border-radius: 5px; 
-    -moz-border-radius: 5px;
-    margin-bottom: 20px;
-    background-color: #aaa;
+.project-container {
+    float: left;
+    width:50%;
+    color:#2c2c2c;
+    height:250px;
 }
 
-.project .image-container {
+.project-container .project-inner-container {
+    padding:5px;
+    height: 100%;
+}
+
+.project-container .project-inner-container .project {
+    background-color: #c5c6c7;
+    height: 100%;
+}
+
+.project-container .project-inner-container .project .image-container {
     float:left; 
     width: 40%;
 }
 
-.project .content-container {
+.project-container .project-inner-container .project .content-container {
     float:left; 
     width: 60%;
 }
 
-.project .content-container .title {
+.project-container .project-inner-container .project .content-container .title {
     font-weight: bold; 
-    font-size: 30px; 
-    padding: 5px 20px;     
+    font-size: 16px; 
+    padding: 20px 20px;     
 }
 
-.project .content-container .status-label {
+.project-container .project-inner-container .project .content-container .status-label {
     padding: 5px 20px; 
+    font-size: 12px;
 }
 
-.project .content-container .progress-bar-container {
+.project-container .project-inner-container .project .content-container .progress-bar-container {
     padding: 5px 20px; 
+    font-size: 12px;
 }
 
-.project .content-container .progress-bar-container .progress-bar {
+.project-container .project-inner-container .project .content-container .progress-bar-container .progress-bar-item {
+    float:left;
+    width: 85%;
+}
+
+.project-container .project-inner-container .project .content-container .progress-bar-container .progress-bar-value {
+    float:left;
+    width: 15%;
+}
+
+.project-container .project-inner-container .project .content-container .progress-bar-container .progress-bar-value-padding {
+    padding-left:10px;
+}
+
+.project-container .project-inner-container .project .content-container .progress-bar-container .progress-bar-item .progress-bar {
     width: 100%;
+    font-size: 12px;
 }
 
-.project .content-container .description-container {
-    padding: 5px 20px; 
+.project-container .project-inner-container .project .content-container .description-container {
+    padding: 5px 20px;
+    font-size: 12px; 
 }
 
 nav {
@@ -199,3 +225,50 @@ nav .selected:after {
     flex-shrink: 0;
     color: #fff;
 }
+
+progress,          /* All HTML5 progress enabled browsers */
+progress[role]     /* polyfill */
+{
+
+	/* Turns off styling - not usually needed, but good to know. */
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+
+	/* Needs to be in here for Safari polyfill so background images work as expected. */
+	background-size: auto;
+}
+
+progress[value^="0"]::-webkit-progress-value,
+progress[value^="1"]::-webkit-progress-value,
+progress[value^="2"]::-webkit-progress-value{
+   background-color: #d80073;
+   border-radius: 7px;
+} 
+
+progress::-webkit-progress-value{
+    background-color: #d80073;
+    border-radius: 7px;
+ } 
+
+progress[value^="0"]::-moz-progress-value,
+progress[value^="1"]::-moz-progress-value,
+progress[value^="2"]::-moz-progress-value{
+   background-color: #d80073;
+   border-radius: 7px;
+} 
+
+progress::-moz-progress-value{
+    background-color: #d80073;
+    border-radius: 7px;
+ }
+
+ progress::-webkit-progress-bar {
+    background-color: #fff;
+    border-radius: 7px;
+  }
+
+  progress::-moz-progress-bar {
+    background-color: #fff;
+    border-radius: 7px;
+  }
