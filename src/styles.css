@@ -288,3 +288,14 @@ progress::-moz-progress-value{
     margin:0 auto;
     padding-bottom: 20px !important;
 }
+
+.footer .layout .left-section {
+    float:left;
+    width: 75%;
+}
+
+.footer .layout .right-section {
+    float:left;
+    width:25%;
+    text-align: right;
+}
