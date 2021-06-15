@@ -95,6 +95,11 @@ nav .selected:after {
     margin:0 auto;
 }
 
+.content {
+    padding: 20px 0px;
+    flex: 1 0 auto;
+}
+
 h1 {
     color: #009;
     font-size: 50px;
@@ -222,11 +227,6 @@ h1 {
     font-size: 12px; 
 }
 
-.content {
-    padding: 20px 0px;
-    flex: 1 0 auto;
-}
-
 progress,          /* All HTML5 progress enabled browsers */
 progress[role]     /* polyfill */
 {
@@ -276,9 +276,15 @@ progress::-moz-progress-value{
 
 /****************************************** footer ******************************************/
 
-.sticky-footer {
+.footer {
     background-color: #424242;
     padding: 20px;
     flex-shrink: 0;
     color: #fff;
+}
+
+.footer .layout {
+    width:1000px; 
+    margin:0 auto;
+    padding-bottom: 20px !important;
 }
