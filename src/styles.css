@@ -96,11 +96,6 @@ nav .selected:after {
 
 /****************************************** main - all ******************************************/
 
-main {
-    color:#2c2c2c; /* actually feel like these should go somewhere better - text css classes */
-    font-size: 12px; /* actually feel like these should go somewhere better - text css classes */
-}
-
 main.layout {
     width:1000px; 
     margin:0 auto;
@@ -117,6 +112,11 @@ main.layout .hello {
 main.layout .hello .left-section {
     float:left; 
     width:75%;
+}
+
+main.layout .hello .left-section p {
+    color:#2c2c2c;
+    font-size: 12px;
 }
 
 main.layout .hello .right-section {
