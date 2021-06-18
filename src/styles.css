@@ -88,41 +88,33 @@ nav .selected:after {
     border-right: solid 20px transparent;
 }
 
-/****************************************** content - all ******************************************/
+/****************************************** main - all ******************************************/
 
-.page {
+main.layout {
     width:1000px; 
     margin:0 auto;
-}
-
-.content {
     padding: 20px 0px;
     flex: 1 0 auto;
 }
 
-.page .content {
-    margin-top: 20px;
-    color: #0b0c10;
-}
+/****************************************** main - hello ******************************************/
 
-/****************************************** content - hello ******************************************/
+/****************************************** main - other me ******************************************/
 
-/****************************************** content - other me ******************************************/
-
-.page .content .otherme-container {
+main.layout .otherme-container {
     margin-bottom: 20px;
     width: 33.3333333333%;
     height: 125px;
     float: left;
 }
 
-.page .content .otherme-container .otherme {
+main.layout .otherme-container .otherme {
     width:auto;
     height:125px;
     padding:10px;
 }
 
-.page .content .otherme-container .otherme .otherme-content {
+main.layout .otherme-container .otherme .otherme-content {
     color: #c5c6c7;    
     text-align: center;
     font-size: 18px;
@@ -130,15 +122,15 @@ nav .selected:after {
     height: 100%;
 }
 
-.page .content .otherme .otherme-content:hover {
+main.layout .otherme .otherme-content:hover {
     background-color: #2424b5 !important;
 }
 
-.page .content .otherme-container .otherme .otherme-content .otherme-logo {
+main.layout .otherme-container .otherme .otherme-content .otherme-logo {
     margin-top: 10px;
 }
 
-/****************************************** content - projects ******************************************/
+/****************************************** main - projects ******************************************/
 
 .project-container {
     float: left;
