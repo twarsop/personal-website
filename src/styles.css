@@ -88,7 +88,7 @@ nav .selected:after {
     border-right: solid 20px transparent;
 }
 
-/****************************************** content ******************************************/
+/****************************************** content - all ******************************************/
 
 .page {
     width:1000px; 
@@ -100,36 +100,14 @@ nav .selected:after {
     flex: 1 0 auto;
 }
 
-h1 {
-    color: #009;
-    font-size: 50px;
-}
-
-.page .navbar {
-
-}
-
-.page .navbar .navitem {
-    border: 1px solid #c5c6c7;
-    float: left;
-    padding: 10px 20px;
-    margin-right:20px;
-    color: #0b0c10;
-    background-color: #66fcf1;
-}
-
-.page .navbar .navitem:hover {
-    background-color: #45a29e !important;
-}
-
-.page .navbar .navitem-selected {
-    background-color: #45a29e !important;
-}
-
 .page .content {
     margin-top: 20px;
     color: #0b0c10;
 }
+
+/****************************************** content - hello ******************************************/
+
+/****************************************** content - other me ******************************************/
 
 .page .content .otherme-container {
     margin-bottom: 20px;
@@ -159,6 +137,8 @@ h1 {
 .page .content .otherme-container .otherme .otherme-content .otherme-logo {
     margin-top: 10px;
 }
+
+/****************************************** content - projects ******************************************/
 
 .project-container {
     float: left;
@@ -273,6 +253,34 @@ progress::-moz-progress-value{
     background-color: #fff;
     border-radius: 7px;
   }
+
+/****************************************** potentially unused classes ******************************************/
+
+h1 {
+    color: #009;
+    font-size: 50px;
+}
+
+.page .navbar {
+
+}
+
+.page .navbar .navitem {
+    border: 1px solid #c5c6c7;
+    float: left;
+    padding: 10px 20px;
+    margin-right:20px;
+    color: #0b0c10;
+    background-color: #66fcf1;
+}
+
+.page .navbar .navitem:hover {
+    background-color: #45a29e !important;
+}
+
+.page .navbar .navitem-selected {
+    background-color: #45a29e !important;
+}
 
 /****************************************** footer ******************************************/
 
