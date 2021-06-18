@@ -284,25 +284,25 @@ h1 {
 
 /****************************************** footer ******************************************/
 
-.footer {
+footer {
     background-color: #424242;
     padding: 20px;
     flex-shrink: 0;
     color: #fff;
 }
 
-.footer .layout {
+footer .layout {
     width:1000px; 
     margin:0 auto;
     padding-bottom: 20px !important;
 }
 
-.footer .layout .left-section {
+footer .layout .left-section {
     float:left;
     width: 75%;
 }
 
-.footer .layout .right-section {
+footer .layout .right-section {
     float:left;
     width:25%;
     text-align: right;
