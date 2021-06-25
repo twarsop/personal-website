@@ -132,32 +132,35 @@ main.layout .hello .right-section img {
 
 /****************************************** main - other me ******************************************/
 
-main.layout .otherme-container {
+main.layout .otherme {
+    margin-top:10px !important; 
+    padding: 0px !important;
+}
+
+main.layout .otherme .section {
     margin-bottom: 20px;
     width: 33.3333333333%;
     height: 125px;
     float: left;
 }
 
-main.layout .otherme-container .otherme {
+main.layout .otherme .section .container {
     width:auto;
     height:125px;
     padding:10px;
 }
 
-main.layout .otherme-container .otherme .otherme-content {
-    color: #c5c6c7;    
+main.layout .otherme .section .container .content {   
     text-align: center;
-    font-size: 18px;
     background-color: #0066cc;
     height: 100%;
 }
 
-main.layout .otherme .otherme-content:hover {
+main.layout .otherme .section .container .content:hover {
     background-color: #2424b5 !important;
 }
 
-main.layout .otherme-container .otherme .otherme-content .otherme-logo {
+main.layout .otherme .section .container .content .logo {
     margin-top: 10px;
 }
 
