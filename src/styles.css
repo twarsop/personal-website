@@ -26,13 +26,13 @@ header {
     background-size: 100% 100%;
     min-height: 110px;
     max-height: 110px;
-    color: #fff;    
-    font-size: 20px;
     min-width: 1920px;
 }
 
 header .layout {
-    padding: 10px 20px;
+    padding: 20px;
+    color: #e3e3e3;    
+    font-size: 20px;
 }
 
 /****************************************** nav ******************************************/
