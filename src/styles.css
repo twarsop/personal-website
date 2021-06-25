@@ -166,69 +166,74 @@ main.layout .otherme .section .container .content .logo {
 
 /****************************************** main - projects ******************************************/
 
-.project-container {
+main.layout .projects {
+    margin-top:20px !important; 
+    padding: 0px !important;
+}
+
+main.layout .projects .section {
     float: left;
     width:50%;
-    color:#2c2c2c;
     height:250px;
 }
 
-.project-container .project-inner-container {
+main.layout .projects .section .container {
     padding:5px;
     height: 100%;
 }
 
-.project-container .project-inner-container .project {
+main.layout .projects .section .container .content {
+    color:#2c2c2c;
     background-color: #c5c6c7;
     height: 100%;
 }
 
-.project-container .project-inner-container .project .image-container {
+main.layout .projects .section .container .content .left-section {
     float:left; 
     width: 40%;
 }
 
-.project-container .project-inner-container .project .content-container {
+main.layout .projects .section .container .content .right-section {
     float:left; 
     width: 60%;
 }
 
-.project-container .project-inner-container .project .content-container .title {
+main.layout .projects .section .container .content .right-section .title {
     font-weight: bold; 
     font-size: 16px; 
     padding: 20px 20px;     
 }
 
-.project-container .project-inner-container .project .content-container .status-label {
+main.layout .projects .section .container .content .right-section .status-label {
     padding: 5px 20px; 
     font-size: 12px;
 }
 
-.project-container .project-inner-container .project .content-container .progress-bar-container {
+main.layout .projects .section .container .content .right-section .progress-bar-container {
     padding: 5px 20px; 
     font-size: 12px;
 }
 
-.project-container .project-inner-container .project .content-container .progress-bar-container .progress-bar-item {
+main.layout .projects .section .container .content .right-section .progress-bar-container .left-section {
     float:left;
     width: 85%;
 }
 
-.project-container .project-inner-container .project .content-container .progress-bar-container .progress-bar-value {
-    float:left;
-    width: 15%;
-}
-
-.project-container .project-inner-container .project .content-container .progress-bar-container .progress-bar-value-padding {
-    padding-left:10px;
-}
-
-.project-container .project-inner-container .project .content-container .progress-bar-container .progress-bar-item .progress-bar {
+main.layout .projects .section .container .content .right-section .progress-bar-container .left-section .progress-bar {
     width: 100%;
     font-size: 12px;
 }
 
-.project-container .project-inner-container .project .content-container .description-container {
+main.layout .projects .section .container .content .right-section .progress-bar-container .right-section {
+    float:left;
+    width: 15%;
+}
+
+main.layout .projects .section .container .content .right-section .progress-bar-container .right-section .progress-bar-value-container {
+    padding-left:10px;
+}
+
+main.layout .projects .section .container .content .right-section .description-container {
     padding: 5px 20px;
     font-size: 12px; 
 }
@@ -256,7 +261,7 @@ progress[value^="2"]::-webkit-progress-value{
 progress::-webkit-progress-value{
     background-color: #d80073;
     border-radius: 7px;
- } 
+} 
 
 progress[value^="0"]::-moz-progress-value,
 progress[value^="1"]::-moz-progress-value,
@@ -268,17 +273,17 @@ progress[value^="2"]::-moz-progress-value{
 progress::-moz-progress-value{
     background-color: #d80073;
     border-radius: 7px;
- }
+}
 
- progress::-webkit-progress-bar {
+progress::-webkit-progress-bar {
     background-color: #fff;
     border-radius: 7px;
-  }
+}
 
-  progress::-moz-progress-bar {
+progress::-moz-progress-bar {
     background-color: #fff;
     border-radius: 7px;
-  }
+}
 
 /****************************************** potentially unused classes ******************************************/
 
