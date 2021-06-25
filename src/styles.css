@@ -285,34 +285,6 @@ progress::-moz-progress-bar {
     border-radius: 7px;
 }
 
-/****************************************** potentially unused classes ******************************************/
-
-h1 {
-    color: #009;
-    font-size: 50px;
-}
-
-.page .navbar {
-
-}
-
-.page .navbar .navitem {
-    border: 1px solid #c5c6c7;
-    float: left;
-    padding: 10px 20px;
-    margin-right:20px;
-    color: #0b0c10;
-    background-color: #66fcf1;
-}
-
-.page .navbar .navitem:hover {
-    background-color: #45a29e !important;
-}
-
-.page .navbar .navitem-selected {
-    background-color: #45a29e !important;
-}
-
 /****************************************** footer ******************************************/
 
 footer {
