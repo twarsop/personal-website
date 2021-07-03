@@ -17,6 +17,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #e3e3e3;
+    overflow-x: hidden;
 }
 
 /****************************************** header ******************************************/
