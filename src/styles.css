@@ -203,18 +203,18 @@ main.layout .projects .section .container .content .right-section {
 
 main.layout .projects .section .container .content .right-section .title {
     font-weight: bold; 
-    font-size: 16px; 
-    padding: 20px 20px;     
+    font-size: 18px; 
+    padding: 20px 20px 5px;     
 }
 
 main.layout .projects .section .container .content .right-section .status-label {
     padding: 5px 20px; 
-    font-size: 12px;
+    font-size: 16px;
 }
 
 main.layout .projects .section .container .content .right-section .progress-bar-container {
     padding: 5px 20px; 
-    font-size: 12px;
+    font-size: 16px;
 }
 
 main.layout .projects .section .container .content .right-section .progress-bar-container .left-section {
@@ -224,7 +224,7 @@ main.layout .projects .section .container .content .right-section .progress-bar-
 
 main.layout .projects .section .container .content .right-section .progress-bar-container .left-section .progress-bar {
     width: 100%;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 main.layout .projects .section .container .content .right-section .progress-bar-container .right-section {
@@ -238,7 +238,7 @@ main.layout .projects .section .container .content .right-section .progress-bar-
 
 main.layout .projects .section .container .content .right-section .description-container {
     padding: 5px 20px;
-    font-size: 12px; 
+    font-size: 16px; 
 }
 
 progress,          /* All HTML5 progress enabled browsers */
