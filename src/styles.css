@@ -63,23 +63,23 @@ nav a {
 	display:block;
 	text-decoration:none;
 	background-color:#0066cc;
-	color:#fff;
+	color:#e3e3e3;
     font-size: 12px;
     height:100%;
     line-height:32px;
-    border:1px solid #fff;
+    border:1px solid #e3e3e3;
     border-bottom: 0px;
     border-style: solid solid none solid;
 }
 
 nav a:hover {
 	background-color:#2424b5;
-	color:#fff;
+	color:#e3e3e3;
 }
 
 nav .selected {
     background-color:#d80073 !important;
-	color:#fff;
+	color:#e3e3e3;
     position:relative;
 }
 
