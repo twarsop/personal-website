@@ -4,10 +4,6 @@
     clear: both;
 }
 
-*, ::after, ::before {
-    box-sizing: unset !important;
-}
-
 /****************************************** html and body ******************************************/
 
 html {
@@ -80,6 +76,7 @@ nav a {
     border-style: none solid none solid;
     padding-top: 5px;
     height: 35px;
+    box-sizing: unset !important;
 }
 
 nav a:hover {
@@ -112,6 +109,10 @@ main.layout {
     width:1000px; 
     margin:0 auto;
     padding: 20px 0px;
+    flex: 1 0 auto;
+}
+
+.layout {
     flex: 1 0 auto;
 }
 
