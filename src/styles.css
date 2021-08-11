@@ -145,35 +145,23 @@ main.layout .hello .right-section img {
 
 /****************************************** main - other me ******************************************/
 
-main.layout .otherme {
-    margin-top:10px !important; 
-    padding: 0px !important;
-}
-
-main.layout .otherme .section {
-    margin-bottom: 20px;
-    width: 33.3333333333%;
-    height: 125px;
-    float: left;
-}
-
-main.layout .otherme .section .container {
+.otherme {
     width:auto;
-    height:125px;
-    padding:10px;
+    height:140px;
+    padding:10px 0px;
 }
 
-main.layout .otherme .section .container .content {   
+.otherme .content {
     text-align: center;
     background-color: #0066cc;
     height: 100%;
 }
 
-main.layout .otherme .section .container .content:hover {
+.otherme .content:hover {
     background-color: #2424b5 !important;
 }
 
-main.layout .otherme .section .container .content .logo {
+.otherme .content .logo {
     margin-top: 10px;
 }
 
