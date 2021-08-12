@@ -265,19 +265,10 @@ footer {
     color: #fff;
 }
 
-footer .layout {
-    width:1000px; 
-    margin:0 auto;
-    padding-bottom: 20px !important;
+footer .footer-container {
+    padding-bottom: 30px;
 }
 
-footer .layout .left-section {
-    float:left;
-    width: 75%;
-}
-
-footer .layout .right-section {
-    float:left;
-    width:25%;
+footer .footer-container .version {
     text-align: right;
 }
