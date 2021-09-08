@@ -302,3 +302,7 @@ footer .footer-container {
 footer .footer-container .version {
     text-align: right;
 }
+
+footer .footer-container .version a {
+    color: #fff !important;
+}
