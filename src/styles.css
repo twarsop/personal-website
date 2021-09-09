@@ -306,6 +306,10 @@ progress::-moz-progress-bar {
     display: inline-block;
 }
 
+.previous-versions .link a:hover {
+    background-color:#2424b5;
+}
+
 /****************************************** footer ******************************************/
 
 footer {
