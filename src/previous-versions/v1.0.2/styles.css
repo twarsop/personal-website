@@ -286,31 +286,6 @@ progress::-moz-progress-bar {
     border-radius: 7px;
 }
 
-/****************************************** previous versions ******************************************/
-
-.previous-versions .container {
-    background-color: #c5c6c7;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-}
-
-.previous-versions .link {
-    margin-top: 10px;
-}
-
-.previous-versions .link a {
-    background-color:#0066cc;
-    color:#fff;
-    text-decoration: none;
-    padding: 10px;
-    display: inline-block;
-}
-
-.previous-versions .link a:hover {
-    background-color:#2424b5;
-}
-
 /****************************************** footer ******************************************/
 
 footer {
@@ -326,8 +301,4 @@ footer .footer-container {
 
 footer .footer-container .version {
     text-align: right;
-}
-
-footer .footer-container .version a {
-    color: #fff !important;
 }
