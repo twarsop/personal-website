@@ -295,6 +295,10 @@ progress::-moz-progress-bar {
     margin-bottom: 20px;
 }
 
+.previous-versions .container .date {
+    margin-bottom: 10px;
+}
+
 .previous-versions .link {
     margin-top: 10px;
 }
