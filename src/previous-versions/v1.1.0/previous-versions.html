@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Previous Versions</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#menu").click(function(){
+                    if($('#menu-container').is(':visible')){ 
+                        $("#menu-container").slideUp("slow", function() {
+                            // Animation complete.
+                        });
+                    }
+                    else {
+                        $("#menu-container").slideDown("slow", function() {
+                            // Animation complete.
+                        });
+                    } 
+                });
+              });
+        </script>
+    </head>
+    <body>
+        <header>
+            <div class="layout">
+                <div class="title">
+                    // TOM WARSOP
+                </div>
+            </div>
+        </header>
+
+        <nav class="d-none d-md-block">
+            <div class="desktop">
+                <div class="layout">
+                    <li><a href="index.html">hello</a></li>
+                    <li><a href="otherme.html">other me</a></li>
+                    <li><a href="projects.html">projects</a></li>
+                </div>
+            </div>
+        </nav>
+
+        <nav class="d-md-none navbar">
+            <div class="container">
+                <div class="row mobile">
+                    <div id="menu" class="menu"><span class="hamburger"></span>menu</div>
+                    <ul id="menu-container" class="navbar-nav menu-container" style="display:none">
+                        <li class="col"><a href="index.html">hello</a></li>
+                        <li class="col"><a href="otherme.html">other me</a></li>
+                        <li class="col"><a href="projects.html">projects</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="clear-both"></div>
+
+        <div class="container mt-4 mb-4 layout">
+            <div class="row">
+                <div class="col previous-versions">
+                    <h1>Previous Versions</h1>
+                    <p>Below is a list of the previous versions of this website, the changes that were made in that version and a link to view that version. For an explanation of how the versioning works for this website, please see <a href="versioning.html">here</a>.</p>
+                
+                    <div class="container">
+                        <h2>v1.1.0 (Current Version)</h2>
+                        <div class="date">2021/09/28</div>
+                        <div>
+                            Added new content to the site:
+                            <ul>
+                                <li>Page explaining how the versioning works.</li>
+                                <li>This website included in the Projects page (as a project that I've done/am working on), along with a link to the Previous Versions page.</li>
+                                <li>The Previous Versions page which lists all the previous versions (and current version) of this website. Providing details of: version deployment date, what was included in the version and a link that takes you to that specfic version of the website.</li>
+                            </ul>
+                        </div>
+                        <div class="link"><a target="_blank" href="previous-versions/v1.1.0/index.html">Link to v1.1.0</a></div>
+                    </div>
+
+                    <div class="container">
+                        <h2>v1.0.2</h2>
+                        <div class="date">2021/08/24</div>
+                        <div>Fixed a bug: The mobile layout/styling was not being used on mobile devices, the website was defaulting to the desktop styling on mobile devices instead. Fixed by including <b>viewport, width=device-width, initial-scale=1</b> in the <b>head</b> of every page.</div>
+                        <div class="link"><a target="_blank" href="previous-versions/v1.0.2/index.html">Link to v1.0.2</a></div>
+                    </div>
+
+                    <div class="container">
+                        <h2>v1.0.1</h2>
+                        <div class="date">2021/08/23</div>
+                        <div>Fixed a bug: The file name for the github logo on the Other Me page was incorrect (differing by case, i.e. a case sensitivity issue).</div>
+                        <div class="link"><a target="_blank" href="previous-versions/v1.0.1/index.html">Link to v1.0.1</a></div>
+                    </div>
+
+                    <div class="container">
+                        <h2>v1.0.0</h2>
+                        <div class="date">2021/08/23</div>
+                        <div>The initial release of the website.</div>
+                        <div class="link"><a target="_blank" href="previous-versions/v1.0.0/index.html">Link to v1.0.0</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container footer-container">
+                <div class="row">
+                    <div class="col-8">
+                        Copyright &#169; 2021 Tom Warsop
+                    </div>
+                    <div class="col-4 version">
+                        v1.1.0 </br>
+                        <a href="versioning.html">Versioning</a>                        
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

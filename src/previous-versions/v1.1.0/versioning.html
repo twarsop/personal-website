@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Versioning</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#menu").click(function(){
+                    if($('#menu-container').is(':visible')){ 
+                        $("#menu-container").slideUp("slow", function() {
+                            // Animation complete.
+                        });
+                    }
+                    else {
+                        $("#menu-container").slideDown("slow", function() {
+                            // Animation complete.
+                        });
+                    } 
+                });
+              });
+        </script>
+    </head>
+    <body>
+        <header>
+            <div class="layout">
+                <div class="title">
+                    // TOM WARSOP
+                </div>
+            </div>
+        </header>
+
+        <nav class="d-none d-md-block">
+            <div class="desktop">
+                <div class="layout">
+                    <li><a href="index.html">hello</a></li>
+                    <li><a href="otherme.html">other me</a></li>
+                    <li><a href="projects.html">projects</a></li>
+                </div>
+            </div>
+        </nav>
+
+        <nav class="d-md-none navbar">
+            <div class="container">
+                <div class="row mobile">
+                    <div id="menu" class="menu"><span class="hamburger"></span>menu</div>
+                    <ul id="menu-container" class="navbar-nav menu-container" style="display:none">
+                        <li class="col"><a href="index.html">hello</a></li>
+                        <li class="col"><a href="otherme.html">other me</a></li>
+                        <li class="col"><a href="projects.html">projects</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="clear-both"></div>
+
+        <div class="container mt-4 mb-4 layout">
+            <div class="row">
+                <div class="col">
+                    <h1>Versioning</h1>
+                    <p>
+                        Down below in the website's footer you should see something of the format "vX.X.X" which denotes the current verison of this website. This page explains how this version number is derived.
+                    </p>
+                    <p>
+                        Versioning here borrows from the concepts of Semantic Versioning (<a href="https://semver.org/">https://semver.org/</a>)
+                    </p>
+                    <p>
+                        And so follows the format:
+                    </p>
+                    <h1 style="text-align: center;">
+                        Major.Minor.Patch
+                    </h1>
+                    <p>
+                        The usage of these are similar to Semantic Versioning, but are tweaked to better fit how this website will be developed. 
+                        <ul>
+                            <li><b>Major</b> version when <s>you make incompatible API changes</s> when any existing structure changes. This could be the strucutre of the code or the files (or anything else that has a defined structured). Bascially, this covers re-writes of the website.</li>
+                            <li><b>Minor</b> version when <s>you add functionality in a backwards compatible manner</s> new content is added. So adding anything new including: text, images and even pages. So long as the existing structure is adhered to.</li>
+                            <li>
+                                <b>Patch</b> version when <s>you make backwards compatible bug fixes</s> existing content is modified. This covers things like:
+                                <ul>
+                                    <li>Bug fixes</li>
+                                    <li>Styling tweaks (keeping the existing layout, just small modifications to it)</li>
+                                    <li>Text editing</li>
+                                    <li>Image updates</li>
+                                    <li>... Basically anything that's been modified that already exists within the markup.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container footer-container">
+                <div class="row">
+                    <div class="col-8">
+                        Copyright &#169; 2021 Tom Warsop
+                    </div>
+                    <div class="col-4 version">
+                        v1.1.0 </br>
+                        <a href="versioning.html">Versioning</a>                        
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
