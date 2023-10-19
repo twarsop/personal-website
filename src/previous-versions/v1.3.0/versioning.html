@@ -10,8 +10,8 @@
 
             gtag('config', 'G-SQ6LRSEYQ9');
         </script>
-
-        <title>Hello</title>
+        
+        <title>Versioning</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
         <link rel="stylesheet" href="styles.css">
@@ -45,7 +45,7 @@
         <nav class="d-none d-md-block">
             <div class="desktop">
                 <div class="layout">
-                    <li><a href="index.html" class="selected">hello</a></li>
+                    <li><a href="index.html">hello</a></li>
                     <li><a href="otherme.html">other me</a></li>
                     <li><a href="projects.html">projects</a></li>
                 </div>
@@ -57,7 +57,7 @@
                 <div class="row mobile">
                     <div id="menu" class="menu"><span class="hamburger"></span>menu</div>
                     <ul id="menu-container" class="navbar-nav menu-container" style="display:none">
-                        <li class="col"><a href="index.html" class="selected">hello</a></li>
+                        <li class="col"><a href="index.html">hello</a></li>
                         <li class="col"><a href="otherme.html">other me</a></li>
                         <li class="col"><a href="projects.html">projects</a></li>
                     </ul>
@@ -69,22 +69,37 @@
 
         <div class="container mt-4 mb-4 layout">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col">
+                    <h1>Versioning</h1>
                     <p>
-                        Welcome to my personal website. I intend to use this space as a sort of portfolio providing a central place I can use to link up all the various content and projects I have across the internet.
+                        Down below in the website's footer you should see something of the format "vX.X.X" which denotes the current verison of this website. This page explains how this version number is derived.
                     </p>
                     <p>
-                        A little bit of background on me: I've been writing code for the past 20-something years. Starting with BASIC on an Amiga way back. Since then I've used a whole host of different languages including: C++, C#, SQL, python, HTML, javascript, R and Matlab. I've learnt a few things along the way too and got a Masters degree and PhD to show for it.
+                        Versioning here borrows from the concepts of Semantic Versioning (<a href="https://semver.org/">https://semver.org/</a>)
                     </p>
                     <p>
-                        Currently I'm working as a Data Scientist and doing things data related.
+                        And so follows the format:
                     </p>
+                    <h1 style="text-align: center;">
+                        Major.Minor.Patch
+                    </h1>
                     <p>
-                        I'm interested in building web apps, software engineering practices and processes, anything data related and learning about new things in these spaces.
+                        The usage of these are similar to Semantic Versioning, but are tweaked to better fit how this website will be developed. 
+                        <ul>
+                            <li><b>Major</b> version when <s>you make incompatible API changes</s> when any existing structure changes. This could be the strucutre of the code or the files (or anything else that has a defined structured). Bascially, this covers re-writes of the website.</li>
+                            <li><b>Minor</b> version when <s>you add functionality in a backwards compatible manner</s> new content is added. So adding anything new including: text, images and even pages. So long as the existing structure is adhered to.</li>
+                            <li>
+                                <b>Patch</b> version when <s>you make backwards compatible bug fixes</s> existing content is modified. This covers things like:
+                                <ul>
+                                    <li>Bug fixes</li>
+                                    <li>Styling tweaks (keeping the existing layout, just small modifications to it)</li>
+                                    <li>Text editing</li>
+                                    <li>Image updates</li>
+                                    <li>... Basically anything that's been modified that already exists within the markup.</li>
+                                </ul>
+                            </li>
+                        </ul>
                     </p>
-                </div>
-                <div class="col-md-4">
-                    <img width="100%" src="me.png">
                 </div>
             </div>
         </div>
@@ -96,7 +111,7 @@
                         Copyright &#169; <script>document.write(new Date().getFullYear())</script> Tom Warsop
                     </div>
                     <div class="col-4 version">
-                        Last Updated: 2023/10/19 (v1.3.0) </br>
+                        Last Updated: 19/10/2023 (v1.3.0) </br>
                         <a href="versioning.html">Versioning</a>                        
                     </div>
                 </div>
