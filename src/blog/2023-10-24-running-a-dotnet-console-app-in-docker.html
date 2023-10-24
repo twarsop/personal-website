@@ -125,12 +125,12 @@
                     <h3>The Dockerfile</h3>
 
                     <p>
-                        The first thing we need to do to get this code to run via Docker is add a Dockerfile. This is a file that is literally called Dockerfile with no file extension and we'll put it in the top-level of our repo:
+                        The first thing we need to do to get this code to run via Docker is add a <span class="inline-code">Dockerfile</span>. This is a file that is literally called Dockerfile with no file extension and we'll put it in the top-level of our repo:
                     </p>
 
                     <img style="width:75%" src="img/2023-10-24-running-a-dotnet-console-app-in-docker/dockerfile_location.png" />
 
-                    <p>Note: the /src folder in this repo contains the solution for the die rolling simulator.</p>
+                    <p>Note: the <span class="inline-code">/src</span> folder in this repo contains the solution for the die rolling simulator.</p>
 
                     <p>
                         Our Dockerfile contains the following lines:                        
@@ -161,13 +161,13 @@
                     <h5>WORKDIR /app</h5>
 
                     <p>
-                        This sets the working directory for any commands that follow it in the Dockerfile to /app. This is with respect to the Docker image, so the commands that follow it when referencing the Docker image are using /app as the current directory (<a target="_blank" href="https://docs.docker.com/engine/reference/builder/#workdir">docs</a>).
+                        This sets the working directory for any commands that follow it in the Dockerfile to <span class="inline-code">/app</span>. This is with respect to the Docker image, so the commands that follow it when referencing the Docker image are using <span class="inline-code">/app</span> as the current directory (<a target="_blank" href="https://docs.docker.com/engine/reference/builder/#workdir">docs</a>).
                     </p>
 
                     <h5>COPY src/DieRoller/bin/Debug/net7.0/. .</h5>
 
                     <p>
-                        In this post we are only concerned with running the console app via Docker. We are not going to consider how to build the console app via Docker. But we still need some built executable that the Docker container can execute. We will get this executable in the Docker container by copying a built executable from the local machine into the Docker image. So this COPY command copies the contents of the folder src/DieRoller/bin/Debug/net7.0/ (which is relative to the location of the Dockerfile) from the local machine into the current working directory of the Docker image (which we set to /app using the previous WORKDIR command).
+                        In this post we are only concerned with running the console app via Docker. We are not going to consider how to build the console app via Docker. But we still need some built executable that the Docker container can execute. We will get this executable in the Docker container by copying a built executable from the local machine into the Docker image. So this <span class="inline-code">COPY</span> command copies the contents of the folder <span class="inline-code">src/DieRoller/bin/Debug/net7.0/</span> (which is relative to the location of the Dockerfile) from the local machine into the current working directory of the Docker image (which we set to <span class="inline-code">/app</span> using the previous <span class="inline-code">WORKDIR</span> command).
                     </p>
 
                     <p>
@@ -177,7 +177,7 @@
                     <h5>ENTRYPOINT ["dotnet", "DieRoller.dll"]</h5>
 
                     <p>
-                        This command tells the Docker container what to run after it has been initiated. In our case, this is a dotnet based dll with the given name.
+                        This command tells the Docker container what to run after it has been initiated. In our case, this is a .NET based dll with the given name.
                     </p>
 
                     <h3>Building and Running via Docker</h3>
@@ -194,7 +194,7 @@
                     <h5>Build the Console App</h5>
 
                     <p>
-                        Our setup here is very simplistic - we are using our local mahcine to build everything for the console app, copying it into a Docker image and then executing the dll we built on our machine in the container. So the first step is to build the console app via Visual Studio (or whatever IDE you are using) making sure it's built into the required relative path to the Dockerfile which here is src/DieRoller/bin/Debug/net7.0/ (if you are building to a different location relative to the Dockerfile on your machine you can change this line in the Dockerfile).
+                        Our setup here is very simplistic - we are using our local mahcine to build everything for the console app, copying it into a Docker image and then executing the dll we built on our machine in the container. So the first step is to build the console app via Visual Studio (or whatever IDE you are using) making sure it's built into the required relative path to the Dockerfile which here is <span class="inline-code">src/DieRoller/bin/Debug/net7.0/</span> (if you are building to a different location relative to the Dockerfile on your machine you can change this line in the Dockerfile).
                     </p>
 
                     <h5>Build the Docker Image</h5>
@@ -208,7 +208,7 @@
                     </pre>
 
                     <p>
-                        All this is saying is build a Docker image calling/tagging it dieroller in the current directory.
+                        All this is saying is build a Docker image calling/tagging it <span class="inline-code">dieroller</span> in the current directory.
                     </p>
 
                     <p>

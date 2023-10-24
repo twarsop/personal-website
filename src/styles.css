@@ -366,6 +366,12 @@ progress::-moz-progress-bar {
     margin-right: auto;
 }
 
+.blog .inline-code {
+    background-color: #cccccc;
+    font-weight: 500;
+    font-family: var(--bs-font-monospace);
+}
+
 /****************************************** footer ******************************************/
 
 footer {
