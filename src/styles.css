@@ -315,6 +315,46 @@ progress::-moz-progress-bar {
     background-color:#2424b5;
 }
 
+/****************************************** blog ******************************************/
+
+.blog .container {
+    background-color: #c5c6c7;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.blog .container .date {
+    margin-bottom: 10px;
+}
+
+.blog .container .tags {
+    float: left;
+    margin-top: 10px;
+}
+
+.blog .container .tags .tag {
+    background-color: #0050A0;
+    color: #fff;
+    padding: 5px;
+}
+
+.blog .link {
+    float: right;
+}
+
+.blog .link a {
+    background-color:#0066cc;
+    color:#fff;
+    text-decoration: none;
+    padding: 10px;
+    display: inline-block;
+}
+
+.blog .link a:hover {
+    background-color:#2424b5;
+}
+
 /****************************************** footer ******************************************/
 
 footer {
