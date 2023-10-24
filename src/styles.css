@@ -355,6 +355,17 @@ progress::-moz-progress-bar {
     background-color:#2424b5;
 }
 
+.blog pre {
+    margin: 0px !important;
+}
+
+.blog img {
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /****************************************** footer ******************************************/
 
 footer {
