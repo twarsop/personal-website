@@ -324,16 +324,16 @@ progress::-moz-progress-bar {
     margin-bottom: 20px;
 }
 
-.blog .container .date {
+.blog .date {
     margin-bottom: 10px;
 }
 
-.blog .container .tags {
+.blog .tags {
     float: left;
     margin-top: 10px;
 }
 
-.blog .container .tags .tag {
+.blog .tags .tag {
     background-color: #0050A0;
     color: #fff;
     padding: 5px;
