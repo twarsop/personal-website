@@ -83,11 +83,11 @@
                     <h3>Introduction</h3>
 
                     <p>
-                        This blog post builds on the first in the series (<a href="2023-10-24-running-a-dotnet-console-app-in-docker.html">here</a>) where a .NET console app was ran via docker by doing both the building of the console app and running it with Docker. The previous post already covers the running of the app via Docker. So this post will mostly focus on the building of the app using Docker. 
+                        This blog post builds on the first in the series (<a href="2023-10-24-running-a-dotnet-console-app-in-docker.html">here</a>) where a .NET console app was ran via Docker. In this post we will do both the <b>building</b> and running of the app with Docker.  
                     </p>
 
                     <p>
-                        As before, all the code required for this example can be found at github <a href="https://github.com/twarsop/build-and-run-dotnet-consoleapp-in-docker">here</a>. And, as before, we will be using a simple console app that simulates a die roll as the subject application.
+                        As before, all the code required for this example can be found at github <a target="_blank" href="https://github.com/twarsop/build-and-run-dotnet-consoleapp-in-docker">here</a>. And, as before, we will be using a simple console app that simulates a die roll as the subject application.
                     </p>
 
                     <h3>The Dockerfile</h3>
@@ -112,11 +112,7 @@
                     </pre>
 
                     <p>
-                        The lines in our Dockerfile are grouped into two parts: the first part does the building of the app, the second part does the running. Note that both parts are similar in structure: <span class="inline-code">FROM ..., WORKDIR ..., COPY ..., some other command</span>. In fact, we are now using what is refered to as a multi-stage build. The output from the one stage of the build is used by subsequent stages of the build.
-                    </p>
-
-                    <p>
-                        The following dicusses in more detail each stage of the build.
+                        The lines in our Dockerfile are grouped into two parts: the first part does the building of the app, the second part does the running. Note that both parts are similar in structure: <span class="inline-code">FROM ..., WORKDIR ..., COPY ..., some other command</span>. In fact, we are now using what is refered to as a multi-stage build. By using multi-stage building in a Dockerfile, we can use the output from one stage in subsequent stages. So we can use the output of the build stage in the run stage.
                     </p>
 
                     <h3>The Build Stage</h3>
@@ -140,7 +136,7 @@
                     </p>
 
                     <p>
-                        <span class="inline-code">FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env</span> details what base image to use for the image we are building. In this case, the Microsoft image for the .NET SDK. But now we also have the <span class="inline-code">AS build-env</span> at the end. This is naming the current build stage for us to refer to it later on.
+                        <span class="inline-code">FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env</span> details what base image to use for the image we are building. In this case, the Microsoft image for the .NET 7 SDK. But now we also have the <span class="inline-code">AS build-env</span> at the end. This is naming the current stage as <span class="inline-code">build-env</span> for us to refer to it later on with that name.
                     </p>
 
                     <p>
@@ -171,7 +167,7 @@
                     </p>
 
                     <p>
-                        Once we've copied output of the build process into this image we'll use for running the <span class="inline-code">ENTRYPOINT</span> is set like before.
+                        Once we've copied the output of the build stage into this image we'll use for running the <span class="inline-code">ENTRYPOINT</span> is set like before.
                     </p>
 
                     <h3>Building and Running via Docker</h3>
