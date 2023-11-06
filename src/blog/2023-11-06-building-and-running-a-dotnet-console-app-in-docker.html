@@ -86,10 +86,144 @@
                         This blog post builds on the first in the series (<a href="2023-10-24-running-a-dotnet-console-app-in-docker.html">here</a>) where a .NET console app was ran via docker by doing both the building of the console app and running it with Docker. The previous post already covers the running of the app via Docker. So this post will mostly focus on the building of the app using Docker. 
                     </p>
 
+                    <p>
+                        As before, all the code required for this example can be found at github <a href="https://github.com/twarsop/build-and-run-dotnet-consoleapp-in-docker">here</a>. And, as before, we will be using a simple console app that simulates a die roll as the subject application.
+                    </p>
+
+                    <h3>The Dockerfile</h3>
+
+                    <p>
+                        The Dockerfile for this example is slightly different to the one used before so that we can use Docker to do both the building and running of our application. It now looks like:
+                    </p>
+
+                    <pre>
+                        <code>
+    FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
+    WORKDIR /app
+    COPY src/. ./
+    RUN dotnet restore
+    RUN dotnet publish -c Release -o out
+    
+    FROM mcr.microsoft.com/dotnet/runtime:7.0
+    WORKDIR /app
+    COPY --from=build-env /app/out .
+    ENTRYPOINT ["dotnet", "DieRoller.dll"]
+                        </code>
+                    </pre>
+
+                    <p>
+                        The lines in our Dockerfile are grouped into two parts: the first part does the building of the app, the second part does the running. Note that both parts are similar in structure: <span class="inline-code">FROM ..., WORKDIR ..., COPY ..., some other command</span>. In fact, we are now using what is refered to as a multi-stage build. The output from the one stage of the build is used by subsequent stages of the build.
+                    </p>
+
+                    <p>
+                        The following dicusses in more detail each stage of the build.
+                    </p>
+
+                    <h3>The Build Stage</h3>
+
+                    <p>
+                        The first block/stage in the Dockerfile:
+                    </p>
+
+                    <pre>
+                        <code>
+    FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
+    WORKDIR /app
+    COPY src/. ./
+    RUN dotnet restore
+    RUN dotnet publish -c Release -o out
+                        </code>
+                    </pre>
+
+                    <p>
+                        Is being used to build the console app. 
+                    </p>
+
+                    <p>
+                        <span class="inline-code">FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env</span> details what base image to use for the image we are building. In this case, the Microsoft image for the .NET SDK. But now we also have the <span class="inline-code">AS build-env</span> at the end. This is naming the current build stage for us to refer to it later on.
+                    </p>
+
+                    <p>
+                        The next two commands <span class="inline-code">WORKDIR /app</span> and <span class="inline-code">COPY src/. ./</span> are setting the current directory of the Docker image we are building to <span class="inline-code">app</span> and copying everything from <span class="inline-code">src/</span> in our current local directory to this folder in the Docker image.
+                    </p>
+
+                    <p>
+                        The final two commands build the console app within the Docker image. <span class="inline-code">RUN dotnet restore</span> restores any dependencies the project has (e.g. nuget packages) and <span class="inline-code">RUN dotnet publish -c Release -o out</span> builds and outputs (publishes) a release version of the app into a folder called <span class="inline-code">out</span>.
+                    </p>
+
+                    <h3>The Run Stage</h3>
+
+                    <p>
+                        The second block/stage in the Dockerfile:
+                    </p>
+
+                    <pre>
+                        <code>
+    FROM mcr.microsoft.com/dotnet/runtime:7.0
+    WORKDIR /app
+    COPY --from=build-env /app/out .
+    ENTRYPOINT ["dotnet", "DieRoller.dll"]
+                        </code>
+                    </pre>
+
+                    <p>
+                        Is responsible for running the console app and is identical to the lines used in the previous blog post, when we were just running the console app, expect for the third line doing the copying: <span class="inline-code">COPY --from=build-env /app/out .</span>. Now, because we are using a multi-stage build Dockerfile we are copying the output from our previous stage which is named <span class="inline-code">build-env</span> whose output went to a folder called <span class="inline-code">app/out</span>. 
+                    </p>
+
+                    <p>
+                        Once we've copied output of the build process into this image we'll use for running the <span class="inline-code">ENTRYPOINT</span> is set like before.
+                    </p>
+
+                    <h3>Building and Running via Docker</h3>
+
+                    <p>
+                        To now use this Dockerfile to build an image and run the container from it we need to follow the steps:
+                        <ol>
+                            <li>Build the Docker image.</li>
+                            <li>Run the Docker container.</li>
+                        </ol>
+                    </p>
+
+                    <p>
+                        These are very much the same as before.
+                    </p>
+
+                    <p>
+                        So to build the Docker image: 
+                    </p>
+
+                    <pre>
+                        <code>
+    docker build -t dieroller .
+                        </code>
+                    </pre>
+
+                    <p>
+                        Which if we check Docker Desktop shows that we now have a built image:
+                    </p>
+
+                    <p>[Image here]</p>
+
+                    <p>
+                        And to run this image in a container:
+                    </p>
+
+                    <pre>
+                        <code>
+    docker run dieroller
+                        </code>
+                    </pre>
+
+                    <p>
+                        Which gives us the output like the following (of the console app running):
+                    </p>
+
+                    <p>[Image here]</p>
+
                     <h3>The End</h3>
 
                     <p>
-                        
+                        So we now have a Dockerfile that can be used to both build and run a .Net-based console app.
                     </p>
                 </div>
             </div>
