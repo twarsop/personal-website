@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+        <link rel="manifest" href="../img/site.webmanifest">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQ6LRSEYQ9"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-SQ6LRSEYQ9');
+        </script>
+
+        <title>Dependency Injection with .NET and C#</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <link rel="stylesheet" href="../styles.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#menu").click(function(){
+                    if($('#menu-container').is(':visible')){ 
+                        $("#menu-container").slideUp("slow", function() {
+                            // Animation complete.
+                        });
+                    }
+                    else {
+                        $("#menu-container").slideDown("slow", function() {
+                            // Animation complete.
+                        });
+                    } 
+                });
+              });
+        </script>
+    </head>
+    <body>
+        {{{ header.html }}}
+
+        <nav class="d-none d-md-block">
+            <div class="desktop">
+                <div class="layout">
+                    <li><a href="../index.html">hello</a></li>
+                    <li><a href="../blog.html" class="selected">blog</a></li>
+                    <li><a href="../otherme.html">other me</a></li>
+                    <li><a href="../projects.html">projects</a></li>
+                </div>
+            </div>
+        </nav>
+
+        <nav class="d-md-none navbar">
+            <div class="container">
+                <div class="row mobile">
+                    <div id="menu" class="menu"><span class="hamburger"></span>menu</div>
+                    <ul id="menu-container" class="navbar-nav menu-container" style="display:none">
+                        <li class="col"><a href="../index.html">hello</a></li>
+                        <li class="col"><a href="../blog.html" class="selected">blog</a></li>
+                        <li class="col"><a href="../otherme.html">other me</a></li>
+                        <li class="col"><a href="../projects.html">projects</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="clear-both"></div>
+
+        <div class="container mt-4 mb-4 layout">
+            <div class="row">
+                <div class="col blog">
+                    <h2>Dependency Injection with .NET and C#</h2>
+                    <div class="date">2024/03/28</div>
+                    <div style="margin-bottom:40px;">
+                        <div class="tags">Tags: <span class="tag">Dependency Injection</span> <span class="tag">.NET</span> <span class="tag">C#</span></div>
+                        <div style="clear: both;"></div>
+                    </div>         
+                    
+                    <h3>Introduction</h3>
+
+                    <p>
+                        Sometimes one class may depend on another class for some functionality. For example, we could be writing a game and have a class for rolling a die and a game class that depends on this die rolling class for it's results. A way to write this code could be:
+                    </p>
+
+                    <pre>
+                        <code>
+    public class DieRoller
+    {
+        private readonly Random _random;
+    
+        public DieRoller()
+        {
+            _random = new Random();
+        }
+    
+        public int RollDie()
+        {
+            return _random.Next(1,7);
+        }
+    }
+
+    public class Game
+    {
+        private readonly DieRoller _dieRoller;
+
+        public Game()
+        {
+            _dieRoller = new DieRoller();
+        }
+
+        public void Play()
+        {
+            Console.WriteLine($"Die roll: {_dieRoller.RollDie()}");
+        }
+    }
+                        </code>
+                    </pre>
+
+                    <p>
+                        Here, <span class="inline-code">Game</span> has a dependency on <span class="inline-code">DieRoller</span>. This dependency means that the <span class="inline-code">Game</span> and <span class="inline-code">DieRoller</span> classes are very tightly coupled, which comes with some issues:
+                        <ul>
+                            <li>It's difficult to swap out different implementations of the dependency.</li>
+                            <li>Testing becomes a lot more difficult: if we have a tightly coupled dependency, like above, whenever we write tests for the <span class="inline-code">Game</span> class we are implicitly also writing tests for the <span class="inline-code">DieRoller</span> as when <span class="inline-code">Game</span> executes it's relying on a specific implmentation of die rolling.</li>
+                        </ul>
+                    </p>
+
+                    <p>
+                        Dependency Injection (DI) is a design pattern that allows us to break occurences of this tight coupling between classes. It's a way of implementing Inversion of Control (IoC). Simply: instead of an object having to create it's own dependencies (the above example) another object injects these dependencies into the object.
+                    </p>
+
+                    <img style="width:30%" src="img/2024-03-28-dependency-injection-dotnet-csharp/dependency_injection.png" />
+
+                    <p>
+                        Note: DI is related to the D in SOLID.
+                    </p>
+
+                    <h3>DI, .NET and C#</h3>
+
+                    <p>
+                        We can modify the example above to use DI to provide an implmentation of the <span class="inline-code">DieRoller</span> class to the <span class="inline-code">Game</span> class as follows.
+                    </p>
+
+                    <p>
+                        First, we'll create an interface for the <span class="inline-code">DieRoller</span> class and have it implement it:
+                    </p>
+
+                    <pre>
+                        <code>
+    public interface IDieRoller
+    {
+        public int RollDie();
+    }
+    
+    public class DieRoller : IDieRoller
+    {
+        private readonly Random _random;
+
+        public DieRoller()
+        {
+            _random = new Random();
+        }
+
+        public int RollDie()
+        {
+            return _random.Next(1,7);
+        }
+    }
+                        </code>
+                    </pre>
+
+                    <p>
+                        Next, we'll update the <span class="inline-code">Game</span> class to reference the interface instead of the concrete implementation and have it provided in it's constructor as a parameter:
+                    </p>
+
+                    <pre>
+                        <code>
+    public class Game
+    {
+        private readonly IDieRoller _dieRoller;
+
+        public Game(IDieRoller dieRoller)
+        {
+            _dieRoller = dieRoller;
+        }
+
+        public void Play()
+        {
+            Console.WriteLine($"Die roll: {_dieRoller.RollDie()}");
+        }
+    }
+                        </code>
+                    </pre>
+
+                    <p>
+                        We need to make some changes in the code that instantiates the <span class="inline-code">Game</span> class (e.g. the <span class="inline-code">Program.cs</span> file) but first we need to install the nuget package: <span class="inline-code">Microsoft.Extensions.Hosting</span>
+                    </p>
+
+                    <p>
+                        Once this package is included we can use it to create a DI container - this is the other thing that will inject the dependencies for us. But for this container to know how to inject our dependencies we need to configure it to know about our services. For our example, we do that with the following code:
+                    </p>
+
+                    <pre>
+                        <code>
+    using var host = Host.CreateDefaultBuilder()
+        .ConfigureServices((context, services) => {
+            services.AddTransient&lt;IDieRoller, DieRoller&gt;();
+            services.AddTransient&lt;Game&gt;();
+        })
+        .Build();
+                        </code>
+                    </pre>
+
+                    <p>
+                        <span class="inline-code">Host.CreateDefaultBuilder()</span> gives us an application host. The host is an object that encapsulates an applications resources and lifetime functionality which includes DI.
+                    </p>
+
+                    <p>
+                        The call to <span class="inline-code">ConfigureServices</span> registers the services for DI. The first service we register tells the DI container which implementation of <span class="inline-code">IDieRoller</span> to use whenever it encounters references to <span class="inline-code">IDieRoller</span>. The second registered service is just the concrete implementation of <span class="inline-code">Game</span>.
+                    </p>
+
+                    <p>
+                        To run our application using the host we can use the following code:
+                    </p>
+
+                    <pre>
+                        <code>
+    var game = host.Services.GetRequiredService<Game>();
+    game.Play();
+                        </code>
+                    </pre>
+
+                    <p>
+                        Note that we haven't explicity instantiated a <span class="inline-code">DieRoller</span> object when creating the <span class="inline-code">Game</span> object - our DI container takes care of this for us.
+                    </p>
+
+                    <h3>Service Lifetimes</h3>
+
+                    <p>
+                        In the above example when we registered the services we used the <span class="inline-code">AddTransient()</span> function. This means we are specifiying that this service should have a transient lifetime. There are three different service lifetimes, described in the table below.
+                    </p>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Lifetime</th>
+                                <th>Registration Function</th>
+                                <th>Description</th>
+                                <th>Use</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Transient</td>
+                                <td><span class="inline-code">AddTransient()</span></td>
+                                <td>Created each time thay are requested. So, using our example, each time we instantiate a new <span class="inline-code">Game</span> object a new <span class="inline-code">DieRoller</span> object would also be created.</td>
+                                <td>Lightweight, stateless services that don't share resources.</td>
+                            </tr>
+                            <tr>
+                                <td>Scoped</td>
+                                <td><span class="inline-code">AddScoped()</span></td>
+                                <td>In web applications, created once per client request. Disposed at the end of the request.</td>
+                                <td>Stateful services or a service that shares a resource within a context (e.g. web request). They ensure each request gets its own instance of the service, avoiding conflicts between multiple requests (e.g. when communicating with a database).</td>
+                            </tr>
+                            <tr>
+                                <td>Singleton</td>
+                                <td><span class="inline-code">AddSingleton()</span></td>
+                                <td>Created the first time they are requested. Subsequent requests for the service use the same instance and it's disposed of when the application shuts down.</td>
+                                <td>Useful when there is a stateless service or a shared resources that should be accessed consistently across mutliple requests. For example, logging.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>The End</h3>
+
+                    <p>
+                        I've created a github repo <a href="https://github.com/twarsop/dependency-injection-dotnet-csharp" target="_blank">here</a> that contains the example code in this post containing two runnable solutions - one without DI and one with DI.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        {{{ footer_blog.html }}}
+    </body>
+</html>
