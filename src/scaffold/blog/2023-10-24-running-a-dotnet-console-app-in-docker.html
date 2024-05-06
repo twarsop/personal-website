@@ -69,8 +69,8 @@
         <div class="clear-both"></div>
 
         <div class="container mt-4 mb-4 layout">
-            <div class="row">
-                <div class="col blog">
+            <div class="row justify-content-center">
+                <div class="col col-lg-6 blog">
                     <h2>Running a .NET Console App in Docker</h2>
                     <b>(.NET and Docker Part 1)</b>
                     <div class="date">2023/10/24</div>
@@ -112,7 +112,7 @@
                         That's it. It doesn't do anything very exciting, just outputs a random number between 1 and 6:
                     </p>
 
-                    <img style="width:75%" src="img/2023-10-24-running-a-dotnet-console-app-in-docker/console_app_output.png" />
+                    <img style="width:100%" src="img/2023-10-24-running-a-dotnet-console-app-in-docker/console_app_output.png" />
 
                     <p>
                         The more interesting bit is how we are going run this in Docker and not via Visual Studio how we normally would.
@@ -128,7 +128,7 @@
                         The first thing we need to do to get this code to run via Docker is add a <span class="inline-code">Dockerfile</span>. This is a file that is literally called Dockerfile with no file extension and we'll put it in the top-level of our repo:
                     </p>
 
-                    <img style="width:75%" src="img/2023-10-24-running-a-dotnet-console-app-in-docker/dockerfile_location.png" />
+                    <img style="width:100%" src="img/2023-10-24-running-a-dotnet-console-app-in-docker/dockerfile_location.png" />
 
                     <p>Note: the <span class="inline-code">/src</span> folder in this repo contains the solution for the die rolling simulator.</p>
 
@@ -243,7 +243,7 @@
                         And when you run it you should see the following output:
                     </p>
 
-                    <img style="width:80%" src="img/2023-10-24-running-a-dotnet-console-app-in-docker/docker_run_output.png" />
+                    <img style="width:100%" src="img/2023-10-24-running-a-dotnet-console-app-in-docker/docker_run_output.png" />
 
                     <p>
                         Which shows our die rolling console app executing.
