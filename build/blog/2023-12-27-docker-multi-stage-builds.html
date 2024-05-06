@@ -74,8 +74,8 @@
         <div class="clear-both"></div>
 
         <div class="container mt-4 mb-4 layout">
-            <div class="row">
-                <div class="col blog">
+            <div class="row justify-content-center">
+                <div class="col col-lg-6 blog">
                     <h2>Docker Multi-Stage Builds</h2>
                     <b>(.NET and Docker Part 2a - Bonus Post)</b>
                     <div class="date">2023/12/27</div>
@@ -94,7 +94,7 @@
 
                     <p>The following shows the process of building a .NET solution with Docker. (This is in fact a graphical representation of what we did in the last post).</p>
 
-                    <img style="width:35%" src="img/2023-12-27-docker-multi-stage-builds/build_docker_image.png" />
+                    <img style="width:70%" src="img/2023-12-27-docker-multi-stage-builds/build_docker_image.png" />
 
                     <p>This also shows us all of the contents within the Docker image we've created when building and publishing our code. There is a lot of stuff in this image if all we want to do is run our application. We only need the contents of the <span class="inline-code">/app/publish</span> folder and none of: the SDK, source code or the contents of the build folder. This is all superfluous and bloating the size of the image we actually need to just run the app.</p>
 
@@ -102,7 +102,7 @@
 
                     <p>All we actually need to run a .NET app in Docker is the .NET runtime and published app. Creating an image that looks like:</p>
 
-                    <img style="width:15%" src="img/2023-12-27-docker-multi-stage-builds/run_docker_image.png" />
+                    <img style="width:35%" src="img/2023-12-27-docker-multi-stage-builds/run_docker_image.png" />
 
                     <p>Where <span class="inline-code">&lt;runtime&gt;</span> is one of the available runtimes (<a href="https://hub.docker.com/_/microsoft-dotnet-runtime/" target="_blank">list here</a>). This image is much more streamlined than the previous build Docker image and clearly more desirable.</p>
 
@@ -110,7 +110,7 @@
 
                     <p>We can achieve both the building of an app in Docker and the creation of the streamlined/low foot print Docker image to run the app by using a multi-stage Docker build:</p>
 
-                    <img style="width:35%" src="img/2023-12-27-docker-multi-stage-builds/multi_stage_docker_image.png" />
+                    <img style="width:70%" src="img/2023-12-27-docker-multi-stage-builds/multi_stage_docker_image.png" />
 
                     <p>In the first stage we build and publish the app from the source code using the SDK. In the second stage of the build we copy the output of the publish to a new image which is based on just the runtime we need. Discarding the first image and keeping only the second image. The result is a small, compact image we can use to run our app.</p>
 
@@ -126,7 +126,7 @@
                         Copyright &#169; <script>document.write(new Date().getFullYear())</script> Tom Warsop
                     </div>
                     <div class="col-4 version">
-                        Last Updated: 2024/04/29 (v2.4.1) </br>
+                        Last Updated: 2024/05/06 (v2.4.2) </br>
                         <a href="../versioning.html">Versioning</a>                        
                     </div>
                 </div>
