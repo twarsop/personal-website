@@ -16,7 +16,7 @@
             gtag('config', 'G-SQ6LRSEYQ9');
         </script>
 
-        <title>Docker Multi-Stage Builds</title>
+        <title>SOLID</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
         <link rel="stylesheet" href="../styles.css">
@@ -76,45 +76,24 @@
         <div class="container mt-4 mb-4 layout">
             <div class="row justify-content-center">
                 <div class="col col-lg-6 blog">
-                    <h2>Docker Multi-Stage Builds</h2>
-                    <b>(.NET and Docker Part 2a - Bonus Post)</b>
-                    <div class="date">2023/12/27</div>
+                    <h2>SOLID</h2>
+                    <div class="date">2024/05/10</div>
                     <div style="margin-bottom:40px;">
-                        <div class="tags">Tags: <span class="tag">Docker</span> <span class="tag">.NET</span></div>
+                        <div class="tags">Tags: <span class="tag">SOLID</span></div>
                         <div style="clear: both;"></div>
                     </div>         
                     
                     <h3>Introduction</h3>
 
                     <p>
-                        In the previous post in this Docker and .NET series (<a href="2023-11-06-building-and-running-a-dotnet-console-app-in-docker.html">here</a>) a multi-stage Docker build was used to both build the code and create a Docker image that we can run. This post is a bit of an aside/bonus post that discusses the benefit of using multi-stage builds for building .NET images.
+                        lorem ipsum
                     </p>
 
-                    <h3>Building a .NET Solution with Docker</h3>
-
-                    <p>The following shows the process of building a .NET solution with Docker. (This is in fact a graphical representation of what we did in the last post).</p>
-
-                    <img style="width:70%" src="img/2023-12-27-docker-multi-stage-builds/build_docker_image.png" />
-
-                    <p>This also shows us all of the contents within the Docker image we've created when building and publishing our code. There is a lot of stuff in this image if all we want to do is run our application. We only need the contents of the <span class="inline-code">/app/publish</span> folder and none of: the SDK, source code or the contents of the build folder. This is all superfluous and bloating the size of the image we actually need to just run the app.</p>
-
-                    <h3>Running a .NET App in Docker</h3>
-
-                    <p>All we actually need to run a .NET app in Docker is the .NET runtime and published app. Creating an image that looks like:</p>
-
-                    <img style="width:35%" src="img/2023-12-27-docker-multi-stage-builds/run_docker_image.png" />
-
-                    <p>Where <span class="inline-code">&lt;runtime&gt;</span> is one of the available runtimes (<a href="https://hub.docker.com/_/microsoft-dotnet-runtime/" target="_blank">list here</a>). This image is much more streamlined than the previous build Docker image and clearly more desirable.</p>
-
-                    <h3>Multi-Stage Docker Builds</h3>
-
-                    <p>We can achieve both the building of an app in Docker and the creation of the streamlined/low foot print Docker image to run the app by using a multi-stage Docker build:</p>
-
-                    <img style="width:70%" src="img/2023-12-27-docker-multi-stage-builds/multi_stage_docker_image.png" />
-
-                    <p>In the first stage we build and publish the app from the source code using the SDK. In the second stage of the build we copy the output of the publish to a new image which is based on just the runtime we need. Discarding the first image and keeping only the second image. The result is a small, compact image we can use to run our app.</p>
-
                     <h3>The End</h3>
+
+                    <p>
+                        lorem ipsum
+                    </p>
                 </div>
             </div>
         </div>
