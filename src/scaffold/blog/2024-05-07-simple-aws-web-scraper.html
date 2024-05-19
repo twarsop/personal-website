@@ -84,7 +84,7 @@
                         This blog post presents a very simple architecture within AWS for implementing a web scraper that parses some data from a website and stores it in a database.
                     </p>
 
-                    <h3>Introduction</h3>
+                    <h3>Architecture</h3>
 
                     <p>
                         The architecture that can be used for this is as follows:
@@ -93,13 +93,13 @@
                     <img style="width:100%" src="img/2024-05-07-simple-aws-web-scraper/simple_aws_web_scraper.png" />
 
                     <ul>
-                        <li>Starting from the bottom of this architecture - we have and RDS database that we want to store some scraped and parsed data in.</li>
-                        <li>This poses a small issue because the RDS database resides in private VPC that doesn't have unfettered access to the outside world. This means that we can't have a single lambda that can both talk to the outside world (to scrape a website) and communicate with RDS because it would need to public and private access.</li>
-                        <li>We get around this issue by having two lambdas.</li>
-                        <li>The first lambda is not in any VPC so it does have unrestricted access to the outside world and so can scrape the website. It then parses any data that we want to store, writing it to S3 as JSON.</li>
-                        <li>The second lambda can then be inside a VPC, read the parsed JSON from S3 and can update RDS (since it's in the VPC).</li>
-                        <li>So we are using S3 as the communication medium between the two lambdas.</li>
-                        <li>The execution of the two lambdas is coordinated by two EventBridge schedules. These can be set up to trigger other AWS based on a schedule. So configure them to execute the first lambda before the second one.</li>
+                        <li>Starting from the bottom of this architecture, we have an RDS database that we want to store some scraped data in.</li>
+                        <li>This poses a small issue because the RDS database resides in private VPC that doesn't have unfettered access to the outside world. This means that we can't have a single Lambda that can both talk to the outside world (to scrape a website) and communicate with RDS because it would need public and private access.</li>
+                        <li>We get around this issue by having two Lambdas.</li>
+                        <li>The first Lambda is not in any VPC so it does have unrestricted access to the outside world and so can scrape the website. It then parses any data that we want to store, writing it to S3 as JSON.</li>
+                        <li>The second Lambda can then be inside the same VPC as the database, read the parsed JSON from S3 and can update RDS (since it's in the VPC).</li>
+                        <li>We're using S3 as the communication medium between the two Lambdas.</li>
+                        <li>The execution of the two Lambdas is coordinated by two EventBridge schedules. These can be configured to trigger other AWS services based on a schedule. So we configure their schedules to execute the first Lambda before the second one.</li>
                     </ul>
 
                     <h3>The End</h3>
