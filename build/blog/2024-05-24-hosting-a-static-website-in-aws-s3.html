@@ -16,7 +16,7 @@
             gtag('config', 'G-SQ6LRSEYQ9');
         </script>
 
-        <title>Simple AWS Web Scraper</title>
+        <title>Hosting a Static Website in AWS S3</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
         <link rel="stylesheet" href="../styles.css">
@@ -79,17 +79,131 @@
                     <h2>Hosting a Static Website in AWS S3</h2>
                     <div class="date">2024/05/24</div>
                     <div style="margin-bottom:40px;">
-                        <div class="tags">Tags: <span class="tag">Website Hosting</span> <span class="tag">AWS</span> <span class="tag">S3</span></div>
+                        <div class="tags">Tags: <span class="tag">Website Hosting</span> <span class="tag">AWS</span> <span class="tag">S3</span> <span class="tag">Route 53</span></div>
                         <div style="clear: both;"></div>
                     </div>         
                     
                     <h3>Introduction</h3>
 
                     <p>
-                        lorem ipsum
+                        A cheap and hassle free method for hosting a static website (one where the content doesn't change) uses S3 in AWS. The following goes over the steps for deploying such a website to S3.
+                    </p>
+
+                    <p>
+                        In the following steps, replace <span class="inline-code">mysite.com</span> with your actual website name.
+                    </p>
+
+                    <p>
+                        It's also assumed in this tutorial that you have already acquired the domain via Route 53 (another AWS service).
+                    </p>
+
+                    <h3>Create the S3 Buckets</h3>
+
+                    <ol>
+                        <li>Create two buckets: <span class="inline-code">mysite.com</span> and <span class="inline-code">www.mysite.com</span> leaving all default values</li>
+                        <li>Upload website files to the <span class="inline-code">mysite.com</span> bucket</li>
+                    </ol>
+
+                    <h3>Enable Static Website Hosting</h3>
+
+                    <ol>
+                        <li>Select the <span class="inline-code">mysite.com</span> bucket</li>
+                        <li>Select "Properties"</li>
+                        <li>Under "Static website hosting" click "Edit"</li>
+                        <li>"Enable" static website hosting</li>
+                        <li>Under "Index document" enter the filename of the index document, e.g. index.html</li>
+                        <li>"Save changes"</li>
+                    </ol>
+
+                    <h3>Allow Public Access</h3>
+
+                    <ol>
+                        <li>Select the <span class="inline-code">mysite.com</span> bucket</li>
+                        <li>Select "Permissions"</li>
+                        <li>Under "Block public access (bucket settings)" choose "Edit"</li>
+                        <li>Clear the ticket "Block all public access"</li>
+                        <li>"Save changes"</li>
+                    </ol>
+
+                    <h3>Attach Public Read Access Policy</h3>
+
+                    <ol>
+                        <li>Select the <span class="inline-code">mysite.com</span> bucket</li>
+                        <li>Select "Permissions"</li>
+                        <li>Under "Bucket Policy" choose "Edit"</li>
+                        <li>Paste the following in: 
+                            <pre>
+                                <code>
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::mysite.com/*"
+            ]
+        }
+    ]
+}
+                                </code>
+                            </pre>
+                        </li>
+                        <li>"Save changes"</li>
+                    </ol>
+
+                    <h3>Test the Website Works</h3>
+
+                    <ol>
+                        <li>Select the <span class="inline-code">mysite.com</span> bucket</li>
+                        <li>Select "Properties"</li>
+                        <li>Under "Static website hosting" click the link under "Bucket website endpoint"</li>
+                        <li>The website should load</li>
+                    </ol>
+
+                    <h3>Subdomain Bucket Redirect</h3>
+
+                    <ol>
+                        <li>Select the <span class="inline-code">www.mysite.com</span> bucket</li>
+                        <li>Select "Properties"</li>
+                        <li>Under "Static website hosting" choose "Edit"</li>
+                        <li>Check "Enable"</li>
+                        <li>Check "Redirect requests for an object"</li>
+                        <li>In "Host name" enter <span class="inline-code">mysite.com</span></li>
+                        <li>Set "Protocol" to "http"</li>
+                        <li>"Save changes"</li>
+                    </ol>
+
+                    <h3>Create Alias Records for the Root Domain and Subdomain</h3>
+
+                    <ol>
+                        <li>Open Route 53</li>
+                        <li>Choose "Hosted Zones"</li>
+                        <li>Select the <span class="inline-code">mysite.com</span> domain</li>
+                        <li>Choose "Create Record"</li>
+                        <li>Choose "Simple routing" (may need to select "Switch to wizard" first)</li>
+                        <li>Click "Next"</li>
+                        <li>Choose "Define simple record"</li>
+                        <li>In "Value/Route traffic to", choose "Alias to S3 website endpoint"</li>
+                        <li>Choose the Region</li>
+                        <li>Choose the S3 bucket - <span class="inline-code">mysite.com</span></li>
+                        <li>Set "Evaluate target health" to "No"</li>
+                        <li>Click "Define simple record"</li>
+                    </ol>
+
+                    <p>
+                        Repeat the above steps for the subdomain. This is the same except when defining the simple record enter <span class="inline-code">www</span> under "Record name" for the subdomain and choose the S3 bucket for <span class="inline-code">www.mysite.com</span>
                     </p>
 
                     <h3>The End</h3>
+
+                    <p>
+                        You should now be able to access your website by visiting either <span class="inline-code">mysite.com</span> or <span class="inline-code">www.mysite.com</span>
+                    </p>
 
                 </div>
             </div>
