@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+        <link rel="manifest" href="../img/site.webmanifest">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQ6LRSEYQ9"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-SQ6LRSEYQ9');
+        </script>
+
+        <title>AWS Certification Introduction</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <link rel="stylesheet" href="../styles.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#menu").click(function(){
+                    if($('#menu-container').is(':visible')){ 
+                        $("#menu-container").slideUp("slow", function() {
+                            // Animation complete.
+                        });
+                    }
+                    else {
+                        $("#menu-container").slideDown("slow", function() {
+                            // Animation complete.
+                        });
+                    } 
+                });
+              });
+        </script>
+    </head>
+    <body>
+        <header>
+            <div class="layout">
+                <div class="title">
+                    // TOM WARSOP
+                </div>
+            </div>
+        </header>
+        <nav class="d-none d-md-block">
+            <div class="desktop">
+                <div class="layout">
+                    <li><a href="../index.html">hello</a></li>
+                    <li><a href="../blog.html" class="selected">blog</a></li>
+                    <li><a href="../otherme.html">other me</a></li>
+                    <li><a href="../projects.html">projects</a></li>
+                </div>
+            </div>
+        </nav>
+
+        <nav class="d-md-none navbar">
+            <div class="container">
+                <div class="row mobile">
+                    <div id="menu" class="menu"><span class="hamburger"></span>menu</div>
+                    <ul id="menu-container" class="navbar-nav menu-container" style="display:none">
+                        <li class="col"><a href="../index.html">hello</a></li>
+                        <li class="col"><a href="../blog.html" class="selected">blog</a></li>
+                        <li class="col"><a href="../otherme.html">other me</a></li>
+                        <li class="col"><a href="../projects.html">projects</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="clear-both"></div>
+
+        <div class="container mt-4 mb-4 layout">
+            <div class="row justify-content-center">
+                <div class="col col-lg-6 blog">
+                    <h2>AWS Certification</h2>
+                    <div class="date">XXXX/XX/XX</div>
+                    <div style="margin-bottom:40px;">
+                        <div class="tags">Tags: <span class="tag">AWS Certification</span> <span class="tag">AWS Associate Developer</span></div>
+                        <div style="clear: both;"></div>
+                    </div>         
+                    
+                    <h3>Introduction</h3>
+
+                    <p>
+                        In an attempt to both solidify and extend my AWS knowledge I have decided to try at least one AWS certification. I've done professional qualifications before and always wanted to blog about the experience but inevitably didn't becuase I had the idea of doing the exam first and then blogging about it later. However, typically, I put all the effort into the exam prep and the exam and then couldn't really be bothered to blog about it. In an attempt to learn from this mistake I'm going to blog about as I prepare for the exam.
+                    </p>
+
+                    <p>
+                        So this is a sort introductory post to get me in the routine of journalling about it in a series of blog posts.
+                    </p>
+
+                    <h3>Why Do an Exam?</h3>
+
+                    <p>
+                        There is an argument that if I wanted to learn about AWS and it's services I don't need to put myself through the stress of doing an exam. If I want to learn about something in particular then there are plenty of good (probably even free) resources out there that I can use. And this is a very good and valid point.
+                    </p>
+
+                    <p>
+                        So why do an exam?
+                    </p>
+
+                    <p>
+                        I've found the other professional qualifications I've done benefical because altough I can learn about a subject sometimes that subject is a lot wider in scope than I know or that I would cover just by cherry picking the things I want to learn. You don't know what you don't know. So doing an exam like this pushes you to learn about things that you may have never considered before but end up being really useful.
+                    </p>
+
+                    <p>
+                        Fine, but I could just then find the list of topics covered by an exam and learn about them and not actually do the exam right? Again, why put myself under that pressure?
+                    </p>
+
+                    <p>
+                        I find that having the goal of sitting an exam helps focus me and actually means that I will learn the subject matter and remember it. Rather than just reading something once and forgetting it forever.
+                    </p>
+
+                    <h3>Which Exam?</h3>
+
+                    <p>
+                        I'm going to study for and take the <a href="https://aws.amazon.com/certification/certified-developer-associate" target="_blank">Developer Associate exam</a>. This seems to make the most sense as I already some cloud (specifically AWS) experience and the Associate level exams say "Prior cloud and/or strong on-premises IT experience recommended.".  
+                    </p>
+
+                    <h3>What About the Cloud Practioner Foundational Exam?</h3>
+
+                    <p>
+                        There is a <a href="https://aws.amazon.com/certification/certified-cloud-practitioner" target="_blank">Cloud Practioner</a> exam that you can take that's billed as a Foundational exam and even appears in Developer (and all the other) certifications path as a starting point (<a href="https://d1.awsstatic.com/training-and-certification/docs/AWS_certification_paths.pdf">here, for reference</a>):
+                    </p>
+
+                    <img src="img/XXXX-XX-XX-aws-certification/developer_path.png" style="width:100%" />
+                
+                    <p>
+                        But, as this screen grab shows, it is optional and the summary for it says "No prior experience needed" which suggests that it's for those that have no cloud experience. 
+                    </p>
+
+                    <p>
+                        But being me I wanted to check this out further just to make sure that I wasn't missing something and check whether I would have to in fact take this foundational exam before the actual one that I wanted to.
+                    </p>
+
+                    <p>
+                        <a href ="https://aws.amazon.com/certification/certified-developer-associate/" target="_blank">here:</a>
+                    </p>
+
+                    <img src="img/XXXX-XX-XX-aws-certification/who_should_take_this_exam.png" style="width:100%" />
+
+                    <p>
+                        <a href ="https://aws.amazon.com/certification/faqs/" target="_blank">here:</a>
+                    </p>
+
+                    <img src="img/XXXX-XX-XX-aws-certification/exam_requirements.png" style="width:100%" />
+
+                    <p>
+                        Plus having a quick google for if you can skip the Practioner exam and go straight for an Associate exam throws up <a href="https://www.reddit.com/r/AWSCertifications/comments/l2eels/can_i_skip_the_practitioner_and_go_for_the/">this</a> reddit post. I won't screen grab the whole thing, but these summarises the answers given nicely
+                    </p>
+
+                    <img src="img/XXXX-XX-XX-aws-certification/reddit_question.png" style="width:100%" />
+
+                    <img src="img/XXXX-XX-XX-aws-certification/reddit_answer_1.png" style="width:100%" />
+
+                    <img src="img/XXXX-XX-XX-aws-certification/reddit_answer_2.png" style="width:100%" />
+
+                    <p>
+                        In summary the sides of the argument seem to be:
+                        <ul>
+                            <li>Yes, you should skip it in you have any relevant experience as it's a fairly simplistic exam.</li>
+                            <li>No, you shouldn't skip it as it gets you used to taking AWS exams, it gives you money off another exam (although I guess overall you still have to pay more than just taking the single exam) and it's easy to pass because it's a fairly simplistic exam.</li>
+                        </ul>
+                    </p>
+
+                    <p>
+                        The whole "it gets you used to taking an AWS exam" did actually start to convince me that maybe this would just be good prep for taking the actual exam that I wanted to take. But then I looked at the content for the Practioner exam (from <a href="https://explore.skillbuilder.aws/learn/course/external/view/elearning/134/aws-cloud-practitioner-essentials" target="_blank">here</a>)
+                    </p>
+
+                    <img src="img/XXXX-XX-XX-aws-certification/practioner_exam_contents.png" style="width:100%" />
+
+                    <p>
+                        Reading this list cemented my decision: I'm not going to take the Practioner exam. It's optional and the contents of the exam itself are very rudimentary, I not got unlimited time to prep for the Developer exam so spending time on this one would just be an unnecessry side quest.
+                    </p>
+
+                    <h3>The End</h3>
+
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container footer-container">
+                <div class="row">
+                    <div class="col-8">
+                        Copyright &#169; <script>document.write(new Date().getFullYear())</script> Tom Warsop
+                    </div>
+                    <div class="col-4 version">
+                        Last Updated: 2024/06/02 (v2.6.0) </br>
+                        <a href="../versioning.html">Versioning</a>                        
+                    </div>
+                </div>
+            </div>
+        </footer>    </body>
+</html>
