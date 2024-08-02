@@ -87,7 +87,96 @@
                     <h3>Introduction</h3>
 
                     <p>
-                        lorem ipsum
+                        This blog post builds on the previous posts of this series by building and running a .NET MVC app in Docker. As with all the other posts in this series, the code used in the post can be found in a github repo <a href="https://github.com/twarsop/dotnet-mvc-in-docker" target="_blank">here</a>.
+                    </p>
+
+                    <h3>The MVC App</h3>
+
+                    <p>
+                        Following the theme of the apps in this series, the MVC app we'll use for this blog post represents rolling a die. It is a very simple MVC app that simulates rolling a die with one button calling a single controller action that returns a random number representing the die roll:
+                    </p>
+
+                    <p>
+                        [image here]
+                    </p>
+
+                    <h3>The Dockerfile</h3>
+
+                    <p>
+                        The Dockerfile we need to build and run an MVC is very similar the Dockerfile we used before for building and running a .NET console app (<a href="2023-11-06-building-and-running-a-dotnet-console-app-in-docker.html" target="_href">here</a>):
+                    </p>
+
+                    <pre>
+                        <code>
+    FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
+    WORKDIR /app
+    COPY src/. ./
+    RUN dotnet restore
+    RUN dotnet publish -c Release -o out
+    
+    FROM mcr.microsoft.com/dotnet/aspnet:8.0
+    WORKDIR /app
+    COPY --from=build-env /app/out .
+    ENTRYPOINT ["dotnet", "DieRollerMVC.dll"]
+                        </code>
+                    </pre>
+
+                    <p>
+                        (Note: we're now using .NET 8)
+                    </p>
+
+                    <p>
+                        In fact the build stage of this Dockerfile is the same as the console app's Dockerfile. The run stage is almost the same, there is only one small difference - the base image being used. Before for the console app used the runtime base image: <span class="inline-code">mcr.microsoft.com/dotnet/runtime:7.0</span> now because we want to run an MVC app we need to use an <span class="inline-code">aspnet</span>-based base image: <span class="inline-code">mcr.microsoft.com/dotnet/aspnet:8.0</span>.
+                    </p>
+
+                    <h3>Building and Running</h3>
+
+                    <p>
+                        Building the Docker image is exactly the same as before:
+                    </p>
+
+                    <pre>
+                        <code>
+    docker build -t dieroller .
+                        </code>
+                    </pre>
+
+                    <p>
+                        Which gives us an image called <span class="inline-code">dieroller</span>.
+                    </p>
+
+                    <p>
+                        The Docker command to run the container is slightly different:
+                    </p>
+
+                    <pre>
+                        <code>
+    docker run -p 8080:8080 dieroller
+                        </code>
+                    </pre>
+
+                    <p>
+                        The difference here is the <span class="inline-code">-p 8080:8080</span> option being used in the run command. This does port mapping from the hosts port to the container's port. Essentially, when the MVC app container is running in Docker it will have a port exposed as you would expect a normal MVC app to have. For example, if you build and run the MVC app via the normal <span class="inline-code">dotnet</span> commands you can go to something like <span class="inline-code">localhost:1234</span> and your MVC app. But when the app is running in a Docker conatiner this port only works within the container, it needs to be mapped to a port on the host so when you go to <span class="inline-code">localhost:&lt;host port&gt;</span> it gets mapped to <span class="inline-code">container:&lt;host port&gt;</span> and everything workds seemlessly.
+                    </p>
+
+                    <p>
+                        In .NET 8 the default port that gets used for ASP apps in Docker is 8080. As seen in <a href="https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-8/containers">this</a> update. That's why we use this port number in <span class="inline-code">-p</span> option.
+                    </p>
+
+                    <p>
+                        Executing this <span class="inline-code">docker run</span> command we get our running container and we can the see the correct port mapping in Docker Desktop:
+                    </p>
+
+                    <p>
+                        [Docker desktop image here of the container and port mapping]
+                    </p>
+
+                    <p>
+                        And if we go to the local port we can see the MVC app working:
+                    </p>
+
+                    <p>
+                        [Image of app running in Docker]
                     </p>
 
                     <h3>The End</h3>
