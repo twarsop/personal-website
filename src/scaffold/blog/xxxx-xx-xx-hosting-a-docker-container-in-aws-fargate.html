@@ -84,6 +84,14 @@
                         https://aws.plainenglish.io/deploying-a-docker-container-in-aws-using-fargate-5a19a140b018
                     </p>
                     
+                    <p>
+                        Prerequistes, need the following installed:
+                        <ul>
+                            <li>Docker</li>
+                            <li>AWS CLI</li>
+                        </ul>
+                    </p>
+
                     <h3>Create Dockerfile for App</h3>
 
                     <ul>
@@ -91,6 +99,30 @@
                     </ul>
 
                     <h3>"Deploy" Docker Image to ECR</h3>
+
+                    <p>
+                        In ECR:
+                    </p>
+
+                    <ul>
+                        <li>Create a repository</li>
+                        <li>Set to Private</li>
+                        <li>Give it a name</li>
+                        <li>Create</li>
+                        <li>This gives you a URI of the format: [some numbers].dkr.ecr.[region].amazonaws.com/[name]</li>
+                    </ul>
+
+                    <p>
+                        Push Docker image to ECR:
+                    </p>
+
+                    <ul>
+                        <li>Build Docker image</li>
+                        <li>Tag Docker image with the ECR repository: docker tag my-web-app:latest <your-account-id>.dkr.ecr.<region>.amazonaws.com/my-web-app:latest</li>
+                        <li>Authenticate Docker with ECR: aws ecr get-login-password --region <region> | docker login --username AWS --password-stdin <your-account-id>.dkr.ecr.<region>.amazonaws.com</li>
+                        <li>If worked should see a "Login Succeeded" message</li>
+                        <li>Push Docker image to ECR: docker push <your-account-id>.dkr.ecr.<region>.amazonaws.com/my-web-app:latest</li>
+                    </ul>
 
                     <h3>Create Fargate Container</h3>
 
