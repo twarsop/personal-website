@@ -124,7 +124,37 @@
                         <li>Push Docker image to ECR: docker push <your-account-id>.dkr.ecr.<region>.amazonaws.com/my-web-app:latest</li>
                     </ul>
 
-                    <h3>Create Fargate Container</h3>
+                    <h3>Create ECS Cluster</h3>
+
+                    <ul>
+                        <li>Go to the ECS service</li>
+                        <li>"Get Started", "Create Cluster"</li>
+                        <li>Give the cluster a name</li>
+                        <li>Select "AWS Fargate (serverless)" option for Infrastructure</li>
+                        <li>Click "Create"</li>
+                    </ul>
+
+                    <p>
+                        Define a task defintion:
+                    </p>
+
+                    <ul>
+                        <li>Unde ECS and Task Definitions, "Create new task definition"</li>
+                        <li>Give it a "Task definition family"</li>
+                        <li>Select the launch type as "AWS Fargate"</li>
+                        <li>In the container information....</li>
+                        <li>Give it a name and image URI (from the one we made earlier in ECR)</li>
+                        <li>Add the port mapping</li>
+                        <li>Click "Create"</li>
+                    </ul>
+
+                    <p>
+                        Create an ECS service to deploy the docker container:
+                    </p>
+
+                    <ul>
+                        <li>Click into an ECS Cluster, in the services section click Create</li>
+                    </ul>
 
                     <h3>The End</h3>
 
