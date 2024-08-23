@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+        <link rel="manifest" href="../img/site.webmanifest">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQ6LRSEYQ9"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-SQ6LRSEYQ9');
+        </script>
+
+        <title>Hosting a Docker Container in AWS Fargate</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <link rel="stylesheet" href="../styles.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#menu").click(function(){
+                    if($('#menu-container').is(':visible')){ 
+                        $("#menu-container").slideUp("slow", function() {
+                            // Animation complete.
+                        });
+                    }
+                    else {
+                        $("#menu-container").slideDown("slow", function() {
+                            // Animation complete.
+                        });
+                    } 
+                });
+              });
+        </script>
+    </head>
+    <body>
+        {{{ header.html }}}
+
+        <nav class="d-none d-md-block">
+            <div class="desktop">
+                <div class="layout">
+                    <li><a href="../index.html">hello</a></li>
+                    <li><a href="../blog.html" class="selected">blog</a></li>
+                    <li><a href="../otherme.html">other me</a></li>
+                    <li><a href="../projects.html">projects</a></li>
+                </div>
+            </div>
+        </nav>
+
+        <nav class="d-md-none navbar">
+            <div class="container">
+                <div class="row mobile">
+                    <div id="menu" class="menu"><span class="hamburger"></span>menu</div>
+                    <ul id="menu-container" class="navbar-nav menu-container" style="display:none">
+                        <li class="col"><a href="../index.html">hello</a></li>
+                        <li class="col"><a href="../blog.html" class="selected">blog</a></li>
+                        <li class="col"><a href="../otherme.html">other me</a></li>
+                        <li class="col"><a href="../projects.html">projects</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="clear-both"></div>
+
+        <div class="container mt-4 mb-4 layout">
+            <div class="row justify-content-center">
+                <div class="col col-lg-6 blog">
+                    <h2>Hosting a Docker Container in AWS Fargate</h2>
+                    <div class="date">2024/08/23</div>
+                    <div style="margin-bottom:40px;">
+                        <div class="tags">Tags: <span class="tag">Docker</span> <span class="tag">AWS</span> <span class="tag">AWS ECR</span> <span class="tag">AWS ECS</span> <span class="tag">AWS Fargate</span></div>
+                        <div style="clear: both;"></div>
+                    </div>         
+                    
+                    <h3>Introduction</h3>
+
+                    <p>
+                        This blog post details how to host a Docker container in AWS. Specifically, using <a href="https://aws.amazon.com/fargate/" target="_blank">AWS Fargate</a> which provides serverless compute. This tutorial assumes the Docker container being deployed is some kind of web app.
+                    </p>
+
+                    <p>
+                        The following diagram gives an overview of what needs to do be done:
+                    </p>
+
+                    <img style="width:100%" src="img/2024-08-23-hosting-a-docker-container-in-aws-fargate/hosting_a_docker_container_in_aws_fargate.png" />
+                     
+                    <p>
+                        The are some prerequistes, the following needs to be installed locally:
+                        <ul>
+                            <li>Docker</li>
+                            <li>AWS CLI</li>
+                        </ul>
+                    </p>
+
+                    <p>
+                        The rest of this post goes through each of the steps to get the Docker container deployed into AWS.
+                    </p>
+
+                    <h3>Build Docker Image Locally</h3>
+
+                    <p>
+                        The first step is to create a Docker image locally which is going to be used to create the Docker container that will ultimately be hosted in AWS:
+                    </p>
+
+                    <ul>
+                        <li>Create local Dockerfile for app</li>
+                        <li>Build the Docker and tag image using a command of the format:</li>
+                        <li style="list-style-type:none"><span class="inline-code">docker build . -t my-web-app</span></li>
+                    </ul>
+
+                    <h3>Create ECR Repository</h3>
+
+                    <p>
+                        Next we need to create somewhere to host our container image in AWS. AWS <a href="https://aws.amazon.com/ecr/" target="_blank">Elastic Container Registry</a> (ECR) can be used for this. To create a repository to house our image:
+                    </p>
+
+                    <ul>
+                        <li>Create a repository</li>
+                        <li>Set it to Private (so only you/your AWS services can see it)</li>
+                        <li>Give it a name</li>
+                        <li>Create</li>
+                        <li>This gives you a URI of the format:</li>
+                        <li style="list-style-type:none"><span class="inline-code">[account-number].dkr.ecr.[region].amazonaws.com/[repository-name]</span></li>
+                    </ul>
+
+                    <h3>
+                        Push Local Docker Image to ECR
+                    </h3>
+
+                    <p>
+                        Now we can push the Docker image to our ECR repository:
+                    </p>
+
+                    <ul>
+                        <li>Tag Docker image with the ECR repository:</li>
+                        <li style="list-style-type:none;"><span class="inline-code">docker tag my-web-app:latest [account number].dkr.ecr.[region].amazonaws.com/[repository-name]:latest</span></li>
+                        <li>Authenticate Docker with ECR (note, for this step to work you need to have configured AWS CLI locally to use credentials to access AWS):</li>
+                        <li style="list-style-type:none;"><span class="inline-code">aws ecr get-login-password --region [region] | docker login --username AWS --password-stdin [account-number].dkr.ecr.[region].amazonaws.com</span></li>
+                        <li>If this worked you should see a "Login Succeeded" message</li>
+                        <li>Push the Docker image to ECR:</li>
+                        <li><span class="inline-code">docker push [account-number].dkr.ecr.[region].amazonaws.com/[repository-name]:latest</span></li>
+                    </ul>
+
+                    <p>
+                        The URI for our ECR image is: <span class="inline-code">docker push [account-number].dkr.ecr.[region].amazonaws.com/[repository-name]:latest</span> - we'll need this later.
+                    </p>
+
+                    <h3>Create ECS Cluster</h3>
+
+                    <p>
+                        Now we need to setup somewhere to host a container built from the image. For this we'll use AWS <a href="https://aws.amazon.com/ecs/" target="_blank">Elastic Container Service</a> (ECS). The first thing we need to do in here is create a cluster:
+                    </p>
+
+                    <ul>
+                        <li>Go to the ECS service</li>
+                        <li>Get Started and Create Cluster</li>
+                        <li>Give the cluster a name</li>
+                        <li>Select the AWS Fargate (serverless) option for Infrastructure</li>
+                        <li>Create</li>
+                    </ul>
+
+                    <h3>Define a Task Defintion</h3>
+
+                    <p>
+                        Next up is creating a task definition. This will ultimately be used by a service running in the ECS cluster:
+                    </p>
+
+                    <ul>
+                        <li>Under ECS and Task Definitions, create new task definition</li>
+                        <li>Give it a task definition family</li>
+                        <li>Select the launch type as AWS Fargate</li>
+                        <li>In the container information:</li>
+                        <ul>
+                            <li>Give it a name and image URI (from the one we made earlier in ECR)</li>
+                            <li>Add the port mapping</li>
+                        </ul>
+                        <li>Create</li>
+                    </ul>
+
+                    <h3>Create an ECS Service</h3>
+
+                    <p>
+                        The last step is to create an ECS service based off the task definition. The ECS service is the actual thing that runs the container.
+                    </p>
+
+                    <ul>
+                        <li>Click into the created ECS Cluster, in the services section click Create</li>
+                        <li>In Deployment Configuration select the Task Definition Family created earier and give the service a name</li>
+                        <li>Make sure the attached security group has the correct inbound rules, these two rules need to be present in the security group:</li>
+                        <ul>
+                            <li>IP = <span class="inline-code">0.0.0.0/0</span>, Port range = <span class="inline-code">host port</span></li>
+                            <li>IP = <span class="inline-code">::/0</span>, Port range = <span class="inline-code">host port</span></li>
+                        </ul>
+                        <li>Create</li>
+                        <li>Once the service has been created you should be able to access the container on <span class="inline-code">[public ip]:[host port]</span></li>
+                    </ul>
+
+                    <h3>The End</h3>
+
+                </div>
+            </div>
+        </div>
+
+        {{{ footer_blog.html }}}
+    </body>
+</html>
