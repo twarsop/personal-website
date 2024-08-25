@@ -88,6 +88,17 @@
                         For reference: https://sakyasumedh.medium.com/setup-application-load-balancer-and-point-to-ecs-deploy-to-aws-ecs-fargate-with-load-balancer-4b5f6785e8f
                     </p>
 
+                    <h3>Create a Security Group</h3>
+
+                    <p>
+                        Create a security group for the load balancer. It will need to have inbound rules listening on port 80 from anywhere:
+                    </p>
+
+                    <ul>
+                        <li>IP = <span class="inline-code">0.0.0.0/0</span>, Port range = 80</li>
+                        <li>IP = <span class="inline-code">::/0</span>, Port range = 80</li>
+                    </ul>
+
                     <h3>The End</h3>
 
                 </div>
