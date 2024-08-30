@@ -72,7 +72,7 @@
             <div class="row justify-content-center">
                 <div class="col col-lg-6 blog">
                     <h2>Giving an ECS Service a URL</h2>
-                    <div class="date">2024/08/23</div>
+                    <div class="date">2024/08/30</div>
                     <div style="margin-bottom:40px;">
                         <div class="tags">Tags: <span class="tag">AWS</span> <span class="tag">AWS ECS</span> <span class="tag">AWS ELB</span> <span class="tag">AWS Route 53</span></div>
                         <div style="clear: both;"></div>
@@ -81,47 +81,51 @@
                     <h3>Introduction</h3>
 
                     <p>
-                        In <a href="2024-08-23-hosting-a-docker-container-in-aws-fargate.html">this</a> previous blog post I went through how to deploy and host a Docker container in ECS. But the resulting hosted container could only be accessed by the ECS service's public IP address and not a URL. This post fixes this by going through the steps of how to point of URL to the ECS service. (It's assumed the domain is in Route 53). 
+                        In <a href="2024-08-23-hosting-a-docker-container-in-aws-fargate.html" target="_blank">this</a> previous blog post I went through how to deploy and host a Docker container in ECS. But the resulting hosted container could only be accessed by the ECS service's public IP address and not a URL. This post fixes this by going through the steps of how to point of URL to an ECS service. This post assumes that the domain you want to use is already managed via Route 53. 
                     </p>
 
                     <p>
-                        For reference: https://sakyasumedh.medium.com/setup-application-load-balancer-and-point-to-ecs-deploy-to-aws-ecs-fargate-with-load-balancer-4b5f6785e8f
+                        The following also gives a summary of the AWS services involved that we need to create and how they relate to each other:
                     </p>
+
+                    <img style="width:100%" src="img/2024-08-30-giving_an_ecs_service_a_url/giving_an_ecs_service_a_url.png" />
 
                     <h3>Create a Security Group</h3>
 
                     <p>
-                        Create a security group for the load balancer. It will need to have inbound rules listening on port 80 from anywhere and for the host container port:
+                        Firstly we need to create a security group for the load balancer. It will need to have inbound rules listening on port 80 from anywhere and for the host container port:
                     </p>
 
                     <ul>
-                        <li>IP = <span class="inline-code">0.0.0.0/0</span>, Port range = 80</li>
-                        <li>IP = <span class="inline-code">::/0</span>, Port range = 80</li>
+                        <li>IP = <span class="inline-code">0.0.0.0/0</span>, Port range = <span class="inline-code">80</span></li>
+                        <li>IP = <span class="inline-code">0.0.0.0/0</span>, Port range = <span class="inline-code">[host container port]</span></li>
+                        <li>IP = <span class="inline-code">::/0</span>, Port range = <span class="inline-code">80</span></li>
+                        <li>IP = <span class="inline-code">::/0</span>, Port range = <span class="inline-code">[host container port]</span></li>
                     </ul>
 
-                    <h3>Health Check Endpoint</h3>
+                    <h3>Create Health Check Endpoint</h3>
 
                     <p>
-                         The ECS service being created needs a health check endpoint. In this example we'll assume that will be at /health.
+                        The ECS service the load balancer will be pointing to needs a health check endpoint. This is so the load balancer can check the service is healthy. In this example we'll assume that will be at <span class="inline-code">/health</span>. All it needs to be is some endpoint that returns a <span class="inline-code">200</span>.
                     </p>
 
                     <h3>Create Load Balancer</h3>
 
                     <p>
-                        It's not possible to add a load balancer to an already running ECS Service. But it is possible to create a new load balancer for an ECS Service during the creation of the ECS Service:
+                        It's not possible to add a load balancer to an already running ECS service. But it is possible to create a new load balancer for an ECS service during it's creation. The steps listed in the <a href="2024-08-23-hosting-a-docker-container-in-aws-fargate.html" target="_blank">previous</a> post can be used to create the ECS service with the following addition:
                     </p>
 
                     <ul>
                         <li>Under Networking:</li>
                         <ul>
-                            <li>Select the sercurity group with port 80</li>
+                            <li>Select the security group created above</li>
                         </ul>
                         <li>Under Load Balancing:</li>
                         <ul>
                             <li>Under Load Balancer Type select Application Load Balancer</li>
                             <li>Give the load balancer a name</li>
                             <li>Leave the Listener setting as Create New Listener</li>
-                            <li>Leave the Target Group setting as Create New Target Group, but in the Health Check Path update it to /health</li>
+                            <li>Leave the Target Group setting as Create New Target Group, but in the Health Check Path update it to <span class="inline-code">/health</span></li>
                         </ul>
                         <li>Create</li>
                     </ul>
@@ -129,13 +133,13 @@
                     <h3>Check Everything Works So Far</h3>
 
                     <p>
-                        When the load balancer and ECS Service are up and running. Go to your load balancer in EC2, find it's DNS name, copy and paste it browser then you should see your site.
+                        When the load balancer and ECS service are up and running. You can check the load balancer is working by finding the load balancer in EC2, finding it's DNS name, copy and paste it into a browser then you should see your site.
                     </p>
 
-                    <h3>Point Route53 Record to Load Balancer</h3>
+                    <h3>Point Route 53 Record to Load Balancer</h3>
 
                     <p>
-                        On A record:
+                        The final step is to point the A record in Route 53 to the load balancer:
                     </p>
 
                     <ul>
@@ -145,6 +149,10 @@
                         <li>Pick Load Balancer</li>
                         <li>Save</li>
                     </ul>
+
+                    <p>
+                        Now traffic to the domain should be routed to the ECS service.
+                    </p>
 
                     <h3>The End</h3>
 
