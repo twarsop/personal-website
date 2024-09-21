@@ -16,7 +16,7 @@
             gtag('config', 'G-SQ6LRSEYQ9');
         </script>
 
-        <title>Simple AWS Web Scraper</title>
+        <title>AWS Associate Developer Exam Details</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
         <link rel="stylesheet" href="../styles.css">
@@ -76,35 +76,29 @@
         <div class="container mt-4 mb-4 layout">
             <div class="row justify-content-center">
                 <div class="col col-lg-6 blog">
-                    <h2>Simple AWS Web Scraper</h2>
-                    <div class="date">2024/05/07</div>
+                    <h2>AWS Associate Developer Exam Details</h2>
+                    <div class="date">2024/09/21</div>
                     <div style="margin-bottom:40px;">
-                        <div class="tags">Tags: <span class="tag">Web Scraping</span> <span class="tag">AWS</span> <span class="tag">EventBridge</span> <span class="tag">Lambda</span> <span class="tag">S3</span> <span class="tag">RDS</span> <span class="tag">VPC</span></div>
+                        <div class="tags">Tags: <span class="tag">AWS</span> <span class="tag">AWS Certification</span> <span class="tag">AWS Associate Developer</span></div>
                         <div style="clear: both;"></div>
                     </div>         
                     
                     <h3>Introduction</h3>
 
                     <p>
-                        This blog post presents a very simple architecture within AWS for implementing a web scraper that parses some data from a website and stores it in a database.
+                        I covered the content of the AWS Associate Developer exam in a previous post, this post is just to cover some of the exam details.
                     </p>
 
-                    <h3>Architecture</h3>
-
-                    <p>
-                        The architecture that can be used for this is as follows:
-                    </p>
-
-                    <img style="width:100%" src="img/2024-05-07-simple-aws-web-scraper/simple_aws_web_scraper.png" />
+                    <h3>Details</h3>
 
                     <ul>
-                        <li>Starting from the bottom of this architecture, we have an RDS database that we want to store some scraped data in.</li>
-                        <li>This poses a small issue because the RDS database resides in private VPC that doesn't have unfettered access to the outside world. This means that we can't have a single Lambda that can both talk to the outside world (to scrape a website) and communicate with RDS because it would need public and private access.</li>
-                        <li>We get around this issue by having two Lambdas.</li>
-                        <li>The first Lambda is not in any VPC so it does have unrestricted access to the outside world and so can scrape the website. It then parses any data that we want to store, writing it to S3 as JSON.</li>
-                        <li>The second Lambda can then be inside the same VPC as the database, read the parsed JSON from S3 and can update RDS (since it's in the VPC).</li>
-                        <li>We're using S3 as the communication medium between the two Lambdas.</li>
-                        <li>The execution of the two Lambdas is coordinated by two EventBridge schedules. These can be configured to trigger other AWS services based on a schedule. So we configure their schedules to execute the first Lambda before the second one.</li>
+                        <li>Costs 150 USD</li>
+                        <li>130 minutes in length</li>
+                        <li>Passing score is 720/1000</li>
+                        <li>65 questions, includuing 15 unscored</li>
+                        <li>Scenario-based questions</li>
+                        <li>Multiple choice and multiple response answers</li>
+                        <li>Qualification valid for 3 years</li>
                     </ul>
 
                     <h3>The End</h3>
