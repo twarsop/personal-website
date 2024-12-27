@@ -51,13 +51,15 @@ nav {
 }
 
 nav .desktop .layout {
-    width:960px; 
+    display: flex;
+    justify-content: center;
+    width:760px; 
     margin: auto;
 }
 
 nav .desktop li {
 	display:block;
-	width:240px;
+	width:150px;
     height:40px;
 	float:left;
     text-align:center;
