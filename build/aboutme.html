@@ -36,7 +36,10 @@
                     } 
                 });
                 });
-        </script>
+        </script>        <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
             var codeData = [
             {
@@ -248,8 +251,48 @@
                         "percentage": 0.005439674015171745
                     }
                 ]
-            }
-        ];
+            }];
+
+            $(function() {
+                // Get the drawing context on the canvas
+                var myContext = document.getElementById("codeChart").getContext('2d');
+                var myChart = new Chart(myContext, {
+                    type: 'bar',
+                    data: {
+                        labels: ["bike", "car", "scooter", 
+                            "truck", "auto", "Bus"],
+                        datasets: [{
+                            label: 'worst',
+                            backgroundColor: "blue",
+                            data: [17, 16, 4, 11, 8, 9],
+                        }, {
+                            label: 'Okay',
+                            backgroundColor: "green",
+                            data: [14, 2, 10, 6, 12, 16],
+                        }, {
+                            label: 'bad',
+                            backgroundColor: "red",
+                            data: [2, 21, 13, 3, 24, 7],
+                        }],
+                    },
+                    options: {
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Stacked Bar chart for pollution status'
+                            },
+                        },
+                        scales: {
+                            x: {
+                                stacked: true,
+                            },
+                            y: {
+                                stacked: true
+                            }
+                        }
+                    }
+                });
+            });
         </script>
     </head>
     <body>
@@ -295,6 +338,8 @@
                     <p>
                         About me. Lorem ipsum.
                     </p>
+
+                    <canvas id="codeChart"></canvas>
                 </div>
             </div>
         </div>
