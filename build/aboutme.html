@@ -254,32 +254,77 @@
             }];
 
             $(function() {
-                // Get the drawing context on the canvas
-                var myContext = document.getElementById("codeChart").getContext('2d');
+                var labels = [];
+                var languages = [];
+
+                for (var i = 0; i < codeData.length; i++) {
+                    labels.push(codeData[i].year);
+                    for (var j = 0; j < codeData[i].language_stats.length; j++) {
+                        if (!languages.includes(codeData[i].language_stats[j].language)) {
+                            languages.push(codeData[i].language_stats[j].language);
+                        }
+                    }
+                }
+
+                var languagesPercentagesEachYear = {};
+
+                for (var i = 0; i < codeData.length; i++) {
+                    for (var j = 0; j < codeData[i].language_stats.length; j++) {
+                        if (!languagesPercentagesEachYear[codeData[i].language_stats[j].language]) {
+                            languagesPercentagesEachYear[codeData[i].language_stats[j].language] = [];
+                        }
+                    }
+                }
+
+                for (var i = 0; i < codeData.length; i++) {
+                    for (var j = 0; j < codeData[i].language_stats.length; j++) {
+                        languagesPercentagesEachYear[codeData[i].language_stats[j].language].push(codeData[i].language_stats[j].percentage);
+                    }
+                    for (var j = 0; j < languages.length; j++) {
+                        if (!codeData[i].language_stats.find(x => x.language === languages[j])) {
+                            languagesPercentagesEachYear[languages[j]].push(0);
+                        }
+                    }
+                }
+
+                const colours = [
+                    "#FF6F61", // Coral Red
+                    "#6B4226", // Mocha Brown
+                    "#F7B32B", // Golden Yellow
+                    "#1B998B", // Deep Teal Green
+                    "#4285F4", // Bright Blue
+                    "#7E57C2", // Medium Purple
+                    "#F76C6C", // Warm Pink
+                    "#FF9F1C", // Vivid Orange
+                    "#2E933C", // Rich Green
+                    "#4A90E2", // Sky Blue
+                    "#D81B60", // Raspberry Pink
+                    "#8E44AD", // Deep Violet
+                    "#16A085", // Jade Green
+                    "#F39C12", // Amber
+                    "#2C3E50"  // Deep Slate Blue
+                ].reverse();
+
+                var datasets = [];
+                Object.entries(languagesPercentagesEachYear).forEach(([key, value]) => {
+                    datasets.push({
+                        label: key,
+                        backgroundColor: colours.pop(),
+                        data: value,
+                    });
+                });
+
+                var myContext = document.getElementById("codeChart").getContext("2d");
                 var myChart = new Chart(myContext, {
                     type: 'bar',
                     data: {
-                        labels: ["bike", "car", "scooter", 
-                            "truck", "auto", "Bus"],
-                        datasets: [{
-                            label: 'worst',
-                            backgroundColor: "blue",
-                            data: [17, 16, 4, 11, 8, 9],
-                        }, {
-                            label: 'Okay',
-                            backgroundColor: "green",
-                            data: [14, 2, 10, 6, 12, 16],
-                        }, {
-                            label: 'bad',
-                            backgroundColor: "red",
-                            data: [2, 21, 13, 3, 24, 7],
-                        }],
+                        labels: labels,
+                        datasets: datasets,
                     },
                     options: {
                         plugins: {
                             title: {
-                                display: true,
-                                text: 'Stacked Bar chart for pollution status'
+                                display: false
                             },
                         },
                         scales: {
@@ -287,7 +332,9 @@
                                 stacked: true,
                             },
                             y: {
-                                stacked: true
+                                stacked: true,
+                                min: 0,
+                                max: 100
                             }
                         }
                     }
