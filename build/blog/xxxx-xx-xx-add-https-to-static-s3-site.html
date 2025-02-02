@@ -87,8 +87,48 @@
                     <h3>Introduction</h3>
 
                     <p>
-                        Lorem Ipsum
+                        This post goes over the steps to add HTTPS to a website hosted in S3. It's assumed that you have already hosted a static website in S3 and have acquired the domain via Route 53. For information on how to do this see <a href="2024-05-24-hosting-a-static-website-in-aws-s3.html">Hosting a Static Website in AWS S3</a>.
                     </p>
+
+                    <p>
+                        There are three steps to this process: requesting a certificate, creating a CloudFront distribution, and updating the A records in Route 53.
+                    </p>
+
+                    <p>
+                        These steps need to be done for both the www and non-www (root) domains.
+                    </p>
+
+                    <h3>Step 1: Requesting a Certificate</h3>
+
+                    <p>
+                        <ul>
+                            <li>This needs to be in US East (N. Virginia) Region for CloudFront. If this region isn't selected then you won't be able to select the certificate when creating the CloudFront distribution nest.</li>
+                            <li>Go to the Certificate Manager in AWS.</li>
+                            <li>Click on "Request a certificate".</li>
+                            <li>Enter the domain name for the certificate.</li>
+                            <li>Choose the DNS validation method.</li>
+                            <li>Click xxx</li>
+                            <li>The certificate will be in a pending status, when its done it will be in a xxxx status</li>
+                        </ul>
+                    </p>
+
+                    <h3>Step 2: Creating a CloudFront Distribution</h3>
+
+                    <p>
+                        <ul>
+                            <li>Go to the CloudFront service in AWS.</li>
+                            <li>Click on "Create Distribution".</li>
+                            <li>Under "Origin" for "Origin Domain" choose the S3 bucket where the static website is.</li>
+                            <li>For the setting unders Default Cache Behaviour Seetings, under Viewer, set Viewer protocol policy to Redirect HTTP to HTTPS</li>
+                            <li>In the "Web Application Framework (WAF)" section choose to either enable or disable AWS WAF security protections.</li>
+                            <li>For the fields under "Settings":</li>
+                            <ul>
+                                <li>Choose "Add Item" for "Alternate domain cname (CNAME) - optional" and enter your subdomain.</li>
+                                <li>For "Custom SSL Certificate" choose the certificate created.</li>
+                            </ul>
+                            <li>Click "Create Distribution"</li>
+                            <li>After CloudFront creates your distribution, the value of the Status column goes from In Progress to Deployed. This can take a few minutes.</li>
+                        </ul>
 
                     <h3>The End</h3>
 
