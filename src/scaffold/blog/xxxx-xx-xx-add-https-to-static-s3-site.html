@@ -91,6 +91,20 @@
                             <li>Click "Create Distribution"</li>
                             <li>After CloudFront creates your distribution, the value of the Status column goes from In Progress to Deployed. This can take a few minutes.</li>
                         </ul>
+                    </p>
+
+                    <h3>Step 3: Update A Records in Route 53</h3>
+
+                    <p>
+                        <ul>
+                            <li>Go to the Route 53 in AWS.</li>
+                            <li>Click on the hosted zone for the domain.</li>
+                            <li>Click on the A record for the domain.</li>
+                            <li>Click on "Edit".</li>
+                            <li>Change the value to the CloudFront domain name.</li>
+                            <li>Click "Save".</li>
+                        </ul>
+                    </p>
 
                     <h3>The End</h3>
 
