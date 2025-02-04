@@ -62,15 +62,20 @@
 
                     <h3>Step 1: Requesting a Certificate</h3>
 
+                    <p><b>The following set of steps need to be performed in the US East (N. Virginia) region (us-east-1). If this region isn't selected then you won't be able to select the certificate when creating the CloudFront distribution in the next step.</b></p>
+
                     <p>
                         <ul>
-                            <li>This needs to be in US East (N. Virginia) Region for CloudFront. If this region isn't selected then you won't be able to select the certificate when creating the CloudFront distribution nest.</li>
-                            <li>Go to the Certificate Manager in AWS.</li>
-                            <li>Click on "Request a certificate".</li>
-                            <li>Enter the domain name for the certificate.</li>
-                            <li>Choose the DNS validation method.</li>
-                            <li>Click xxx</li>
-                            <li>The certificate will be in a pending status, when its done it will be in a xxxx status</li>
+                            <li>Go to <b>Certificate Manager</b></li>
+                            <li>Make sure the region is <b>US East (N. Virginia) (us-east-1)</b></li>
+                            <li>Click on <b>Request</b></li>
+                            <li>Select <b>Request a public certificate</b></li>
+                            <li>In the <b>Fully qualified domain name</b> box enter the root domain e.g. <span class="inline-code">example.com</span></li>
+                            <li>Select <b>Add another name to this certificate</b> and enter a wildcard for the subdomains e.g. <span class="inline-code">*.example.com</span></li>
+                            <li>Make sure <b>DNS validation</b> is selected for the <b>Validation method</b></li>
+                            <li>Click <b>Request</b></li>
+                            <li>Navigate to the certificate entry (you will probably already be taken there after selecting Request in the previous step) and select the <b>Create records in Route 53</b> option</li>
+                            <li>The certificate will be have a <b>Pending validation</b> status, after a few minutes this should change to <b>Issued</b>, the you can carry on to the next step</li>
                         </ul>
                     </p>
 
