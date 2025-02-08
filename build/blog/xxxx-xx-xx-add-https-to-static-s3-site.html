@@ -94,10 +94,6 @@
                         There are three steps to this process: requesting a certificate, creating a CloudFront distribution, and updating the A records in Route 53.
                     </p>
 
-                    <p>
-                        These steps need to be done for both the www and non-www (root) domains.
-                    </p>
-
                     <h3>Step 1: Requesting a Certificate</h3>
 
                     <p><b>The following set of steps need to be performed in the US East (N. Virginia) region (us-east-1). If this region isn't selected then you won't be able to select the certificate when creating the CloudFront distribution in the next step.</b></p>
@@ -120,19 +116,24 @@
                     <h3>Step 2: Creating a CloudFront Distribution</h3>
 
                     <p>
+                        These steps need to be done for both the www and non-www (root) domains.
+                    </p>
+
+                    <p>
                         <ul>
-                            <li>Go to the CloudFront service in AWS.</li>
-                            <li>Click on "Create Distribution".</li>
-                            <li>Under "Origin" for "Origin Domain" choose the S3 bucket where the static website is.</li>
-                            <li>For the setting unders Default Cache Behaviour Seetings, under Viewer, set Viewer protocol policy to Redirect HTTP to HTTPS</li>
-                            <li>In the "Web Application Framework (WAF)" section choose to either enable or disable AWS WAF security protections.</li>
-                            <li>For the fields under "Settings":</li>
+                            <li>Go to the <b>CloudFront</b></li>
+                            <li>Click <b>Create distribution</b></li>
+                            <li>Under <b>Origin</b> for <b>Origin Domain</b> choose the S3 bucket for the static website</li>
+                            <li>A warning box appears about using the S3 website endpoint, select <b>Use website endpoint</b></li>
+                            <li>Under <b>Default Cache behaviour</b> set <b>Viewer protocol policy</b> to <b>Redirect HTTP to HTTPS</b></li>
+                            <li>Under <b>Web Application Framework (WAF)</b> choose to either enable or disable AWS WAF security protections</li>
+                            <li>Under <b>Settings</b>:</li>
                             <ul>
-                                <li>Choose "Add Item" for "Alternate domain cname (CNAME) - optional" and enter your subdomain.</li>
-                                <li>For "Custom SSL Certificate" choose the certificate created.</li>
+                                <li>For <b>Alternate domain cname (CNAME) - optional</b> click <b>Add item</b> and enter the subdomain (root or non-root)</li>
+                                <li>For <b>Custom SSL Certificate</b> choose the certificate created</li>
                             </ul>
-                            <li>Click "Create Distribution"</li>
-                            <li>After CloudFront creates your distribution, the value of the Status column goes from In Progress to Deployed. This can take a few minutes.</li>
+                            <li>Click <b>Create Distribution</b></li>
+                            <li>After CloudFront creates the distribution it will deploy, this can be take a few minutes.</li>
                         </ul>
                     </p>
 
