@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>AWS Associate Developer Exam Details</title>
+        <title>Add HTTPS to Website Hosted in S3</title>
         {{{ head_blog.html }}}
     </head>
     <body>
@@ -83,18 +83,18 @@
 
                     <p>
                         <ul>
-                            <li>Go to the <b>CloudFront</b></li>
+                            <li>Go to <b>CloudFront</b></li>
                             <li>Click <b>Create distribution</b></li>
                             <li>Under <b>Origin</b> for <b>Origin Domain</b> choose the S3 bucket for the static website</li>
                             <li>A warning box appears about using the S3 website endpoint, select <b>Use website endpoint</b></li>
-                            <li>Under <b>Default Cache behaviour</b> set <b>Viewer protocol policy</b> to <b>Redirect HTTP to HTTPS</b></li>
+                            <li>Under <b>Default cache behaviour</b> set <b>Viewer protocol policy</b> to <b>Redirect HTTP to HTTPS</b></li>
                             <li>Under <b>Web Application Framework (WAF)</b> choose to either enable or disable AWS WAF security protections</li>
                             <li>Under <b>Settings</b>:</li>
                             <ul>
-                                <li>For <b>Alternate domain cname (CNAME) - optional</b> click <b>Add item</b> and enter the subdomain (root or non-root)</li>
-                                <li>For <b>Custom SSL Certificate</b> choose the certificate created</li>
+                                <li>For <b>Alternate domain name (CNAME) - optional</b> click <b>Add item</b> and enter the subdomain (root or non-root)</li>
+                                <li>For <b>Custom SSL certificate</b> choose the certificate created</li>
                             </ul>
-                            <li>Click <b>Create Distribution</b></li>
+                            <li>Click <b>Create distribution</b></li>
                             <li>After CloudFront creates the distribution it will deploy, this can be take a few minutes</li>
                         </ul>
                     </p>
@@ -103,12 +103,17 @@
 
                     <p>
                         <ul>
-                            <li>Go to the Route 53 in AWS.</li>
-                            <li>Click on the hosted zone for the domain.</li>
-                            <li>Click on the A record for the domain.</li>
-                            <li>Click on "Edit".</li>
-                            <li>Change the value to the CloudFront domain name.</li>
-                            <li>Click "Save".</li>
+                            <li>Go to <b>Route 53</b></li>
+                            <li>Go to <b>Hosted zones</b></li>
+                            <li>Click on the domain in the list</li>
+                            <li>For each of the A records (there will be one for the root domain and one for the subdomain):</li>
+                                <ul>
+                                    <li>Select the checkbox for the record</li>
+                                    <li>Click <b>Edit record</b></li>
+                                    <li>Update <b>Route traffic to</b> to <b>Alias to CloudFront distribution</b></li>
+                                    <li>For <b>Choose distribution</b> select the distribution created in the previous step</li>
+                                    <li>Click <b>Save</b></li>
+                                </ul>
                         </ul>
                     </p>
 
