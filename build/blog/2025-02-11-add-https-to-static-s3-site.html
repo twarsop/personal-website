@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Add HTTPS to Website Hosted in S3</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+        <link rel="manifest" href="../img/site.webmanifest">
+        
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQ6LRSEYQ9"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+        
+            gtag('config', 'G-SQ6LRSEYQ9');
+        </script>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <link rel="stylesheet" href="../styles.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#menu").click(function(){
+                    if($('#menu-container').is(':visible')){ 
+                        $("#menu-container").slideUp("slow", function() {
+                            // Animation complete.
+                        });
+                    }
+                    else {
+                        $("#menu-container").slideDown("slow", function() {
+                            // Animation complete.
+                        });
+                    } 
+                });
+                });
+        </script>    </head>
+    <body>
+        <header>
+            <div class="layout">
+                <div class="title">
+                    // TOM WARSOP
+                </div>
+            </div>
+        </header>
+        <nav class="d-none d-md-block">
+            <div class="desktop">
+                <div class="layout">
+                    <li><a href="../index.html">hello</a></li>
+                    <li><a href="../aboutme.html">about me</a></li>
+                    <li><a href="../blog.html" class="selected">blog</a></li>
+                    <li><a href="../otherme.html">other me</a></li>
+                    <li><a href="../projects.html">projects</a></li>
+                </div>
+            </div>
+        </nav>
+
+        <nav class="d-md-none navbar">
+            <div class="container">
+                <div class="row mobile">
+                    <div id="menu" class="menu"><span class="hamburger"></span>menu</div>
+                    <ul id="menu-container" class="navbar-nav menu-container" style="display:none">
+                        <li class="col"><a href="../index.html">hello</a></li>
+                        <li class="col"><a href="../aboutme.html">about me</a></li>
+                        <li class="col"><a href="../blog.html" class="selected">blog</a></li>
+                        <li class="col"><a href="../otherme.html">other me</a></li>
+                        <li class="col"><a href="../projects.html">projects</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="clear-both"></div>
+
+        <div class="container mt-4 mb-4 layout">
+            <div class="row justify-content-center">
+                <div class="col col-lg-6 blog">
+                    <h2>Add HTTPS to Website Hosted in S3</h2>
+                    <div class="date">2025/02/11</div>
+                    <div style="margin-bottom:40px;">
+                        <div class="tags">Tags: <span class="tag">Website Hosting</span> <span class="tag">HTTPS</span> <span class="tag">AWS</span> <span class="tag">S3</span></div> 
+                        <div style="clear: both;"></div>
+                    </div>         
+                    
+                    <h3>Introduction</h3>
+
+                    <p>
+                        This post goes over the steps to add HTTPS to a website hosted in S3. It's assumed that you have already hosted a static website in S3 and have acquired the domain via Route 53. For information on how to do this see <a href="2024-05-24-hosting-a-static-website-in-aws-s3.html">Hosting a Static Website in AWS S3</a>. It is also assumed that you have a route domain (e.g. <span class="inline-code">example.com</span>) and a subdomain (e.g. <span class="inline-code">www.example.com</span>).
+                    </p>
+
+                    <p>
+                        There are three steps to this process: requesting a certificate, creating a CloudFront distribution, and updating the A records in Route 53.
+                    </p>
+
+                    <h3>Step 1: Requesting a Certificate</h3>
+
+                    <p><b>The following set of steps need to be performed in the US East (N. Virginia) region (us-east-1). If this region isn't selected then you won't be able to select the certificate when creating the CloudFront distribution in the next step.</b></p>
+
+                    <p>
+                        <ul>
+                            <li>Go to <b>Certificate Manager</b></li>
+                            <li>Make sure the region is <b>US East (N. Virginia) (us-east-1)</b></li>
+                            <li>Click on <b>Request</b></li>
+                            <li>Select <b>Request a public certificate</b></li>
+                            <li>In the <b>Fully qualified domain name</b> box enter the root domain e.g. <span class="inline-code">example.com</span></li>
+                            <li>Select <b>Add another name to this certificate</b> and enter a wildcard for the subdomains e.g. <span class="inline-code">*.example.com</span></li>
+                            <li>Make sure <b>DNS validation</b> is selected for the <b>Validation method</b></li>
+                            <li>Click <b>Request</b></li>
+                            <li>Navigate to the certificate entry (you will probably already be taken there after selecting Request in the previous step) and select the <b>Create records in Route 53</b> option</li>
+                            <li>The certificate will be have a <b>Pending validation</b> status, after a few minutes this should change to <b>Issued</b>, the you can carry on to the next step</li>
+                        </ul>
+                    </p>
+
+                    <h3>Step 2: Creating a CloudFront Distribution</h3>
+
+                    <p>
+                        These steps need to be done for both the www and non-www (root) domains.
+                    </p>
+
+                    <p>
+                        <ul>
+                            <li>Go to <b>CloudFront</b></li>
+                            <li>Click <b>Create distribution</b></li>
+                            <li>Under <b>Origin</b> for <b>Origin Domain</b> choose the S3 bucket for the static website</li>
+                            <li>A warning box appears about using the S3 website endpoint, select <b>Use website endpoint</b></li>
+                            <li>Under <b>Default cache behaviour</b> set <b>Viewer protocol policy</b> to <b>Redirect HTTP to HTTPS</b></li>
+                            <li>Under <b>Web Application Framework (WAF)</b> choose to either enable or disable AWS WAF security protections</li>
+                            <li>Under <b>Settings</b>:</li>
+                            <ul>
+                                <li>For <b>Alternate domain name (CNAME) - optional</b> click <b>Add item</b> and enter the subdomain (root or non-root)</li>
+                                <li>For <b>Custom SSL certificate</b> choose the certificate created</li>
+                            </ul>
+                            <li>Click <b>Create distribution</b></li>
+                            <li>After CloudFront creates the distribution it will deploy, this can be take a few minutes</li>
+                        </ul>
+                    </p>
+
+                    <h3>Step 3: Update A Records in Route 53</h3>
+
+                    <p>
+                        <ul>
+                            <li>Go to <b>Route 53</b></li>
+                            <li>Go to <b>Hosted zones</b></li>
+                            <li>Click on the domain in the list</li>
+                            <li>For each of the A records (there will be one for the root domain and one for the subdomain):</li>
+                                <ul>
+                                    <li>Select the checkbox for the record</li>
+                                    <li>Click <b>Edit record</b></li>
+                                    <li>Update <b>Route traffic to</b> to <b>Alias to CloudFront distribution</b></li>
+                                    <li>For <b>Choose distribution</b> select the distribution created in the previous step</li>
+                                    <li>Click <b>Save</b></li>
+                                </ul>
+                        </ul>
+                    </p>
+
+                    <h3>The End</h3>
+
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container footer-container">
+                <div class="row">
+                    <div class="col-8">
+                        Copyright &#169; <script>document.write(new Date().getFullYear())</script> Tom Warsop
+                    </div>
+                    <div class="col-4 version">
+                        Last Updated: 2025/02/11 (v2.13.0) </br>
+                        <a href="../versioning.html">Versioning</a>                        
+                    </div>
+                </div>
+            </div>
+        </footer>    </body>
+</html>
