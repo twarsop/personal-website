@@ -145,6 +145,22 @@
                         </ul>
                     </p>
 
+                    <h3>Redirect HTTP to HTTPS</h3>
+
+                    <p>
+                        To ensure that all traffic is encrypted you can set up a rule to redirect HTTP traffic to HTTPS.
+                    </p>
+
+                    <p>
+                        <ul>
+                            <li>Under the load balancers <b>Listeners and rules</b> tab select the HTTP listener</li>
+                            <li>Select the rules and clcik <b>Actions</b> then <b>Edit rule</b></li>
+                            <li>Under <b>Default actions</b> and <b>Routing actions</b> select <b>Redirect to URL</b> and select <b>HTTPS</b> for <b>Protocol</b></li>
+                            <li>Enter the <b>Port</b> too, which will be 443</li>
+                            <li>Click <b>Save changes</b></li>
+                        </ul>
+                    </p>
+
                     <h3>The End</h3>
 
                 </div>
