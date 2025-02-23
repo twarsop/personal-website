@@ -110,6 +110,41 @@
                         </ul>
                     </p>
 
+                    <h3>Add a HTTPS Listener to the Load Balancer</h3>
+
+                    <p>
+                        <ul>
+                            <li>In the AWS console goto <b>EC2</b></li>
+                            <li>Click on <b>Load Balancers</b></li>
+                            <li>Select the load balancer you want to add HTTPS to</li>
+                            <li>On the <b>Listeners and rules</b> tab select <b>Add listener</b></li>
+                            <li>For the <b>Protocol</b> select <b>HTTPS</b></li>
+                            <li>Set <b>Routing actions</b> to <b>Forward to target groups</b> and in <b>Target group</b> select the target group already set up for the load balancer</li>
+                            <li>In the <b>Secure listener settings</b> section under <b>Certificate (from ACM)</b> select the certificate created in the previous step</li>
+                            <li>Click <b>Add</b> at the bottom of the page</li>
+                        </ul>
+                    </p>
+
+                    <h3>Update the Security Group</h3>
+
+                    <p>
+                        The security group for the load balancer will need to be updated to allow HTTPS traffic.
+                    </p>
+
+                    <p>
+                        <ul>
+                            <li>For the load balancer select the <b>Security</b> tab</li>
+                            <li>Click the security group listed for the load balancer</li>
+                            <li>Click the <b>Inbound rules</b> tab</li>
+                            <li>Click <b>Edit inbound rules</b></li>
+                            <li>Click <b>Add rule</b></li>
+                            <li>For <b>Type</b> select <b>HTTPS</b> and enter <b>::/0</b> for the allowed IP</li>
+                            <li>Click <b>Add rule</b> again</li>
+                            <li>For <b>Type</b> select <b>HTTP</b> and enter <b>0.0.0.0/0</b> for the allowed IP</li>
+                            <li>Click <b>Save rules</b></li>
+                        </ul>
+                    </p>
+
                     <h3>The End</h3>
 
                 </div>
