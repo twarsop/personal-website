@@ -49,7 +49,7 @@
                     <h3>Introduction</h3>
 
                     <p>
-                        This blog post introduces the steps needed to add HTTPS to an AWS Load Balancer. This could be a load balancer that you have created during the setup of hosting a docker container in AWS Fargate. Like in this previous post: <a href="2024-08-23-hosting-a-docker-container-in-aws-fargate.html">Hosting a Docker Container in AWS Fargate</a>.
+                        This blog post introduces the steps needed to add HTTPS to an AWS Load Balancer. This could be a load balancer that you have created during the setup of hosting a docker container in AWS Fargate. Like in this previous post: <a target="_blank" href="2024-08-23-hosting-a-docker-container-in-aws-fargate.html">Hosting a Docker Container in AWS Fargate</a>.
                     </p>
 
                     <h3>Requesting a Certificate</h3>
@@ -102,7 +102,7 @@
                             <li>Click <b>Add rule</b></li>
                             <li>For <b>Type</b> select <b>HTTPS</b> and enter <b>::/0</b> for the allowed IP</li>
                             <li>Click <b>Add rule</b> again</li>
-                            <li>For <b>Type</b> select <b>HTTP</b> and enter <b>0.0.0.0/0</b> for the allowed IP</li>
+                            <li>For <b>Type</b> select <b>HTTPS</b> and enter <b>0.0.0.0/0</b> for the allowed IP</li>
                             <li>Click <b>Save rules</b></li>
                         </ul>
                     </p>
@@ -116,7 +116,7 @@
                     <p>
                         <ul>
                             <li>Under the load balancers <b>Listeners and rules</b> tab select the HTTP listener</li>
-                            <li>Select the rules and clcik <b>Actions</b> then <b>Edit rule</b></li>
+                            <li>Select the rules and click <b>Actions</b> then <b>Edit rule</b></li>
                             <li>Under <b>Default actions</b> and <b>Routing actions</b> select <b>Redirect to URL</b> and select <b>HTTPS</b> for <b>Protocol</b></li>
                             <li>Enter the <b>Port</b> too, which will be 443</li>
                             <li>Click <b>Save changes</b></li>
