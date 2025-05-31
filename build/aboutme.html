@@ -41,247 +41,340 @@
             crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
-            var codeData = [
-            {
-                "year": 2020,
-                "total_additions": 1987,
-                "language_stats": [
-                    {
-                        "language": "C#",
-                        "additions": 950,
-                        "percentage": 47.81077000503271
-                    },
-                    {
-                        "language": "Jupyter Notebook",
-                        "additions": 573,
-                        "percentage": 28.83744338198289
-                    },
-                    {
-                        "language": "Markdown",
-                        "additions": 188,
-                        "percentage": 9.46149974836437
-                    },
-                    {
-                        "language": "HTML",
-                        "additions": 135,
-                        "percentage": 6.794162053346755
-                    },
+            var languageStats = {
+                "all_time_language_stats": [
                     {
                         "language": "Python",
-                        "additions": 111,
-                        "percentage": 5.586311021640665
+                        "additions": 210052,
+                        "percentage": 48.82534384290499
                     },
                     {
                         "language": "CSS",
-                        "additions": 30,
-                        "percentage": 1.509813789632612
-                    }
-                ]
-            },
-            {
-                "year": 2021,
-                "total_additions": 1226,
-                "language_stats": [
-                    {
-                        "language": "HTML",
-                        "additions": 918,
-                        "percentage": 74.87765089722676
-                    },
-                    {
-                        "language": "Python",
-                        "additions": 240,
-                        "percentage": 19.575856443719413
-                    },
-                    {
-                        "language": "Markdown",
-                        "additions": 68,
-                        "percentage": 5.5464926590538335
-                    }
-                ]
-            },
-            {
-                "year": 2022,
-                "total_additions": 95047,
-                "language_stats": [
-                    {
-                        "language": "Jupyter Notebook",
-                        "additions": 46326,
-                        "percentage": 48.74009700463981
-                    },
-                    {
-                        "language": "Python",
-                        "additions": 45836,
-                        "percentage": 48.22456258482645
-                    },
-                    {
-                        "language": "HTML",
-                        "additions": 1741,
-                        "percentage": 1.8317253569286773
-                    },
-                    {
-                        "language": "Markdown",
-                        "additions": 453,
-                        "percentage": 0.4766063105621429
-                    },
-                    {
-                        "language": "CSS",
-                        "additions": 357,
-                        "percentage": 0.375603648721159
-                    },
-                    {
-                        "language": "YML",
-                        "additions": 112,
-                        "percentage": 0.11783643881448126
-                    },
-                    {
-                        "language": "Dockerfile",
-                        "additions": 96,
-                        "percentage": 0.10100266184098394
-                    },
-                    {
-                        "language": "SQL",
-                        "additions": 84,
-                        "percentage": 0.08837732911086095
-                    },
-                    {
-                        "language": "Makefile",
-                        "additions": 42,
-                        "percentage": 0.044188664555430475
-                    }
-                ]
-            },
-            {
-                "year": 2023,
-                "total_additions": 2302,
-                "language_stats": [
-                    {
-                        "language": "C#",
-                        "additions": 1574,
-                        "percentage": 68.375325803649
-                    },
-                    {
-                        "language": "CSHTML",
-                        "additions": 257,
-                        "percentage": 11.164205039096437
-                    },
-                    {
-                        "language": "Python",
-                        "additions": 161,
-                        "percentage": 6.993918331885316
-                    },
-                    {
-                        "language": "HTML",
-                        "additions": 155,
-                        "percentage": 6.733275412684622
-                    },
-                    {
-                        "language": "Markdown",
-                        "additions": 119,
-                        "percentage": 5.169417897480452
-                    },
-                    {
-                        "language": "Dockerfile",
-                        "additions": 21,
-                        "percentage": 0.9122502172024326
-                    },
-                    {
-                        "language": "CSS",
-                        "additions": 15,
-                        "percentage": 0.6516072980017376
-                    }
-                ]
-            },
-            {
-                "year": 2024,
-                "total_additions": 404436,
-                "language_stats": [
-                    {
-                        "language": "Python",
-                        "additions": 163704,
-                        "percentage": 40.47710886271252
-                    },
-                    {
-                        "language": "CSS",
-                        "additions": 129517,
-                        "percentage": 32.0241027010454
+                        "additions": 86686,
+                        "percentage": 20.149647498553037
                     },
                     {
                         "language": "JS",
-                        "additions": 93945,
-                        "percentage": 23.228644334332255
+                        "additions": 62630,
+                        "percentage": 14.557972715713918
+                    },
+                    {
+                        "language": "Jupyter Notebook",
+                        "additions": 46899,
+                        "percentage": 10.901394896922673
                     },
                     {
                         "language": "HTML",
-                        "additions": 15504,
-                        "percentage": 3.833486633237397
+                        "additions": 18471,
+                        "percentage": 4.293474597348743
                     },
                     {
                         "language": "C#",
-                        "additions": 628,
-                        "percentage": 0.15527796734217528
-                    },
-                    {
-                        "language": "CSHTML",
-                        "additions": 600,
-                        "percentage": 0.14835474586832031
+                        "additions": 3025,
+                        "percentage": 0.703143341290669
                     },
                     {
                         "language": "Markdown",
-                        "additions": 385,
-                        "percentage": 0.09519429526550555
+                        "additions": 1206,
+                        "percentage": 0.28032756019720556
                     },
                     {
-                        "language": "SQL",
-                        "additions": 62,
-                        "percentage": 0.0153299904063931
+                        "language": "CSHTML",
+                        "additions": 734,
+                        "percentage": 0.17061395454788464
                     },
                     {
                         "language": "YML",
-                        "additions": 40,
-                        "percentage": 0.009890316391221355
+                        "additions": 152,
+                        "percentage": 0.03533150012435758
                     },
                     {
-                        "language": "Makefile",
-                        "additions": 29,
-                        "percentage": 0.007170479383635482
+                        "language": "SQL",
+                        "additions": 146,
+                        "percentage": 0.03393683564576452
                     },
                     {
                         "language": "Dockerfile",
-                        "additions": 22,
-                        "percentage": 0.005439674015171745
+                        "additions": 139,
+                        "percentage": 0.03230972708740595
+                    },
+                    {
+                        "language": "Makefile",
+                        "additions": 71,
+                        "percentage": 0.016503529663351238
+                    }
+                ],
+                "yearly_language_stats": [
+                    {
+                        "year": 2020,
+                        "total_additions": 1987,
+                        "language_stats": [
+                            {
+                                "language": "C#",
+                                "additions": 950,
+                                "percentage": 47.81077000503271
+                            },
+                            {
+                                "language": "Jupyter Notebook",
+                                "additions": 573,
+                                "percentage": 28.83744338198289
+                            },
+                            {
+                                "language": "Markdown",
+                                "additions": 188,
+                                "percentage": 9.46149974836437
+                            },
+                            {
+                                "language": "HTML",
+                                "additions": 135,
+                                "percentage": 6.794162053346755
+                            },
+                            {
+                                "language": "Python",
+                                "additions": 111,
+                                "percentage": 5.586311021640665
+                            },
+                            {
+                                "language": "CSS",
+                                "additions": 30,
+                                "percentage": 1.509813789632612
+                            }
+                        ]
+                    },
+                    {
+                        "year": 2021,
+                        "total_additions": 1226,
+                        "language_stats": [
+                            {
+                                "language": "HTML",
+                                "additions": 918,
+                                "percentage": 74.87765089722676
+                            },
+                            {
+                                "language": "Python",
+                                "additions": 240,
+                                "percentage": 19.575856443719413
+                            },
+                            {
+                                "language": "Markdown",
+                                "additions": 68,
+                                "percentage": 5.5464926590538335
+                            }
+                        ]
+                    },
+                    {
+                        "year": 2022,
+                        "total_additions": 95047,
+                        "language_stats": [
+                            {
+                                "language": "Jupyter Notebook",
+                                "additions": 46326,
+                                "percentage": 48.74009700463981
+                            },
+                            {
+                                "language": "Python",
+                                "additions": 45836,
+                                "percentage": 48.22456258482645
+                            },
+                            {
+                                "language": "HTML",
+                                "additions": 1741,
+                                "percentage": 1.8317253569286773
+                            },
+                            {
+                                "language": "Markdown",
+                                "additions": 453,
+                                "percentage": 0.4766063105621429
+                            },
+                            {
+                                "language": "CSS",
+                                "additions": 357,
+                                "percentage": 0.375603648721159
+                            },
+                            {
+                                "language": "YML",
+                                "additions": 112,
+                                "percentage": 0.11783643881448126
+                            },
+                            {
+                                "language": "Dockerfile",
+                                "additions": 96,
+                                "percentage": 0.10100266184098394
+                            },
+                            {
+                                "language": "SQL",
+                                "additions": 84,
+                                "percentage": 0.08837732911086095
+                            },
+                            {
+                                "language": "Makefile",
+                                "additions": 42,
+                                "percentage": 0.044188664555430475
+                            }
+                        ]
+                    },
+                    {
+                        "year": 2023,
+                        "total_additions": 2302,
+                        "language_stats": [
+                            {
+                                "language": "C#",
+                                "additions": 1574,
+                                "percentage": 68.375325803649
+                            },
+                            {
+                                "language": "CSHTML",
+                                "additions": 257,
+                                "percentage": 11.164205039096437
+                            },
+                            {
+                                "language": "Python",
+                                "additions": 161,
+                                "percentage": 6.993918331885316
+                            },
+                            {
+                                "language": "HTML",
+                                "additions": 155,
+                                "percentage": 6.733275412684622
+                            },
+                            {
+                                "language": "Markdown",
+                                "additions": 119,
+                                "percentage": 5.169417897480452
+                            },
+                            {
+                                "language": "Dockerfile",
+                                "additions": 21,
+                                "percentage": 0.9122502172024326
+                            },
+                            {
+                                "language": "CSS",
+                                "additions": 15,
+                                "percentage": 0.6516072980017376
+                            }
+                        ]
+                    },
+                    {
+                        "year": 2024,
+                        "total_additions": 327892,
+                        "language_stats": [
+                            {
+                                "language": "Python",
+                                "additions": 163704,
+                                "percentage": 49.92619521061813
+                            },
+                            {
+                                "language": "CSS",
+                                "additions": 86274,
+                                "percentage": 26.311712393105047
+                            },
+                            {
+                                "language": "JS",
+                                "additions": 62630,
+                                "percentage": 19.10080148341527
+                            },
+                            {
+                                "language": "HTML",
+                                "additions": 13878,
+                                "percentage": 4.23249118612226
+                            },
+                            {
+                                "language": "C#",
+                                "additions": 501,
+                                "percentage": 0.15279421272858137
+                            },
+                            {
+                                "language": "CSHTML",
+                                "additions": 396,
+                                "percentage": 0.12077147353396851
+                            },
+                            {
+                                "language": "Markdown",
+                                "additions": 356,
+                                "percentage": 0.1085723347931636
+                            },
+                            {
+                                "language": "SQL",
+                                "additions": 62,
+                                "percentage": 0.018908665048247595
+                            },
+                            {
+                                "language": "YML",
+                                "additions": 40,
+                                "percentage": 0.012199138740804898
+                            },
+                            {
+                                "language": "Makefile",
+                                "additions": 29,
+                                "percentage": 0.008844375587083552
+                            },
+                            {
+                                "language": "Dockerfile",
+                                "additions": 22,
+                                "percentage": 0.006709526307442694
+                            }
+                        ]
+                    },
+                    {
+                        "year": 2025,
+                        "total_additions": 1757,
+                        "language_stats": [
+                            {
+                                "language": "HTML",
+                                "additions": 1644,
+                                "percentage": 93.5685828116107
+                            },
+                            {
+                                "language": "CSHTML",
+                                "additions": 81,
+                                "percentage": 4.610130904951622
+                            },
+                            {
+                                "language": "Markdown",
+                                "additions": 22,
+                                "percentage": 1.2521343198634036
+                            },
+                            {
+                                "language": "CSS",
+                                "additions": 10,
+                                "percentage": 0.5691519635742743
+                            }
+                        ]
                     }
                 ]
-            }];
+            };
 
             $(function() {
                 var labels = [];
                 var languages = [];
 
-                for (var i = 0; i < codeData.length; i++) {
-                    labels.push(codeData[i].year);
-                    for (var j = 0; j < codeData[i].language_stats.length; j++) {
-                        if (!languages.includes(codeData[i].language_stats[j].language)) {
-                            languages.push(codeData[i].language_stats[j].language);
+                var yearlyLanguageStats = languageStats.yearly_language_stats;
+
+                for (var i = 0; i < yearlyLanguageStats.length; i++) {
+                    labels.push(yearlyLanguageStats[i].year);
+                    for (var j = 0; j < yearlyLanguageStats[i].language_stats.length; j++) {
+                        if (!languages.includes(yearlyLanguageStats[i].language_stats[j].language)) {
+                            languages.push(yearlyLanguageStats[i].language_stats[j].language);
                         }
                     }
                 }
 
                 var languagesPercentagesEachYear = {};
 
-                for (var i = 0; i < codeData.length; i++) {
-                    for (var j = 0; j < codeData[i].language_stats.length; j++) {
-                        if (!languagesPercentagesEachYear[codeData[i].language_stats[j].language]) {
-                            languagesPercentagesEachYear[codeData[i].language_stats[j].language] = [];
+                for (var i = 0; i < yearlyLanguageStats.length; i++) {
+                    for (var j = 0; j < yearlyLanguageStats[i].language_stats.length; j++) {
+                        if (!languagesPercentagesEachYear[yearlyLanguageStats[i].language_stats[j].language]) {
+                            languagesPercentagesEachYear[yearlyLanguageStats[i].language_stats[j].language] = [];
                         }
                     }
                 }
 
-                for (var i = 0; i < codeData.length; i++) {
-                    for (var j = 0; j < codeData[i].language_stats.length; j++) {
-                        languagesPercentagesEachYear[codeData[i].language_stats[j].language].push(codeData[i].language_stats[j].percentage);
+                for (var i = 0; i < yearlyLanguageStats.length; i++) {
+                    for (var j = 0; j < yearlyLanguageStats[i].language_stats.length; j++) {
+                        languagesPercentagesEachYear[yearlyLanguageStats[i].language_stats[j].language].push(yearlyLanguageStats[i].language_stats[j].percentage);
                     }
                     for (var j = 0; j < languages.length; j++) {
-                        if (!codeData[i].language_stats.find(x => x.language === languages[j])) {
+                        if (!yearlyLanguageStats[i].language_stats.find(x => x.language === languages[j])) {
                             languagesPercentagesEachYear[languages[j]].push(0);
                         }
                     }
