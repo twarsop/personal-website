@@ -399,6 +399,46 @@
                         }
                     }
                 });
+
+                var MeSeContext = document.getElementById("allTimeLanguageStatsChart").getContext("2d");
+                var MeSeData = {
+                    labels: [
+                        "ME",
+                        "SE"
+                    ],
+                    datasets: [
+                        {
+                            label: "Test",
+                            data: [100, 75],
+                            backgroundColor: ["#669911", "#119966" ],
+                            hoverBackgroundColor: ["#66A2EB", "#FCCE56"]
+                        }]
+                };
+
+                var MeSeChart = new Chart(MeSeContext, {
+                    type: "bar",
+                    data: MeSeData,
+                    options: {
+                        indexAxis: 'y',
+                        // Elements options apply to all of the options unless overridden in a dataset
+                        // In this case, we are setting the border of each horizontal bar to be 2px wide
+                        elements: {
+                            bar: {
+                                borderWidth: 2,
+                            }
+                        },
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                            },
+                            title: {
+                                display: true,
+                                text: 'Chart.js Horizontal Bar Chart'
+                            }
+                        }
+                    },
+                });
             });
         </script>
     </head>
@@ -442,6 +482,8 @@
                     </p>
 
                     <canvas id="codeChart"></canvas>
+
+                    <canvas id="allTimeLanguageStatsChart"></canvas>
                 </div>
             </div>
         </div>
