@@ -312,6 +312,52 @@
             };
 
             $(function() {
+                var allTimeLanguageStats = languageStats.all_time_language_stats;
+                var allTimeLanguageStatsLabels = [];
+                var allTimeLanguageStatsData = [];
+
+                for (var i = 0; i < allTimeLanguageStats.length; i++) {
+                    allTimeLanguageStatsLabels.push(allTimeLanguageStats[i].language);
+                    allTimeLanguageStatsData.push(allTimeLanguageStats[i].percentage);
+                }
+
+                var allTimeLanguageStatsContext = document.getElementById("allTimeLanguageStatsChart").getContext("2d");
+                var allTimeLanguageStatsChart = new Chart(allTimeLanguageStatsContext, {
+                    type: "bar",
+                    data: {
+                        labels: allTimeLanguageStatsLabels,
+                        datasets: [
+                            {
+                                data: allTimeLanguageStatsData
+                            }]
+                    },
+                    options: {
+                        indexAxis: "y",
+                        elements: {
+                            bar: {
+                                borderWidth: 2,
+                            }
+                        },
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: false,
+                            },
+                            title: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: "Language Percentage in All Github Commits 01/2020 to 06/2025"
+                                },
+                            }
+                        }
+                    },
+                });
+
                 var labels = [];
                 var languages = [];
 
@@ -399,46 +445,6 @@
                         }
                     }
                 });
-
-                var MeSeContext = document.getElementById("allTimeLanguageStatsChart").getContext("2d");
-                var MeSeData = {
-                    labels: [
-                        "ME",
-                        "SE"
-                    ],
-                    datasets: [
-                        {
-                            label: "Test",
-                            data: [100, 75],
-                            backgroundColor: ["#669911", "#119966" ],
-                            hoverBackgroundColor: ["#66A2EB", "#FCCE56"]
-                        }]
-                };
-
-                var MeSeChart = new Chart(MeSeContext, {
-                    type: "bar",
-                    data: MeSeData,
-                    options: {
-                        indexAxis: 'y',
-                        // Elements options apply to all of the options unless overridden in a dataset
-                        // In this case, we are setting the border of each horizontal bar to be 2px wide
-                        elements: {
-                            bar: {
-                                borderWidth: 2,
-                            }
-                        },
-                        responsive: true,
-                        plugins: {
-                            legend: {
-                                position: 'right',
-                            },
-                            title: {
-                                display: true,
-                                text: 'Chart.js Horizontal Bar Chart'
-                            }
-                        }
-                    },
-                });
             });
         </script>
     </head>
@@ -481,9 +487,9 @@
                         The following chart shows the percentage of code I have written in different languages over the years. These stats are for personal projects only and was created from my github commits using these <a href="https://github.com/twarsop/github-stats" target="_blank">scripts</a>.
                     </p>
 
-                    <canvas id="codeChart"></canvas>
-
                     <canvas id="allTimeLanguageStatsChart"></canvas>
+
+                    <canvas id="codeChart"></canvas>
                 </div>
             </div>
         </div>
