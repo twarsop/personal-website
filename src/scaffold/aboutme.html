@@ -361,14 +361,9 @@
                     maintainAspectRatio: false,
                     plugins: {
                         legend: { display: false },
-                        title: { display: false }
-                    },
-                    scales: {
-                        x: {
-                            title: {
-                                display: true,
-                                text: "Language Percentage in All Github Commits 01/2020 to 06/2025"
-                            },
+                        title: { 
+                            display: true,
+                            text: "Language Percentage in All Github Commits 01/2020 to 06/2025"
                         }
                     }
                 },
@@ -433,7 +428,10 @@
                 options: {
                     indexAxis: "y",
                     plugins: {
-                        title: { display: false },
+                        title: { 
+                            display: true,
+                            text: "Language Percentage in Github Commits Per Year 01/2020 to 06/2025"
+                        },
                     },
                     responsive: true,
                     maintainAspectRatio: false,
