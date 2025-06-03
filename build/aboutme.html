@@ -362,23 +362,23 @@
         };
 
         var allTimeLanguageStatsChart;
-        var languageStatsPerYearChart;
+        var yearlyLanguageStatsChart;
 
         $(function () {
+            var languages = [];
+            
             var allTimeLanguageStats = languageStats.all_time_language_stats;
-            var allTimeLanguageStatsLabels = [];
             var allTimeLanguageStatsData = [];
 
             for (var i = 0; i < allTimeLanguageStats.length; i++) {
-                allTimeLanguageStatsLabels.push(allTimeLanguageStats[i].language);
+                languages.push(allTimeLanguageStats[i].language);
                 allTimeLanguageStatsData.push(allTimeLanguageStats[i].percentage);
             }
 
-            var allTimeLanguageStatsContext = document.getElementById("allTimeLanguageStatsChart").getContext("2d");
-            allTimeLanguageStatsChart = new Chart(allTimeLanguageStatsContext, {
+            allTimeLanguageStatsChart = new Chart(document.getElementById("allTimeLanguageStatsChart").getContext("2d"), {
                 type: "bar",
                 data: {
-                    labels: allTimeLanguageStatsLabels,
+                    labels: languages,
                     datasets: [{
                         data: allTimeLanguageStatsData
                     }]
@@ -402,17 +402,11 @@
                 },
             });
 
-            var labels = [];
-            var languages = [];
+            var years = [];
             var yearlyLanguageStats = languageStats.yearly_language_stats;
 
             for (var i = 0; i < yearlyLanguageStats.length; i++) {
-                labels.push(yearlyLanguageStats[i].year);
-                for (var j = 0; j < yearlyLanguageStats[i].language_stats.length; j++) {
-                    if (!languages.includes(yearlyLanguageStats[i].language_stats[j].language)) {
-                        languages.push(yearlyLanguageStats[i].language_stats[j].language);
-                    }
-                }
+                years.push(yearlyLanguageStats[i].year);
             }
 
             var languagesPercentagesEachYear = {};
@@ -437,25 +431,25 @@
             }
 
             const colours = [
-                "#FF6F61", "#6B4226", "#F7B32B", "#1B998B", "#4285F4",
-                "#7E57C2", "#F76C6C", "#FF9F1C", "#2E933C", "#4A90E2",
-                "#D81B60", "#8E44AD", "#16A085", "#F39C12", "#2C3E50"
+                "#2222FF", "#22FF22", "#FF2222", "#FF22FF", "#FFFF22",
+                "#22FFFF", "#333333", "#5a7de6", "#16ab5c", "#992222",
+                "#992299", "#a0ab5b", "#229999", "#666666", "#2C3E50"
             ].reverse();
 
             var datasets = [];
-            Object.entries(languagesPercentagesEachYear).forEach(([key, value]) => {
+
+            languages.forEach((language) => {
                 datasets.push({
-                    label: key,
+                    label: language,
                     backgroundColor: colours.pop(),
-                    data: value,
+                    data: languagesPercentagesEachYear[language],
                 });
             });
 
-            var myContext = document.getElementById("codeChart").getContext("2d");
-            languageStatsPerYearChart = new Chart(myContext, {
-                type: 'bar',
+            yearlyLanguageStatsChart = new Chart(document.getElementById("yearlyLanguageStatsChart").getContext("2d"), {
+                type: "bar",
                 data: {
-                    labels: labels,
+                    labels: years,
                     datasets: datasets,
                 },
                 options: {
@@ -484,13 +478,13 @@
 
         function resizeCanvases() {
             if (allTimeLanguageStatsChart) allTimeLanguageStatsChart.resize();
-            if (languageStatsPerYearChart) languageStatsPerYearChart.resize();
+            if (yearlyLanguageStatsChart) yearlyLanguageStatsChart.resize();
         }
 
-        window.addEventListener('resize', resizeCanvases);
-        window.addEventListener('load', resizeCanvases);
-        document.addEventListener('fullscreenchange', resizeCanvases);
-        document.addEventListener('webkitfullscreenchange', resizeCanvases);
+        window.addEventListener("resize", resizeCanvases);
+        window.addEventListener("load", resizeCanvases);
+        document.addEventListener("fullscreenchange", resizeCanvases);
+        document.addEventListener("webkitfullscreenchange", resizeCanvases);
     </script>
 </head>
 <body>
@@ -547,7 +541,7 @@
             </div>
             <div class="col-md-6 column">
                 <div class="canvas-wrapper">
-                    <canvas id="codeChart"></canvas>
+                    <canvas id="yearlyLanguageStatsChart"></canvas>
                 </div>
             </div>
         </div>
