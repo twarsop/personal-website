@@ -87,7 +87,78 @@
                     <h3>Introduction</h3>
 
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum.
+                        The following tutorial goes through the basic steps required to write and deploy a C# based AWS Lambda. I won't be going into detail what Lambdas are, this will focus on the more practical aspect of writing one and deploying it to AWS. But for some context: AWS Lambda is Amazon's serverless compute service that runs your code in response to events—such as API requests, file uploads, or database changes—without you having to manage servers. You just upload your code (in languages like Python, Node.js, or Java), define the trigger, and Lambda automatically handles scaling, execution, and high availability, charging you only for the compute time used.
+                    </p>
+
+                    <h3>Package References</h3>
+
+                    <p>
+                        Assuming you already have a C# project for your Lambda code, you will need to add the <span class="inline-code">Amazon.Lambda.Core</span> package to it.
+                    </p>
+
+                    <h3>Code</h3>
+
+                    <p>
+                        We will then use the following code to form our first Lambda, logging out the string <span class="inline-code">Hello World</span>:
+                    </p>
+
+                    <pre>
+                        <code>
+using Amazon.Lambda.Core;
+
+namespace MyFirstLambda
+{
+    public class MyFirstLambda
+    {
+        public void FunctionHandler(ILambdaContext context)
+        {
+            context.Logger.LogLine("Hello World");
+        }
+    }
+}
+                        </code>
+                    </pre>
+
+                    <p>
+                        The key part of the code here is the handler function - <span class="inline-code">FunctionHandler</span>. This is entry point for the Lambda. The signature for this function can vary, the one shown in the above example only passes in <span class="inline-code">ILambdaContext</span> which gives runtime info (request ID, memory limits, logger, etc.). 
+                    </p>
+                
+                    <h3>Deployment</h3>
+
+                    <p>
+                        To deploy the Lambda we can use an Amazon tool. To install run:
+                    </p>
+
+                    <pre>
+                        <code>
+install deployment tool - dotnet tool install -g Amazon.Lambda.Tools
+                        </code>
+                    </pre>
+
+                    <p>
+                        Then to deploy:
+                    </p>
+
+                    <pre>
+                        <code>
+deploy - dotnet lambda deploy-function
+                        </code>
+                    </pre> 
+
+                    <p>
+                        Running this deployment tool, you will be asked the following questions:
+                        <ul>
+                            <li>Which runtime you want. For C# we want to use: <span class="inline-code">dotnet8</span>.</li>
+                            <li>The name you want for your Lambda (pick any you want).</li>
+                            <li>To provide an IAM Role to provide AWS credentials to your code. You give an existing or create a new one here.</li>
+                            <li>What memory size you want (in MB). For the example here I selected <span class="inline-code">128</span>.</li>
+                            <li>What timeout you want to give the Lambda (in seconds). For the example here I selected <span class="inline-code">60</span>.</li>
+                            <li>The name of the handler. This is of the format <span class="inline-code">&lt;Assembly&gt;::&lt;Namespace&gt;.&lt;Type&gt;::&lt;method&gt;</span></li>. For example, for the above code I entered <span class="inline-code">MyFirstLambda::MyFirstLambda.MyFirstLambda::FunctionHandler</span>
+                        </ul>
+                    </p>
+
+                    <p>
+                        After answering all the questions, the Lambda should be deployed and you can go and test in the AWS console.
                     </p>
 
                     <h3>The End</h3>
