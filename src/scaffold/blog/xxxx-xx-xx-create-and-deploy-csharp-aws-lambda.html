@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Create and Deploy a C# AWS Lambda</title>
+        <title>Creating and Deploying a C# AWS Lambda</title>
         {{{ head_blog.html }}}
     </head>
     <body>
@@ -39,8 +39,8 @@
         <div class="container mt-4 mb-4 layout">
             <div class="row justify-content-center">
                 <div class="col col-lg-6 blog">
-                    <h2>Create and Deploy a C# AWS Lambda</h2>
-                    <div class="date">2025/02/25</div>
+                    <h2>Creating and Deploying a C# AWS Lambda</h2>
+                    <div class="date">xxxx/xx/xx</div>
                     <div style="margin-bottom:40px;">
                         <div class="tags">Tags: <span class="tag">AWS</span> <span class="tag">Lambda</span> <span class="tag">C#</span></div> 
                         <div style="clear: both;"></div>
@@ -49,19 +49,19 @@
                     <h3>Introduction</h3>
 
                     <p>
-                        The following tutorial goes through the basic steps required to write and deploy a C# based AWS Lambda. I won't be going into detail what Lambdas are, this will focus on the more practical aspect of writing one and deploying it to AWS. But for some context: AWS Lambda is Amazon's serverless compute service that runs your code in response to events—such as API requests, file uploads, or database changes—without you having to manage servers. You just upload your code (in languages like Python, Node.js, or Java), define the trigger, and Lambda automatically handles scaling, execution, and high availability, charging you only for the compute time used.
+                        The following tutorial goes through the basic steps required to write and deploy a C# based AWS Lambda. I won't be going into the detail of what Lambdas are, this will focus on the more practical aspect of writing one and deploying it to AWS. But for some context: AWS Lambda is Amazon's serverless compute service that allows you to run code without provisioning or managing servers.
                     </p>
 
                     <h3>Package References</h3>
 
                     <p>
-                        Assuming you already have a C# project for your Lambda code, you will need to add the <span class="inline-code">Amazon.Lambda.Core</span> package to it.
+                        You will need to add the <span class="inline-code">Amazon.Lambda.Core</span> package to the project you are going to write your Lambda in.
                     </p>
 
-                    <h3>Code</h3>
+                    <h3>Lambda Code</h3>
 
                     <p>
-                        We will then use the following code to form our first Lambda, logging out the string <span class="inline-code">Hello World</span>:
+                        The following acts as an example piece of code that will run in a Lambda, what it does isn't necessarily very important it's just being used to deomnstrate the key parts of the code required and then ultimately used in the deployment. As such it's just very simply logs out <span class="inline-code">Hello World</span>:
                     </p>
 
                     <pre>
@@ -82,13 +82,13 @@ namespace MyFirstLambda
                     </pre>
 
                     <p>
-                        The key part of the code here is the handler function - <span class="inline-code">FunctionHandler</span>. This is entry point for the Lambda. The signature for this function can vary, the one shown in the above example only passes in <span class="inline-code">ILambdaContext</span> which gives runtime info (request ID, memory limits, logger, etc.). 
+                        The key part of the code here for the Lambda is the handler function - <span class="inline-code">FunctionHandler</span>. This is entry point for the Lambda. The signature for this function can vary, the one shown in the above example only passes in <span class="inline-code">ILambdaContext</span> which gives runtime information for the Lambda to access (request ID, memory limits, logger, etc.). 
                     </p>
                 
                     <h3>Deployment</h3>
 
                     <p>
-                        To deploy the Lambda we can use an Amazon tool:
+                        To deploy the Lambda we can use a CLI-based Amazon tool, that can be installed using:
                     </p>
 
                     <pre>
@@ -98,7 +98,7 @@ dotnet tool install -g Amazon.Lambda.Tools
                     </pre>
 
                     <p>
-                        Then to deploy, navigate to the folder where your project file is located and run the following command (don't forget to <span class="inline-code">dotnet build</span> first):
+                        Then to deploy, navigate to the folder where your project file is located and run the following command (don't forget to <span class="inline-code">dotnet build</span> on the project first):
                     </p>
 
                     <pre>
@@ -110,7 +110,7 @@ dotnet lambda deploy-function
                     <p>
                         Running this deployment tool, you will be asked the following questions:
                         <ul>
-                            <li>Which runtime you want. For C# we want to use: <span class="inline-code">dotnet8</span>.</li>
+                            <li>Which runtime you want. For C# we want to use the version of .net most appropriate, in this example I used: <span class="inline-code">dotnet8</span>.</li>
                             <li>The name you want for your Lambda (pick any you want).</li>
                             <li>To provide an IAM Role to provide AWS credentials to your code. You give an existing or create a new one here.</li>
                             <li>What memory size you want (in MB). For the example here I selected <span class="inline-code">128</span>.</li>
