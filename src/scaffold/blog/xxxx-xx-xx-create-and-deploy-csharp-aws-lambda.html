@@ -88,22 +88,22 @@ namespace MyFirstLambda
                     <h3>Deployment</h3>
 
                     <p>
-                        To deploy the Lambda we can use an Amazon tool. To install run:
+                        To deploy the Lambda we can use an Amazon tool:
                     </p>
 
                     <pre>
                         <code>
-install deployment tool - dotnet tool install -g Amazon.Lambda.Tools
+dotnet tool install -g Amazon.Lambda.Tools
                         </code>
                     </pre>
 
                     <p>
-                        Then to deploy:
+                        Then to deploy, navigate to the folder where your project file is located and run the following command (don't forget to <span class="inline-code">dotnet build</span> first):
                     </p>
 
                     <pre>
                         <code>
-deploy - dotnet lambda deploy-function
+dotnet lambda deploy-function
                         </code>
                     </pre> 
 
