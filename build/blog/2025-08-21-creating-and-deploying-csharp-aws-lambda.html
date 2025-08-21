@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>AWS Associate Developer Exam Content</title>
+        <title>Creating and Deploying a C# AWS Lambda</title>
         <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
@@ -77,84 +77,88 @@
         <div class="container mt-4 mb-4 layout">
             <div class="row justify-content-center">
                 <div class="col col-lg-6 blog">
-                    <h2>AWS Associate Developer Exam Content</h2>
-                    <div class="date">2024/08/10</div>
+                    <h2>Creating and Deploying a C# AWS Lambda</h2>
+                    <div class="date">2025/08/21</div>
                     <div style="margin-bottom:40px;">
-                        <div class="tags">Tags: <span class="tag">AWS</span> <span class="tag">AWS Certification</span> <span class="tag">AWS Associate Developer</span></div>
+                        <div class="tags">Tags: <span class="tag">AWS</span> <span class="tag">Lambda</span> <span class="tag">C#</span></div> 
                         <div style="clear: both;"></div>
                     </div>         
                     
                     <h3>Introduction</h3>
 
                     <p>
-                        I have decided to study and take the AWS associate developer exam (<a href="2024-07-10-aws-certification.html" target="_blank">previous post</a>) so I should start by looking at the content of the exam. <a href="https://d1.awsstatic.com/training-and-certification/docs-dev-associate/AWS-Certified-Developer-Associate_Exam-Guide.pdf" target="_blank">This PDF</a> (also linked <a href="img/2024-08-10-aws-associate-developer-exam-content/AWS-Certified-Developer-Associate_Exam-Guide.pdf" target="_blank">here</a> for reference in case the original link changes) summarises the content of the exam.
+                        The following tutorial goes through the basic steps required to write and deploy a C# based AWS Lambda. I won't be going into the detail of what Lambdas are, this will focus on the more practical aspect of writing one and deploying it to AWS. But for some context: AWS Lambda is Amazon's serverless compute service that allows you to run code without provisioning or managing servers.
                     </p>
 
-                    <h3>Domains</h3>
+                    <h3>Package References</h3>
 
                     <p>
-                        The exam is divided into the following four domains and each domain has a different weighting in the exam (as shown by the percentage in the brackets):
-                        <ol>
-                            <li>Development with AWS Services (32%)</li>
-                            <li>Security (26%)</li>
-                            <li>Deployment (24%)</li>
-                            <li>Troubleshooting and Optimization (18%)</li>
-                        </ol>
+                        You will need to add the <span class="inline-code">Amazon.Lambda.Core</span> package to the project you are going to write your Lambda in.
                     </p>
 
-                    <h3>Task Statements</h3>
+                    <h3>Lambda Code</h3>
 
                     <p>
-                        Each domain is subdivided into a series of task statements.
+                        The following acts as an example piece of code that will run in a Lambda, what it does isn't necessarily very important it's just being used to deomnstrate the key parts of the code required and then ultimately used in the deployment. As such it's just very simply logs out <span class="inline-code">Hello World</span>:
+                    </p>
+
+                    <pre>
+                        <code>
+using Amazon.Lambda.Core;
+
+namespace MyFirstLambda
+{
+    public class MyFirstLambda
+    {
+        public void FunctionHandler(ILambdaContext context)
+        {
+            context.Logger.LogLine("Hello World");
+        }
+    }
+}
+                        </code>
+                    </pre>
+
+                    <p>
+                        The key part of the code here for the Lambda is the handler function - <span class="inline-code">FunctionHandler</span>. This is entry point for the Lambda. The signature for this function can vary, the one shown in the above example only passes in <span class="inline-code">ILambdaContext</span> which gives runtime information for the Lambda to access (request ID, memory limits, logger, etc.). 
+                    </p>
+                
+                    <h3>Deployment</h3>
+
+                    <p>
+                        To deploy the Lambda we can use a CLI-based Amazon tool, that can be installed using:
+                    </p>
+
+                    <pre>
+                        <code>
+dotnet tool install -g Amazon.Lambda.Tools
+                        </code>
+                    </pre>
+
+                    <p>
+                        Then to deploy, navigate to the folder where your project file is located and run the following command (don't forget to <span class="inline-code">dotnet build</span> on the project first):
+                    </p>
+
+                    <pre>
+                        <code>
+dotnet lambda deploy-function
+                        </code>
+                    </pre> 
+
+                    <p>
+                        Running this deployment tool, you will be asked the following questions:
+                        <ul>
+                            <li>Which runtime you want. For C# we want to use the version of .net most appropriate, in this example I used: <span class="inline-code">dotnet8</span>.</li>
+                            <li>The name you want for your Lambda (pick any you want).</li>
+                            <li>To provide an IAM Role to provide AWS credentials to your code. You give an existing or create a new one here.</li>
+                            <li>What memory size you want (in MB). For the example here I selected <span class="inline-code">128</span>.</li>
+                            <li>What timeout you want to give the Lambda (in seconds). For the example here I selected <span class="inline-code">60</span>.</li>
+                            <li>The name of the handler. This is of the format <span class="inline-code">&lt;Assembly&gt;::&lt;Namespace&gt;.&lt;Type&gt;::&lt;method&gt;</span></li>. For example, for the above code I entered <span class="inline-code">MyFirstLambda::MyFirstLambda.MyFirstLambda::FunctionHandler</span>
+                        </ul>
                     </p>
 
                     <p>
-                        Domain 1 - Development with AWS Services task statements:
-                        <ol>
-                            <li>Develop code for applications hosted on AWS.</li>
-                            <li>Develop code for AWS Lambda.</li>
-                            <li>Use data stores in application development.</li>
-                        </ol>
-                    </p>
-
-                    <p>
-                        Domain 2 - Security task statements:
-                        <ol>
-                            <li>Implement authentication and/or authorisation for applications and AWS services.</li>
-                            <li>Implement encryption by using AWS services.</li>
-                            <li>Manage sensitive data in application code.</li>
-                        </ol>
-                    </p>
-
-                    <p>
-                        Domain 3 - Deployment task statements:
-                        <ol>
-                            <li>Prepare application artifacts to be deployed to AWS.</li>
-                            <li>Test applications in development environments.</li>
-                            <li>Automated deployment testing.</li>
-                            <li>Deploy code by using AWS CI/CD services.</li>
-                        </ol>
-                    </p>
-
-                    <p>
-                        Domain 4 - Troubleshooting and Optimisation task statements:
-                        <ol>
-                            <li>Assist in a root cause analysis.</li>
-                            <li>Instrument code for observability.</li>
-                            <li>Opimise applications by using AWS services and features.</li>
-                        </ol>
-                    </p>
-
-                    <h3>Knowledge and Skills</h3>
-
-                    <p>
-                        Each task statement is further broken down into a set of knowledge points and skills. I won't list this them all in this page. But one of the things I like to do when studying for something is to a have checklist of the subjects that I can mark myself against so I know which areas I need to focus on the most. So I've created <a href="img/2024-08-10-aws-associate-developer-exam-content/AWS Developer Associate Exam Checklist.pdf" target="_blank">this</a> checklist based on the domains, task statements, knowledge and skills.
-                    </p>
-                    
-                    <h3>AWS Services</h3>
-
-                    <p>
-                        The appendix of the exam content from AWS also lists all the in and out of scope AWS services the exam can cover. Both these list are (quote) non-exhaustive and subject to change. Which isn't very helpful. I'm taking it as all services are fair game and could be mentioned/referenced on the exam. So it's probably a good idea to at least have an idea of what each service is used for/it's purpose even if I don't learn specifically about it during study.
+                        After answering all the questions, the Lambda should be deployed and you can go and test in the AWS console.
                     </p>
 
                     <h3>The End</h3>
