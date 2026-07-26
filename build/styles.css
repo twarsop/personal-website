@@ -89,6 +89,10 @@ p {
   color: var(--color-text-muted);
 }
 
+.text-purple {
+  color: var(--color-purple);
+}
+
 /****************************************** header ******************************************/
 
 header {    
