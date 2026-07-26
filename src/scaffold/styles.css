@@ -1,5 +1,32 @@
 /****************************************** global classes ******************************************/
 
+:root {
+    /* Backgrounds */
+    --color-bg: #000008;
+    --color-surface: #12101C;
+    --color-surface-alt: #1A1726;
+
+    /* Text */
+    --color-text: #F5F7FA;
+    --color-text-secondary: #B8BEC9;
+    --color-text-muted: #8A92A5;
+    --color-heading: #FFFFFF;
+
+    /* Accent Colours */
+    --color-purple: #C95CFF;
+    --color-purple-dark: #8B2CFF;
+
+    --color-amber: #FFB938;
+    --color-amber-dark: #FF8A00;
+
+    /* Borders */
+    --color-border: #2A2340;
+
+    /* Optional extras */
+    --color-success: #42D392;
+    --color-error: #FF5C7C;
+}
+
 .clear-both {
     clear: both;
 }
@@ -16,8 +43,50 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: #e3e3e3;
+    background: var(--color-bg);
+    color: var(--color-text);
     overflow-x: hidden;
+    font-family: "Geist", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-heading);
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.small {
+    font-size: .9rem;
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
 }
 
 /****************************************** header ******************************************/
