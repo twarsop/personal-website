@@ -2,29 +2,29 @@
 
 :root {
     /* Backgrounds */
-    --color-bg: #000008;
-    --color-surface: #12101C;
-    --color-surface-alt: #1A1726;
+    --colour-bg: #000008;
+    --colour-surface: #12101C;
+    --colour-surface-alt: #1A1726;
 
     /* Text */
-    --color-text: #F5F7FA;
-    --color-text-secondary: #B8BEC9;
-    --color-text-muted: #8A92A5;
-    --color-heading: #FFFFFF;
+    --colour-text: #F5F7FA;
+    --colour-text-secondary: #B8BEC9;
+    --colour-text-muted: #8A92A5;
+    --colour-heading: #FFFFFF;
 
     /* Accent Colours */
-    --color-purple: #C95CFF;
-    --color-purple-dark: #8B2CFF;
+    --colour-purple: #C95CFF;
+    --colour-purple-dark: #8B2CFF;
 
-    --color-amber: #FFB938;
-    --color-amber-dark: #FF8A00;
+    --colour-amber: #FFB938;
+    --colour-amber-dark: #FF8A00;
 
     /* Borders */
-    --color-border: #2A2340;
+    --colour-border: #2A2340;
 
     /* Optional extras */
-    --color-success: #42D392;
-    --color-error: #FF5C7C;
+    --colour-success: #42D392;
+    --colour-error: #FF5C7C;
 }
 
 .clear-both {
@@ -43,8 +43,8 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    background: var(--color-bg);
-    color: var(--color-text);
+    background: var(--colour-bg);
+    color: var(--colour-text);
     overflow-x: hidden;
     font-family: "Geist", sans-serif;
 }
@@ -55,7 +55,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--color-heading);
+  color: var(--colour-heading);
 }
 
 h1 {
@@ -81,16 +81,16 @@ p {
     font-size: .9rem;
 }
 
-.text-secondary {
-  color: var(--color-text-secondary);
+.text-second {
+  color: var(--colour-text-secondary);
 }
 
 .text-muted {
-  color: var(--color-text-muted);
+  color: var(--colour-text-muted);
 }
 
 .text-purple {
-  color: var(--color-purple);
+  color: var(--colour-purple);
 }
 
 /****************************************** header ******************************************/
@@ -434,20 +434,19 @@ progress::-moz-progress-bar {
 /****************************************** footer ******************************************/
 
 footer {
-    background-color: #424242;
     padding: 20px;
     flex-shrink: 0;
-    color: #fff;
+    color: var(--colour-text-secondary);
 }
 
 footer .footer-container {
-    padding-bottom: 30px;
+    padding-bottom: 10px;
 }
 
-footer .footer-container .version {
-    text-align: right;
+footer .footer-container a {
+    color: var(--colour-text-secondary) !important;
 }
 
-footer .footer-container .version a {
-    color: #fff !important;
+footer .footer-container .footer-img {
+    float: right;
 }
