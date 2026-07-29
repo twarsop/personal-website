@@ -125,42 +125,26 @@ nav .desktop li {
 nav .desktop a {
 	display:block;
 	text-decoration:none;
-	background-color:#0066cc;
-	color:#e3e3e3;
     font-size: 18px;
     height:100%;
     line-height:32px;
-    border:1px solid #2c2c2c;
-    border-bottom: 0px;
-    border-top: 0px;
-    border-style: none solid none solid;
     padding-top: 5px;
     height: 35px;
     box-sizing: unset !important;
+    color: var(--colour-text);
 }
 
 nav .desktop a:hover {
-	background-color:#2424b5;
-	color:#e3e3e3;
+	
 }
 
 nav .desktop .selected {
-    background-color:#d80073 !important;
-	color:#e3e3e3;
+    color: var(--colour-purple);
     position:relative;
 }
 
 nav .desktop .selected:after {
-    content:'';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -20px;
-    width: 0;
-    height: 0;
-    border-top: solid 20px #d80073;
-    border-left: solid 20px transparent;
-    border-right: solid 20px transparent;
+    
 }
 
 .hamburger {
