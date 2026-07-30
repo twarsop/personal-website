@@ -47,6 +47,7 @@ body {
     color: var(--colour-text);
     overflow-x: hidden;
     font-family: "Geist", sans-serif;
+    padding: 20px;
 }
 
 h1,
