@@ -153,7 +153,8 @@ nav .desktop a {
 }
 
 nav .desktop a:hover {
-	
+	color: var(--colour-amber);
+    border-bottom: 3px solid var(--colour-amber);
 }
 
 nav .desktop .selected {
