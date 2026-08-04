@@ -118,21 +118,30 @@ nav {
 	width:100%;
 	font-family: sans-serif;
     border-bottom: 1px solid var(--colour-border);
+    height: 60px;
+    font-size: .9rem;
+}
+
+nav .desktop {
+    height: 100%;
 }
 
 nav .desktop .name {
     float: left;
+    font-size: 1.3rem;
+    padding-top: 20px;
 }
 
 nav .desktop .layout {
     float: right;
+    height: 100%;
 }
 
 nav .desktop li {
 	display:block;
 	padding-left:20px;
     padding-right:20px;
-    padding-top: 2px;
+    padding-top: 10px;
     height:40px;
 	float:left;
     text-align:center;
@@ -141,11 +150,10 @@ nav .desktop li {
 nav .desktop a {
 	display:block;
 	text-decoration:none;
-    font-size: 18px;
     height:100%;
     line-height:32px;
     padding-top: 5px;
-    height: 35px;
+    height: 41px;
     box-sizing: unset !important;
     color: var(--colour-text);
     padding-left: 10px;
