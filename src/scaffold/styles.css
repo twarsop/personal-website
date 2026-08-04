@@ -130,7 +130,9 @@ nav .desktop .layout {
 
 nav .desktop li {
 	display:block;
-	width:150px;
+	padding-left:20px;
+    padding-right:20px;
+    padding-top: 2px;
     height:40px;
 	float:left;
     text-align:center;
@@ -146,6 +148,8 @@ nav .desktop a {
     height: 35px;
     box-sizing: unset !important;
     color: var(--colour-text);
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 nav .desktop a:hover {
@@ -155,6 +159,7 @@ nav .desktop a:hover {
 nav .desktop .selected {
     color: var(--colour-purple);
     position:relative;
+    border-bottom: 3px solid var(--colour-purple);
 }
 
 nav .desktop .selected:after {
