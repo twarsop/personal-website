@@ -283,9 +283,17 @@ nav .mobile .selected {
     color: var(--colour-amber);
 }
 
-.connect svg {
+.connect .x svg {
     width: 20px;
     height: 20px;
+    flex-shrink: 0;
+    fill: #fff;
+    margin-left: 5px;
+}
+
+.connect .github svg {
+    width: 28px;
+    height: 28px;
     flex-shrink: 0;
     fill: #fff;
 }
