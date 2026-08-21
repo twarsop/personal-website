@@ -249,8 +249,9 @@ nav .mobile .selected {
     border-radius: 12px;
 }
 
-.connect {
-
+.connect h5 {
+    color: var(--colour-purple);
+    margin-bottom: 20px;
 }
 
 .connect ul {
