@@ -122,14 +122,14 @@ nav {
     font-size: .9rem;
 }
 
-nav .desktop {
-    height: 100%;
-}
-
-nav .desktop .name {
+nav .name {
     float: left;
     font-size: 1.3rem;
     padding-top: 20px;
+}
+
+nav .desktop {
+    height: 100%;
 }
 
 nav .desktop .layout {
@@ -236,6 +236,51 @@ nav .mobile a:hover {
 
 nav .mobile .selected {
     background-color:#d80073 !important;
+}
+
+:root {
+  --bg:    #08050e;
+  --amber: #f59e0b;
+  --ink:   #ffffff;
+}
+
+.burger {
+    float:right;
+  width: 60px;
+  height: 60px;
+  margin-right: -10px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.burger span,
+.burger span::before,
+.burger span::after {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--ink);
+}
+
+.burger span::before,
+.burger span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.burger span { position: relative; }
+.burger span::before { top: -7px; }
+.burger span::after  { top:  7px; }
+
+.burger:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+  border-radius: 6px;
 }
 
 /****************************************** main - all ******************************************/
