@@ -266,11 +266,17 @@ nav .mobile .selected {
     background: var(--ink);
 }
 
+.burger span {
+  position: relative;
+  transition: background-color .2s ease;
+}
+
 .burger span::before,
 .burger span::after {
     content: "";
     position: absolute;
     left: 0;
+    transition: transform .3s cubic-bezier(.4, 0, .2, 1);
 }
 
 .burger span { position: relative; }
@@ -281,6 +287,18 @@ nav .mobile .selected {
     outline: 2px solid var(--amber);
     outline-offset: 2px;
     border-radius: 6px;
+}
+
+.burger[aria-expanded="true"] span {
+  background: transparent;
+}
+
+.burger[aria-expanded="true"] span::before {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.burger[aria-expanded="true"] span::after {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /****************************************** main - all ******************************************/

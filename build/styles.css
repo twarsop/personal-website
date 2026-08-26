@@ -246,31 +246,37 @@ nav .mobile .selected {
 
 .burger {
     float:right;
-  width: 60px;
-  height: 60px;
-  margin-right: -10px;
-  display: grid;
-  place-items: center;
-  padding: 0;
-  background: none;
-  border: 0;
-  cursor: pointer;
+    width: 60px;
+    height: 60px;
+    margin-right: -10px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
 }
 
 .burger span,
 .burger span::before,
 .burger span::after {
-  display: block;
-  width: 22px;
-  height: 1.5px;
-  background: var(--ink);
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--ink);
+}
+
+.burger span {
+  position: relative;
+  transition: background-color .2s ease;
 }
 
 .burger span::before,
 .burger span::after {
-  content: "";
-  position: absolute;
-  left: 0;
+    content: "";
+    position: absolute;
+    left: 0;
+    transition: transform .3s cubic-bezier(.4, 0, .2, 1);
 }
 
 .burger span { position: relative; }
@@ -278,9 +284,21 @@ nav .mobile .selected {
 .burger span::after  { top:  7px; }
 
 .burger:focus-visible {
-  outline: 2px solid var(--amber);
-  outline-offset: 2px;
-  border-radius: 6px;
+    outline: 2px solid var(--amber);
+    outline-offset: 2px;
+    border-radius: 6px;
+}
+
+.burger[aria-expanded="true"] span {
+  background: transparent;
+}
+
+.burger[aria-expanded="true"] span::before {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.burger[aria-expanded="true"] span::after {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /****************************************** main - all ******************************************/
