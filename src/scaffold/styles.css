@@ -242,6 +242,7 @@ nav .mobile .selected {
   --bg:    #08050e;
   --amber: #f59e0b;
   --ink:   #ffffff;
+  --magenta: #C95CFF;
 }
 
 .burger {
@@ -299,6 +300,98 @@ nav .mobile .selected {
 
 .burger[aria-expanded="true"] span::after {
   transform: translateY(-7px) rotate(-45deg);
+}
+
+.menu {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  background: var(--colour-bg);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .28s ease, visibility .28s;
+}
+
+.menu.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* list */
+.menu_list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.menu_item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.menu_link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 68px;
+  padding: 0 24px;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color .2s ease, padding-left .2s ease;
+}
+
+/* the left marker bar */
+.menu_link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 3px;
+  height: 0;
+  transform: translateY(-50%);
+  background: var(--magenta);
+  box-shadow: 0 0 12px rgba(217, 70, 239, 0.7);
+  transition: height .24s ease;
+}
+
+.menu_link[aria-current="page"] { color: var(--magenta); }
+.menu_link[aria-current="page"]::before { height: 30px; }
+
+.menu_link:hover,
+.menu_link:active,
+.menu_link:focus-visible {
+  color: var(--amber);
+  padding-left: 30px;
+  outline: none;
+}
+
+.menu_link:hover::before,
+.menu_link:active::before,
+.menu_link:focus-visible::before {
+  height: 30px;
+  background: var(--amber);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.7);
+}
+
+.menu_link:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu,
+  .menu_link,
+  .menu_link::before {
+    transition-duration: .01ms;
+  }
 }
 
 /****************************************** main - all ******************************************/
