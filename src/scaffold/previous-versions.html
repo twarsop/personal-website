@@ -5,333 +5,358 @@
         {{{ head.html }}}
     </head>
     <body>
-        {{{ header.html }}}
+        <div class="page">
+            {{{ header.html }}}
 
-        <nav class="d-none d-md-block">
-            <div class="desktop">
-                <div class="layout">
-                    <li><a href="index.html">hello</a></li>
-                    <li><a href="aboutme.html">about me</a></li>
-                    <li><a href="blog.html">blog</a></li>
-                    <li><a href="projects.html">projects</a></li>
+            <nav class="d-none d-md-block">
+                <div class="desktop">
+                    <div class="layout">
+                        <li><a href="index.html">hello</a></li>
+                        <li><a href="aboutme.html">about me</a></li>
+                        <li><a href="blog.html">blog</a></li>
+                        <li><a href="projects.html">projects</a></li>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
 
-        <nav class="d-md-none navbar">
-            <div class="container">
-                <div class="row mobile">
-                    <div id="menu" class="menu"><span class="hamburger"></span>menu</div>
-                    <ul id="menu-container" class="navbar-nav menu-container" style="display:none">
-                        <li class="col"><a href="index.html">hello</a></li>
-                        <li class="col"><a href="aboutme.html">about me</a></li>
-                        <li class="col"><a href="blog.html">blog</a></li>
-                        <li class="col"><a href="projects.html">projects</a></li>
+            <nav class="d-md-none">
+                <div class="desktop container bar">
+                    <h3 class="name">TOM WARSOP</h3>
+                    <button class="burger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+                        <span></span>
+                    </button>                                        
+                </div>
+            </nav>
+
+            <div class="clear-both"></div>
+
+            <div class="container mt-4 mb-4 layout" style="position: relative;">
+                <div class="menu" id="mobile-menu" aria-label="Main">
+                    <ul class="menu_list">
+                        <li class="menu_item">
+                            <a class="menu_link" href="index.html">Home</a>
+                        </li>
+                        <li class="menu_item">
+                            <a class="menu_link" href="aboutme.html" >About me</a>
+                        </li>
+                        <li class="menu_item">
+                            <a class="menu_link" href="blog.html">Blog</a>
+                        </li>
+                        <li class="menu_item">
+                            <a class="menu_link" href="projects.html">Projects</a>
+                        </li>
                     </ul>
                 </div>
-            </div>
-        </nav>
 
-        <div class="clear-both"></div>
-
-        <div class="container mt-4 mb-4 layout">
-            <div class="row">
-                <div class="col previous-versions">
-                    <h1>Previous Versions</h1>
-                    <p>Below is a list of the previous versions of this website and the changes that were made in that version. For an explanation of how the versioning works for this website, please see <a href="versioning.html">here</a>.</p>
-                
-                    <div class="container">
-                        <h2>v2.16.2 (Current Version)</h2>
-                        <div class="date">2026/02/07</div>
-                        <h5>Update Code Stats Graph Titles</h5>
-                        <div>Updated the code stats graph titles on the About Me page, to match the date range they now represent.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.16.1</h2>
-                        <div class="date">2026/02/07</div>
-                        <h5>Update Code Stats</h5>
-                        <div>Updated the code stats on the About Me page.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.16.0</h2>
-                        <div class="date">2025/08/21</div>
-                        <h5>Add Creating and Deploying a C# AWS Lambda Blog Post</h5>
-                        <div>Added a new blog post that demonstrates the steps required to create and deploy a C# based Lambda to AWS.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.15.0</h2>
-                        <div class="date">2025/06/07</div>
-                        <h5>Add All Time Github Language Stats</h5>
-                        <div>Added a new chart to the About Me page that shows the percentage of code committed per language, for all time, in my personal github repositories.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.14.1</h2>
-                        <div class="date">2025/04/27</div>
-                        <h5>Update Current Job Information</h5>
-                        <div>Updated current job information on the home page, adding a little bit more detail.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.14.0</h2>
-                        <div class="date">2025/02/25</div>
-                        <h5>Add HTTPS to AWS Load Balancer Blog Post</h5>
-                        <div>Added new blog post detailing the steps required to add HTTPS to an AWS Load Balancer. This is very much a follow on to the <b>Hosting a Docker Container in AWS Fargate</b> blog post.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.13.0</h2>
-                        <div class="date">2025/02/11</div>
-                        <h5>Add HTTPS to Website Hosted in S3 Blog Post</h5>
-                        <div>Added new blog post detailing the steps required to add HTTPS to a static website hosted in S3. This is very much a follow on to the <b>Hosting a Static Website in AWS S3</b> blog post.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.12.0</h2>
-                        <div class="date">2024/12/31</div>
-                        <h5>Add About Me Page</h5>
-                        <div>Added a new page to cover more detailed content about me. The first deployment of this page only includes stats on the languages I write for personal projects. Possible future content for this page could include things like: the topics/tech I write about in blog posts, the professional qualifications I have etc.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.11.3</h2>
-                        <div class="date">2024/10/05</div>
-                        <h5>Move Page Head into a Component</h5>
-                        <div>Moved the repeated code in the <span class="inline-code">&lt;head&gt;</span> into a scaffss component.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.11.2</h2>
-                        <div class="date">2024/10/05</div>
-                        <h5>Fix HTML in AWS Associate Developer Exam Content Blog Post</h5>
-                        <div>Removed some extra HTML tags in a blog post that shouldn't have been there.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.11.1</h2>
-                        <div class="date">2024/09/28</div>
-                        <h5>Update Job Description</h5>
-                        <div>Updated my job description on the main page.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.11.0</h2>
-                        <div class="date">2024/09/21</div>
-                        <h5>Add AWS Associate Developer Exam Details Blog Post</h5>
-                        <div>Added a new blog post detailing information about the AWS Associate Developer exam.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.10.0</h2>
-                        <div class="date">2024/08/30</div>
-                        <h5>Add Giving an ECS Service a URL Blog Post</h5>
-                        <div>Added a new blog post detailing the steps needed point a Route 53 managed domain to an ECS service.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.9.0</h2>
-                        <div class="date">2024/08/23</div>
-                        <h5>Add Hosting a Docker Container in AWS Fargate Blog Post</h5>
-                        <div>Added a new blog post detailing the steps needed to build and run a Docker container in AWS using AWS ECR, ECS and Fargate.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.8.1</h2>
-                        <div class="date">2024/08/10</div>
-                        <h5>Fix Date on AWS Associate Developer Exam Content Blog Post</h5>
-                        <div>Replace placeholder date in blog post with actual date.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.8.0</h2>
-                        <div class="date">2024/08/10</div>
-                        <h5>AWS Associate Developer Exam Content Blog Post</h5>
-                        <div>Added a new blog post covering the content of the AWS Developer Associate exam, including a checklist I've created for doing a knowledge check against the exam content.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.7.0</h2>
-                        <div class="date">2024/07/10</div>
-                        <h5>Add AWS Certification Blog Post</h5>
-                        <div>Added a new blog post that serves as in an introduction to me blogging/jounalling about my experiences of taking the AWS Developer Associate exam.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.6.0</h2>
-                        <div class="date">2024/06/02</div>
-                        <h5>Add Hosting a Static Website in AWS S3 Blog Post</h5>
-                        <div>Added a new blog post that lists the steps to go through to host a static wesbite in AWS S3.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.5.0</h2>
-                        <div class="date">2024/05/07</div>
-                        <h5>Add Simple AWS Web Scraper Blog Post</h5>
-                        <div>Added a new blog post that discusses a simple infrastructure setup in AWS for a web scraper.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.4.2</h2>
-                        <div class="date">2024/05/06</div>
-                        <h5>Reduce Blog Page Width</h5>
-                        <div>Small update to the styling - decided that the blog page content width was too wide and didn't look correct, so reduced the width.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.4.1</h2>
-                        <div class="date">2024/04/29</div>
-                        <h5>Update Docker Multi-Stage Builds Blog Post Page Title</h5>
-                        <div>The Docker Multi-Stage Builds blog post had the wrong page title, updated to correct it.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.4.0</h2>
-                        <div class="date">2024/03/28</div>
-                        <h5>New Blog Post - Dependency Injection with .NET and C#</h5>
-                        <div>Added new blog post looking at what dependency injection is and how to do it in .NET and C#.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.3.0</h2>
-                        <div class="date">2023/12/27</div>
-                        <h5>New Blog Post - Docker Mutli-Stage Builds</h5>
-                        <div>Added new blog post looking at Docker Multi-Stage builds in more detail.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.2.1</h2>
-                        <div class="date">2023/12/13</div>
-                        <h5>Build Site Using Scaffss</h5>
-                        <div>There's an amount of duplicated code within the pages of this site, e.g. the footer. To reduce this code duplication I've created a very simple componentized framework for static sites called scaffss the repo for which can be found <a target="_blank" href="https://github.com/twarsop/scaffss">here</a>. The are no actual changes to this site in this update, I've just updated the code and build process to use scaffss and refactor some of the simple duplicated code. Specifcally the footer and header.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.2.0</h2>
-                        <div class="date">2023/12/02</div>
-                        <h5>Add Favicon</h5>
-                        <div>Added favicon to the site.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.1.1</h2>
-                        <div class="date">2023/11/29</div>
-                        <h5>Updated Home/Hello/Index Page Avatar Image</h5>
-                        <div>Small tweaks to the avatar image of me on the home/hello/index page.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.1.0</h2>
-                        <div class="date">2023/11/06</div>
-                        <h5>New Blog Post</h5>
-                        <div>Adding a new blog post for building and running a .NET console app in Docker.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.0.3</h2>
-                        <div class="date">2023/11/05</div>
-                        <h5>Update Previous Versions Text</h5>
-                        <div>
-                            <ul>
-                                <li>Fixed errors in text on this page: dates and formatting</li>
-                                <li>Added titles to those releases missing them</li>
-                                <li>Formatted release titles differently, to stand out from the release description text</li>
-                            </ul>
+                <div class="row">
+                    <div class="col previous-versions">
+                        <h1>Previous Versions</h1>
+                        <p>Below is a list of the previous versions of this website and the changes that were made in that version. For an explanation of how the versioning works for this website, please see <a href="versioning.html">here</a>.</p>
+                    
+                        <div class="container">
+                            <h2>v2.16.2 (Current Version)</h2>
+                            <div class="date">2026/02/07</div>
+                            <h5>Update Code Stats Graph Titles</h5>
+                            <div>Updated the code stats graph titles on the About Me page, to match the date range they now represent.</div>
                         </div>
-                    </div>
 
-                    <div class="container">
-                        <h2>v2.0.2</h2>
-                        <div class="date">2023/11/05</div>
-                        <h5>Update Homepage Text</h5>
-                        <div>Haven't updated the part of the homepage about my current job for a while, so doing that.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.0.1</h2>
-                        <div class="date">2023/11/04</div>
-                        <h5>Bug Fix</h5>
-                        <div>The Versioning link in the footer on blog pages was incorrect. It had been copied from other pages so was linking to a versioning.html file within the same directory. This isn't where the Versioning page exists, it exists a folder up relative to the blog pages. Updated to be the correct link.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v2.0.0</h2>
-                        <div class="date">2023/11/02</div>
-                        <h5>File Organisation</h5>
-                        <div>
-                            <ul>
-                                <li>Removed the links to previous site versions within this Previous Versions page and deleted the previous version files. Maintaining multiple versions of the site was starting to become cumbersome and wasn't really adding any value since each version is tagged in <a target="_blank" href="https://github.com/twarsop/personal-website">github</a>. So it's still possible to download and view previous versions of this site from github.</li>
-                                <li>Improved the file structure by moving the images into an "img" folder.</li>
-                            </ul>
+                        <div class="container">
+                            <h2>v2.16.1</h2>
+                            <div class="date">2026/02/07</div>
+                            <h5>Update Code Stats</h5>
+                            <div>Updated the code stats on the About Me page.</div>
                         </div>
-                    </div>
 
-                    <div class="container">
-                        <h2>v1.4.0</h2>
-                        <div class="date">2023/10/24</div>
-                        <h5>Add First Blog Page</h5>
-                        <div>Added a blog section to the site and a first blog post about running a .NET console app via Docker.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v1.3.0</h2>
-                        <div class="date">2023/10/19</div>
-                        <h5>Add Last Updated Date</h5>
-                        <div>Added a last updated date to the page footers.</div>
-                    </div>
-
-                    <div class="container">
-                        <h2>v1.2.0</h2>
-                        <div class="date">2022/03/08</div>
-                        <h5>Dynamic Year in Footer and Google Analytics</h5>
-                        <div>
-                            <ul>
-                                <li>Updated the year string in the footer, changing it from a hardcoded string to using JS to dynamic display the current year. This way I won't need to remember to update a hardcoded string every year.</li>
-                                <li>Added Google Analytics tracking to all pages of the site so I can see if anyone ever actually looks at it.</li>
-                            </ul>
+                        <div class="container">
+                            <h2>v2.16.0</h2>
+                            <div class="date">2025/08/21</div>
+                            <h5>Add Creating and Deploying a C# AWS Lambda Blog Post</h5>
+                            <div>Added a new blog post that demonstrates the steps required to create and deploy a C# based Lambda to AWS.</div>
                         </div>
-                    </div>
 
-                    <div class="container">
-                        <h2>v1.1.0</h2>
-                        <div class="date">2021/09/28</div>
-                        <h5>Versioning, Previous Versions and This Website in Projects</h5>
-                        <div>
-                            Added new content to the site:
-                            <ul>
-                                <li>Page explaining how the versioning works.</li>
-                                <li>This website included in the Projects page (as a project that I've done/am working on), along with a link to the Previous Versions page.</li>
-                                <li>The Previous Versions page which lists all the previous versions (and current version) of this website. Providing details of: version deployment date, what was included in the version and a link that takes you to that specfic version of the website.</li>
-                            </ul>
+                        <div class="container">
+                            <h2>v2.15.0</h2>
+                            <div class="date">2025/06/07</div>
+                            <h5>Add All Time Github Language Stats</h5>
+                            <div>Added a new chart to the About Me page that shows the percentage of code committed per language, for all time, in my personal github repositories.</div>
                         </div>
-                    </div>
 
-                    <div class="container">
-                        <h2>v1.0.2</h2>
-                        <div class="date">2021/08/24</div>
-                        <h5>Bug Fix</h5>
-                        <div>The mobile layout/styling was not being used on mobile devices, the website was defaulting to the desktop styling on mobile devices instead. Fixed by including <b>viewport, width=device-width, initial-scale=1</b> in the <b>head</b> of every page.</div>
-                    </div>
+                        <div class="container">
+                            <h2>v2.14.1</h2>
+                            <div class="date">2025/04/27</div>
+                            <h5>Update Current Job Information</h5>
+                            <div>Updated current job information on the home page, adding a little bit more detail.</div>
+                        </div>
 
-                    <div class="container">
-                        <h2>v1.0.1</h2>
-                        <div class="date">2021/08/23</div>
-                        <h5>Bug Fix</h5>
-                        <div>Fixed a bug: The file name for the github logo on the Other Me page was incorrect (differing by case, i.e. a case sensitivity issue).</div>
-                    </div>
+                        <div class="container">
+                            <h2>v2.14.0</h2>
+                            <div class="date">2025/02/25</div>
+                            <h5>Add HTTPS to AWS Load Balancer Blog Post</h5>
+                            <div>Added new blog post detailing the steps required to add HTTPS to an AWS Load Balancer. This is very much a follow on to the <b>Hosting a Docker Container in AWS Fargate</b> blog post.</div>
+                        </div>
 
-                    <div class="container">
-                        <h2>v1.0.0</h2>
-                        <div class="date">2021/08/23</div>
-                        <h5>Initial Release</h5>
-                        <div>The initial release of the website.</div>
+                        <div class="container">
+                            <h2>v2.13.0</h2>
+                            <div class="date">2025/02/11</div>
+                            <h5>Add HTTPS to Website Hosted in S3 Blog Post</h5>
+                            <div>Added new blog post detailing the steps required to add HTTPS to a static website hosted in S3. This is very much a follow on to the <b>Hosting a Static Website in AWS S3</b> blog post.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.12.0</h2>
+                            <div class="date">2024/12/31</div>
+                            <h5>Add About Me Page</h5>
+                            <div>Added a new page to cover more detailed content about me. The first deployment of this page only includes stats on the languages I write for personal projects. Possible future content for this page could include things like: the topics/tech I write about in blog posts, the professional qualifications I have etc.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.11.3</h2>
+                            <div class="date">2024/10/05</div>
+                            <h5>Move Page Head into a Component</h5>
+                            <div>Moved the repeated code in the <span class="inline-code">&lt;head&gt;</span> into a scaffss component.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.11.2</h2>
+                            <div class="date">2024/10/05</div>
+                            <h5>Fix HTML in AWS Associate Developer Exam Content Blog Post</h5>
+                            <div>Removed some extra HTML tags in a blog post that shouldn't have been there.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.11.1</h2>
+                            <div class="date">2024/09/28</div>
+                            <h5>Update Job Description</h5>
+                            <div>Updated my job description on the main page.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.11.0</h2>
+                            <div class="date">2024/09/21</div>
+                            <h5>Add AWS Associate Developer Exam Details Blog Post</h5>
+                            <div>Added a new blog post detailing information about the AWS Associate Developer exam.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.10.0</h2>
+                            <div class="date">2024/08/30</div>
+                            <h5>Add Giving an ECS Service a URL Blog Post</h5>
+                            <div>Added a new blog post detailing the steps needed point a Route 53 managed domain to an ECS service.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.9.0</h2>
+                            <div class="date">2024/08/23</div>
+                            <h5>Add Hosting a Docker Container in AWS Fargate Blog Post</h5>
+                            <div>Added a new blog post detailing the steps needed to build and run a Docker container in AWS using AWS ECR, ECS and Fargate.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.8.1</h2>
+                            <div class="date">2024/08/10</div>
+                            <h5>Fix Date on AWS Associate Developer Exam Content Blog Post</h5>
+                            <div>Replace placeholder date in blog post with actual date.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.8.0</h2>
+                            <div class="date">2024/08/10</div>
+                            <h5>AWS Associate Developer Exam Content Blog Post</h5>
+                            <div>Added a new blog post covering the content of the AWS Developer Associate exam, including a checklist I've created for doing a knowledge check against the exam content.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.7.0</h2>
+                            <div class="date">2024/07/10</div>
+                            <h5>Add AWS Certification Blog Post</h5>
+                            <div>Added a new blog post that serves as in an introduction to me blogging/jounalling about my experiences of taking the AWS Developer Associate exam.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.6.0</h2>
+                            <div class="date">2024/06/02</div>
+                            <h5>Add Hosting a Static Website in AWS S3 Blog Post</h5>
+                            <div>Added a new blog post that lists the steps to go through to host a static wesbite in AWS S3.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.5.0</h2>
+                            <div class="date">2024/05/07</div>
+                            <h5>Add Simple AWS Web Scraper Blog Post</h5>
+                            <div>Added a new blog post that discusses a simple infrastructure setup in AWS for a web scraper.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.4.2</h2>
+                            <div class="date">2024/05/06</div>
+                            <h5>Reduce Blog Page Width</h5>
+                            <div>Small update to the styling - decided that the blog page content width was too wide and didn't look correct, so reduced the width.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.4.1</h2>
+                            <div class="date">2024/04/29</div>
+                            <h5>Update Docker Multi-Stage Builds Blog Post Page Title</h5>
+                            <div>The Docker Multi-Stage Builds blog post had the wrong page title, updated to correct it.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.4.0</h2>
+                            <div class="date">2024/03/28</div>
+                            <h5>New Blog Post - Dependency Injection with .NET and C#</h5>
+                            <div>Added new blog post looking at what dependency injection is and how to do it in .NET and C#.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.3.0</h2>
+                            <div class="date">2023/12/27</div>
+                            <h5>New Blog Post - Docker Mutli-Stage Builds</h5>
+                            <div>Added new blog post looking at Docker Multi-Stage builds in more detail.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.2.1</h2>
+                            <div class="date">2023/12/13</div>
+                            <h5>Build Site Using Scaffss</h5>
+                            <div>There's an amount of duplicated code within the pages of this site, e.g. the footer. To reduce this code duplication I've created a very simple componentized framework for static sites called scaffss the repo for which can be found <a target="_blank" href="https://github.com/twarsop/scaffss">here</a>. The are no actual changes to this site in this update, I've just updated the code and build process to use scaffss and refactor some of the simple duplicated code. Specifcally the footer and header.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.2.0</h2>
+                            <div class="date">2023/12/02</div>
+                            <h5>Add Favicon</h5>
+                            <div>Added favicon to the site.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.1.1</h2>
+                            <div class="date">2023/11/29</div>
+                            <h5>Updated Home/Hello/Index Page Avatar Image</h5>
+                            <div>Small tweaks to the avatar image of me on the home/hello/index page.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.1.0</h2>
+                            <div class="date">2023/11/06</div>
+                            <h5>New Blog Post</h5>
+                            <div>Adding a new blog post for building and running a .NET console app in Docker.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.0.3</h2>
+                            <div class="date">2023/11/05</div>
+                            <h5>Update Previous Versions Text</h5>
+                            <div>
+                                <ul>
+                                    <li>Fixed errors in text on this page: dates and formatting</li>
+                                    <li>Added titles to those releases missing them</li>
+                                    <li>Formatted release titles differently, to stand out from the release description text</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.0.2</h2>
+                            <div class="date">2023/11/05</div>
+                            <h5>Update Homepage Text</h5>
+                            <div>Haven't updated the part of the homepage about my current job for a while, so doing that.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.0.1</h2>
+                            <div class="date">2023/11/04</div>
+                            <h5>Bug Fix</h5>
+                            <div>The Versioning link in the footer on blog pages was incorrect. It had been copied from other pages so was linking to a versioning.html file within the same directory. This isn't where the Versioning page exists, it exists a folder up relative to the blog pages. Updated to be the correct link.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v2.0.0</h2>
+                            <div class="date">2023/11/02</div>
+                            <h5>File Organisation</h5>
+                            <div>
+                                <ul>
+                                    <li>Removed the links to previous site versions within this Previous Versions page and deleted the previous version files. Maintaining multiple versions of the site was starting to become cumbersome and wasn't really adding any value since each version is tagged in <a target="_blank" href="https://github.com/twarsop/personal-website">github</a>. So it's still possible to download and view previous versions of this site from github.</li>
+                                    <li>Improved the file structure by moving the images into an "img" folder.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v1.4.0</h2>
+                            <div class="date">2023/10/24</div>
+                            <h5>Add First Blog Page</h5>
+                            <div>Added a blog section to the site and a first blog post about running a .NET console app via Docker.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v1.3.0</h2>
+                            <div class="date">2023/10/19</div>
+                            <h5>Add Last Updated Date</h5>
+                            <div>Added a last updated date to the page footers.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v1.2.0</h2>
+                            <div class="date">2022/03/08</div>
+                            <h5>Dynamic Year in Footer and Google Analytics</h5>
+                            <div>
+                                <ul>
+                                    <li>Updated the year string in the footer, changing it from a hardcoded string to using JS to dynamic display the current year. This way I won't need to remember to update a hardcoded string every year.</li>
+                                    <li>Added Google Analytics tracking to all pages of the site so I can see if anyone ever actually looks at it.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v1.1.0</h2>
+                            <div class="date">2021/09/28</div>
+                            <h5>Versioning, Previous Versions and This Website in Projects</h5>
+                            <div>
+                                Added new content to the site:
+                                <ul>
+                                    <li>Page explaining how the versioning works.</li>
+                                    <li>This website included in the Projects page (as a project that I've done/am working on), along with a link to the Previous Versions page.</li>
+                                    <li>The Previous Versions page which lists all the previous versions (and current version) of this website. Providing details of: version deployment date, what was included in the version and a link that takes you to that specfic version of the website.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v1.0.2</h2>
+                            <div class="date">2021/08/24</div>
+                            <h5>Bug Fix</h5>
+                            <div>The mobile layout/styling was not being used on mobile devices, the website was defaulting to the desktop styling on mobile devices instead. Fixed by including <b>viewport, width=device-width, initial-scale=1</b> in the <b>head</b> of every page.</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v1.0.1</h2>
+                            <div class="date">2021/08/23</div>
+                            <h5>Bug Fix</h5>
+                            <div>Fixed a bug: The file name for the github logo on the Other Me page was incorrect (differing by case, i.e. a case sensitivity issue).</div>
+                        </div>
+
+                        <div class="container">
+                            <h2>v1.0.0</h2>
+                            <div class="date">2021/08/23</div>
+                            <h5>Initial Release</h5>
+                            <div>The initial release of the website.</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        {{{ footer.html }}}
+            {{{ footer.html }}}
+        </div>
+        <script>
+            const burger = document.querySelector('.burger');
+
+            burger.addEventListener('click', () => {
+                const open = burger.getAttribute('aria-expanded') === 'true';
+                burger.setAttribute('aria-expanded', String(!open));
+                burger.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+                const menu = document.querySelector('.menu');
+                menu.classList.toggle('is-open', !open);
+            });
+        </script>
     </body>
 </html>
