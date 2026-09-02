@@ -20,23 +20,13 @@
                 </div>
             </nav>
 
-            <nav class="d-md-none navbar">
-                <div class="container">
-                    <div class="row mobile">
-                        <div id="menu" class="menu"><span class="hamburger"></span>menu</div>
-                        <ul id="menu-container" class="navbar-nav menu-container" style="display:none">
-                            <li class="col"><a href="../index.html">hello</a></li>
-                            <li class="col"><a href="../aboutme.html">about me</a></li>
-                            <li class="col"><a href="../blog.html" class="selected">blog</a></li>
-                            <li class="col"><a href="../projects.html">projects</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+            {{{ mobile_menu_burger.html }}}
 
             <div class="clear-both"></div>
 
-            <div class="container mt-4 mb-4 layout">
+            <div class="container mt-4 mb-4 layout" style="position: relative;">
+                {{{ mobile_menu_items_blog.html }}}
+
                 <div class="row justify-content-center">
                     <div class="col col-lg-6 blog">
                         <h2>Running a .NET Console App in Docker</h2>
@@ -238,5 +228,6 @@
 
             {{{ footer_blog.html }}}
         </div>
+        <script src="../mobile-menu.js"></script>
     </body>
 </html>
