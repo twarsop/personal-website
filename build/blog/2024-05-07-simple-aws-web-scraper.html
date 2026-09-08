@@ -53,23 +53,33 @@
                 </div>
             </nav>
 
-            <nav class="d-md-none navbar">
-                <div class="container">
-                    <div class="row mobile">
-                        <div id="menu" class="menu"><span class="hamburger"></span>menu</div>
-                        <ul id="menu-container" class="navbar-nav menu-container" style="display:none">
-                            <li class="col"><a href="../index.html">hello</a></li>
-                            <li class="col"><a href="../aboutme.html">about me</a></li>
-                            <li class="col"><a href="../blog.html" class="selected">blog</a></li>
-                            <li class="col"><a href="../projects.html">projects</a></li>
-                        </ul>
-                    </div>
+            <nav class="d-md-none">
+                <div class="desktop container bar">
+                    <h3 class="name">TOM WARSOP</h3>
+                    <button class="burger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+                        <span></span>
+                    </button>                                        
                 </div>
             </nav>
-
             <div class="clear-both"></div>
 
-            <div class="container mt-4 mb-4 layout">
+            <div class="container mt-4 mb-4 layout" style="position: relative;">
+                <div class="menu" id="mobile-menu" aria-label="Main">
+                    <ul class="menu_list">
+                        <li class="menu_item">
+                            <a class="menu_link" href="../index.html">Home</a>
+                        </li>
+                        <li class="menu_item">
+                            <a class="menu_link" href="../aboutme.html">About me</a>
+                        </li>
+                        <li class="menu_item">
+                            <a class="menu_link" href="../blog.html" aria-current="page">Blog</a>
+                        </li>
+                        <li class="menu_item">
+                            <a class="menu_link" href="../projects.html">Projects</a>
+                        </li>
+                    </ul>
+                </div>                
                 <div class="row justify-content-center">
                     <div class="col col-lg-6 blog">
                         <h2>Simple AWS Web Scraper</h2>
@@ -119,5 +129,6 @@
                     </div>
                 </div>
             </footer>        </div>
+        <script src="../mobile-menu.js"></script>
     </body>
 </html>
