@@ -106,6 +106,26 @@ p {
   color: var(--colour-purple);
 }
 
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 13px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--colour-purple);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 3px;
+  height: 24px;
+  background: var(--colour-purple);
+  box-shadow: 0 0 10px rgba(217, 70, 239, 0.7);
+}
+
 /****************************************** header ******************************************/
 
 header {    
