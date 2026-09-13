@@ -126,6 +126,21 @@ p {
   box-shadow: 0 0 10px rgba(217, 70, 239, 0.7);
 }
 
+.intro a {
+  color: var(--colour-purple);;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(217, 70, 239, 0.45);
+  padding-bottom: 1px;
+  transition: color .2s, border-color .2s;
+}
+
+.intro a:hover,
+.intro a:focus-visible {
+  color: var(--colour-amber);
+  border-color: var(--colour-amber);
+  outline: none;
+}
+
 /****************************************** header ******************************************/
 
 header {    
