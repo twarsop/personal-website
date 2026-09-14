@@ -490,6 +490,15 @@ nav .mobile .selected {
     fill: #fff;
 }
 
+/****************************************** main - about me ******************************************/
+
+.canvas-wrapper {
+    background: #0d0916;
+    border: 1px solid var(--colour-border);
+    border-radius: 12px;
+    padding: 20px;
+}
+
 /****************************************** main - other me ******************************************/
 
 .otherme {
