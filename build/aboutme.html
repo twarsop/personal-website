@@ -455,15 +455,75 @@
                 "#60a5fa", "#c4b5fd", "#229999", "#666666", "#2C3E50"
             ].reverse();
 
+            const RADIUS = 6;
+            const MIN_PX = 3;              // a segment must be this wide to count as an end
+
+            const endsOnly = (ctx) => {
+                const { dataIndex, datasetIndex, chart } = ctx;
+
+                const area = chart.chartArea;
+                if (!area) return 0;                       // first paint, before layout
+                const minPct = (MIN_PX / area.width) * 100;
+
+                const visible = chart.data.datasets
+                    .map((ds, i) => ({ i, v: ds.data[dataIndex] || 0 }))
+                    .filter(d => d.v >= minPct)
+                    .map(d => d.i);
+
+                if (!visible.length) return 0;
+
+                const first = visible[0];
+                const last  = visible[visible.length - 1];
+
+                if (datasetIndex === first && datasetIndex === last) return RADIUS;
+                if (datasetIndex === first) return { topLeft: RADIUS, bottomLeft: RADIUS };
+                if (datasetIndex === last)  return { topRight: RADIUS, bottomRight: RADIUS };
+                return 0;
+            };
+
+            const OTHER_THRESHOLD = 0.5;   // a language-year below this is folded into Other
+            const OTHER_MIN       = 0.4;   // below this, Other itself isn't worth drawing
+
+            // a language survives if it clears the threshold in at least one year
+            const keep = languages.filter(lang =>
+                languagesPercentagesEachYear[lang].some(v => v >= OTHER_THRESHOLD)
+            );
+
+            // zero each kept language's small years, but remember we did it
+            const keptData = {};
+            keep.forEach(lang => {
+                keptData[lang] = languagesPercentagesEachYear[lang]
+                    .map(v => (v >= OTHER_THRESHOLD ? v : 0));
+            });
+
+            // Other = whatever is missing from 100, so nothing is silently lost
+            const otherData = years.map((_, y) => {
+                const shown = keep.reduce((sum, lang) => sum + keptData[lang][y], 0);
+                const rest  = 100 - shown;
+                return rest >= OTHER_MIN ? rest : 0;
+            });
+
             var datasets = [];
 
-            languages.forEach((language) => {
+            keep.forEach((language) => {
                 datasets.push({
                     label: language,
                     backgroundColor: colours.pop(),
-                    data: languagesPercentagesEachYear[language],
+                    data: keptData[language],
+                    borderRadius: endsOnly,
+                    borderSkipped: false,
                 });
             });
+
+            if (otherData.some(v => v > 0)) {
+                datasets.push({
+                    label: "Other",
+                    backgroundColor: "#4c4260",
+                    data: otherData,
+                    borderRadius: endsOnly,
+                    borderSkipped: false,
+                });
+            }
 
             yearlyLanguageStatsChart = new Chart(document.getElementById("yearlyLanguageStatsChart").getContext("2d"), {
                 type: "bar",
