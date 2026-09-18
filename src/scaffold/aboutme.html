@@ -9,15 +9,19 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .canvas-wrapper {
+            display: flex;
+            flex-direction: column;
             width: 100%;
-            height: 400px;
+            height: 460px;              /* was 400 — room for the heading */
             position: relative;
         }
 
-        canvas {
+        .canvas-wrapper canvas {
             display: block;
+            flex: 1;                    /* fills what's left under the text */
+            min-height: 0;              /* lets it shrink below content size */
             width: 100% !important;
-            height: 100% !important;
+            height: auto !important;    /* was 100% — that was forcing the overflow */
         }
 
         .column {
@@ -497,10 +501,8 @@
                 options: {
                     indexAxis: "y",
                     plugins: {
-                        title: { 
-                            display: true,
-                            text: "Language Percentage in Github Commits Per Year 01/2020 to 01/2026"
-                        },
+                        title: { display: false },
+                        subtitle: { display: false },
                     },
                     responsive: true,
                     maintainAspectRatio: false,
@@ -590,6 +592,8 @@
                 </div>
                 <div class="col-md-6 column">
                     <div class="canvas-wrapper">
+                        <h2 class="chart-title">By year</h2>
+                        <p class="chart-sub">Language share per year, 01/2020 – 01/2026</p>
                         <canvas id="yearlyLanguageStatsChart"></canvas>
                     </div>
                 </div>

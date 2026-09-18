@@ -499,6 +499,22 @@ nav .mobile .selected {
     padding: 20px;
 }
 
+.chart-title {
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #d946ef;
+}
+
+.chart-sub {
+  margin: 0 0 18px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: #6f6683;
+}
+
 /****************************************** main - other me ******************************************/
 
 .otherme {
