@@ -141,6 +141,23 @@ p {
   outline: none;
 }
 
+.page-head {
+  margin-bottom: clamp(28px, 3.5vw, 44px);
+}
+
+.page-head h1 {
+  margin: 0 0 10px;
+  font-size: clamp(1.9rem, 1.2rem + 2.4vw, 2.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.page-head p {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--colour-text-secondary);
+}
+
 /****************************************** header ******************************************/
 
 header {    
@@ -537,97 +554,6 @@ nav .mobile .selected {
     margin-top: 10px;
 }
 
-/****************************************** main - projects ******************************************/
-
-.project {
-    padding-bottom: 20px;
-    padding-top: 10px;
-}
-
-.project .project-row {
-    height: 100%;
-}
-
-.project .project-row .description {
-    color:#2c2c2c;
-    background-color: #c5c6c7;
-    padding-left: 20px;
-    padding-right: 20px;
-    height: 100%;
-}
-
-.project .project-row .description .title {
-    font-weight: bold; 
-    font-size: 18px; 
-    padding-top: 20px;     
-}
-
-.project .project-row .description .status-label {
-    padding-top: 10px; 
-    font-size: 16px;
-}
-
-.project .project-row .description .progress-bar-row {
-    padding-top: 10px;
-}
-
-.project .project-row .description .progress-bar-row .progress-bar {
-    width: 100%;
-    font-size: 16px;
-    background-color: transparent !important;
-}
-
-.project .project-row .description .description-container {
-    padding-top: 10px;
-}
-
-progress,          /* All HTML5 progress enabled browsers */
-progress[role]     /* polyfill */
-{
-
-	/* Turns off styling - not usually needed, but good to know. */
-	appearance: none;
-	-moz-appearance: none;
-	-webkit-appearance: none;
-
-	/* Needs to be in here for Safari polyfill so background images work as expected. */
-	background-size: auto;
-}
-
-progress[value^="0"]::-webkit-progress-value,
-progress[value^="1"]::-webkit-progress-value,
-progress[value^="2"]::-webkit-progress-value{
-   background-color: #d80073;
-   border-radius: 7px;
-} 
-
-progress::-webkit-progress-value{
-    background-color: #d80073;
-    border-radius: 7px;
-} 
-
-progress[value^="0"]::-moz-progress-value,
-progress[value^="1"]::-moz-progress-value,
-progress[value^="2"]::-moz-progress-value{
-   background-color: #d80073;
-   border-radius: 7px;
-} 
-
-progress::-moz-progress-value{
-    background-color: #d80073;
-    border-radius: 7px;
-}
-
-progress::-webkit-progress-bar {
-    background-color: #fff;
-    border-radius: 7px;
-}
-
-progress::-moz-progress-bar {
-    background-color: #fff;
-    border-radius: 7px;
-}
-
 /****************************************** previous versions ******************************************/
 
 .previous-versions .container {
@@ -712,6 +638,142 @@ progress::-moz-progress-bar {
     background-color: #cccccc;
     font-weight: 500;
     font-family: var(--bs-font-monospace);
+}
+
+/****************************************** projects ******************************************/
+
+.projects-grid {
+  display: grid;
+  gap: clamp(20px, 2.4vw, 28px);
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  background: var(--colour-surface);
+  border: 1px solid rgb(from var(--colour-purple) r g b / 0.18);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color .25s, transform .25s, box-shadow .25s;
+}
+
+.project__shot {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--colour-bg);
+  overflow: hidden;
+}
+
+.project__shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform .4s ease;
+}
+
+.project:hover .project__shot img { transform: scale(1.03); }
+
+.project__shot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 55%,
+              rgb(from var(--colour-surface) r g b / 0.9) 100%);
+}
+
+.project__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px 22px 24px;
+}
+
+.project__title {
+  margin: 0 0 12px;
+  font-size: 1.12rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* status badge — prefixed to avoid Bootstrap's .badge */
+.project-badge {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px;
+  margin-bottom: 16px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.project-badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.project-badge--live {
+  color: var(--colour-success);
+  background: rgb(from var(--colour-success) r g b / 0.10);
+  border: 1px solid rgb(from var(--colour-success) r g b / 0.28);
+}
+
+.project-badge--ongoing {
+  color: var(--colour-amber);
+  background: rgb(from var(--colour-amber) r g b / 0.10);
+  border: 1px solid rgb(from var(--colour-amber) r g b / 0.28);
+}
+
+.project-badge--planning {
+  color: var(--colour-purple);
+  background: rgb(from var(--colour-purple) r g b / 0.10);
+  border: 1px solid rgb(from var(--colour-purple) r g b / 0.28);
+}
+
+.project__desc {
+  margin: 0 0 16px;
+  font-size: 0.93rem;
+  line-height: 1.68;
+  color: var(--colour-text-secondary);
+}
+
+.project__links {
+  margin-top: auto;
+  display: grid;
+  gap: 8px;
+}
+
+.project__links a {
+  font-size: 0.9rem;
+  color: var(--colour-purple);
+  text-decoration: none;
+  border-bottom: 1px solid rgb(from var(--colour-purple) r g b / 0.4);
+  padding-bottom: 1px;
+  justify-self: start;
+  transition: color .2s, border-color .2s;
+}
+
+.project__links a:hover,
+.project__links a:focus-visible {
+  color: var(--colour-amber);
+  border-color: var(--colour-amber);
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project, .project__shot img { transition: none; }
+  .project:hover { transform: none; }
+  .project:hover .project__shot img { transform: none; }
 }
 
 /****************************************** footer ******************************************/
