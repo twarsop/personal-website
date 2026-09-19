@@ -492,7 +492,7 @@ nav .mobile .selected {
 
 /****************************************** main - about me ******************************************/
 
-.canvas-wrapper {
+.canvas-wrapper-container {
     background: #0d0916;
     border: 1px solid var(--colour-border);
     border-radius: 12px;

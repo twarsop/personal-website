@@ -9,19 +9,13 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .canvas-wrapper {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            height: 460px;              /* was 400 — room for the heading */
             position: relative;
+            width: 100%;
+            height: 360px;
         }
 
         .canvas-wrapper canvas {
             display: block;
-            flex: 1;                    /* fills what's left under the text */
-            min-height: 0;              /* lets it shrink below content size */
-            width: 100% !important;
-            height: auto !important;    /* was 100% — that was forcing the overflow */
         }
 
         .column {
@@ -470,22 +464,40 @@
                 return rest >= OTHER_MIN ? rest : 0;
             });
 
+            function roundedSwatch(color, size = 11, radius = 3) {
+                const c = document.createElement("canvas");
+                const dpr = window.devicePixelRatio || 1;
+                c.width = c.height = size * dpr;
+                const ctx = c.getContext("2d");
+                ctx.scale(dpr, dpr);
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                ctx.roundRect(0, 0, size, size, radius);
+                ctx.fill();
+                return c;
+            }
+
             var datasets = [];
 
             keep.forEach((language) => {
+                const colour = colours.pop();
                 datasets.push({
                     label: language,
-                    backgroundColor: colours.pop(),
+                    backgroundColor: colour,
+                    pointStyle: roundedSwatch(colour),
                     data: keptData[language],
                     borderRadius: endsOnly,
                     borderSkipped: false,
                 });
             });
 
+            const OTHER_COLOUR = "#4c4260";
+
             if (otherData.some(v => v > 0)) {
                 datasets.push({
                     label: "Other",
-                    backgroundColor: "#4c4260",
+                    backgroundColor: OTHER_COLOUR,
+                    pointStyle: roundedSwatch(OTHER_COLOUR),
                     data: otherData,
                     borderRadius: endsOnly,
                     borderSkipped: false,
@@ -500,9 +512,25 @@
                 },
                 options: {
                     indexAxis: "y",
+                    datasets: {
+                        bar: {
+                            maxBarThickness: 26,
+                        }
+                    },
                     plugins: {
                         title: { display: false },
                         subtitle: { display: false },
+                        legend: {
+                            labels: {
+                                usePointStyle: true,
+                                color: "#9d94b0",
+                                padding: 16,
+                                font: {
+                                    family: "Inter, system-ui, sans-serif",
+                                    size: 12,
+                                },
+                            },
+                        },
                     },
                     responsive: true,
                     maintainAspectRatio: false,
@@ -510,10 +538,26 @@
                         x: {
                             stacked: true,
                             min: 0,
-                            max: 100
+                            max: 100,
+                            ticks: {
+                                stepSize: 20,
+                                color: "#6f6683",
+                                font: { family: "Inter, system-ui, sans-serif", size: 11 },
+                            },
+                            grid: {
+                                color: "rgba(255,255,255,0.06)",
+                                drawTicks: false,
+                            },
+                            border: { display: false },
                         },
                         y: {
-                            stacked: true
+                            stacked: true,
+                            ticks: {
+                                color: "#9d94b0",
+                                font: { family: "Inter, system-ui, sans-serif", size: 12 },
+                            },
+                            grid: { display: false },
+                            border: { display: false },
                         }
                     }
                 }
@@ -591,10 +635,12 @@
                     </div>
                 </div>
                 <div class="col-md-6 column">
-                    <div class="canvas-wrapper">
+                    <div class="canvas-wrapper-container">
                         <h2 class="chart-title">By year</h2>
                         <p class="chart-sub">Language share per year, 01/2020 – 01/2026</p>
-                        <canvas id="yearlyLanguageStatsChart"></canvas>
+                        <div class="canvas-wrapper">                        
+                            <canvas id="yearlyLanguageStatsChart"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
