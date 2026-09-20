@@ -752,8 +752,7 @@ nav .mobile .selected {
   gap: 8px;
 }
 
-.project__links a {
-  font-size: 0.9rem;
+a {
   color: var(--colour-purple);
   text-decoration: none;
   border-bottom: 1px solid rgb(from var(--colour-purple) r g b / 0.4);
@@ -762,8 +761,8 @@ nav .mobile .selected {
   transition: color .2s, border-color .2s;
 }
 
-.project__links a:hover,
-.project__links a:focus-visible {
+a:hover,
+a:focus-visible {
   color: var(--colour-amber);
   border-color: var(--colour-amber);
   outline: none;
