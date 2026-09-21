@@ -582,6 +582,80 @@ nav .mobile .selected {
     background-color:#2424b5;
 }
 
+/****************************************** versioning ******************************************/
+
+.format {
+  position: relative;
+  overflow: hidden;
+  margin: clamp(30px, 4vw, 46px) 0;
+  padding: clamp(28px, 4vw, 48px) 20px;
+  text-align: center;
+  background: var(--colour-surface);
+  border: 1px solid var(--colour-border);
+  border-radius: 16px;
+}
+
+/* faint grid fading up from the bottom, echoing the hero */
+.format::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 70%;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to right,
+    rgb(from var(--colour-purple) r g b / 0.10) 0 1px,
+    transparent 1px 44px
+  );
+  mask-image: linear-gradient(to top, #000, transparent);
+  -webkit-mask-image: linear-gradient(to top, #000, transparent);
+}
+
+.format__value {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  font-size: clamp(1.7rem, 0.9rem + 3.4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.format__value .dot {
+  color: var(--colour-text-muted);
+}
+
+.seg--major {
+  color: var(--colour-purple);
+  text-shadow: 0 0 26px rgb(from var(--colour-purple) r g b / 0.5);
+}
+
+.seg--minor {
+  color: var(--colour-purple-dark);
+  text-shadow: 0 0 26px rgb(from var(--colour-purple-dark) r g b / 0.55);
+}
+
+.seg--patch {
+  color: var(--colour-amber);
+  text-shadow: 0 0 26px rgb(from var(--colour-amber) r g b / 0.5);
+}
+
+.format__note {
+  position: relative;
+  z-index: 1;
+  margin: 16px 0 0;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--colour-text-muted);
+}
+
 /****************************************** blog ******************************************/
 
 .blog .container {
