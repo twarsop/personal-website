@@ -103,70 +103,54 @@
 
                 </div>
 
-                <div class="row">
+                <div class="defs">
 
-                    <div class="defs">
-
-                        <div class="def def--major">
-                            <h2 class="def__name">Major</h2>
-                            <p class="def__trigger">Bumped when</p>
-                            <p class="def__body">...</p>
-                            <p class="def__semver">
-                                <em>Semantic Versioning says</em>
-                                <span>...</span>
-                            </p>
-                        </div>
-
-                        <div class="def def--minor">
-                            <h2 class="def__name">Minor</h2>
-                            <p class="def__trigger">Bumped when</p>
-                            <p class="def__body">...</p>
-                            <p class="def__semver">
-                                <em>Semantic Versioning says</em>
-                                <span>...</span>
-                            </p>
-                        </div>
-
-                        <div class="def def--patch">
-                            <h2 class="def__name">Patch</h2>
-                            <p class="def__trigger">Bumped when</p>
-                            <p class="def__body">...</p>
-                            <ul class="def__list">
-                                <li>...</li>
-                            </ul>
-                            <p class="def__semver">
-                                <em>Semantic Versioning says</em>
-                                <span>...</span>
-                            </p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                        <h1 style="text-align: center;">
-                            Major.Minor.Patch
-                        </h1>
-                        <p>
-                            The usage of these are similar to Semantic Versioning, but are tweaked to better fit how this website will be developed. 
-                            <ul>
-                                <li><b>Major</b> version when <s>you make incompatible API changes</s> when any existing structure changes. This could be the strucutre of the code or the files (or anything else that has a defined structured). Bascially, this covers re-writes of the website.</li>
-                                <li><b>Minor</b> version when <s>you add functionality in a backwards compatible manner</s> new content is added. So adding anything new including: text, images and even pages. So long as the existing structure is adhered to.</li>
-                                <li>
-                                    <b>Patch</b> version when <s>you make backwards compatible bug fixes</s> existing content is modified. This covers things like:
-                                    <ul>
-                                        <li>Bug fixes</li>
-                                        <li>Styling tweaks (keeping the existing layout, just small modifications to it)</li>
-                                        <li>Text editing</li>
-                                        <li>Image updates</li>
-                                        <li>... Basically anything that's been modified that already exists within the markup.</li>
-                                    </ul>
-                                </li>
-                            </ul>
+                    <div class="def def--major">
+                        <h2 class="def__name">Major</h2>
+                        <p class="def__trigger">Bumped when</p>
+                        <p class="def__body">
+                            Any existing structure changes — the structure of the code, the files, or
+                            anything else with a defined structure. Basically, this covers re-writes of
+                            the website.
+                        </p>
+                        <p class="def__semver">
+                            <em>Semantic Versioning says</em>
+                            <span>when you make incompatible API changes</span>
                         </p>
                     </div>
+
+                    <div class="def def--minor">
+                        <h2 class="def__name">Minor</h2>
+                        <p class="def__trigger">Bumped when</p>
+                        <p class="def__body">
+                            New content is added — text, images, even whole pages. So long as the existing
+                            structure is adhered to.
+                        </p>
+                        <p class="def__semver">
+                            <em>Semantic Versioning says</em>
+                            <span>when you add functionality in a backwards compatible manner</span>
+                        </p>
+                    </div>
+
+                    <div class="def def--patch">
+                        <h2 class="def__name">Patch</h2>
+                        <p class="def__trigger">Bumped when</p>
+                        <p class="def__body">
+                            Existing content is modified. This covers things like:
+                        </p>
+                        <ul class="def__list">
+                            <li>Bug fixes</li>
+                            <li>Styling tweaks — same layout, small modifications</li>
+                            <li>Text editing</li>
+                            <li>Image updates</li>
+                            <li>Anything already in the markup that's been changed</li>
+                        </ul>
+                        <p class="def__semver">
+                            <em>Semantic Versioning says</em>
+                            <span>when you make backwards compatible bug fixes</span>
+                        </p>
+                    </div>
+
                 </div>
 
             <footer>
