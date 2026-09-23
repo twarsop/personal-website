@@ -658,9 +658,8 @@ nav .mobile .selected {
 
 .defs {
   display: grid;
-  gap: clamp(16px, 2vw, 22px);
+  gap: 22px;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  margin-top: clamp(26px, 3vw, 36px);
 }
 
 .def {
