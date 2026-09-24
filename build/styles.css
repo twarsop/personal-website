@@ -596,7 +596,7 @@ nav .mobile .selected {
 .release { --accent: var(--colour-amber); list-style: none; }
 .release--major { --accent: var(--colour-purple); }
 .release--minor { --accent: var(--colour-purple-dark); }
-.release--patch { --accent: var(--colour-purple-amber); }
+.release--patch { --accent: var(--colour-amber); }
 
 .release__card {
   height: 100%;
