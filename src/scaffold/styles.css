@@ -663,6 +663,90 @@ nav .mobile .selected {
 .release__body li { margin-bottom: 3px; }
 .release__body li::marker { color: var(--accent); }
 
+/* ---------- timeline: single side (mobile) ---------- */
+.split {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.split::after {                                  /* the rail */
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: linear-gradient(to bottom,
+              rgb(from var(--colour-purple) r g b / 0.5),
+              var(--colour-border) 50%);
+}
+
+.split .release {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 12px;
+}
+
+.split .release::before {                        /* the dot */
+  content: "";
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 20px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--colour-bg);
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 10px rgb(from var(--accent) r g b / 0.6);
+}
+
+/* ---------- timeline: two sides (desktop) ---------- */
+@media (min-width: 900px) {
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 60px;
+  }
+
+  .split::before {                               /* pushes the right column down so cards interleave */
+    content: "";
+    grid-column: 2;
+    grid-row: 1;
+    height: 52px;
+  }
+
+  .split::after {
+    left: 50%;
+    transform: translateX(-1px);
+  }
+
+  .split .release {
+    grid-row: span 2;
+    align-self: start;
+    padding-left: 0;
+  }
+
+  .split .release:nth-child(odd)  { grid-column: 1; }
+  .split .release:nth-child(even) { grid-column: 2; }
+
+  .split .release:nth-child(odd)::before  { left: auto; right: -37px; }
+  .split .release:nth-child(even)::before { left: -37px; }
+
+  .split .release::after {                       /* line from dot to card */
+    content: "";
+    position: absolute;
+    top: 26px;
+    width: 23px;
+    height: 2px;
+    background: rgb(from var(--accent) r g b / 0.45);
+  }
+
+  .split .release:nth-child(odd)::after  { right: -23px; }
+  .split .release:nth-child(even)::after { left: -23px; }
+}
+
 /****************************************** versioning ******************************************/
 
 .format {
