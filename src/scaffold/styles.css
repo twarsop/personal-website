@@ -637,10 +637,9 @@ nav .mobile .selected {
 
 .release__date {
   margin-left: auto;
-  font-size: .95rem;
-  font-weight: 600;
-  line-height: 1.35;
-  color: var(--colour-heading);
+  font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--colour-text-muted);
 }
 
 .release__title {
