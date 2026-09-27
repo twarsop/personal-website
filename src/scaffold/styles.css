@@ -608,6 +608,23 @@ nav .mobile .selected {
   transition: border-colour .2s;
 }
 
+.release--current > .release__card {
+  border-color: rgb(from var(--accent) r g b / 0.55);
+  border-top-color: var(--accent);
+  box-shadow: 0 0 24px rgb(from var(--accent) r g b / 0.12);
+}
+
+.release__current {
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 999px;
+  color: var(--colour-bg);
+  background: var(--colour-text);
+}
+
 .release__meta {
   display: flex;
   flex-wrap: wrap;
