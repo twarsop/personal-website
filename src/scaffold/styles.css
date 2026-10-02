@@ -679,6 +679,259 @@ nav .mobile .selected {
 .release__body li { margin-bottom: 3px; }
 .release__body li::marker { color: var(--accent); }
 
+/****************************************** release activity grid ******************************************/
+
+html { scroll-behavior: smooth; }
+
+.activity {
+  margin-bottom: 34px;
+  padding: 18px 20px 16px;
+  background: var(--colour-surface);
+  border: 1px solid var(--colour-border);
+  border-radius: 14px;
+}
+
+.activity__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-bottom: 16px;
+}
+
+.activity__title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--colour-purple);
+}
+
+.activity__count {
+  font-size: 12px;
+  color: var(--colour-text-muted);
+}
+
+/* ---------- the grid ---------- */
+.activity__scroll {
+  position: relative;
+  overflow-x: auto;
+  padding: 4px 2px 8px;          /* room so hover glow isn't clipped */
+}
+
+.activity__inner {
+  --cell: 15px;                  /* square width  */
+  --row: 15px;                   /* square height */
+  --gap: 4px;
+  display: grid;
+  grid-template-columns: auto max-content;
+  column-gap: 10px;
+  row-gap: 6px;
+  width: max-content;
+  margin-inline: auto;
+}
+
+.activity__months {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--cell));
+  column-gap: var(--gap);
+  font-size: 10px;
+  line-height: 1;
+  color: var(--colour-text-muted);
+}
+
+.activity__months span { white-space: nowrap; }
+
+.activity__rows {
+  display: grid;
+  grid-auto-rows: var(--row);
+  row-gap: var(--gap);
+  font-size: 10.5px;
+  line-height: var(--row);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  color: var(--colour-text-muted);
+}
+
+.activity__cells {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--cell));
+  grid-auto-rows: var(--row);
+  gap: var(--gap);
+}
+
+/* ---------- squares ---------- */
+.cell {
+  display: block;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.cell.is-out { visibility: hidden; }     /* future dates */
+
+.cell--major { --accent: var(--colour-purple); }
+.cell--minor { --accent: var(--colour-purple-dark); }
+.cell--patch { --accent: var(--colour-amber); }
+
+.cell--major,
+.cell--minor,
+.cell--patch {
+  background: var(--accent);
+  box-shadow: 0 0 8px rgb(from var(--accent) r g b / 0.55);
+}
+
+/* more than one release in a square: a small hole in the middle */
+.cell--multi {
+  background: radial-gradient(circle, var(--colour-surface) 0 2px, var(--accent) 2.6px);
+}
+
+.cell__count { display: none; }
+
+a.cell {
+  padding: 0;
+  border: 0;
+  justify-self: stretch;     /* new: undo the site-wide `a` rule */
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+a.cell:hover,
+a.cell:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: none;
+  transform: scale(1.35);
+  box-shadow:
+    0 0 0 2px var(--colour-bg),
+    0 0 0 3.5px var(--accent),
+    0 0 14px rgb(from var(--accent) r g b / 0.7);
+}
+
+/* ---------- month squares: wider, fill the card, show a count ---------- */
+.activity[data-unit="month"] .activity__inner {
+  --row: 26px;
+  --gap: 5px;
+  width: 100%;
+  grid-template-columns: auto 1fr;
+}
+
+.activity[data-unit="month"] .activity__months,
+.activity[data-unit="month"] .activity__cells {
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.activity[data-unit="month"] .activity__months span { text-align: center; }
+
+.activity[data-unit="month"] .activity__cells .cell { border-radius: 5px; }
+
+.activity[data-unit="month"] .cell--multi { background: var(--accent); }
+
+.activity[data-unit="month"] .cell__count {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;                               /* readable on purple and violet */
+}
+
+.activity[data-unit="month"] .cell--patch .cell__count { color: var(--colour-bg); }   /* dark on amber */
+
+.activity[data-unit="month"] a.cell:hover,
+.activity[data-unit="month"] a.cell:focus-visible { transform: scale(1.08); }
+
+.activity[data-unit="month"] .legend-multi { display: none; }   /* the numbers say it */
+
+/* ---------- legend ---------- */
+.activity__legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px 16px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--colour-text-muted);
+}
+
+.activity__legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.activity__legend .cell {
+  width: 11px;
+  height: 11px;
+  box-shadow: none;
+}
+
+.activity__legend .cell--multi {
+  --accent: var(--colour-text-muted);
+  background: radial-gradient(circle, var(--colour-surface) 0 1.5px, var(--accent) 2px);
+}
+
+/* ---------- tooltip ---------- */
+.activity__tip {
+  position: fixed;
+  z-index: 100;
+  max-width: 320px;
+  padding: 9px 11px;
+  background: var(--colour-surface-alt);
+  border: 1px solid var(--colour-border);
+  border-radius: 9px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--colour-text-secondary);
+  pointer-events: none;
+}
+
+.activity__tip[hidden] { display: none; }
+
+.activity__tip-date {
+  margin-bottom: 4px;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--colour-text-muted);
+}
+
+.activity__tip-row + .activity__tip-row { margin-top: 3px; }
+.activity__tip-row b { margin-right: 6px; font-weight: 700; }
+.activity__tip-row b[data-type="major"] { color: var(--colour-purple); }
+.activity__tip-row b[data-type="minor"] { color: var(--colour-purple-dark); }
+.activity__tip-row b[data-type="patch"] { color: var(--colour-amber); }
+.activity__tip-day { margin-right: 6px; color: var(--colour-text-muted); }
+
+/* ---------- landing on a release ---------- */
+.release { scroll-margin-top: 24px; }
+
+.release.is-flash > .release__card {
+  animation: release-flash 4s ease-out;
+}
+
+@keyframes release-flash {
+  0%, 60% {
+    box-shadow:
+      0 0 0 2px var(--accent),
+      0 0 34px rgb(from var(--accent) r g b / 0.5);
+  }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+@media (max-width: 700px) {
+  .activity__inner { --cell: 12px; --row: 12px; --gap: 3px; }
+  .activity[data-unit="month"] .activity__inner { --row: 22px; --gap: 3px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  a.cell { transition: none; }
+  a.cell:hover, a.cell:focus-visible { transform: none; }
+}
+
 /* ---------- timeline: single side (mobile) ---------- */
 .split {
   position: relative;
