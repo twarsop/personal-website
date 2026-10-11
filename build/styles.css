@@ -1,3 +1,64 @@
+/****************************************** base (replaces Bootstrap) ******************************************/
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body { line-height: 1.5; }
+
+h1, h2, h3, h4, h5, h6, p, ul, ol { margin-top: 0; }
+p { margin-bottom: 1rem; }
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 3vw, 24px);
+}
+
+.content { margin-block: 1.5rem; }           /* was mt-4 mb-4 */
+
+/* desktop vs mobile nav, same 768px breakpoint Bootstrap used */
+.nav-desktop { display: none; }
+.nav-mobile  { display: block; }
+
+@media (min-width: 768px) {
+  .nav-desktop { display: block; }
+  .nav-mobile  { display: none; }
+}
+
+nav .desktop .layout {                       /* the nav list, now a real <ul> */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/****************************************** home ******************************************/
+
+.hero {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;                /* stacked on phones */
+  align-items: start;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .hero { grid-template-columns: 1fr 2fr; }  /* was col-md-4 / col-md-8 */
+}
+
+.connect {
+  padding: 24px;                             /* was p-4 */
+}
+
+@media (min-width: 768px) {
+  .connect { max-width: 360px; }             /* full width on phones, capped above */
+}
+
 /****************************************** global classes ******************************************/
 
 :root {
