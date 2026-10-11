@@ -1438,7 +1438,6 @@ a.cell:focus-visible {
   letter-spacing: -0.01em;
 }
 
-/* status badge — prefixed to avoid Bootstrap's .badge */
 .project-badge {
   align-self: flex-start;
   display: inline-flex;
