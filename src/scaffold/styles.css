@@ -42,13 +42,72 @@ nav .desktop .layout {                       /* the nav list, now a real <ul> */
 .hero {
   display: grid;
   gap: 24px;
-  grid-template-columns: 1fr;                /* stacked on phones */
+  grid-template-columns: 1fr;            /* phones: square avatar on top */
   align-items: start;
   margin-bottom: 1.5rem;
 }
 
+.hero__img {
+  width: 100%;
+  border-radius: 14px;
+}
+
+/* tablets: square avatar left, text right */
 @media (min-width: 768px) {
-  .hero { grid-template-columns: 1fr 2fr; }  /* was col-md-4 / col-md-8 */
+  .hero { grid-template-columns: 1fr 2fr; }
+}
+
+/* 960px and up: wide picture, text over its right-hand side */
+@media (min-width: 960px) {
+  .hero {
+    position: relative;
+    gap: 0;
+    grid-template-columns: 44% 1fr;
+    aspect-ratio: 2 / 1;
+    align-items: center;
+    border: 1px solid var(--colour-border);
+    border-radius: 14px;
+  }
+
+  .hero__img {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    object-fit: cover;
+    object-position: left center;
+    border-radius: 13px;                 /* inside the card's 1px border */
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(to right,
+      transparent 38%,
+      rgb(0 0 8 / 0.45) 55%,
+      rgb(0 0 8 / 0.7) 100%);
+  }
+
+  .hero__text {
+    grid-column: 2;
+    position: relative;
+    z-index: 1;
+    padding: 24px 32px 24px 0;
+  }
+
+  .hero__text p:last-child { margin-bottom: 0; }
+
+  /* slightly tighter text so it still fits over the picture */
+  .hero__text .eyebrow { font-size: 17px; margin-bottom: 10px; }
+  .hero__text p:not(.eyebrow) { font-size: 0.95rem; line-height: 1.55; }
+}
+
+/* wide screens: back to full-size text */
+@media (min-width: 1200px) {
+  .hero__text { padding: 40px 48px 40px 0; }
+  .hero__text .eyebrow { font-size: 20px; margin-bottom: 13px; }
+  .hero__text p:not(.eyebrow) { font-size: 1.1rem; line-height: 1.6; }
 }
 
 .connect {
@@ -1231,7 +1290,6 @@ a.cell:focus-visible {
   border-radius: 16px;
 }
 
-/* faint grid fading up from the bottom, echoing the hero */
 .format::after {
   content: "";
   position: absolute;
