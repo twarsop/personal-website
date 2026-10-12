@@ -662,6 +662,16 @@ nav .mobile .selected {
   color: #6f6683;
 }
 
+.charts {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(0, 1fr);                 /* stacked on phones */
+}
+
+@media (min-width: 768px) {
+  .charts { grid-template-columns: repeat(2, minmax(0, 1fr)); }   /* was col-md-6 */
+}
+
 /****************************************** main - other me ******************************************/
 
 .otherme {

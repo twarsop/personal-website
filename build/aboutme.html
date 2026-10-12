@@ -53,10 +53,6 @@
         .canvas-wrapper canvas {
             display: block;
         }
-
-        .column {
-            padding: 10px;
-        }
     </style>
     <script>
         var languageStats = {
@@ -554,7 +550,7 @@
                 return rest >= OTHER_MIN ? rest : 0;
             });
 
-            function roundedSwatch(color, size = 11, radius = 3) {
+            function roundedSwatch(color, size = 8, radius = 3) {
                 const c = document.createElement("canvas");
                 const dpr = window.devicePixelRatio || 1;
                 c.width = c.height = size * dpr;
@@ -669,30 +665,30 @@
     <div class="page">
         <header>
         </header>
-        <nav class="d-none d-md-block">
+        <nav class="nav-desktop">
             <div class="desktop container">
                 <h3 class="name">TOM WARSOP</h3>
-                <div class="layout">
+                <ul class="layout">
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="aboutme.html" class="selected">ABOUT ME</a></li>
                     <li><a href="blog.html">BLOG</a></li>
                     <li><a href="projects.html">PROJECTS</a></li>
-                </div>
+                </ul>
             </div>
         </nav>
 
-        <nav class="d-md-none">
+        <nav class="nav-mobile">
             <div class="desktop container bar">
                 <h3 class="name">TOM WARSOP</h3>
                 <button class="burger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
                     <span></span>
-                </button>                                        
+                </button>
             </div>
         </nav>
 
         <div class="clear-both"></div>
 
-        <div class="container mt-4 mb-4 layout" style="position: relative;">
+        <div class="container content layout" style="position: relative;">
             <div class="menu" id="mobile-menu" aria-label="Main">
                 <ul class="menu_list">
                     <li class="menu_item">
@@ -710,31 +706,25 @@
                 </ul>
             </div>
 
-            <div class="row">
-                <div class="col text-second intro">
-                    <p>
-                        The following charts provide an overview of the programming languages I've used over the years, reflecting the languages I've actively used in personal projects since 2020. They are based solely on data from my personal GitHub account, so excluded any work-related repositories. The information is derived from my commits using <a href="https://github.com/twarsop/github-stats" target="_blank">these scripts I wrote</a>.
-                    </p>
-                </div>
+            <div class="intro text-second">
+                <p>
+                    The following charts provide an overview of the programming languages I've used over the years, reflecting the languages I've actively used in personal projects since 2020. They are based solely on data from my personal GitHub account, so excluded any work-related repositories. The information is derived from my commits using <a href="https://github.com/twarsop/github-stats" target="_blank" rel="noopener noreferrer">these scripts I wrote</a>.
+                </p>
             </div>
 
-            <div class="row">
-                <div class="col-md-6 column">
-                    <div class="canvas-wrapper-container">
-                        <h2 class="chart-title">All Commits</h2>
-                        <p class="chart-sub">Language share, 01/2020 – 01/2026</p>
-                        <div class="canvas-wrapper">
-                            <canvas id="allTimeLanguageStatsChart"></canvas>
-                        </div>
+            <div class="charts">
+                <div class="canvas-wrapper-container">
+                    <h2 class="chart-title">All commits</h2>
+                    <p class="chart-sub">Language share, 01/2020 – 01/2026</p>
+                    <div class="canvas-wrapper">
+                        <canvas id="allTimeLanguageStatsChart"></canvas>
                     </div>
                 </div>
-                <div class="col-md-6 column">
-                    <div class="canvas-wrapper-container">
-                        <h2 class="chart-title">By year</h2>
-                        <p class="chart-sub">Language share per year, 01/2020 – 01/2026</p>
-                        <div class="canvas-wrapper">                        
-                            <canvas id="yearlyLanguageStatsChart"></canvas>
-                        </div>
+                <div class="canvas-wrapper-container">
+                    <h2 class="chart-title">By year</h2>
+                    <p class="chart-sub">Language share per year, 01/2020 – 01/2026</p>
+                    <div class="canvas-wrapper">
+                        <canvas id="yearlyLanguageStatsChart"></canvas>
                     </div>
                 </div>
             </div>
