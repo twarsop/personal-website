@@ -1296,6 +1296,229 @@ a.cell:focus-visible {
   .post:hover .post__arrow, .post:focus-within .post__arrow { transform: none; }
 }
 
+/****************************************** blog post ******************************************/
+
+.article {
+  max-width: 760px;
+  margin: 0 auto clamp(24px, 4vw, 48px);
+}
+
+/* ---------- head ---------- */
+.article__head {
+  padding-bottom: 22px;
+  margin-bottom: clamp(28px, 4vw, 40px);
+  border-bottom: 1px solid var(--colour-border);
+  background: none;                          /* undo the global header background */
+}
+
+.article__back {
+  display: inline-block;
+  margin-bottom: 22px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--colour-text-muted);
+  transition: color .2s;
+}
+
+.article__back:hover,
+.article__back:focus-visible {
+  color: var(--colour-amber);
+  outline: none;
+}
+
+.article__series {
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--colour-amber);
+}
+
+.article__title {
+  margin: 0 0 14px;
+  font-size: clamp(1.9rem, 1.2rem + 2.4vw, 2.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.article__date {
+  display: block;
+  margin-bottom: 14px;
+  font-size: .9rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--colour-text-muted);
+}
+
+.article__head .post__tags { margin: 0; }
+
+/* ---------- body ---------- */
+.prose {
+  color: var(--colour-text-secondary);
+}
+
+.prose h2 {
+  margin: 2.6rem 0 1rem;
+  font-size: 1.6rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.prose h3 {
+  margin: 2rem 0 .75rem;
+  font-size: 1.1rem;
+  line-height: 1.35;
+  color: var(--colour-purple);
+  overflow-wrap: anywhere;
+}
+
+.prose > :first-child { margin-top: 0; }
+
+.prose ul,
+.prose ol {
+  margin: 0 0 1rem;
+  padding-left: 1.4rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.prose li { margin-bottom: .3rem; }
+.prose li::marker { color: var(--colour-purple); }
+
+.prose .note {
+  padding: 12px 16px;
+  font-size: 1rem;
+  background: var(--colour-surface);
+  border-left: 3px solid var(--colour-amber);
+  border-radius: 0 8px 8px 0;
+}
+
+.prose .inline-code {
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  color: var(--colour-text);
+  background: rgb(from var(--colour-purple) r g b / 0.12);
+  overflow-wrap: anywhere;
+}
+
+.prose pre {
+  margin: 0 0 1.25rem;
+  padding: 16px 18px;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .9rem;
+  line-height: 1.6;
+  color: var(--colour-text);
+  background: var(--colour-surface);
+  border: 1px solid var(--colour-border);
+  border-radius: 10px;
+}
+
+.prose pre code { font-family: inherit; }
+
+.prose img {
+  width: 100%;
+  margin: 0 auto 1.5rem;                     /* centres the posts' narrower inline-width images */
+  border: 1px solid var(--colour-border);
+  border-radius: 10px;
+}
+
+/* the narrower images get too small to read on phones */
+@media (max-width: 600px) {
+  .prose img { width: 100% !important; }
+}
+
+.prose li > ul,
+.prose li > ol,
+.prose ul ul,
+.prose ol ul {
+  margin: .4rem 0 .4rem;
+  font-size: 1rem;
+}
+
+.prose b,
+.prose strong {
+  font-weight: 600;
+  color: var(--colour-text);
+}
+
+.prose table {
+  display: block;                            /* lets a wide table scroll instead of the page */
+  width: 100%;
+  margin: 0 0 1.5rem;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: .95rem;
+  line-height: 1.5;
+}
+
+.prose th,
+.prose td {
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--colour-border);
+}
+
+.prose td .inline-code { white-space: nowrap; }
+
+.prose th {
+  font-weight: 600;
+  color: var(--colour-heading);
+  background: var(--colour-surface);
+}
+
+/* ---------- next post ---------- */
+.article__next {
+  display: block;
+  margin-top: clamp(32px, 5vw, 48px);
+  padding: 16px 18px;
+  background: var(--colour-surface);
+  border: 1px solid var(--colour-border);
+  border-top: 3px solid var(--colour-purple);
+  border-radius: 12px;
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+}
+
+.article__next:hover,
+.article__next:focus-visible {
+  border-color: var(--colour-amber);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+  outline: none;
+}
+
+.article__next-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--colour-text-muted);
+}
+
+.article__next-title {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--colour-heading);
+  transition: color .2s;
+}
+
+.article__next:hover .article__next-title,
+.article__next:focus-visible .article__next-title { color: var(--colour-amber); }
+
+.article__next:hover .post__arrow,
+.article__next:focus-visible .post__arrow { transform: translateX(4px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .article__next, .article__next-title, .article__back { transition: none; }
+  .article__next:hover, .article__next:focus-visible { transform: none; }
+  .article__next:hover .post__arrow, .article__next:focus-visible .post__arrow { transform: none; }
+}
+
 /****************************************** versioning ******************************************/
 
 .format {
@@ -1461,63 +1684,6 @@ a.cell:focus-visible {
 .def__semver span {
   text-decoration: line-through;
   opacity: 0.75;
-}
-
-/****************************************** blog ******************************************/
-
-.blog .container {
-    background-color: #c5c6c7;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-}
-
-.blog .date {
-    margin-bottom: 10px;
-}
-
-.blog .tags {
-    float: left;
-    margin-top: 10px;
-}
-
-.blog .tags .tag {
-    background-color: #0050A0;
-    color: #fff;
-    padding: 5px;
-}
-
-.blog .link {
-    float: right;
-}
-
-.blog .link a {
-    background-color:#0066cc;
-    color:#fff;
-    text-decoration: none;
-    padding: 10px;
-    display: inline-block;
-}
-
-.blog .link a:hover {
-    background-color:#2424b5;
-}
-
-.blog pre {
-    margin: 0px !important;
-}
-
-.blog img {
-    margin-bottom: 20px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.blog .inline-code {
-    background-color: #cccccc;
-    font-weight: 500;
-    font-family: var(--bs-font-monospace);
 }
 
 /****************************************** projects ******************************************/

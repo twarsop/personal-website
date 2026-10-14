@@ -7,6 +7,10 @@
         <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
         <link rel="manifest" href="../img/site.webmanifest">
         
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+        
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQ6LRSEYQ9"></script>
         <script>
@@ -40,19 +44,19 @@
         <div class="page">
             <header>
             </header>
-            <nav class="d-none d-md-block">
+            <nav class="nav-desktop">
                 <div class="desktop container">
                     <h3 class="name">TOM WARSOP</h3>
-                    <div class="layout">
+                    <ul class="layout">
                         <li><a href="../index.html">HOME</a></li>
                         <li><a href="../aboutme.html">ABOUT ME</a></li>
                         <li><a href="../blog.html" class="selected">BLOG</a></li>
                         <li><a href="../projects.html">PROJECTS</a></li>
-                    </div>
+                    </ul>
                 </div>
             </nav>
 
-            <nav class="d-md-none">
+            <nav class="nav-mobile">
                 <div class="desktop container bar">
                     <h3 class="name">TOM WARSOP</h3>
                     <button class="burger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
@@ -62,7 +66,7 @@
             </nav>
             <div class="clear-both"></div>
 
-            <div class="container mt-4 mb-4 layout" style="position: relative;">
+            <div class="container content layout" style="position: relative;">
                 <div class="menu" id="mobile-menu" aria-label="Main">
                     <ul class="menu_list">
                         <li class="menu_item">
@@ -79,22 +83,26 @@
                         </li>
                     </ul>
                 </div>                
-                <div class="row justify-content-center">
-                    <div class="col col-lg-6 blog">
-                        <h2>AWS Associate Developer Exam Details</h2>
-                        <div class="date">2024/09/21</div>
-                        <div style="margin-bottom:40px;">
-                            <div class="tags">Tags: <span class="tag">AWS</span> <span class="tag">AWS Certification</span> <span class="tag">AWS Associate Developer</span></div>
-                            <div style="clear: both;"></div>
-                        </div>         
-                        
-                        <h3>Introduction</h3>
+                <article class="article">
+                    <header class="article__head">
+                        <a class="article__back" href="../blog.html"><span aria-hidden="true">&larr;</span> All posts</a>
+                        <h1 class="article__title">AWS Associate Developer Exam Details</h1>
+                        <time class="article__date" datetime="2024-09-21">2024/09/21</time>
+                        <ul class="post__tags" aria-label="Tags">
+                            <li>AWS</li>
+                            <li>AWS Certification</li>
+                            <li>AWS Associate Developer</li>
+                        </ul>
+                    </header>
+
+                    <div class="prose">
+                        <h2>Introduction</h2>
 
                         <p>
                             I covered the content of the AWS Associate Developer exam in a previous post, this post is just to cover some of the exam details.
                         </p>
 
-                        <h3>Details</h3>
+                        <h2>Details</h2>
 
                         <ul>
                             <li>Costs 150 USD</li>
@@ -106,10 +114,9 @@
                             <li>Qualification valid for 3 years</li>
                         </ul>
 
-                        <h3>The End</h3>
-
+                        <h2>The End</h2>
                     </div>
-                </div>
+                </article>
             </div>
 
             <footer>

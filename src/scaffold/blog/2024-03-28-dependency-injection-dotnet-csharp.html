@@ -8,15 +8,15 @@
         <div class="page">
             {{{ header.html }}}
 
-            <nav class="d-none d-md-block">
+            <nav class="nav-desktop">
                 <div class="desktop container">
                     <h3 class="name">TOM WARSOP</h3>
-                    <div class="layout">
+                    <ul class="layout">
                         <li><a href="../index.html">HOME</a></li>
                         <li><a href="../aboutme.html">ABOUT ME</a></li>
                         <li><a href="../blog.html" class="selected">BLOG</a></li>
                         <li><a href="../projects.html">PROJECTS</a></li>
-                    </div>
+                    </ul>
                 </div>
             </nav>
 
@@ -24,77 +24,78 @@
 
             <div class="clear-both"></div>
 
-            <div class="container mt-4 mb-4 layout" style="position: relative;">
+            <div class="container content layout" style="position: relative;">
                 {{{ mobile_menu_items_blog.html }}}
             
-                <div class="row justify-content-center">
-                    <div class="col col-lg-6 blog">
-                        <h2>Dependency Injection with .NET and C#</h2>
-                        <div class="date">2024/03/28</div>
-                        <div style="margin-bottom:40px;">
-                            <div class="tags">Tags: <span class="tag">Dependency Injection</span> <span class="tag">.NET</span> <span class="tag">C#</span></div>
-                            <div style="clear: both;"></div>
-                        </div>         
-                        
-                        <h3>Introduction</h3>
+                <article class="article">
+                    <header class="article__head">
+                        <a class="article__back" href="../blog.html"><span aria-hidden="true">&larr;</span> All posts</a>
+                        <h1 class="article__title">Dependency Injection with .NET and C#</h1>
+                        <time class="article__date" datetime="2024-03-28">2024/03/28</time>
+                        <ul class="post__tags" aria-label="Tags">
+                            <li>Dependency Injection</li>
+                            <li>.NET</li>
+                            <li>C#</li>
+                        </ul>
+                    </header>
+
+                    <div class="prose">
+                        <h2>Introduction</h2>
 
                         <p>
                             Sometimes one class may depend on another class for some functionality. For example, we could be writing a game and have a class for rolling a die and a game class that depends on this die rolling class for it's results. A way to write this code could be:
                         </p>
 
-                        <pre>
-                            <code>
-        public class DieRoller
-        {
-            private readonly Random _random;
-        
-            public DieRoller()
-            {
-                _random = new Random();
-            }
-        
-            public int RollDie()
-            {
-                return _random.Next(1,7);
-            }
-        }
+                        <pre><code>public class DieRoller
+{
+    private readonly Random _random;
 
-        public class Game
-        {
-            private readonly DieRoller _dieRoller;
+    public DieRoller()
+    {
+        _random = new Random();
+    }
 
-            public Game()
-            {
-                _dieRoller = new DieRoller();
-            }
+    public int RollDie()
+    {
+        return _random.Next(1,7);
+    }
+}
 
-            public void Play()
-            {
-                Console.WriteLine($"Die roll: {_dieRoller.RollDie()}");
-            }
-        }
-                            </code>
-                        </pre>
+public class Game
+{
+    private readonly DieRoller _dieRoller;
+
+    public Game()
+    {
+        _dieRoller = new DieRoller();
+    }
+
+    public void Play()
+    {
+        Console.WriteLine($"Die roll: {_dieRoller.RollDie()}");
+    }
+}</code></pre>
 
                         <p>
                             Here, <span class="inline-code">Game</span> has a dependency on <span class="inline-code">DieRoller</span>. This dependency means that the <span class="inline-code">Game</span> and <span class="inline-code">DieRoller</span> classes are very tightly coupled, which comes with some issues:
-                            <ul>
-                                <li>It's difficult to swap out different implementations of the dependency.</li>
-                                <li>Testing becomes a lot more difficult: if we have a tightly coupled dependency, like above, whenever we write tests for the <span class="inline-code">Game</span> class we are implicitly also writing tests for the <span class="inline-code">DieRoller</span> as when <span class="inline-code">Game</span> executes it's relying on a specific implmentation of die rolling.</li>
-                            </ul>
                         </p>
+
+                        <ul>
+                            <li>It's difficult to swap out different implementations of the dependency.</li>
+                            <li>Testing becomes a lot more difficult: if we have a tightly coupled dependency, like above, whenever we write tests for the <span class="inline-code">Game</span> class we are implicitly also writing tests for the <span class="inline-code">DieRoller</span> as when <span class="inline-code">Game</span> executes it's relying on a specific implmentation of die rolling.</li>
+                        </ul>
 
                         <p>
                             Dependency Injection (DI) is a design pattern that allows us to break occurences of this tight coupling between classes. It's a way of implementing Inversion of Control (IoC). Simply: instead of an object having to create it's own dependencies (the above example) another object injects these dependencies into the object.
                         </p>
 
-                        <img style="width:60%" src="img/2024-03-28-dependency-injection-dotnet-csharp/dependency_injection.png" />
+                        <img style="width:60%" src="img/2024-03-28-dependency-injection-dotnet-csharp/dependency_injection.png" alt="Dependency injection" />
 
-                        <p>
+                        <p class="note">
                             Note: DI is related to the D in SOLID.
                         </p>
 
-                        <h3>DI, .NET and C#</h3>
+                        <h2>DI, .NET and C#</h2>
 
                         <p>
                             We can modify the example above to use DI to provide an implmentation of the <span class="inline-code">DieRoller</span> class to the <span class="inline-code">Game</span> class as follows.
@@ -104,52 +105,44 @@
                             First, we'll create an interface for the <span class="inline-code">DieRoller</span> class and have it implement it:
                         </p>
 
-                        <pre>
-                            <code>
-        public interface IDieRoller
-        {
-            public int RollDie();
-        }
-        
-        public class DieRoller : IDieRoller
-        {
-            private readonly Random _random;
+                        <pre><code>public interface IDieRoller
+{
+    public int RollDie();
+}
 
-            public DieRoller()
-            {
-                _random = new Random();
-            }
+public class DieRoller : IDieRoller
+{
+    private readonly Random _random;
 
-            public int RollDie()
-            {
-                return _random.Next(1,7);
-            }
-        }
-                            </code>
-                        </pre>
+    public DieRoller()
+    {
+        _random = new Random();
+    }
+
+    public int RollDie()
+    {
+        return _random.Next(1,7);
+    }
+}</code></pre>
 
                         <p>
                             Next, we'll update the <span class="inline-code">Game</span> class to reference the interface instead of the concrete implementation and have it provided in it's constructor as a parameter:
                         </p>
 
-                        <pre>
-                            <code>
-        public class Game
-        {
-            private readonly IDieRoller _dieRoller;
+                        <pre><code>public class Game
+{
+    private readonly IDieRoller _dieRoller;
 
-            public Game(IDieRoller dieRoller)
-            {
-                _dieRoller = dieRoller;
-            }
+    public Game(IDieRoller dieRoller)
+    {
+        _dieRoller = dieRoller;
+    }
 
-            public void Play()
-            {
-                Console.WriteLine($"Die roll: {_dieRoller.RollDie()}");
-            }
-        }
-                            </code>
-                        </pre>
+    public void Play()
+    {
+        Console.WriteLine($"Die roll: {_dieRoller.RollDie()}");
+    }
+}</code></pre>
 
                         <p>
                             We need to make some changes in the code that instantiates the <span class="inline-code">Game</span> class (e.g. the <span class="inline-code">Program.cs</span> file) but first we need to install the nuget package: <span class="inline-code">Microsoft.Extensions.Hosting</span>
@@ -159,16 +152,12 @@
                             Once this package is included we can use it to create a DI container - this is the other thing that will inject the dependencies for us. But for this container to know how to inject our dependencies we need to configure it to know about our services. For our example, we do that with the following code:
                         </p>
 
-                        <pre>
-                            <code>
-        using var host = Host.CreateDefaultBuilder()
-            .ConfigureServices((context, services) => {
-                services.AddTransient&lt;IDieRoller, DieRoller&gt;();
-                services.AddTransient&lt;Game&gt;();
-            })
-            .Build();
-                            </code>
-                        </pre>
+                        <pre><code>using var host = Host.CreateDefaultBuilder()
+    .ConfigureServices((context, services) => {
+        services.AddTransient&lt;IDieRoller, DieRoller&gt;();
+        services.AddTransient&lt;Game&gt;();
+    })
+    .Build();</code></pre>
 
                         <p>
                             <span class="inline-code">Host.CreateDefaultBuilder()</span> gives us an application host. The host is an object that encapsulates an applications resources and lifetime functionality which includes DI.
@@ -182,24 +171,20 @@
                             To run our application using the host we can use the following code:
                         </p>
 
-                        <pre>
-                            <code>
-        var game = host.Services.GetRequiredService<Game>();
-        game.Play();
-                            </code>
-                        </pre>
+                        <pre><code>var game = host.Services.GetRequiredService&lt;Game&gt;();
+game.Play();</code></pre>
 
                         <p>
                             Note that we haven't explicity instantiated a <span class="inline-code">DieRoller</span> object when creating the <span class="inline-code">Game</span> object - our DI container takes care of this for us.
                         </p>
 
-                        <h3>Service Lifetimes</h3>
+                        <h2>Service Lifetimes</h2>
 
                         <p>
                             In the above example when we registered the services we used the <span class="inline-code">AddTransient()</span> function. This means we are specifiying that this service should have a transient lifetime. There are three different service lifetimes, described in the table below.
                         </p>
 
-                        <table class="table">
+                        <table>
                             <thead>
                                 <tr>
                                     <th>Lifetime</th>
@@ -230,13 +215,13 @@
                             </tbody>
                         </table>
 
-                        <h3>The End</h3>
+                        <h2>The End</h2>
 
                         <p>
                             I've created a github repo <a href="https://github.com/twarsop/dependency-injection-dotnet-csharp" target="_blank">here</a> that contains the example code in this post containing two runnable solutions - one without DI and one with DI.
                         </p>
                     </div>
-                </div>
+                </article>
             </div>
 
             {{{ footer_blog.html }}}

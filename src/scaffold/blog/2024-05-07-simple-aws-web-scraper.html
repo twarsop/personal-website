@@ -8,15 +8,15 @@
         <div class="page">
             {{{ header.html }}}
 
-            <nav class="d-none d-md-block">
+            <nav class="nav-desktop">
                 <div class="desktop container">
                     <h3 class="name">TOM WARSOP</h3>
-                    <div class="layout">
+                    <ul class="layout">
                         <li><a href="../index.html">HOME</a></li>
                         <li><a href="../aboutme.html">ABOUT ME</a></li>
                         <li><a href="../blog.html" class="selected">BLOG</a></li>
                         <li><a href="../projects.html">PROJECTS</a></li>
-                    </div>
+                    </ul>
                 </div>
             </nav>
 
@@ -24,31 +24,39 @@
 
             <div class="clear-both"></div>
 
-            <div class="container mt-4 mb-4 layout" style="position: relative;">
+            <div class="container content layout" style="position: relative;">
                 {{{ mobile_menu_items_blog.html }}}
                 
-                <div class="row justify-content-center">
-                    <div class="col col-lg-6 blog">
-                        <h2>Simple AWS Web Scraper</h2>
-                        <div class="date">2024/05/07</div>
-                        <div style="margin-bottom:40px;">
-                            <div class="tags">Tags: <span class="tag">Web Scraping</span> <span class="tag">AWS</span> <span class="tag">EventBridge</span> <span class="tag">Lambda</span> <span class="tag">S3</span> <span class="tag">RDS</span> <span class="tag">VPC</span></div>
-                            <div style="clear: both;"></div>
-                        </div>         
-                        
-                        <h3>Introduction</h3>
+                <article class="article">
+                    <header class="article__head">
+                        <a class="article__back" href="../blog.html"><span aria-hidden="true">&larr;</span> All posts</a>
+                        <h1 class="article__title">Simple AWS Web Scraper</h1>
+                        <time class="article__date" datetime="2024-05-07">2024/05/07</time>
+                        <ul class="post__tags" aria-label="Tags">
+                            <li>Web Scraping</li>
+                            <li>AWS</li>
+                            <li>EventBridge</li>
+                            <li>Lambda</li>
+                            <li>S3</li>
+                            <li>RDS</li>
+                            <li>VPC</li>
+                        </ul>
+                    </header>
+
+                    <div class="prose">
+                        <h2>Introduction</h2>
 
                         <p>
                             This blog post presents a very simple architecture within AWS for implementing a web scraper that parses some data from a website and stores it in a database.
                         </p>
 
-                        <h3>Architecture</h3>
+                        <h2>Architecture</h2>
 
                         <p>
                             The architecture that can be used for this is as follows:
                         </p>
 
-                        <img style="width:100%" src="img/2024-05-07-simple-aws-web-scraper/simple_aws_web_scraper.png" />
+                        <img src="img/2024-05-07-simple-aws-web-scraper/simple_aws_web_scraper.png" alt="Simple aws web scraper" />
 
                         <ul>
                             <li>Starting from the bottom of this architecture, we have an RDS database that we want to store some scraped data in.</li>
@@ -60,10 +68,9 @@
                             <li>The execution of the two Lambdas is coordinated by two EventBridge schedules. These can be configured to trigger other AWS services based on a schedule. So we configure their schedules to execute the first Lambda before the second one.</li>
                         </ul>
 
-                        <h3>The End</h3>
-
+                        <h2>The End</h2>
                     </div>
-                </div>
+                </article>
             </div>
 
             {{{ footer_blog.html }}}

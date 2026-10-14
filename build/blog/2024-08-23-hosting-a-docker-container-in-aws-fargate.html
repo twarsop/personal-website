@@ -7,6 +7,10 @@
         <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
         <link rel="manifest" href="../img/site.webmanifest">
         
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+        
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQ6LRSEYQ9"></script>
         <script>
@@ -40,19 +44,19 @@
         <div class="page">
             <header>
             </header>
-            <nav class="d-none d-md-block">
+            <nav class="nav-desktop">
                 <div class="desktop container">
                     <h3 class="name">TOM WARSOP</h3>
-                    <div class="layout">
+                    <ul class="layout">
                         <li><a href="../index.html">HOME</a></li>
                         <li><a href="../aboutme.html">ABOUT ME</a></li>
                         <li><a href="../blog.html" class="selected">BLOG</a></li>
                         <li><a href="../projects.html">PROJECTS</a></li>
-                    </div>
+                    </ul>
                 </div>
             </nav>
 
-            <nav class="d-md-none">
+            <nav class="nav-mobile">
                 <div class="desktop container bar">
                     <h3 class="name">TOM WARSOP</h3>
                     <button class="burger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
@@ -62,7 +66,7 @@
             </nav>
             <div class="clear-both"></div>
 
-            <div class="container mt-4 mb-4 layout" style="position: relative;">
+            <div class="container content layout" style="position: relative;">
                 <div class="menu" id="mobile-menu" aria-label="Main">
                     <ul class="menu_list">
                         <li class="menu_item">
@@ -79,16 +83,22 @@
                         </li>
                     </ul>
                 </div>                
-                <div class="row justify-content-center">
-                    <div class="col col-lg-6 blog">
-                        <h2>Hosting a Docker Container in AWS Fargate</h2>
-                        <div class="date">2024/08/23</div>
-                        <div style="margin-bottom:40px;">
-                            <div class="tags">Tags: <span class="tag">Docker</span> <span class="tag">AWS</span> <span class="tag">AWS ECR</span> <span class="tag">AWS ECS</span> <span class="tag">AWS Fargate</span></div>
-                            <div style="clear: both;"></div>
-                        </div>         
-                        
-                        <h3>Introduction</h3>
+                <article class="article">
+                    <header class="article__head">
+                        <a class="article__back" href="../blog.html"><span aria-hidden="true">&larr;</span> All posts</a>
+                        <h1 class="article__title">Hosting a Docker Container in AWS Fargate</h1>
+                        <time class="article__date" datetime="2024-08-23">2024/08/23</time>
+                        <ul class="post__tags" aria-label="Tags">
+                            <li>Docker</li>
+                            <li>AWS</li>
+                            <li>AWS ECR</li>
+                            <li>AWS ECS</li>
+                            <li>AWS Fargate</li>
+                        </ul>
+                    </header>
+
+                    <div class="prose">
+                        <h2>Introduction</h2>
 
                         <p>
                             This blog post details how to host a Docker container in AWS. Specifically, using <a href="https://aws.amazon.com/fargate/" target="_blank">AWS Fargate</a> which provides serverless compute. This tutorial assumes the Docker container being deployed is some kind of web app.
@@ -98,21 +108,22 @@
                             The following diagram gives an overview of what needs to do be done:
                         </p>
 
-                        <img style="width:100%" src="img/2024-08-23-hosting-a-docker-container-in-aws-fargate/hosting_a_docker_container_in_aws_fargate.png" />
+                        <img src="img/2024-08-23-hosting-a-docker-container-in-aws-fargate/hosting_a_docker_container_in_aws_fargate.png" alt="Hosting a docker container in aws fargate" />
                         
                         <p>
                             The are some prerequistes, the following needs to be installed locally:
-                            <ul>
-                                <li>Docker</li>
-                                <li>AWS CLI</li>
-                            </ul>
                         </p>
+
+                        <ul>
+                            <li>Docker</li>
+                            <li>AWS CLI</li>
+                        </ul>
 
                         <p>
                             The rest of this post goes through each of the steps to get the Docker container deployed into AWS.
                         </p>
 
-                        <h3>Build Docker Image Locally</h3>
+                        <h2>Build Docker Image Locally</h2>
 
                         <p>
                             The first step is to create a Docker image locally which is going to be used to create the Docker container that will ultimately be hosted in AWS:
@@ -124,7 +135,7 @@
                             <li style="list-style-type:none"><span class="inline-code">docker build . -t my-web-app</span></li>
                         </ul>
 
-                        <h3>Create ECR Repository</h3>
+                        <h2>Create ECR Repository</h2>
 
                         <p>
                             Next we need to create somewhere to host our container image in AWS. AWS <a href="https://aws.amazon.com/ecr/" target="_blank">Elastic Container Registry</a> (ECR) can be used for this. To create a repository to house our image:
@@ -161,7 +172,7 @@
                             The URI for our ECR image is: <span class="inline-code">docker push [account-number].dkr.ecr.[region].amazonaws.com/[repository-name]:latest</span> - we'll need this later.
                         </p>
 
-                        <h3>Create ECS Cluster</h3>
+                        <h2>Create ECS Cluster</h2>
 
                         <p>
                             Now we need to setup somewhere to host a container built from the image. For this we'll use AWS <a href="https://aws.amazon.com/ecs/" target="_blank">Elastic Container Service</a> (ECS). The first thing we need to do in here is create a cluster:
@@ -175,7 +186,7 @@
                             <li>Create</li>
                         </ul>
 
-                        <h3>Define a Task Defintion</h3>
+                        <h2>Define a Task Defintion</h2>
 
                         <p>
                             Next up is creating a task definition. This will ultimately be used by a service running in the ECS cluster:
@@ -193,7 +204,7 @@
                             <li>Create</li>
                         </ul>
 
-                        <h3>Create an ECS Service</h3>
+                        <h2>Create an ECS Service</h2>
 
                         <p>
                             The last step is to create an ECS service based off the task definition. The ECS service is the actual thing that runs the container.
@@ -211,10 +222,9 @@
                             <li>Once the service has been created you should be able to access the container on <span class="inline-code">[public ip]:[host port]</span></li>
                         </ul>
 
-                        <h3>The End</h3>
-
+                        <h2>The End</h2>
                     </div>
-                </div>
+                </article>
             </div>
 
             <footer>

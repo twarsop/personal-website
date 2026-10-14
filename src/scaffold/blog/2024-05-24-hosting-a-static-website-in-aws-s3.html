@@ -8,15 +8,15 @@
         <div class="page">
             {{{ header.html }}}
 
-            <nav class="d-none d-md-block">
+            <nav class="nav-desktop">
                 <div class="desktop container">
                     <h3 class="name">TOM WARSOP</h3>
-                    <div class="layout">
+                    <ul class="layout">
                         <li><a href="../index.html">HOME</a></li>
                         <li><a href="../aboutme.html">ABOUT ME</a></li>
                         <li><a href="../blog.html" class="selected">BLOG</a></li>
                         <li><a href="../projects.html">PROJECTS</a></li>
-                    </div>
+                    </ul>
                 </div>
             </nav>
 
@@ -24,19 +24,24 @@
 
             <div class="clear-both"></div>
 
-            <div class="container mt-4 mb-4 layout" style="position: relative;">
+            <div class="container content layout" style="position: relative;">
                 {{{ mobile_menu_items_blog.html }}}
 
-                <div class="row justify-content-center">
-                    <div class="col col-lg-6 blog">
-                        <h2>Hosting a Static Website in AWS S3</h2>
-                        <div class="date">2024/05/24</div>
-                        <div style="margin-bottom:40px;">
-                            <div class="tags">Tags: <span class="tag">Website Hosting</span> <span class="tag">AWS</span> <span class="tag">S3</span> <span class="tag">Route 53</span></div>
-                            <div style="clear: both;"></div>
-                        </div>         
-                        
-                        <h3>Introduction</h3>
+                <article class="article">
+                    <header class="article__head">
+                        <a class="article__back" href="../blog.html"><span aria-hidden="true">&larr;</span> All posts</a>
+                        <h1 class="article__title">Hosting a Static Website in AWS S3</h1>
+                        <time class="article__date" datetime="2024-05-24">2024/05/24</time>
+                        <ul class="post__tags" aria-label="Tags">
+                            <li>Website Hosting</li>
+                            <li>AWS</li>
+                            <li>S3</li>
+                            <li>Route 53</li>
+                        </ul>
+                    </header>
+
+                    <div class="prose">
+                        <h2>Introduction</h2>
 
                         <p>
                             A cheap and hassle free method for hosting a static website (one where the content doesn't change) uses S3 in AWS. The following goes over the steps for deploying such a website to S3.
@@ -50,14 +55,14 @@
                             It's also assumed in this tutorial that you have already acquired the domain via Route 53 (another AWS service).
                         </p>
 
-                        <h3>Create the S3 Buckets</h3>
+                        <h2>Create the S3 Buckets</h2>
 
                         <ol>
                             <li>Create two buckets: <span class="inline-code">mysite.com</span> and <span class="inline-code">www.mysite.com</span> leaving all default values</li>
                             <li>Upload website files to the <span class="inline-code">mysite.com</span> bucket</li>
                         </ol>
 
-                        <h3>Enable Static Website Hosting</h3>
+                        <h2>Enable Static Website Hosting</h2>
 
                         <ol>
                             <li>Select the <span class="inline-code">mysite.com</span> bucket</li>
@@ -68,7 +73,7 @@
                             <li>"Save changes"</li>
                         </ol>
 
-                        <h3>Allow Public Access</h3>
+                        <h2>Allow Public Access</h2>
 
                         <ol>
                             <li>Select the <span class="inline-code">mysite.com</span> bucket</li>
@@ -78,38 +83,34 @@
                             <li>"Save changes"</li>
                         </ol>
 
-                        <h3>Attach Public Read Access Policy</h3>
+                        <h2>Attach Public Read Access Policy</h2>
 
                         <ol>
                             <li>Select the <span class="inline-code">mysite.com</span> bucket</li>
                             <li>Select "Permissions"</li>
                             <li>Under "Bucket Policy" choose "Edit"</li>
                             <li>Paste the following in: 
-                                <pre>
-                                    <code>
-    {
-        "Version": "2012-10-17",
-        "Statement": [
-            {
-                "Sid": "PublicReadGetObject",
-                "Effect": "Allow",
-                "Principal": "*",
-                "Action": [
-                    "s3:GetObject"
-                ],
-                "Resource": [
-                    "arn:aws:s3:::mysite.com/*"
-                ]
-            }
-        ]
-    }
-                                    </code>
-                                </pre>
+                                <pre><code>{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::mysite.com/*"
+            ]
+        }
+    ]
+}</code></pre>
                             </li>
                             <li>"Save changes"</li>
                         </ol>
 
-                        <h3>Test the Website Works</h3>
+                        <h2>Test the Website Works</h2>
 
                         <ol>
                             <li>Select the <span class="inline-code">mysite.com</span> bucket</li>
@@ -118,7 +119,7 @@
                             <li>The website should load</li>
                         </ol>
 
-                        <h3>Subdomain Bucket Redirect</h3>
+                        <h2>Subdomain Bucket Redirect</h2>
 
                         <ol>
                             <li>Select the <span class="inline-code">www.mysite.com</span> bucket</li>
@@ -131,7 +132,7 @@
                             <li>"Save changes"</li>
                         </ol>
 
-                        <h3>Create Alias Records for the Root Domain and Subdomain</h3>
+                        <h2>Create Alias Records for the Root Domain and Subdomain</h2>
 
                         <ol>
                             <li>Open Route 53</li>
@@ -152,14 +153,13 @@
                             Repeat the above steps for the subdomain. This is the same except when defining the simple record enter <span class="inline-code">www</span> under "Record name" for the subdomain and choose the S3 bucket for <span class="inline-code">www.mysite.com</span>
                         </p>
 
-                        <h3>The End</h3>
+                        <h2>The End</h2>
 
                         <p>
                             You should now be able to access your website by visiting either <span class="inline-code">mysite.com</span> or <span class="inline-code">www.mysite.com</span>
                         </p>
-
                     </div>
-                </div>
+                </article>
             </div>
 
             {{{ footer_blog.html }}}

@@ -8,15 +8,15 @@
         <div class="page">
             {{{ header.html }}}
 
-            <nav class="d-none d-md-block">
+            <nav class="nav-desktop">
                 <div class="desktop container">
                     <h3 class="name">TOM WARSOP</h3>
-                    <div class="layout">
+                    <ul class="layout">
                         <li><a href="../index.html">HOME</a></li>
                         <li><a href="../aboutme.html">ABOUT ME</a></li>
                         <li><a href="../blog.html" class="selected">BLOG</a></li>
                         <li><a href="../projects.html">PROJECTS</a></li>
-                    </div>
+                    </ul>
                 </div>
             </nav>
 
@@ -24,19 +24,22 @@
 
             <div class="clear-both"></div>
 
-            <div class="container mt-4 mb-4 layout" style="position: relative;">
+            <div class="container content layout" style="position: relative;">
                 {{{ mobile_menu_items_blog.html }}}
                 
-                <div class="row justify-content-center">
-                    <div class="col col-lg-6 blog">
-                        <h2>AWS Certification</h2>
-                        <div class="date">2024/07/10</div>
-                        <div style="margin-bottom:40px;">
-                            <div class="tags">Tags: <span class="tag">AWS Certification</span> <span class="tag">AWS Associate Developer</span></div>
-                            <div style="clear: both;"></div>
-                        </div>         
-                        
-                        <h3>Introduction</h3>
+                <article class="article">
+                    <header class="article__head">
+                        <a class="article__back" href="../blog.html"><span aria-hidden="true">&larr;</span> All posts</a>
+                        <h1 class="article__title">AWS Certification</h1>
+                        <time class="article__date" datetime="2024-07-10">2024/07/10</time>
+                        <ul class="post__tags" aria-label="Tags">
+                            <li>AWS Certification</li>
+                            <li>AWS Associate Developer</li>
+                        </ul>
+                    </header>
+
+                    <div class="prose">
+                        <h2>Introduction</h2>
 
                         <p>
                             In an attempt to both solidify and extend my AWS knowledge I have decided to try at least one AWS certification. I've done professional qualifications before and always wanted to blog about the experience but inevitably didn't becuase I did the exam first and then was going to blog about it after. However, after putting in all the effort into the exam prep and taking it I then lost steam and put off blogging about it until it was a distant memory and harder to blog about. In an attempt to learn from this mistake I'm going to blog/journal as I prepare for and take the exam, not after.
@@ -46,7 +49,7 @@
                             So this is a sort introductory post to get me in the routine of journalling about it in a series of blog posts.
                         </p>
 
-                        <h3>Why Do an Exam?</h3>
+                        <h2>Why Do an Exam?</h2>
 
                         <p>
                             There is an argument that if I wanted to learn about AWS and it's services I don't need to put myself through the stress of doing an exam. If I want to learn about something in particular then there are plenty of good (probably even free) resources out there that I can use. And this is a very good and valid point.
@@ -68,25 +71,25 @@
                             I find that having the goal of sitting an exam helps focus me and actually means that I will learn the subject matter and remember it. Rather than just reading something once and forgetting it forever.
                         </p>
 
-                        <h3>Which Exam?</h3>
+                        <h2>Which Exam?</h2>
 
                         <p>
                             I'm going to study for and take the <a href="https://aws.amazon.com/certification/certified-developer-associate" target="_blank">Developer Associate exam</a>. This seems to make the most sense as I already have some cloud (specifically AWS) experience and the Associate level exams say "Prior cloud and/or strong on-premises IT experience recommended.".  
                         </p>
 
-                        <h3>What About the Cloud Practioner Foundational Exam?</h3>
+                        <h2>What About the Cloud Practioner Foundational Exam?</h2>
 
                         <p>
                             There is a <a href="https://aws.amazon.com/certification/certified-cloud-practitioner" target="_blank">Cloud Practioner</a> exam that you can take that's billed as a foundational exam and even appears in the Developer (and all the other) certifications path as a starting point (<a href="https://d1.awsstatic.com/training-and-certification/docs/AWS_certification_paths.pdf" target="_blank">here for reference</a>):
                         </p>
 
-                        <img src="img/2024-07-10-aws-certification/developer_path.png" style="width:100%" />
+                        <img src="img/2024-07-10-aws-certification/developer_path.png" alt="Developer path" />
                     
                         <p>
                             But, as this screen grab shows, it is optional and the summary for it says "No prior experience needed" which suggests that it's for those that have no cloud experience and so you don't actually have to do it. 
                         </p>
 
-                        <h3>Am I Going to do the Foundational Exam?</h3>
+                        <h2>Am I Going to do the Foundational Exam?</h2>
 
                         <p>
                             Being me I wanted to check out the foundational exam further just to make sure that I wasn't missing something and double check whether I would have to in fact take this one exam before the actual one that I wanted to.
@@ -96,50 +99,50 @@
                             More information can be found from AWS about who should take the Developer Associate exam <a href ="https://aws.amazon.com/certification/certified-developer-associate/" target="_blank">here</a>:
                         </p>
 
-                        <img src="img/2024-07-10-aws-certification/who_should_take_this_exam.png" style="width:100%" />
+                        <img src="img/2024-07-10-aws-certification/who_should_take_this_exam.png" alt="Who should take this exam" />
 
                         <p>
                             And <a href ="https://aws.amazon.com/certification/faqs/" target="_blank">here</a> clarifies if there is anything mandatory for taking the Developer Associate exam:
                         </p>
 
-                        <img src="img/2024-07-10-aws-certification/exam_requirements.png" style="width:100%" />
+                        <img src="img/2024-07-10-aws-certification/exam_requirements.png" alt="Exam requirements" />
 
                         <p>
                             Plus having a quick google for if you can skip the Practioner exam and go straight for an Associate exam throws up <a href="https://www.reddit.com/r/AWSCertifications/comments/l2eels/can_i_skip_the_practitioner_and_go_for_the/" target="_blank">this</a> Reddit post:
                         </p>
 
-                        <img src="img/2024-07-10-aws-certification/reddit_question.png" style="width:100%" />
+                        <img src="img/2024-07-10-aws-certification/reddit_question.png" alt="Reddit question" />
 
                         <p>
                             I won't screen grab the whole thing, but these summarise the answers nicely:
                         </p>
 
-                        <img src="img/2024-07-10-aws-certification/reddit_answer_1.png" style="width:100%" />
+                        <img src="img/2024-07-10-aws-certification/reddit_answer_1.png" alt="Reddit answer 1" />
 
-                        <img src="img/2024-07-10-aws-certification/reddit_answer_2.png" style="width:100%" />
+                        <img src="img/2024-07-10-aws-certification/reddit_answer_2.png" alt="Reddit answer 2" />
 
                         <p>
                             In summary the sides of the argument seem to be:
-                            <ul>
-                                <li>Yes, you should skip it in you have any relevant experience as it's a fairly simplistic exam.</li>
-                                <li>No, you shouldn't skip it as it gets you used to taking AWS exams, it gives you money off another exam (although I guess overall you still have to pay more than just taking the single exam) and it's easy to pass because it's a fairly simplistic exam.</li>
-                            </ul>
                         </p>
+
+                        <ul>
+                            <li>Yes, you should skip it in you have any relevant experience as it's a fairly simplistic exam.</li>
+                            <li>No, you shouldn't skip it as it gets you used to taking AWS exams, it gives you money off another exam (although I guess overall you still have to pay more than just taking the single exam) and it's easy to pass because it's a fairly simplistic exam.</li>
+                        </ul>
 
                         <p>
                             The whole "it gets you used to taking an AWS exam" did actually start to convince me that maybe this would just be good prep for taking the actual exam I wanted to take. But then I looked at the content for the Practioner exam (found <a href="https://explore.skillbuilder.aws/learn/course/external/view/elearning/134/aws-cloud-practitioner-essentials" target="_blank">here</a>)
                         </p>
 
-                        <img src="img/2024-07-10-aws-certification/practioner_exam_contents.png" style="width:100%" />
+                        <img src="img/2024-07-10-aws-certification/practioner_exam_contents.png" alt="Practioner exam contents" />
 
                         <p>
                             Reading this content list cemented my decision: I'm not going to take the Practioner exam. It's optional and the contents of the exam itself are very rudimentary. I've not got unlimited time to prep for and take the Developer exam so spending time on this one seem like an unnecessry side quest.
                         </p>
 
-                        <h3>The End</h3>
-
+                        <h2>The End</h2>
                     </div>
-                </div>
+                </article>
             </div>
 
             {{{ footer_blog.html }}}

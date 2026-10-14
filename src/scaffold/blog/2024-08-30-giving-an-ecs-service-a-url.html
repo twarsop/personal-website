@@ -8,15 +8,15 @@
         <div class="page">
             {{{ header.html }}}
 
-            <nav class="d-none d-md-block">
+            <nav class="nav-desktop">
                 <div class="desktop container">
                     <h3 class="name">TOM WARSOP</h3>
-                    <div class="layout">
+                    <ul class="layout">
                         <li><a href="../index.html">HOME</a></li>
                         <li><a href="../aboutme.html">ABOUT ME</a></li>
                         <li><a href="../blog.html" class="selected">BLOG</a></li>
                         <li><a href="../projects.html">PROJECTS</a></li>
-                    </div>
+                    </ul>
                 </div>
             </nav>
 
@@ -24,19 +24,24 @@
 
             <div class="clear-both"></div>
 
-            <div class="container mt-4 mb-4 layout" style="position: relative;">
+            <div class="container content layout" style="position: relative;">
                 {{{ mobile_menu_items_blog.html }}}
 
-                <div class="row justify-content-center">
-                    <div class="col col-lg-6 blog">
-                        <h2>Giving an ECS Service a URL</h2>
-                        <div class="date">2024/08/30</div>
-                        <div style="margin-bottom:40px;">
-                            <div class="tags">Tags: <span class="tag">AWS</span> <span class="tag">AWS ECS</span> <span class="tag">AWS ELB</span> <span class="tag">AWS Route 53</span></div>
-                            <div style="clear: both;"></div>
-                        </div>         
-                        
-                        <h3>Introduction</h3>
+                <article class="article">
+                    <header class="article__head">
+                        <a class="article__back" href="../blog.html"><span aria-hidden="true">&larr;</span> All posts</a>
+                        <h1 class="article__title">Giving an ECS Service a URL</h1>
+                        <time class="article__date" datetime="2024-08-30">2024/08/30</time>
+                        <ul class="post__tags" aria-label="Tags">
+                            <li>AWS</li>
+                            <li>AWS ECS</li>
+                            <li>AWS ELB</li>
+                            <li>AWS Route 53</li>
+                        </ul>
+                    </header>
+
+                    <div class="prose">
+                        <h2>Introduction</h2>
 
                         <p>
                             In <a href="2024-08-23-hosting-a-docker-container-in-aws-fargate.html" target="_blank">this</a> previous blog post I went through how to deploy and host a Docker container in ECS. But the resulting hosted container could only be accessed by the ECS service's public IP address and not a URL. This post fixes this by going through the steps of how to point of URL to an ECS service. This post assumes that the domain you want to use is already managed via Route 53. 
@@ -46,9 +51,9 @@
                             The following also gives a summary of the AWS services involved that we need to create and how they relate to each other:
                         </p>
 
-                        <img style="width:100%" src="img/2024-08-30-giving_an_ecs_service_a_url/giving_an_ecs_service_a_url.png" />
+                        <img src="img/2024-08-30-giving_an_ecs_service_a_url/giving_an_ecs_service_a_url.png" alt="Giving an ecs service a url" />
 
-                        <h3>Create a Security Group</h3>
+                        <h2>Create a Security Group</h2>
 
                         <p>
                             Firstly we need to create a security group for the load balancer. It will need to have inbound rules listening on port 80 from anywhere and for the host container port:
@@ -61,13 +66,13 @@
                             <li>IP = <span class="inline-code">::/0</span>, Port range = <span class="inline-code">[host container port]</span></li>
                         </ul>
 
-                        <h3>Create Health Check Endpoint</h3>
+                        <h2>Create Health Check Endpoint</h2>
 
                         <p>
                             The ECS service the load balancer will be pointing to needs a health check endpoint. This is so the load balancer can check the service is healthy. In this example we'll assume that will be at <span class="inline-code">/health</span>. All it needs to be is some endpoint that returns a <span class="inline-code">200</span>.
                         </p>
 
-                        <h3>Create Load Balancer</h3>
+                        <h2>Create Load Balancer</h2>
 
                         <p>
                             It's not possible to add a load balancer to an already running ECS service. But it is possible to create a new load balancer for an ECS service during it's creation. The steps listed in the <a href="2024-08-23-hosting-a-docker-container-in-aws-fargate.html" target="_blank">previous</a> post can be used to create the ECS service with the following addition:
@@ -88,13 +93,13 @@
                             <li>Create</li>
                         </ul>
 
-                        <h3>Check Everything Works So Far</h3>
+                        <h2>Check Everything Works So Far</h2>
 
                         <p>
                             When the load balancer and ECS service are up and running. You can check the load balancer is working by finding the load balancer in EC2, finding it's DNS name, copy and paste it into a browser then you should see your site.
                         </p>
 
-                        <h3>Point Route 53 Record to Load Balancer</h3>
+                        <h2>Point Route 53 Record to Load Balancer</h2>
 
                         <p>
                             The final step is to point the A record in Route 53 to the load balancer:
@@ -112,10 +117,9 @@
                             Now traffic to the domain should be routed to the ECS service.
                         </p>
 
-                        <h3>The End</h3>
-
+                        <h2>The End</h2>
                     </div>
-                </div>
+                </article>
             </div>
 
             {{{ footer_blog.html }}}
