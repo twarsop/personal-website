@@ -292,6 +292,15 @@ a {
   outline: none;
 }
 
+.release__body .inline-code {
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.92em;
+  color: var(--colour-text);
+  background: rgb(from var(--colour-purple) r g b / 0.12);
+}
+
 /****************************************** header ******************************************/
 
 header {    
@@ -1168,7 +1177,7 @@ a.cell:focus-visible {
 .posts {
   display: grid;
   gap: 14px;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
 }
 
 .post {
@@ -1360,10 +1369,12 @@ a.cell:focus-visible {
   color: var(--colour-text-muted);
 }
 
+.page-head p + p { margin-top: 0.75rem; }
+
 .defs {
   display: grid;
   gap: 22px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
 }
 
 .def {
@@ -1514,7 +1525,7 @@ a.cell:focus-visible {
 .projects-grid {
   display: grid;
   gap: clamp(20px, 2.4vw, 28px);
-  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(310px, 100%), 1fr));
 }
 
 .project {

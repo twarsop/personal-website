@@ -44,37 +44,37 @@
         <div class="page">
             <header>
             </header>
-            <nav class="d-none d-md-block">
+            <nav class="nav-desktop">
                 <div class="desktop container">
                     <h3 class="name">TOM WARSOP</h3>
-                    <div class="layout">
+                    <ul class="layout">
                         <li><a href="index.html">HOME</a></li>
                         <li><a href="aboutme.html">ABOUT ME</a></li>
                         <li><a href="blog.html">BLOG</a></li>
                         <li><a href="projects.html" class="selected">PROJECTS</a></li>
-                    </div>
+                    </ul>
                 </div>
             </nav>
 
-            <nav class="d-md-none">
+            <nav class="nav-mobile">
                 <div class="desktop container bar">
                     <h3 class="name">TOM WARSOP</h3>
                     <button class="burger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
                         <span></span>
-                    </button>                                        
+                    </button>
                 </div>
             </nav>
 
             <div class="clear-both"></div>
 
-            <div class="container mt-4 mb-4 layout" style="position: relative;">
+            <div class="container content layout" style="position: relative;">
                 <div class="menu" id="mobile-menu" aria-label="Main">
                     <ul class="menu_list">
                         <li class="menu_item">
                             <a class="menu_link" href="index.html">Home</a>
                         </li>
                         <li class="menu_item">
-                            <a class="menu_link" href="aboutme.html" >About me</a>
+                            <a class="menu_link" href="aboutme.html">About me</a>
                         </li>
                         <li class="menu_item">
                             <a class="menu_link" href="blog.html">Blog</a>
@@ -86,74 +86,69 @@
                 </div>
 
                 <div class="page-head">
-                    <h1>Projects</h1>
                     <p>Things I've built, shipped, or am still chipping away at.</p>
                 </div>
 
-                <div class="row">
+                <div class="projects-grid">
 
-                    <div class="projects-grid">
+                    <article class="project">
+                        <div class="project__shot">
+                            <img src="img/projects-raffles-barbers.png"
+                                alt="Screenshot of the Raffles Barbers website">
+                        </div>
+                        <div class="project__body">
+                            <h2 class="project__title">Raffles Barbers Website</h2>
+                            <span class="project-badge project-badge--live">Deployed · Completed</span>
 
-                        <article class="project">
-                            <div class="project__shot">
-                                <img src="img/projects-raffles-barbers.png"
-                                    alt="Screenshot of the Raffles Barbers website">
+                            <p class="project__desc">
+                                Created a simple desktop and mobile friendly website for a local barbers,
+                                providing information about services offered.
+                            </p>
+
+                            <div class="project__links">
+                                <a href="http://rafflesbarbers.co.uk/" target="_blank" rel="noopener noreferrer">
+                                    rafflesbarbers.co.uk
+                                </a>
                             </div>
-                            <div class="project__body">
-                                <h2 class="project__title">Raffles Barbers Website</h2>
-                                <span class="project-badge project-badge--live">Deployed · Completed</span>
+                        </div>
+                    </article>
 
-                                <p class="project__desc">
-                                    Created a simple desktop and mobile friendly website for a local barbers,
-                                    providing information about services offered.
-                                </p>
+                    <article class="project">
+                        <div class="project__shot">
+                            <img src="img/projects-this-website.png" alt="Screenshot of tomwarsop.com">
+                        </div>
+                        <div class="project__body">
+                            <h2 class="project__title">tomwarsop.com</h2>
+                            <span class="project-badge project-badge--ongoing">Deployed · ongoing</span>
 
-                                <div class="project__links">
-                                    <a href="http://rafflesbarbers.co.uk/" target="_blank" rel="noopener noreferrer">
-                                        rafflesbarbers.co.uk
-                                    </a>
-                                </div>
+                            <p class="project__desc">
+                                This website. Built my own portfolio and about-me site, all hosted in AWS.
+                                Got an initial version deployed, and will update and add more content later.
+                            </p>
+
+                            <div class="project__links">
+                                <a href="previous-versions.html">See previous versions of this site</a>
                             </div>
-                        </article>
+                        </div>
+                    </article>
 
-                        <article class="project">
-                            <div class="project__shot">
-                                <img src="img/projects-this-website.png" alt="Screenshot of tomwarsop.com">
-                            </div>
-                            <div class="project__body">
-                                <h2 class="project__title">tomwarsop.com</h2>
-                                <span class="project-badge project-badge--ongoing">Deployed · ongoing</span>
+                    <article class="project">
+                        <div class="project__shot">
+                            <img src="img/calendar.png" alt="Calendar icon for the Football Calendar project">
+                        </div>
+                        <div class="project__body">
+                            <h2 class="project__title">Football Calendar</h2>
+                            <span class="project-badge project-badge--planning">In planning</span>
 
-                                <p class="project__desc">
-                                    This website. Built my own portfolio and about-me site, all hosted in AWS.
-                                    Got an initial version deployed, and will update and add more content later.
-                                </p>
-
-                                <div class="project__links">
-                                    <a href="previous-versions.html">See previous versions of this site</a>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="project">
-                            <div class="project__shot">
-                                <img src="img/calendar.png" alt="Calendar icon for the Football Calendar project">
-                            </div>
-                            <div class="project__body">
-                                <h2 class="project__title">Football Calendar</h2>
-                                <span class="project-badge project-badge--planning">In planning</span>
-
-                                <p class="project__desc">
-                                    Building a web app calendar that shows the results of previous football
-                                    matches and scheduled future matches, for different leagues, all in one place.
-                                </p>
-                            </div>
-                        </article>
-
-                    </div>
+                            <p class="project__desc">
+                                Building a web app calendar that shows the results of previous football
+                                matches and scheduled future matches, for different leagues, all in one place.
+                            </p>
+                        </div>
+                    </article>
 
                 </div>
-            
+
             </div>
 
             <footer>

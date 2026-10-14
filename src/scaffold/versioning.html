@@ -8,37 +8,37 @@
         <div class="page">
             {{{ header.html }}}
 
-            <nav class="d-none d-md-block">
+            <nav class="nav-desktop">
                 <div class="desktop container">
                     <h3 class="name">TOM WARSOP</h3>
-                    <div class="layout">
+                    <ul class="layout">
                         <li><a href="index.html">HOME</a></li>
                         <li><a href="aboutme.html">ABOUT ME</a></li>
                         <li><a href="blog.html">BLOG</a></li>
                         <li><a href="projects.html">PROJECTS</a></li>
-                    </div>
+                    </ul>
                 </div>
             </nav>
 
-            <nav class="d-md-none">
+            <nav class="nav-mobile">
                 <div class="desktop container bar">
                     <h3 class="name">TOM WARSOP</h3>
                     <button class="burger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
                         <span></span>
-                    </button>                                        
+                    </button>
                 </div>
             </nav>
 
             <div class="clear-both"></div>
 
-            <div class="container mt-4 mb-4 layout" style="position: relative;">
+            <div class="container content layout" style="position: relative;">
                 <div class="menu" id="mobile-menu" aria-label="Main">
                     <ul class="menu_list">
                         <li class="menu_item">
                             <a class="menu_link" href="index.html">Home</a>
                         </li>
                         <li class="menu_item">
-                            <a class="menu_link" href="aboutme.html" >About me</a>
+                            <a class="menu_link" href="aboutme.html">About me</a>
                         </li>
                         <li class="menu_item">
                             <a class="menu_link" href="blog.html">Blog</a>
@@ -50,7 +50,6 @@
                 </div>
 
                 <div class="page-head">
-                    <h1>Versioning</h1>
                     <p>Down in the footer you should see something of the format "vX.X.X", which denotes the current version of this website. This page explains how that version number is derived.</p>
                     <p>Versioning here borrows from the concepts of <a href="https://semver.org/" target="_blank" rel="noopener noreferrer">Semantic Versioning</a>, tweaked to better fit how this website is developed.</p>
                 </div>
@@ -111,6 +110,8 @@
                     </div>
 
                 </div>
+
+            </div>
 
             {{{ footer.html }}}
         </div>

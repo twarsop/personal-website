@@ -44,37 +44,37 @@
         <div class="page">
             <header>
             </header>
-            <nav class="d-none d-md-block">
+            <nav class="nav-desktop">
                 <div class="desktop container">
                     <h3 class="name">TOM WARSOP</h3>
-                    <div class="layout">
+                    <ul class="layout">
                         <li><a href="index.html">HOME</a></li>
                         <li><a href="aboutme.html">ABOUT ME</a></li>
                         <li><a href="blog.html">BLOG</a></li>
                         <li><a href="projects.html">PROJECTS</a></li>
-                    </div>
+                    </ul>
                 </div>
             </nav>
 
-            <nav class="d-md-none">
+            <nav class="nav-mobile">
                 <div class="desktop container bar">
                     <h3 class="name">TOM WARSOP</h3>
                     <button class="burger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
                         <span></span>
-                    </button>                                        
+                    </button>
                 </div>
             </nav>
 
             <div class="clear-both"></div>
 
-            <div class="container mt-4 mb-4 layout" style="position: relative;">
+            <div class="container content layout" style="position: relative;">
                 <div class="menu" id="mobile-menu" aria-label="Main">
                     <ul class="menu_list">
                         <li class="menu_item">
                             <a class="menu_link" href="index.html">Home</a>
                         </li>
                         <li class="menu_item">
-                            <a class="menu_link" href="aboutme.html" >About me</a>
+                            <a class="menu_link" href="aboutme.html">About me</a>
                         </li>
                         <li class="menu_item">
                             <a class="menu_link" href="blog.html">Blog</a>
@@ -86,7 +86,6 @@
                 </div>
 
                 <div class="page-head">
-                    <h1>Previous Versions</h1>
                     <p>Below is a list of the previous versions of this website and the changes made in each. For an explanation of how the versioning works, see <a href="versioning.html">Versioning</a>.</p>
                 </div>
 
@@ -385,7 +384,7 @@
                             <h3 class="release__title">New Blog Post - Docker Mutli-Stage Builds</h3>
                             <p class="release__body">Added new blog post looking at Docker Multi-Stage builds in more detail.</p>
                         </div>
-                    </li> 
+                    </li>
 
                     <li id="v2-2-1" class="release release--patch">
                         <div class="release__card">
@@ -395,9 +394,9 @@
                                 <span class="release__date">2023/12/13</span>
                             </div>
                             <h3 class="release__title">Build Site Using Scaffss</h3>
-                            <p class="release__body">There's an amount of duplicated code within the pages of this site, e.g. the footer. To reduce this code duplication I've created a very simple componentized framework for static sites called scaffss the repo for which can be found <a target="_blank" href="https://github.com/twarsop/scaffss">here</a>. The are no actual changes to this site in this update, I've just updated the code and build process to use scaffss and refactor some of the simple duplicated code. Specifcally the footer and header.</p>
+                            <p class="release__body">There's an amount of duplicated code within the pages of this site, e.g. the footer. To reduce this code duplication I've created a very simple componentized framework for static sites called scaffss the repo for which can be found <a target="_blank" rel="noopener noreferrer" href="https://github.com/twarsop/scaffss">here</a>. The are no actual changes to this site in this update, I've just updated the code and build process to use scaffss and refactor some of the simple duplicated code. Specifcally the footer and header.</p>
                         </div>
-                    </li> 
+                    </li>
 
                     <li id="v2-2-0" class="release release--minor">
                         <div class="release__card">
@@ -409,7 +408,7 @@
                             <h3 class="release__title">Add Favicon</h3>
                             <p class="release__body">Added favicon to the site.</p>
                         </div>
-                    </li> 
+                    </li>
 
                     <li id="v2-1-1" class="release release--patch">
                         <div class="release__card">
@@ -421,7 +420,7 @@
                             <h3 class="release__title">Updated Home/Hello/Index Page Avatar Image</h3>
                             <p class="release__body">Small tweaks to the avatar image of me on the home/hello/index page.</p>
                         </div>
-                    </li> 
+                    </li>
 
                     <li id="v2-1-0" class="release release--minor">
                         <div class="release__card">
@@ -433,7 +432,7 @@
                             <h3 class="release__title">New Blog Post</h3>
                             <p class="release__body">Adding a new blog post for building and running a .NET console app in Docker.</p>
                         </div>
-                    </li> 
+                    </li>
 
                     <li id="v2-0-3" class="release release--patch">
                         <div class="release__card">
@@ -443,13 +442,15 @@
                                 <span class="release__date">2023/11/05</span>
                             </div>
                             <h3 class="release__title">Update Previous Versions Text</h3>
-                            <ul class="release__body">
-                                <li>Fixed errors in text on this page: dates and formatting</li>
-                                <li>Added titles to those releases missing them</li>
-                                <li>Formatted release titles differently, to stand out from the release description text</li>
-                            </ul>
+                            <div class="release__body">
+                                <ul>
+                                    <li>Fixed errors in text on this page: dates and formatting</li>
+                                    <li>Added titles to those releases missing them</li>
+                                    <li>Formatted release titles differently, to stand out from the release description text</li>
+                                </ul>
+                            </div>
                         </div>
-                    </li> 
+                    </li>
 
                     <li id="v2-0-2" class="release release--patch">
                         <div class="release__card">
@@ -461,7 +462,7 @@
                             <h3 class="release__title">Update Homepage Text</h3>
                             <p class="release__body">Haven't updated the part of the homepage about my current job for a while, so doing that.</p>
                         </div>
-                    </li> 
+                    </li>
 
                     <li id="v2-0-1" class="release release--patch">
                         <div class="release__card">
@@ -473,7 +474,7 @@
                             <h3 class="release__title">Bug Fix</h3>
                             <p class="release__body">The Versioning link in the footer on blog pages was incorrect. It had been copied from other pages so was linking to a versioning.html file within the same directory. This isn't where the Versioning page exists, it exists a folder up relative to the blog pages. Updated to be the correct link.</p>
                         </div>
-                    </li>   
+                    </li>
 
                     <li id="v2-0-0" class="release release--major">
                         <div class="release__card">
@@ -483,12 +484,14 @@
                                 <span class="release__date">2023/11/02</span>
                             </div>
                             <h3 class="release__title">File Organisation</h3>
-                            <ul class="release__body">
-                                <li>Removed the links to previous site versions within this Previous Versions page and deleted the previous version files. Maintaining multiple versions of the site was starting to become cumbersome and wasn't really adding any value since each version is tagged in <a target="_blank" href="https://github.com/twarsop/personal-website">github</a>. So it's still possible to download and view previous versions of this site from github.</li>
-                                <li>Improved the file structure by moving the images into an "img" folder.</li>
-                            </ul>
+                            <div class="release__body">
+                                <ul>
+                                    <li>Removed the links to previous site versions within this Previous Versions page and deleted the previous version files. Maintaining multiple versions of the site was starting to become cumbersome and wasn't really adding any value since each version is tagged in <a target="_blank" rel="noopener noreferrer" href="https://github.com/twarsop/personal-website">github</a>. So it's still possible to download and view previous versions of this site from github.</li>
+                                    <li>Improved the file structure by moving the images into an "img" folder.</li>
+                                </ul>
+                            </div>
                         </div>
-                    </li>   
+                    </li>
 
                 </ol>
 
@@ -527,12 +530,14 @@
                                 <span class="release__date">2022/03/08</span>
                             </div>
                             <h3 class="release__title">Dynamic Year in Footer and Google Analytics</h3>
-                            <ul class="release__body">
-                                <li>Updated the year string in the footer, changing it from a hardcoded string to using JS to dynamic display the current year. This way I won't need to remember to update a hardcoded string every year.</li>
-                                <li>Added Google Analytics tracking to all pages of the site so I can see if anyone ever actually looks at it.</li>
-                            </ul>
+                            <div class="release__body">
+                                <ul>
+                                    <li>Updated the year string in the footer, changing it from a hardcoded string to using JS to dynamic display the current year. This way I won't need to remember to update a hardcoded string every year.</li>
+                                    <li>Added Google Analytics tracking to all pages of the site so I can see if anyone ever actually looks at it.</li>
+                                </ul>
+                            </div>
                         </div>
-                    </li>                        
+                    </li>
 
                     <li id="v1-1-0" class="release release--minor">
                         <div class="release__card">
@@ -542,12 +547,14 @@
                                 <span class="release__date">2021/09/28</span>
                             </div>
                             <h3 class="release__title">Versioning, Previous Versions and This Website in Projects</h3>
-                            <p class="release__body">Added new content to the site:</p>
-                            <ul class="release__body">
-                                <li>Page explaining how the versioning works.</li>
-                                <li>This website included in the Projects page (as a project that I've done/am working on), along with a link to the Previous Versions page.</li>
-                                <li>The Previous Versions page which lists all the previous versions (and current version) of this website. Providing details of: version deployment date, what was included in the version and a link that takes you to that specfic version of the website.</li>
-                            </ul>
+                            <div class="release__body">
+                                <p>Added new content to the site:</p>
+                                <ul>
+                                    <li>Page explaining how the versioning works.</li>
+                                    <li>This website included in the Projects page (as a project that I've done/am working on), along with a link to the Previous Versions page.</li>
+                                    <li>The Previous Versions page which lists all the previous versions (and current version) of this website. Providing details of: version deployment date, what was included in the version and a link that takes you to that specfic version of the website.</li>
+                                </ul>
+                            </div>
                         </div>
                     </li>
 
