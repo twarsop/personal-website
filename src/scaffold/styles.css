@@ -577,7 +577,7 @@ nav .mobile .selected {
   text-transform: uppercase;
 }
 
-.info subtitle {
+.info .subtitle {
   margin: 0 0 18px;
   font-size: 12px;
   letter-spacing: 0.04em;
