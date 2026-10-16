@@ -562,14 +562,25 @@ nav .mobile .selected {
 /****************************************** box, info, cards ******************************************/
 
 .box {
-  padding: 24px; 
+  padding: 15px 25px; 
   border: 1px solid var(--colour-border);
   border-radius: 12px;
 }
 
 .info h5 {
   color: var(--colour-purple);
-  margin-bottom: 20px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.info subtitle {
+  margin: 0 0 18px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: #6f6683;
 }
 
 .info ul {
@@ -617,49 +628,36 @@ nav .mobile .selected {
     fill: #fff;
 }
 
+.chart-canvas-wrapper {
+  position: relative;
+  width: 100%;
+  height: 360px;
+}
+
+.chart-canvas-wrapper canvas {
+  display: block;
+}
+
+/* layout styling */
+
 @media (min-width: 768px) {
   .connect { max-width: 360px; }
+}
+
+.charts {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 768px) {
+  .charts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /****************************************** main - all ******************************************/
 
 .layout {
     flex: 1 0 auto;
-}
-
-/****************************************** main - about me ******************************************/
-
-.canvas-wrapper-container {
-    background: #0d0916;
-    border: 1px solid var(--colour-border);
-    border-radius: 12px;
-    padding: 20px;
-}
-
-.chart-title {
-  margin: 0 0 4px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: #d946ef;
-}
-
-.chart-sub {
-  margin: 0 0 18px;
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  color: #6f6683;
-}
-
-.charts {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: minmax(0, 1fr);                 /* stacked on phones */
-}
-
-@media (min-width: 768px) {
-  .charts { grid-template-columns: repeat(2, minmax(0, 1fr)); }   /* was col-md-6 */
 }
 
 /****************************************** main - other me ******************************************/
