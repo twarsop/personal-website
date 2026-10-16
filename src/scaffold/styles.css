@@ -559,23 +559,20 @@ nav .mobile .selected {
   }
 }
 
-/****************************************** main - all ******************************************/
+/****************************************** box, info, cards ******************************************/
 
-.layout {
-    flex: 1 0 auto;
+.box {
+  padding: 24px; 
+  border: 1px solid var(--colour-border);
+  border-radius: 12px;
 }
 
-.content-border {
-    border: 1px solid var(--colour-border);
-    border-radius: 12px;
+.info h5 {
+  color: var(--colour-purple);
+  margin-bottom: 20px;
 }
 
-.connect h5 {
-    color: var(--colour-purple);
-    margin-bottom: 20px;
-}
-
-.connect ul {
+.info ul {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -584,7 +581,7 @@ nav .mobile .selected {
     gap: 10px;
 }
 
-.connect a {
+.info a {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -598,14 +595,14 @@ nav .mobile .selected {
     transition: border-color .22s, box-shadow .22s, color .22s;
 }
 
-.connect a:hover,
-.connect a:focus-visible {
+.info a:hover,
+.info a:focus-visible {
     border-color: var(--colour-amber);
     box-shadow: 0 0 22px rgb(from var(--colour-amber) r g b / 0.5);
     color: var(--colour-amber);
 }
 
-.connect .x svg {
+.info .x svg {
     width: 20px;
     height: 20px;
     flex-shrink: 0;
@@ -613,11 +610,21 @@ nav .mobile .selected {
     margin-left: 5px;
 }
 
-.connect .github svg {
+.info .github svg {
     width: 28px;
     height: 28px;
     flex-shrink: 0;
     fill: #fff;
+}
+
+@media (min-width: 768px) {
+  .connect { max-width: 360px; }
+}
+
+/****************************************** main - all ******************************************/
+
+.layout {
+    flex: 1 0 auto;
 }
 
 /****************************************** main - about me ******************************************/
