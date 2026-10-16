@@ -97,17 +97,11 @@ nav .desktop .layout {                       /* the nav list, now a real <ul> */
   }
 
   .hero__text p:last-child { margin-bottom: 0; }
-
-  /* slightly tighter text so it still fits over the picture */
-  .hero__text .eyebrow { font-size: 17px; margin-bottom: 10px; }
-  .hero__text p:not(.eyebrow) { font-size: 0.95rem; line-height: 1.55; }
 }
 
 /* wide screens: back to full-size text */
 @media (min-width: 1200px) {
   .hero__text { padding: 40px 48px 40px 0; }
-  .hero__text .eyebrow { font-size: 20px; margin-bottom: 13px; }
-  .hero__text p:not(.eyebrow) { font-size: 1.1rem; line-height: 1.6; }
 }
 
 .connect {
@@ -224,26 +218,6 @@ p {
 
 .text-purple {
   color: var(--colour-purple);
-}
-
-.eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 0 0 13px;
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--colour-purple);
-}
-
-.eyebrow::before {
-  content: "";
-  width: 3px;
-  height: 24px;
-  background: var(--colour-purple);
-  box-shadow: 0 0 10px rgba(217, 70, 239, 0.7);
 }
 
 .page-head {
