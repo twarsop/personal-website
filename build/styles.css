@@ -104,14 +104,6 @@ nav .desktop .layout {                       /* the nav list, now a real <ul> */
   .hero__text { padding: 40px 48px 40px 0; }
 }
 
-.connect {
-  padding: 24px;                             /* was p-4 */
-}
-
-@media (min-width: 768px) {
-  .connect { max-width: 360px; }             /* full width on phones, capped above */
-}
-
 /****************************************** global classes ******************************************/
 
 :root {
@@ -562,10 +554,14 @@ nav .mobile .selected {
 
 /****************************************** box, info, cards ******************************************/
 
-.box {
-  padding: 15px 25px; 
+.info {
   border: 1px solid var(--colour-border);
   border-radius: 12px;
+  overflow: hidden;
+}
+
+.info .info_content {
+  padding: 15px 25px; 
 }
 
 .info h5 {
@@ -634,6 +630,15 @@ nav .mobile .selected {
   aspect-ratio: 16 / 10;
   background: var(--colour-bg);
   overflow: hidden;
+}
+
+.info .image::after {
+  content: "";
+  position: absolute;
+  inset: 0;                    /* covers the whole image */
+  background: linear-gradient(to bottom,
+              transparent 55%,
+              rgb(from var(--colour-surface) r g b / 0.9) 100%);
 }
 
 .info .img {
