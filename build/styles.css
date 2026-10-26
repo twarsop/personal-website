@@ -679,6 +679,49 @@ nav .mobile .selected {
   .charts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
+/****************************************** badges ******************************************/
+
+.badge {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px;
+  margin-bottom: 16px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.badge-green {
+  color: var(--colour-success);
+  background: rgb(from var(--colour-success) r g b / 0.10);
+  border: 1px solid rgb(from var(--colour-success) r g b / 0.28);
+}
+
+.badge-amber {
+  color: var(--colour-amber);
+  background: rgb(from var(--colour-amber) r g b / 0.10);
+  border: 1px solid rgb(from var(--colour-amber) r g b / 0.28);
+}
+
+.badge-purple {
+  color: var(--colour-purple);
+  background: rgb(from var(--colour-purple) r g b / 0.10);
+  border: 1px solid rgb(from var(--colour-purple) r g b / 0.28);
+}
+
 /****************************************** main - all ******************************************/
 
 .layout {
