@@ -728,28 +728,6 @@ nav .mobile .selected {
     flex: 1 0 auto;
 }
 
-/****************************************** main - other me ******************************************/
-
-.otherme {
-    width:auto;
-    height:140px;
-    padding:10px 0px;
-}
-
-.otherme .content {
-    text-align: center;
-    background-color: #0066cc;
-    height: 100%;
-}
-
-.otherme .content:hover {
-    background-color: #2424b5 !important;
-}
-
-.otherme .content .logo {
-    margin-top: 10px;
-}
-
 /****************************************** previous versions ******************************************/
 
 .previous-versions .container {
