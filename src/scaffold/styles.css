@@ -686,6 +686,27 @@ nav .mobile .selected {
   .charts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
+/****************************************** cards ******************************************/
+
+.card {
+  position: relative;                        
+  display: flex;
+  flex-direction: column;
+  padding: 16px 18px 16px;
+  background: var(--colour-surface);
+  border: 1px solid var(--colour-border);
+  border-top: 3px solid var(--colour-purple);
+  border-radius: 12px;
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+}
+
+.card:hover,
+.card:focus-within {
+  border-color: var(--colour-amber);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
 /****************************************** badges ******************************************/
 
 .badge {
