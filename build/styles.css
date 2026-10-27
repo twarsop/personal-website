@@ -729,6 +729,17 @@ nav .mobile .selected {
   border: 1px solid rgb(from var(--colour-purple) r g b / 0.28);
 }
 
+/****************************************** headings ******************************************/
+
+.era {
+  margin: 34px 0 14px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--colour-text-muted);
+}
+
 /****************************************** main - all ******************************************/
 
 .layout {
@@ -762,17 +773,6 @@ nav .mobile .selected {
 
 .previous-versions .link a:hover {
     background-color:#2424b5;
-}
-
-/* new */
-
-.era {
-  margin: 34px 0 14px;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--colour-text-muted);
 }
 
 .release { --accent: var(--colour-amber); list-style: none; }
