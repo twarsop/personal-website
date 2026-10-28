@@ -707,6 +707,40 @@ nav .mobile .selected {
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
 }
 
+.card .date {
+  font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--colour-text-muted);
+}
+
+.card .title {
+  margin: 6px 0 12px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+/****************************************** blog post listings ******************************************/
+
+.post {
+  cursor: pointer;
+}
+
+.post_read {
+  margin-top: auto;                          /* pins it to the bottom of every card */
+  align-self: flex-end;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--colour-text-muted);
+  transition: color .2s;
+}
+
+.post_arrow {
+  display: inline-block;
+  transition: transform .2s;
+}
+
 /****************************************** badges ******************************************/
 
 .badge {
@@ -748,6 +782,27 @@ nav .mobile .selected {
   color: var(--colour-purple);
   background: rgb(from var(--colour-purple) r g b / 0.10);
   border: 1px solid rgb(from var(--colour-purple) r g b / 0.28);
+}
+
+/****************************************** tags ******************************************/
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 14px;
+  padding: 0;
+  list-style: none;
+}
+
+.tags li {
+  padding: 3px 9px;
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: var(--colour-text-secondary);
+  background: rgb(from var(--colour-purple) r g b / 0.08);
+  border: 1px solid rgb(from var(--colour-purple) r g b / 0.22);
+  border-radius: 999px;
 }
 
 /****************************************** headings ******************************************/
