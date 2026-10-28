@@ -720,6 +720,13 @@ nav .mobile .selected {
   line-height: 1.35;
 }
 
+.card .body {
+  margin: 0;
+  font-size: .86rem;
+  line-height: 1.6;
+  color: var(--colour-text-secondary);
+}
+
 /****************************************** blog post listings ******************************************/
 
 .post {
