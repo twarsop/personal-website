@@ -688,6 +688,10 @@ nav .mobile .selected {
 
 /****************************************** cards ******************************************/
 
+.card-purple { --accent: var(--colour-purple); }
+.card-purple-dark { --accent: var(--colour-purple-dark); }
+.card-amber { --accent: var(--colour-amber); }
+
 .card {
   position: relative;                        
   display: flex;
@@ -695,7 +699,7 @@ nav .mobile .selected {
   padding: 16px 18px 16px;
   background: var(--colour-surface);
   border: 1px solid var(--colour-border);
-  border-top: 3px solid var(--colour-purple);
+  border-top: 3px solid var(--accent);
   border-radius: 12px;
   transition: border-color .2s, transform .2s, box-shadow .2s;
 }
@@ -718,6 +722,10 @@ nav .mobile .selected {
   font-size: 1.08rem;
   font-weight: 600;
   line-height: 1.35;
+}
+
+.card .subtitle {
+  color: var(--accent);
 }
 
 .card .body {
