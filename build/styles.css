@@ -711,10 +711,22 @@ nav .mobile .selected {
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
 }
 
-.card .date {
-  font-size: 11.5px;
+.lead {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--accent, var(--colour-purple));
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 8px;
   font-variant-numeric: tabular-nums;
-  color: var(--colour-text-muted);
+}
+
+.lead > * + *::before {
+  content: "\00B7";
+  margin-right: 8px;
+  opacity: 0.5;
 }
 
 .card .title {
@@ -722,10 +734,6 @@ nav .mobile .selected {
   font-size: 1.08rem;
   font-weight: 600;
   line-height: 1.35;
-}
-
-.card .subtitle {
-  color: var(--accent);
 }
 
 .card .body {
