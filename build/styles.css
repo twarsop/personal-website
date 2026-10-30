@@ -807,6 +807,17 @@ nav .mobile .selected {
   border: 1px solid rgb(from var(--colour-purple) r g b / 0.28);
 }
 
+/****************************************** pills ******************************************/
+
+.pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  border: 1px solid var(--colour-purple);
+  color: var(--colour-purple);
+}
+
 /****************************************** tags ******************************************/
 
 .tags {
