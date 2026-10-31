@@ -723,9 +723,9 @@ nav .mobile .selected {
   font-variant-numeric: tabular-nums;
 }
 
-.lead > * + *::before {
+.lead time::after {
   content: "\00B7";
-  margin-right: 8px;
+  margin-left: 8px;
   opacity: 0.5;
 }
 
@@ -772,21 +772,17 @@ nav .mobile .selected {
   align-items: center;
   gap: 7px;
   padding: 5px 11px;
-  margin-bottom: 16px;
+  margin-bottom: 5px;
   border-radius: 999px;
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
 }
 
-.badge::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: currentColor;
-  box-shadow: 0 0 8px currentColor;
+.badge-white {
+  color: var(--colour-bg);
+  background: var(--colour-text);
 }
 
 .badge-green {
@@ -801,21 +797,16 @@ nav .mobile .selected {
   border: 1px solid rgb(from var(--colour-amber) r g b / 0.28);
 }
 
-.badge-purple {
+.badge-pink {
   color: var(--colour-purple);
   background: rgb(from var(--colour-purple) r g b / 0.10);
   border: 1px solid rgb(from var(--colour-purple) r g b / 0.28);
 }
 
-/****************************************** pills ******************************************/
-
-.pill {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 999px;
-  font-size: 11px;
-  border: 1px solid var(--colour-purple);
-  color: var(--colour-purple);
+.badge-purple {
+  color: var(--colour-purple-dark);
+  background: rgb(from var(--colour-purple-dark) r g b / 0.10);
+  border: 1px solid rgb(from var(--colour-purple-dark) r g b / 0.28);
 }
 
 /****************************************** tags ******************************************/
