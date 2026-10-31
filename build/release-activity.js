@@ -57,7 +57,7 @@
 
   /* ---------- 3. shared tooltip ---------- */
   const tip = document.createElement('div');
-  tip.className = 'activity__tip';
+  tip.className = 'activity-tip';
   tip.hidden = true;
   document.body.appendChild(tip);
   const hideTip = () => { tip.hidden = true; };
@@ -65,10 +65,10 @@
 
   function showTip(a, heading, rel) {
     tip.innerHTML =
-      `<div class="activity__tip-date">${esc(heading)}</div>` +
+      `<div class="activity-tip-date">${esc(heading)}</div>` +
       rel.map(r =>
-        `<div class="activity__tip-row"><b data-type="${r.type}">${esc(r.version)}</b>` +
-        `<span class="activity__tip-day">${r.date.getDate()} ${MONTHS[r.date.getMonth()]}</span>${esc(r.title)}</div>`
+        `<div class="activity-tip-row"><b data-type="${r.type}">${esc(r.version)}</b>` +
+        `<span class="activity-tip-day">${r.date.getDate()} ${MONTHS[r.date.getMonth()]}</span>${esc(r.title)}</div>`
       ).join('');
     tip.hidden = false;
 
@@ -82,9 +82,9 @@
   /* ---------- 4. build each grid ---------- */
   roots.forEach(root => {
     const unit    = UNITS[root.dataset.unit] || UNITS.week;
-    const inner   = root.querySelector('.activity__inner');
-    const scroll  = root.querySelector('.activity__scroll');
-    const counter = root.querySelector('.activity__count');
+    const inner   = root.querySelector('.activity-inner');
+    const scroll  = root.querySelector('.activity-scroll');
+    const counter = root.querySelector('.activity-count');
 
     const buckets = new Map();
     releases.forEach(r => {
@@ -109,18 +109,18 @@
         const multi = rel.length > 1;
         const aria  = `${unit.label(y, c)}: ` + rel.map(r => `${r.version} ${r.title}`).join(', ');
         cells +=
-          `<a class="cell cell--${top}${multi ? ' cell--multi' : ''}" href="#${rel[0].id}" ` +
+          `<a class="cell cell-${top}${multi ? ' cell-multi' : ''}" href="#${rel[0].id}" ` +
           `data-key="${y}-${c}"${rel.includes(newest) ? ' data-newest' : ''} aria-label="${esc(aria)}">` +
-          `${multi ? `<span class="cell__count">${rel.length}</span>` : ''}</a>`;
+          `${multi ? `<span class="cell-count">${rel.length}</span>` : ''}</a>`;
       }
     });
 
     inner.style.setProperty('--cols', unit.cols);
     inner.innerHTML =
       '<span></span>' +
-      `<div class="activity__months" aria-hidden="true">${head}</div>` +
-      `<div class="activity__rows" aria-hidden="true">${rows}</div>` +
-      `<div class="activity__cells">${cells}</div>`;
+      `<div class="activity-months" aria-hidden="true">${head}</div>` +
+      `<div class="activity-rows" aria-hidden="true">${rows}</div>` +
+      `<div class="activity-cells">${cells}</div>`;
 
     if (counter) {
       counter.textContent = `${releases.length} releases since ${years[years.length - 1]}`;
