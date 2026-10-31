@@ -34,7 +34,7 @@ html {
 }
 
 body {
-    margin: 0px;
+    margin: 0;
     display: flex;
     flex-direction: column;
     background: var(--colour-bg);
@@ -54,7 +54,7 @@ img {
 
 .page {
     height: 100%;
-    margin: 20px;
+    margin: 1.25rem;
     border: 1px solid var(--colour-border);
     border-radius: 12px;
     flex: 1;
@@ -66,7 +66,7 @@ img {
   width: 100%;
   max-width: 1140px;
   margin-inline: auto;
-  padding-inline: clamp(16px, 3vw, 24px);
+  padding-inline: clamp(1rem, 3vw, 1.5rem);
 }
 
 .content { margin-block: 1.5rem; }
@@ -104,7 +104,7 @@ h3 {
 
 p {
     margin-bottom: 1rem;
-    font-size: 1.1rem;
+    font-size: 1.125rem;
     line-height: 1.6;
 }
 
@@ -113,7 +113,7 @@ p {
 }
 
 .page-head {
-  margin-bottom: clamp(28px, 3.5vw, 44px);
+  margin-bottom: clamp(1.75rem, 3.5vw, 2.75rem);
 }
 
 .page-head p {
@@ -124,8 +124,8 @@ p {
 .page-head p + p { margin-top: 0.75rem; }
 
 .era {
-  margin: 34px 0 14px;
-  font-size: 13px;
+  margin: 2.125rem 0 0.875rem;
+  font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -161,7 +161,7 @@ footer a:hover, footer a:focus-visible {
 }
 
 .inline-code {
-  padding: 1px 6px;
+  padding: 1px 0.375rem;
   border-radius: 4px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.9em;
@@ -182,71 +182,63 @@ footer a:hover, footer a:focus-visible {
 }
 
 nav {
-	width:100%;
-	font-family: sans-serif;
-    border-bottom: 1px solid var(--colour-border);
     height: 60px;
-    font-size: .9rem;
+    border-bottom: 1px solid var(--colour-border);
+    font-family: sans-serif;
+    font-size: 0.875rem;
+}
+
+/* name on the left, links or burger on the right, everything centred in the bar */
+nav .desktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
 }
 
 nav .name {
-    float: left;
-    font-size: 1.3rem;
-    padding-top: 16px;
+    margin: 0;
+    font-size: 1.25rem;
     color: var(--colour-pink);
 }
 
-nav .desktop {
-    height: 100%;
-}
-
 nav .desktop .layout {
-    float: right;
-    height: 100%;
+    flex: none;                              /* don't grow like the page's main .layout */
+    display: flex;
+    align-self: stretch;                     /* links fill the bar's height... */
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
 nav .desktop li {
-	display:block;
-	padding-left:20px;
-    padding-right:20px;
-    padding-top: 10px;
-    height:40px;
-	float:left;
-    text-align:center;
+    display: flex;
+    padding: 0 1.25rem;
 }
 
 nav .desktop a {
-	display:block;
-	text-decoration:none;
-    height:100%;
-    line-height:32px;
-    padding-top: 5px;
-    height: 41px;
-    box-sizing: unset !important;
+    display: flex;
+    align-items: center;
+    padding: 0 0.625rem;
+    border-top: 3px solid transparent;       /* balances the underline so the text stays centred */
+    border-bottom: 3px solid transparent;    /* ...so the underline always sits on the nav's line */
     color: var(--colour-text);
-    padding-left: 10px;
-    padding-right: 10px;
 }
 
 nav .desktop a:hover {
-	color: var(--colour-amber);
-    border-bottom: 3px solid var(--colour-amber);
+    color: var(--colour-amber);
+    border-bottom-color: var(--colour-amber);
 }
 
 nav .desktop .selected {
     color: var(--colour-pink);
-    position:relative;
-    border-bottom: 3px solid var(--colour-pink);
+    border-bottom-color: var(--colour-pink);
 }
 
 .burger {
-    float:right;
     width: 60px;
-    height: 60px;
-    margin-right: -10px;
+    height: 100%;
+    margin-right: -0.625rem;
     display: grid;
     place-items: center;
     padding: 0;
@@ -321,7 +313,7 @@ nav .desktop .selected {
 /* list */
 .menu_list {
   list-style: none;
-  margin: 12px 0 0;
+  margin: 0.75rem 0 0;
   padding: 0;
   border-top: 1px solid rgb(from var(--colour-heading) r g b / 0.09);
 }
@@ -335,8 +327,8 @@ nav .desktop .selected {
   display: flex;
   align-items: center;
   min-height: 68px;
-  padding: 0 24px;
-  font-size: 22px;
+  padding: 0 1.5rem;
+  font-size: 1.5rem;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -366,7 +358,7 @@ nav .desktop .selected {
 .menu_link:active,
 .menu_link:focus-visible {
   color: var(--colour-amber);
-  padding-left: 30px;
+  padding-left: 1.875rem;
   outline: none;
 }
 
@@ -396,7 +388,7 @@ nav .desktop .selected {
 footer {
     flex-shrink: 0;
     border-top: 1px solid var(--colour-border);   /* mirrors the line under the nav */
-    font-size: 13px;
+    font-size: 0.875rem;
     color: var(--colour-text-muted);
 }
 
@@ -404,8 +396,8 @@ footer .footer-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 6px 24px;
-    padding-block: 18px;
+    gap: 0.375rem 1.5rem;
+    padding-block: 1.125rem;
     font-variant-numeric: tabular-nums;
 }
 
@@ -419,7 +411,7 @@ footer .footer-container {
   position: relative;                        
   display: flex;
   flex-direction: column;
-  padding: 16px 18px 16px;
+  padding: 1rem 1.125rem 1rem;
   background: var(--colour-surface);
   border: 1px solid var(--colour-border);
   border-top: 3px solid var(--accent);
@@ -428,33 +420,33 @@ footer .footer-container {
 }
 
 .card .lead {
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--accent, var(--colour-pink));
   display: inline-flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 0 8px;
+  gap: 0 0.5rem;
   font-variant-numeric: tabular-nums;
 }
 
 .card .lead time::after {
   content: "\00B7";
-  margin-left: 8px;
+  margin-left: 0.5rem;
   opacity: 0.5;
 }
 
 .card .title {
-  margin: 6px 0 12px;
-  font-size: 1.08rem;
+  margin: 0.375rem 0 0.75rem;
+  font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.35;
 }
 
 .card .subtitle {
-  margin: 0 0 14px;
-  font-size: 12px;
+  margin: 0 0 0.875rem;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--colour-text-muted);
@@ -462,24 +454,24 @@ footer .footer-container {
 
 .card .body {
   margin: 0;
-  font-size: 0.92rem;
+  font-size: 0.875rem;
   line-height: 1.6;
   color: var(--colour-text-secondary);
 }
 
 .card .list {
-  margin: 12px 0 0;
+  margin: 0.75rem 0 0;
   padding: 0;
   list-style: none;
-  font-size: 0.92rem;
+  font-size: 0.875rem;
   line-height: 1.7;
   color: var(--colour-text-secondary);
 }
 
 .card .list li {
   position: relative;
-  padding-left: 18px;
-  margin-bottom: 4px;
+  padding-left: 1.125rem;
+  margin-bottom: 0.25rem;
 }
 
 .card .list li::before {
@@ -494,10 +486,10 @@ footer .footer-container {
 }
 
 .card .footer {
-  margin: 14px 0 0;
-  padding-top: 12px;
+  margin: 0.875rem 0 0;
+  padding-top: 0.75rem;
   border-top: 1px dashed var(--colour-border);
-  font-size: 11px;
+  font-size: 0.75rem;
   line-height: 1.6;
   color: var(--colour-text-muted);
   opacity: 0.7;
@@ -506,7 +498,7 @@ footer .footer-container {
 
 .card .footer em {
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
   text-transform: uppercase;
   font-style: normal;
   
@@ -514,7 +506,7 @@ footer .footer-container {
 
 .card .footer span {
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
 }
 
 /****************************************** components - info boxes ******************************************/
@@ -527,21 +519,21 @@ footer .footer-container {
 }
 
 .info .info_content {
-  padding: 15px 25px; 
+  padding: 1rem 1.625rem; 
 }
 
 .info h5 {
   color: var(--colour-pink);
-  margin: 0 0 10px;
-  font-size: 13px;
+  margin: 0 0 0.625rem;
+  font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.13em;
   text-transform: uppercase;
 }
 
 .info .subtitle {
-  margin: 0 0 18px;
-  font-size: 12px;
+  margin: 0 0 1.125rem;
+  font-size: 0.75rem;
   letter-spacing: 0.04em;
   color: var(--colour-text-muted);
 }
@@ -552,15 +544,15 @@ footer .footer-container {
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0.625rem;
 }
 
 .info a {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 0.75rem;
     height: 46px;
-    padding: 0 14px;
+    padding: 0 0.875rem;
     border: 1px solid rgb(from var(--colour-pink) r g b / 0.5);
     border-radius: 10px;
     color: var(--colour-heading);
@@ -581,7 +573,7 @@ footer .footer-container {
     height: 20px;
     flex-shrink: 0;
     fill: var(--colour-heading);
-    margin-left: 5px;
+    margin-left: 0.375rem;
 }
 
 .info .github svg {
@@ -618,8 +610,8 @@ footer .footer-container {
 .info:hover .image img { transform: scale(1.03); }
 
 .info .description {
-  margin: 0 0 16px;
-  font-size: 0.93rem;
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
   line-height: 1.68;
   color: var(--colour-text-secondary);
 }
@@ -630,11 +622,11 @@ footer .footer-container {
   align-self: flex-start;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 5px 11px;
-  margin-bottom: 5px;
+  gap: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  margin-bottom: 0.375rem;
   border-radius: 999px;
-  font-size: 11px;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -674,15 +666,15 @@ footer .footer-container {
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin: 0 0 14px;
+  gap: 0.375rem;
+  margin: 0 0 0.875rem;
   padding: 0;
   list-style: none;
 }
 
 .tags li {
-  padding: 3px 9px;
-  font-size: 11.5px;
+  padding: 3px 0.625rem;
+  font-size: 0.75rem;
   line-height: 1.4;
   color: var(--colour-text-secondary);
   background: rgb(from var(--colour-pink) r g b / 0.08);
@@ -694,7 +686,7 @@ footer .footer-container {
 
 .hero {
   display: grid;
-  gap: 24px;
+  gap: 1.5rem;
   grid-template-columns: 1fr;            /* phones: square avatar on top */
   align-items: start;
   margin-bottom: 1.5rem;
@@ -746,7 +738,7 @@ footer .footer-container {
     grid-column: 2;
     position: relative;
     z-index: 1;
-    padding: 24px 32px 24px 0;
+    padding: 1.5rem 2rem 1.5rem 0;
   }
 
   .hero-text p:last-child { margin-bottom: 0; }
@@ -754,7 +746,7 @@ footer .footer-container {
 
 /* wide screens: back to full-size text */
 @media (min-width: 1200px) {
-  .hero-text { padding: 40px 48px 40px 0; }
+  .hero-text { padding: 2.5rem 3rem 2.5rem 0; }
 }
 
 @media (min-width: 768px) {
@@ -775,7 +767,7 @@ footer .footer-container {
 
 .charts {
   display: grid;
-  gap: 20px;
+  gap: 1.25rem;
   grid-template-columns: minmax(0, 1fr);
 }
 
@@ -789,7 +781,7 @@ footer .footer-container {
 
 .posts {
   display: grid;
-  gap: 14px;
+  gap: 0.875rem;
   grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
 }
 
@@ -827,7 +819,7 @@ footer .footer-container {
 
 .post_read,
 .article-back {
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--colour-text-muted);
@@ -860,19 +852,19 @@ footer .footer-container {
 
 .article {
   max-width: 760px;
-  margin: 0 auto clamp(24px, 4vw, 48px);
+  margin: 0 auto clamp(1.5rem, 4vw, 3rem);
 }
 
 /* ---------- head ---------- */
 .article-head {
-  padding-bottom: 22px;
-  margin-bottom: clamp(28px, 4vw, 40px);
+  padding-bottom: 1.375rem;
+  margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
   border-bottom: 1px solid var(--colour-border);
 }
 
 .article-back {
   display: inline-block;
-  margin-bottom: 22px;
+  margin-bottom: 1.375rem;
 }
 
 .article-back:hover,
@@ -882,8 +874,8 @@ footer .footer-container {
 }
 
 .article-series {
-  margin: 0 0 10px;
-  font-size: 12px;
+  margin: 0 0 0.625rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -891,7 +883,7 @@ footer .footer-container {
 }
 
 .article-title {
-  margin: 0 0 14px;
+  margin: 0 0 0.875rem;
   font-size: clamp(1.9rem, 1.2rem + 2.4vw, 2.8rem);
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -899,8 +891,8 @@ footer .footer-container {
 
 .article-date {
   display: block;
-  margin-bottom: 14px;
-  font-size: .9rem;
+  margin-bottom: 0.875rem;
+  font-size: 0.875rem;
   font-variant-numeric: tabular-nums;
   color: var(--colour-text-muted);
 }
@@ -913,15 +905,15 @@ footer .footer-container {
 }
 
 .prose h2 {
-  margin: 2.6rem 0 1rem;
-  font-size: 1.6rem;
+  margin: 2.625rem 0 1rem;
+  font-size: 1.5rem;
   line-height: 1.25;
   letter-spacing: -0.01em;
 }
 
 .prose h3 {
-  margin: 2rem 0 .75rem;
-  font-size: 1.1rem;
+  margin: 2rem 0 0.75rem;
+  font-size: 1.125rem;
   line-height: 1.35;
   color: var(--colour-pink);
   overflow-wrap: anywhere;
@@ -932,16 +924,16 @@ footer .footer-container {
 .prose ul,
 .prose ol {
   margin: 0 0 1rem;
-  padding-left: 1.4rem;
-  font-size: 1.1rem;
+  padding-left: 1.375rem;
+  font-size: 1.125rem;
   line-height: 1.6;
 }
 
-.prose li { margin-bottom: .3rem; }
+.prose li { margin-bottom: 0.25rem; }
 .prose li::marker { color: var(--colour-pink); }
 
 .prose .note {
-  padding: 12px 16px;
+  padding: 0.75rem 1rem;
   font-size: 1rem;
   background: var(--colour-surface);
   border-left: 3px solid var(--colour-amber);
@@ -950,10 +942,10 @@ footer .footer-container {
 
 .prose pre {
   margin: 0 0 1.25rem;
-  padding: 16px 18px;
+  padding: 1rem 1.125rem;
   overflow-x: auto;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: .9rem;
+  font-size: 0.875rem;
   line-height: 1.6;
   color: var(--colour-text);
   background: var(--colour-surface);
@@ -976,7 +968,7 @@ footer .footer-container {
 }
 
 .prose ul ul {
-  margin: .4rem 0 .4rem;
+  margin: 0.375rem 0 0.375rem;
   font-size: 1rem;
 }
 
@@ -991,13 +983,13 @@ footer .footer-container {
   margin: 0 0 1.5rem;
   overflow-x: auto;
   border-collapse: collapse;
-  font-size: .95rem;
+  font-size: 1rem;
   line-height: 1.5;
 }
 
 .prose th,
 .prose td {
-  padding: 10px 12px;
+  padding: 0.625rem 0.75rem;
   text-align: left;
   vertical-align: top;
   border-bottom: 1px solid var(--colour-border);
@@ -1011,13 +1003,13 @@ footer .footer-container {
   background: var(--colour-surface);
 }
 
-.article > .card { margin-top: clamp(32px, 5vw, 48px); }   /* next in the series */
+.article > .card { margin-top: clamp(2rem, 5vw, 3rem); }   /* next in the series */
 
 /****************************************** page - projects ******************************************/
 
 .projects-grid {
   display: grid;
-  gap: clamp(20px, 2.4vw, 28px);
+  gap: clamp(1.25rem, 2.4vw, 1.75rem);
   grid-template-columns: repeat(auto-fill, minmax(min(310px, 100%), 1fr));
 }
 
@@ -1041,8 +1033,8 @@ footer .footer-container {
 /* ---------- release activity grid ---------- */
 
 .activity {
-  margin-bottom: 34px;
-  padding: 18px 20px 16px;
+  margin-bottom: 2.125rem;
+  padding: 1.125rem 1.25rem 1rem;
   background: var(--colour-surface);
   border: 1px solid var(--colour-border);
   border-radius: 14px;
@@ -1053,13 +1045,13 @@ footer .footer-container {
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: 8px 16px;
-  margin-bottom: 16px;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1rem;
 }
 
 .activity-title {
   margin: 0;
-  font-size: 13px;
+  font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -1067,7 +1059,7 @@ footer .footer-container {
 }
 
 .activity-count {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: var(--colour-text-muted);
 }
 
@@ -1075,7 +1067,7 @@ footer .footer-container {
 .activity-scroll {
   position: relative;
   overflow-x: auto;
-  padding: 4px 2px 8px;          /* room so hover glow isn't clipped */
+  padding: 0.25rem 2px 0.5rem;          /* room so hover glow isn't clipped */
 }
 
 .activity-inner {
@@ -1084,8 +1076,8 @@ footer .footer-container {
   --gap: 4px;
   display: grid;
   grid-template-columns: auto max-content;
-  column-gap: 10px;
-  row-gap: 6px;
+  column-gap: 0.625rem;
+  row-gap: 0.375rem;
   width: max-content;
   margin-inline: auto;
 }
@@ -1094,7 +1086,7 @@ footer .footer-container {
   display: grid;
   grid-template-columns: repeat(var(--cols), var(--cell));
   column-gap: var(--gap);
-  font-size: 10px;
+  font-size: 0.625rem;
   line-height: 1;
   color: var(--colour-text-muted);
 }
@@ -1105,7 +1097,7 @@ footer .footer-container {
   display: grid;
   grid-auto-rows: var(--row);
   row-gap: var(--gap);
-  font-size: 10.5px;
+  font-size: 0.625rem;
   line-height: var(--row);
   font-variant-numeric: tabular-nums;
   text-align: right;
@@ -1189,7 +1181,7 @@ a.cell:focus-visible {
   display: grid;
   place-items: center;
   height: 100%;
-  font-size: 11px;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--colour-heading);               /* readable on pink and purple */
 }
@@ -1204,16 +1196,16 @@ a.cell:focus-visible {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  gap: 8px 16px;
-  margin-top: 10px;
-  font-size: 12px;
+  gap: 0.5rem 1rem;
+  margin-top: 0.625rem;
+  font-size: 0.75rem;
   color: var(--colour-text-muted);
 }
 
 .activity-legend > span {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 0.375rem;
 }
 
 .activity-legend .cell {
@@ -1227,12 +1219,12 @@ a.cell:focus-visible {
   position: fixed;
   z-index: 100;
   max-width: 320px;
-  padding: 9px 11px;
+  padding: 0.625rem 0.75rem;
   background: var(--colour-surface-alt);
   border: 1px solid var(--colour-border);
   border-radius: 9px;
   box-shadow: 0 8px 24px rgb(from var(--colour-bg) r g b / 0.5);
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 1.5;
   color: var(--colour-text-secondary);
   pointer-events: none;
@@ -1241,19 +1233,19 @@ a.cell:focus-visible {
 .activity-tip[hidden] { display: none; }
 
 .activity-tip-date {
-  margin-bottom: 4px;
-  font-size: 10.5px;
+  margin-bottom: 0.25rem;
+  font-size: 0.625rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--colour-text-muted);
 }
 
 .activity-tip-row + .activity-tip-row { margin-top: 3px; }
-.activity-tip-row b { margin-right: 6px; font-weight: 700; }
+.activity-tip-row b { margin-right: 0.375rem; font-weight: 700; }
 .activity-tip-row b[data-type="major"] { color: var(--colour-pink); }
 .activity-tip-row b[data-type="minor"] { color: var(--colour-purple); }
 .activity-tip-row b[data-type="patch"] { color: var(--colour-amber); }
-.activity-tip-day { margin-right: 6px; color: var(--colour-text-muted); }
+.activity-tip-day { margin-right: 0.375rem; color: var(--colour-text-muted); }
 
 /* ---------- landing on a release ---------- */
 .release { scroll-margin-top: 24px; }
@@ -1303,8 +1295,8 @@ a.cell:focus-visible {
 
 .split .release {
   position: relative;
-  padding-left: 30px;
-  margin-bottom: 12px;
+  padding-left: 1.875rem;
+  margin-bottom: 0.75rem;
 }
 
 .split .release::before {                        /* the dot */
@@ -1326,7 +1318,7 @@ a.cell:focus-visible {
   .split {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 60px;
+    column-gap: 3.75rem;
   }
 
   .split::before {                               /* pushes the right column down so cards interleave */
@@ -1371,8 +1363,8 @@ a.cell:focus-visible {
 .format {
   position: relative;
   overflow: hidden;
-  margin: clamp(30px, 4vw, 46px) 0;
-  padding: clamp(28px, 4vw, 48px) 20px;
+  margin: clamp(1.875rem, 4vw, 2.875rem) 0;
+  padding: clamp(1.75rem, 4vw, 3rem) 1.25rem;
   text-align: center;
   background: var(--colour-surface);
   border: 1px solid var(--colour-border);
@@ -1432,8 +1424,8 @@ a.cell:focus-visible {
 .format-note {
   position: relative;
   z-index: 1;
-  margin: 16px 0 0;
-  font-size: 12px;
+  margin: 1rem 0 0;
+  font-size: 0.75rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--colour-text-muted);
@@ -1441,6 +1433,6 @@ a.cell:focus-visible {
 
 .defs {
   display: grid;
-  gap: 22px;
+  gap: 1.375rem;
   grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
 }
