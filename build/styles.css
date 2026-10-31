@@ -222,7 +222,8 @@ a {
 /* links inside body text: purple with an underline, amber on hover */
 .page-head a,
 .prose a,
-.card .body a {
+.card .body a,
+footer a {
   color: var(--colour-purple);
   border-bottom: 1px solid rgb(from var(--colour-purple) r g b / 0.4);
   padding-bottom: 1px;
@@ -231,7 +232,8 @@ a {
 
 .page-head a:hover, .page-head a:focus-visible,
 .prose a:hover, .prose a:focus-visible,
-.card .body a:hover, .card .body a:focus-visible {
+.card .body a:hover, .card .body a:focus-visible,
+footer a:hover, footer a:focus-visible {
   color: var(--colour-amber);
   border-color: var(--colour-amber);
   outline: none;
@@ -1456,12 +1458,18 @@ a.cell:focus-visible {
 /****************************************** footer ******************************************/
 
 footer {
-    padding: 20px;
     flex-shrink: 0;
-    color: var(--colour-text-secondary);
+    border-top: 1px solid var(--colour-border);   /* mirrors the line under the nav */
+    font-size: 13px;
+    color: var(--colour-text-muted);
 }
 
 footer .footer-container {
-    padding-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 6px 24px;
+    padding-block: 18px;
+    font-variant-numeric: tabular-nums;
 }
 
