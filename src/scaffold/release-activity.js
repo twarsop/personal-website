@@ -17,7 +17,7 @@
   /* ---------- 1. read every release from the timeline (newest first) ---------- */
   const releases = [...document.querySelectorAll('.release')].map(el => {
     const version = el.querySelector('.lead > span:not(.badge)').textContent.trim();
-    const title   = el.querySelector('.title').textContent.trim();
+    const title   = el.querySelector('h3').textContent.trim();
     const [y, m, d] = el.querySelector('.lead time').getAttribute('datetime').split('-').map(Number);
     const badge = el.querySelector('.lead .badge:not(.badge-white)').textContent.trim().toLowerCase();
     const type = TYPES.includes(badge) ? badge : 'patch';
@@ -65,7 +65,7 @@
 
   function showTip(a, heading, rel) {
     tip.innerHTML =
-      `<div class="activity-tip-date">${esc(heading)}</div>` +
+      `<div class="label">${esc(heading)}</div>` +
       rel.map(r =>
         `<div class="activity-tip-row"><b data-type="${r.type}">${esc(r.version)}</b>` +
         `<span class="activity-tip-day">${r.date.getDate()} ${MONTHS[r.date.getMonth()]}</span>${esc(r.title)}</div>`
