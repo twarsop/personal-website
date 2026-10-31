@@ -240,7 +240,7 @@ a {
 .page-head a,
 .intro a,
 .prose a,
-.release__body a,
+.card .body a,
 .project__links a {
   color: var(--colour-purple);
   border-bottom: 1px solid rgb(from var(--colour-purple) r g b / 0.4);
@@ -251,14 +251,14 @@ a {
 .page-head a:hover, .page-head a:focus-visible,
 .intro a:hover, .intro a:focus-visible,
 .prose a:hover, .prose a:focus-visible,
-.release__body a:hover, .release__body a:focus-visible,
+.card .body a:hover, .card .body a:focus-visible,
 .project__links a:hover, .project__links a:focus-visible {
   color: var(--colour-amber);
   border-color: var(--colour-amber);
   outline: none;
 }
 
-.release__body .inline-code {
+.card .inline-code {
   padding: 1px 5px;
   border-radius: 4px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -935,95 +935,27 @@ nav .mobile .selected {
 }
 
 .release { --accent: var(--colour-amber); list-style: none; }
-.release--major { --accent: var(--colour-purple); }
-.release--minor { --accent: var(--colour-purple-dark); }
-.release--patch { --accent: var(--colour-amber); }
 
-.release__card {
+/* the timeline dot sits outside the card, so take the card's colour up to the <li> */
+.release:has(> .card-pink)   { --accent: var(--colour-purple); }
+.release:has(> .card-purple) { --accent: var(--colour-purple-dark); }
+.release:has(> .card-amber)  { --accent: var(--colour-amber); }
+
+.release > .card {
   height: 100%;
-  background: var(--colour-surface);
-  border: 1px solid var(--colour-border);
-  border-top: 3px solid var(--accent);
-  border-radius: 12px;
-  padding: 14px 16px 16px;
   transition: border-color .2s;
 }
 
-.release__card:hover {
+.release > .card:hover {
   border-color: rgb(from var(--accent) r g b / 0.5);
   border-top-color: var(--accent);
 }
 
-.release--current > .release__card {
+.release--current > .card {
   border-color: rgb(from var(--accent) r g b / 0.55);
   border-top-color: var(--accent);
   box-shadow: 0 0 24px rgb(from var(--accent) r g b / 0.12);
 }
-
-.release__current {
-  font-size: 9.5px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 2px 7px;
-  border-radius: 999px;
-  color: var(--colour-bg);
-  background: var(--colour-text);
-}
-
-.release__meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px 10px;
-  margin-bottom: 6px;
-}
-
-.release__version {
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--accent);
-}
-
-.release__type {
-  font-size: 9.5px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 2px 7px;
-  border-radius: 999px;
-  color: var(--accent);
-  background: rgb(from var(--accent) r g b / 0.1);
-  border: 1px solid rgb(from var(--accent) r g b / 0.3);
-}
-
-.release__date {
-  margin-left: auto;
-  font-size: 11.5px;
-  font-variant-numeric: tabular-nums;
-  color: var(--colour-text-muted);
-}
-
-.release__title {
-  margin: 0 0 5px;
-  font-size: .95rem;
-  font-weight: 600;
-  line-height: 1.35;
-  color: var(--colour-heading);
-}
-
-.release__body {
-  margin: 0;
-  font-size: .86rem;
-  line-height: 1.6;
-  color: var(--colour-text-secondary);
-}
-
-.release__body p  { margin: 0; font-size: inherit; line-height: inherit; }
-.release__body ul { margin: 6px 0 0; padding-left: 16px; }
-.release__body li { margin-bottom: 3px; }
-.release__body li::marker { color: var(--accent); }
 
 /****************************************** release activity grid ******************************************/
 
@@ -1254,7 +1186,7 @@ a.cell:focus-visible {
 /* ---------- landing on a release ---------- */
 .release { scroll-margin-top: 24px; }
 
-.release.is-flash > .release__card {
+.release.is-flash > .card {
   animation: release-flash 4s ease-out;
 }
 
@@ -1276,7 +1208,7 @@ a.cell:focus-visible {
   html { scroll-behavior: auto; }
   a.cell { transition: none; }
   a.cell:hover, a.cell:focus-visible { transform: none; }
-  .release__card { transition: none; }
+  .release > .card { transition: none; }
 }
 
 /* ---------- timeline: single side (mobile) ---------- */

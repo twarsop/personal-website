@@ -16,10 +16,11 @@
 
   /* ---------- 1. read every release from the timeline (newest first) ---------- */
   const releases = [...document.querySelectorAll('.release')].map(el => {
-    const version = el.querySelector('.release__version').textContent.trim();
-    const title   = el.querySelector('.release__title').textContent.trim();
-    const [y, m, d] = el.querySelector('.release__date').textContent.trim().split('/').map(Number);
-    const type = TYPES.find(t => el.classList.contains('release--' + t)) || 'patch';
+    const version = el.querySelector('.lead > span:not(.badge)').textContent.trim();
+    const title   = el.querySelector('.title').textContent.trim();
+    const [y, m, d] = el.querySelector('.lead time').getAttribute('datetime').split('-').map(Number);
+    const badge = el.querySelector('.lead .badge:not(.badge-white)').textContent.trim().toLowerCase();
+    const type = TYPES.includes(badge) ? badge : 'patch';
     if (!el.id) el.id = version.replace(/\./g, '-');     // v2.16.2 -> v2-16-2
     return { version, title, type, id: el.id, date: new Date(y, m - 1, d) };
   });
