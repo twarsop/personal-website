@@ -1,3 +1,27 @@
+/****************************************** colours ******************************************/
+
+:root {
+    /* Backgrounds */
+    --colour-bg: #000008;
+    --colour-surface: #12101C;
+    --colour-surface-alt: #1A1726;
+
+    /* Text */
+    --colour-text: #F5F7FA;
+    --colour-text-secondary: #B8BEC9;
+    --colour-text-muted: #8A92A5;
+    --colour-heading: #FFFFFF;
+
+    /* Accent Colours */
+    --colour-pink: #C95CFF;
+    --colour-purple: #8B2CFF;
+    --colour-amber: #f59e0b;
+    --colour-green: #42D392;
+
+    /* Borders */
+    --colour-border: #2A2340;
+}
+
 /****************************************** base (replaces Bootstrap) ******************************************/
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -75,8 +99,8 @@ img {
     border-radius: inherit;
     background: linear-gradient(to right,
       transparent 38%,
-      rgb(0 0 8 / 0.45) 55%,
-      rgb(0 0 8 / 0.7) 100%);
+      rgb(from var(--colour-bg) r g b / 0.45) 55%,
+      rgb(from var(--colour-bg) r g b / 0.7) 100%);
   }
 
   .hero__text {
@@ -95,30 +119,6 @@ img {
 }
 
 /****************************************** global classes ******************************************/
-
-:root {
-    /* Backgrounds */
-    --colour-bg: #000008;
-    --colour-surface: #12101C;
-    --colour-surface-alt: #1A1726;
-
-    /* Text */
-    --colour-text: #F5F7FA;
-    --colour-text-secondary: #B8BEC9;
-    --colour-text-muted: #8A92A5;
-    --colour-heading: #FFFFFF;
-
-    /* Accent Colours */
-    --colour-purple: #C95CFF;
-    --colour-purple-dark: #8B2CFF;
-
-    --colour-amber: #f59e0b;
-
-    /* Borders */
-    --colour-border: #2A2340;
-
-    --colour-success: #42D392;
-}
 
 .clear-both {
     clear: both;
@@ -208,8 +208,8 @@ a {
 .prose a,
 .card .body a,
 footer a {
-  color: var(--colour-purple);
-  border-bottom: 1px solid rgb(from var(--colour-purple) r g b / 0.4);
+  color: var(--colour-pink);
+  border-bottom: 1px solid rgb(from var(--colour-pink) r g b / 0.4);
   padding-bottom: 1px;
   transition: color .2s, border-color .2s;
 }
@@ -229,7 +229,7 @@ footer a:hover, footer a:focus-visible {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.9em;
   color: var(--colour-text);
-  background: rgb(from var(--colour-purple) r g b / 0.12);
+  background: rgb(from var(--colour-pink) r g b / 0.12);
   overflow-wrap: anywhere;
 }
 
@@ -247,7 +247,7 @@ nav .name {
     float: left;
     font-size: 1.3rem;
     padding-top: 16px;
-    color: var(--colour-purple);
+    color: var(--colour-pink);
 }
 
 nav .desktop {
@@ -291,9 +291,9 @@ nav .desktop a:hover {
 }
 
 nav .desktop .selected {
-    color: var(--colour-purple);
+    color: var(--colour-pink);
     position:relative;
-    border-bottom: 3px solid var(--colour-purple);
+    border-bottom: 3px solid var(--colour-pink);
 }
 
 .burger {
@@ -377,11 +377,11 @@ nav .desktop .selected {
   list-style: none;
   margin: 12px 0 0;
   padding: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  border-top: 1px solid rgb(from var(--colour-heading) r g b / 0.09);
 }
 
 .menu_item {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  border-bottom: 1px solid rgb(from var(--colour-heading) r g b / 0.09);
 }
 
 .menu_link {
@@ -408,12 +408,12 @@ nav .desktop .selected {
   width: 3px;
   height: 0;
   transform: translateY(-50%);
-  background: var(--colour-purple);
-  box-shadow: 0 0 12px rgba(217, 70, 239, 0.7);
+  background: var(--colour-pink);
+  box-shadow: 0 0 12px rgb(from var(--colour-pink) r g b / 0.7);
   transition: height .24s ease;
 }
 
-.menu_link[aria-current="page"] { color: var(--colour-purple); }
+.menu_link[aria-current="page"] { color: var(--colour-pink); }
 .menu_link[aria-current="page"]::before { height: 30px; }
 
 .menu_link:hover,
@@ -429,7 +429,7 @@ nav .desktop .selected {
 .menu_link:focus-visible::before {
   height: 30px;
   background: var(--colour-amber);
-  box-shadow: 0 0 12px rgba(245, 158, 11, 0.7);
+  box-shadow: 0 0 12px rgb(from var(--colour-amber) r g b / 0.7);
 }
 
 .menu_link:focus-visible {
@@ -459,7 +459,7 @@ nav .desktop .selected {
 }
 
 .info h5 {
-  color: var(--colour-purple);
+  color: var(--colour-pink);
   margin: 0 0 10px;
   font-size: 13px;
   font-weight: 600;
@@ -471,7 +471,7 @@ nav .desktop .selected {
   margin: 0 0 18px;
   font-size: 12px;
   letter-spacing: 0.04em;
-  color: #6f6683;
+  color: var(--colour-text-muted);
 }
 
 .info ul {
@@ -489,11 +489,11 @@ nav .desktop .selected {
     gap: 12px;
     height: 46px;
     padding: 0 14px;
-    border: 1px solid rgb(from var(--colour-purple) r g b / 0.5);
+    border: 1px solid rgb(from var(--colour-pink) r g b / 0.5);
     border-radius: 10px;
-    color: #fff;
+    color: var(--colour-heading);
     text-decoration: none;
-    box-shadow: 0 0 12px rgb(from var(--colour-purple) r g b / 0.18);
+    box-shadow: 0 0 12px rgb(from var(--colour-pink) r g b / 0.18);
     transition: border-color .22s, box-shadow .22s, color .22s;
 }
 
@@ -508,7 +508,7 @@ nav .desktop .selected {
     width: 20px;
     height: 20px;
     flex-shrink: 0;
-    fill: #fff;
+    fill: var(--colour-heading);
     margin-left: 5px;
 }
 
@@ -516,7 +516,7 @@ nav .desktop .selected {
     width: 28px;
     height: 28px;
     flex-shrink: 0;
-    fill: #fff;
+    fill: var(--colour-heading);
 }
 
 .info .image {
@@ -580,8 +580,8 @@ nav .desktop .selected {
 
 /****************************************** cards ******************************************/
 
-.card-pink { --accent: var(--colour-purple); }
-.card-purple { --accent: var(--colour-purple-dark); }
+.card-pink { --accent: var(--colour-pink); }
+.card-purple { --accent: var(--colour-purple); }
 .card-amber { --accent: var(--colour-amber); }
 
 .card {
@@ -600,7 +600,7 @@ nav .desktop .selected {
   font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  color: var(--accent, var(--colour-purple));
+  color: var(--accent, var(--colour-pink));
   display: inline-flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -702,7 +702,7 @@ nav .desktop .selected {
 .post:focus-within {
   border-color: var(--colour-amber);
   transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 10px 28px rgb(from var(--colour-bg) r g b / 0.45);
 }
 
 .post .link { transition: color .2s; }
@@ -779,9 +779,9 @@ nav .desktop .selected {
 }
 
 .badge-green {
-  color: var(--colour-success);
-  background: rgb(from var(--colour-success) r g b / 0.10);
-  border: 1px solid rgb(from var(--colour-success) r g b / 0.28);
+  color: var(--colour-green);
+  background: rgb(from var(--colour-green) r g b / 0.10);
+  border: 1px solid rgb(from var(--colour-green) r g b / 0.28);
 }
 
 .badge-amber {
@@ -791,15 +791,15 @@ nav .desktop .selected {
 }
 
 .badge-pink {
-  color: var(--colour-purple);
-  background: rgb(from var(--colour-purple) r g b / 0.10);
-  border: 1px solid rgb(from var(--colour-purple) r g b / 0.28);
+  color: var(--colour-pink);
+  background: rgb(from var(--colour-pink) r g b / 0.10);
+  border: 1px solid rgb(from var(--colour-pink) r g b / 0.28);
 }
 
 .badge-purple {
-  color: var(--colour-purple-dark);
-  background: rgb(from var(--colour-purple-dark) r g b / 0.10);
-  border: 1px solid rgb(from var(--colour-purple-dark) r g b / 0.28);
+  color: var(--colour-purple);
+  background: rgb(from var(--colour-purple) r g b / 0.10);
+  border: 1px solid rgb(from var(--colour-purple) r g b / 0.28);
 }
 
 /****************************************** tags ******************************************/
@@ -818,8 +818,8 @@ nav .desktop .selected {
   font-size: 11.5px;
   line-height: 1.4;
   color: var(--colour-text-secondary);
-  background: rgb(from var(--colour-purple) r g b / 0.08);
-  border: 1px solid rgb(from var(--colour-purple) r g b / 0.22);
+  background: rgb(from var(--colour-pink) r g b / 0.08);
+  border: 1px solid rgb(from var(--colour-pink) r g b / 0.22);
   border-radius: 999px;
 }
 
@@ -845,8 +845,8 @@ nav .desktop .selected {
 .release { --accent: var(--colour-amber); list-style: none; }
 
 /* the timeline dot sits outside the card, so take the card's colour up to the <li> */
-.release:has(> .card-pink)   { --accent: var(--colour-purple); }
-.release:has(> .card-purple) { --accent: var(--colour-purple-dark); }
+.release:has(> .card-pink)   { --accent: var(--colour-pink); }
+.release:has(> .card-purple) { --accent: var(--colour-purple); }
 .release:has(> .card-amber)  { --accent: var(--colour-amber); }
 
 .release--current > .card {
@@ -880,7 +880,7 @@ nav .desktop .selected {
   font-weight: 600;
   letter-spacing: 0.13em;
   text-transform: uppercase;
-  color: var(--colour-purple);
+  color: var(--colour-pink);
 }
 
 .activity__count {
@@ -940,13 +940,13 @@ nav .desktop .selected {
 .cell {
   display: block;
   border-radius: 3px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgb(from var(--colour-heading) r g b / 0.05);
 }
 
 .cell.is-out { visibility: hidden; }     /* future dates */
 
-.cell--major { --accent: var(--colour-purple); }
-.cell--minor { --accent: var(--colour-purple-dark); }
+.cell--major { --accent: var(--colour-pink); }
+.cell--minor { --accent: var(--colour-purple); }
 .cell--patch { --accent: var(--colour-amber); }
 
 .cell--major,
@@ -1008,7 +1008,7 @@ a.cell:focus-visible {
   height: 100%;
   font-size: 11px;
   font-weight: 700;
-  color: #fff;                               /* readable on purple and violet */
+  color: var(--colour-heading);               /* readable on pink and purple */
 }
 
 .activity[data-unit="month"] .cell--patch .cell__count { color: var(--colour-bg); }   /* dark on amber */
@@ -1048,7 +1048,7 @@ a.cell:focus-visible {
   background: var(--colour-surface-alt);
   border: 1px solid var(--colour-border);
   border-radius: 9px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 24px rgb(from var(--colour-bg) r g b / 0.5);
   font-size: 12px;
   line-height: 1.5;
   color: var(--colour-text-secondary);
@@ -1067,8 +1067,8 @@ a.cell:focus-visible {
 
 .activity__tip-row + .activity__tip-row { margin-top: 3px; }
 .activity__tip-row b { margin-right: 6px; font-weight: 700; }
-.activity__tip-row b[data-type="major"] { color: var(--colour-purple); }
-.activity__tip-row b[data-type="minor"] { color: var(--colour-purple-dark); }
+.activity__tip-row b[data-type="major"] { color: var(--colour-pink); }
+.activity__tip-row b[data-type="minor"] { color: var(--colour-purple); }
 .activity__tip-row b[data-type="patch"] { color: var(--colour-amber); }
 .activity__tip-day { margin-right: 6px; color: var(--colour-text-muted); }
 
@@ -1114,7 +1114,7 @@ a.cell:focus-visible {
   bottom: 6px;
   width: 2px;
   background: linear-gradient(to bottom,
-              rgb(from var(--colour-purple) r g b / 0.5),
+              rgb(from var(--colour-pink) r g b / 0.5),
               var(--colour-border) 50%);
 }
 
@@ -1250,7 +1250,7 @@ a.cell:focus-visible {
   margin: 2rem 0 .75rem;
   font-size: 1.1rem;
   line-height: 1.35;
-  color: var(--colour-purple);
+  color: var(--colour-pink);
   overflow-wrap: anywhere;
 }
 
@@ -1265,7 +1265,7 @@ a.cell:focus-visible {
 }
 
 .prose li { margin-bottom: .3rem; }
-.prose li::marker { color: var(--colour-purple); }
+.prose li::marker { color: var(--colour-pink); }
 
 .prose .note {
   padding: 12px 16px;
@@ -1363,11 +1363,11 @@ a.cell:focus-visible {
   pointer-events: none;
   background: repeating-linear-gradient(
     to right,
-    rgb(from var(--colour-purple) r g b / 0.10) 0 1px,
+    rgb(from var(--colour-pink) r g b / 0.10) 0 1px,
     transparent 1px 44px
   );
-  mask-image: linear-gradient(to top, #000, transparent);
-  -webkit-mask-image: linear-gradient(to top, #000, transparent);
+  mask-image: linear-gradient(to top, var(--colour-bg), transparent);
+  -webkit-mask-image: linear-gradient(to top, var(--colour-bg), transparent);
 }
 
 .format__value {
@@ -1389,13 +1389,13 @@ a.cell:focus-visible {
 }
 
 .seg--major {
-  color: var(--colour-purple);
-  text-shadow: 0 0 26px rgb(from var(--colour-purple) r g b / 0.5);
+  color: var(--colour-pink);
+  text-shadow: 0 0 26px rgb(from var(--colour-pink) r g b / 0.5);
 }
 
 .seg--minor {
-  color: var(--colour-purple-dark);
-  text-shadow: 0 0 26px rgb(from var(--colour-purple-dark) r g b / 0.55);
+  color: var(--colour-purple);
+  text-shadow: 0 0 26px rgb(from var(--colour-purple) r g b / 0.55);
 }
 
 .seg--patch {
