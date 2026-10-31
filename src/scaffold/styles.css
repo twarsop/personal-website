@@ -2,11 +2,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-body { line-height: 1.5; }
-
 h1, h2, h3, h4, h5, h6, p, ul, ol { margin-top: 0; }
-p { margin-bottom: 1rem; }
-
 img {
   display: block;
   max-width: 100%;
@@ -29,12 +25,6 @@ img {
 @media (min-width: 768px) {
   .nav-desktop { display: block; }
   .nav-mobile  { display: none; }
-}
-
-nav .desktop .layout {                       /* the nav list, now a real <ul> */
-  margin: 0;
-  padding: 0;
-  list-style: none;
 }
 
 /****************************************** home ******************************************/
@@ -142,19 +132,19 @@ nav .desktop .layout {                       /* the nav list, now a real <ul> */
 html {
     height: 100%;
     overflow-x: hidden;
-    min-height: 100%;
     margin: 0;
+    scroll-behavior: smooth;
 }
 
 body {
     margin: 0px;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     background: var(--colour-bg);
     color: var(--colour-text);
     overflow-x: hidden;
     font-family: "Geist", sans-serif;
+    line-height: 1.5;
     min-height: 100%;
 }
 
@@ -192,6 +182,7 @@ h3 {
 }
 
 p {
+    margin-bottom: 1rem;
     font-size: 1.1rem;
     line-height: 1.6;
 }
@@ -202,14 +193,6 @@ p {
 
 .text-second {
   color: var(--colour-text-secondary);
-}
-
-.text-muted {
-  color: var(--colour-text-muted);
-}
-
-.text-purple {
-  color: var(--colour-purple);
 }
 
 .page-head {
@@ -238,10 +221,8 @@ a {
 
 /* links inside body text: purple with an underline, amber on hover */
 .page-head a,
-.intro a,
 .prose a,
-.card .body a,
-.project__links a {
+.card .body a {
   color: var(--colour-purple);
   border-bottom: 1px solid rgb(from var(--colour-purple) r g b / 0.4);
   padding-bottom: 1px;
@@ -249,28 +230,21 @@ a {
 }
 
 .page-head a:hover, .page-head a:focus-visible,
-.intro a:hover, .intro a:focus-visible,
 .prose a:hover, .prose a:focus-visible,
-.card .body a:hover, .card .body a:focus-visible,
-.project__links a:hover, .project__links a:focus-visible {
+.card .body a:hover, .card .body a:focus-visible {
   color: var(--colour-amber);
   border-color: var(--colour-amber);
   outline: none;
 }
 
-.card .inline-code {
-  padding: 1px 5px;
+.inline-code {
+  padding: 1px 6px;
   border-radius: 4px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.92em;
+  font-size: 0.9em;
   color: var(--colour-text);
   background: rgb(from var(--colour-purple) r g b / 0.12);
-}
-
-/****************************************** header ******************************************/
-
-header {    
-    background-color: #424242;
+  overflow-wrap: anywhere;
 }
 
 /****************************************** nav ******************************************/
@@ -297,6 +271,9 @@ nav .desktop {
 nav .desktop .layout {
     float: right;
     height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 nav .desktop li {
@@ -333,76 +310,6 @@ nav .desktop .selected {
     border-bottom: 3px solid var(--colour-purple);
 }
 
-.hamburger {
-    position: relative;
-    display: inline-block;
-    width: 1.25em;
-    height: 0.8em;
-    margin-right: 0.3em;
-    border-top: 0.1em solid #fff;
-    border-bottom: 0.1em solid #fff;
-}
-
-.hamburger:before {
-    content: "";
-    position: absolute;
-    top: 0.3em;
-    left: 0px;
-    width: 100%;
-    border-top: 0.1em solid #fff;
-}
-
-nav .mobile {
-    color: #e3e3e3;
-    width: 100%;
-    background-color: #2c2c2c;
-    padding-left: 12px;
-    padding-right: 12px;
-    font-size: 18px;
-}
-
-nav .mobile .menu {
-    padding: 0px !important;
-    box-sizing: unset !important;
-    padding: 10px 0px !important;
-    cursor: pointer;
-}
-
-nav .mobile .menu-container {
-    padding-bottom: 12px;
-}
-
-nav .mobile ul {
-    width: 100%;
-}
-
-nav .mobile a {
-    width: 100%;
-    display:block;
-	text-decoration:none;
-    color:#e3e3e3;
-    background-color:#0066cc;
-    padding: 10px;
-    margin-top: 10px;
-    text-align: center;
-    box-sizing: unset !important;
-}
-
-nav .mobile a:hover {
-	background-color:#2424b5;
-}
-
-nav .mobile .selected {
-    background-color:#d80073 !important;
-}
-
-:root {
-  --bg:    #08050e;
-  --amber: #f59e0b;
-  --ink:   #ffffff;
-  --magenta: #C95CFF;
-}
-
 .burger {
     float:right;
     width: 60px;
@@ -422,7 +329,7 @@ nav .mobile .selected {
     display: block;
     width: 22px;
     height: 1.5px;
-    background: var(--ink);
+    background: var(--colour-heading);
 }
 
 .burger span {
@@ -443,7 +350,7 @@ nav .mobile .selected {
 .burger span::after  { top:  7px; }
 
 .burger:focus-visible {
-    outline: 2px solid var(--amber);
+    outline: 2px solid var(--colour-amber);
     outline-offset: 2px;
     border-radius: 6px;
 }
@@ -501,7 +408,7 @@ nav .mobile .selected {
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--ink);
+  color: var(--colour-heading);
   text-decoration: none;
   transition: color .2s ease, padding-left .2s ease;
 }
@@ -515,18 +422,18 @@ nav .mobile .selected {
   width: 3px;
   height: 0;
   transform: translateY(-50%);
-  background: var(--magenta);
+  background: var(--colour-purple);
   box-shadow: 0 0 12px rgba(217, 70, 239, 0.7);
   transition: height .24s ease;
 }
 
-.menu_link[aria-current="page"] { color: var(--magenta); }
+.menu_link[aria-current="page"] { color: var(--colour-purple); }
 .menu_link[aria-current="page"]::before { height: 30px; }
 
 .menu_link:hover,
 .menu_link:active,
 .menu_link:focus-visible {
-  color: var(--amber);
+  color: var(--colour-amber);
   padding-left: 30px;
   outline: none;
 }
@@ -535,7 +442,7 @@ nav .mobile .selected {
 .menu_link:active::before,
 .menu_link:focus-visible::before {
   height: 30px;
-  background: var(--amber);
+  background: var(--colour-amber);
   box-shadow: 0 0 12px rgba(245, 158, 11, 0.7);
 }
 
@@ -704,13 +611,6 @@ nav .mobile .selected {
   transition: border-color .2s, transform .2s, box-shadow .2s;
 }
 
-.card .clickable:hover,
-.card .clickable:focus-within {
-  border-color: var(--colour-amber);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
-}
-
 .card .lead {
   font-size: 1.05rem;
   font-weight: 700;
@@ -803,13 +703,46 @@ nav .mobile .selected {
 
 /****************************************** blog post listings ******************************************/
 
+.posts {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
+}
+
 .post {
   cursor: pointer;
 }
 
-.post_read {
-  margin-top: auto;                          /* pins it to the bottom of every card */
-  align-self: flex-end;
+.post:hover,
+.post:focus-within {
+  border-color: var(--colour-amber);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+.post .link { transition: color .2s; }
+
+/* stretches the title link over the whole card, so the card is one click target */
+.post .link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+}
+
+.post:hover .link,
+.post .link:focus-visible {
+  color: var(--colour-amber);
+  outline: none;
+}
+
+.post .link:focus-visible::after {
+  outline: 2px solid var(--colour-amber);
+  outline-offset: 3px;
+}
+
+.post_read,
+.article__back {
   font-size: 12px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -817,9 +750,26 @@ nav .mobile .selected {
   transition: color .2s;
 }
 
+.post_read {
+  margin-top: auto;                          /* pins it to the bottom of every card */
+  align-self: flex-end;
+}
+
 .post_arrow {
   display: inline-block;
   transition: transform .2s;
+}
+
+.post:hover .post_read,
+.post:focus-within .post_read { color: var(--colour-amber); }
+
+.post:hover .post_arrow,
+.post:focus-within .post_arrow { transform: translateX(4px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .post, .post .link, .post_read, .article__back, .post_arrow { transition: none; }
+  .post:hover, .post:focus-within { transform: none; }
+  .post:hover .post_arrow, .post:focus-within .post_arrow { transform: none; }
 }
 
 /****************************************** badges ******************************************/
@@ -907,49 +857,12 @@ nav .mobile .selected {
 
 /****************************************** previous versions ******************************************/
 
-.previous-versions .container {
-    background-color: #c5c6c7;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-}
-
-.previous-versions .container .date {
-    margin-bottom: 10px;
-}
-
-.previous-versions .link {
-    margin-top: 10px;
-}
-
-.previous-versions .link a {
-    background-color:#0066cc;
-    color:#fff;
-    text-decoration: none;
-    padding: 10px;
-    display: inline-block;
-}
-
-.previous-versions .link a:hover {
-    background-color:#2424b5;
-}
-
 .release { --accent: var(--colour-amber); list-style: none; }
 
 /* the timeline dot sits outside the card, so take the card's colour up to the <li> */
 .release:has(> .card-pink)   { --accent: var(--colour-purple); }
 .release:has(> .card-purple) { --accent: var(--colour-purple-dark); }
 .release:has(> .card-amber)  { --accent: var(--colour-amber); }
-
-.release > .card {
-  height: 100%;
-  transition: border-color .2s;
-}
-
-.release > .card:hover {
-  border-color: rgb(from var(--accent) r g b / 0.5);
-  border-top-color: var(--accent);
-}
 
 .release--current > .card {
   border-color: rgb(from var(--accent) r g b / 0.55);
@@ -958,8 +871,6 @@ nav .mobile .selected {
 }
 
 /****************************************** release activity grid ******************************************/
-
-html { scroll-behavior: smooth; }
 
 .activity {
   margin-bottom: 34px;
@@ -1120,8 +1031,6 @@ a.cell:focus-visible {
 .activity[data-unit="month"] a.cell:hover,
 .activity[data-unit="month"] a.cell:focus-visible { transform: scale(1.08); }
 
-.activity[data-unit="month"] .legend-multi { display: none; }   /* the numbers say it */
-
 /* ---------- legend ---------- */
 .activity__legend {
   display: flex;
@@ -1208,7 +1117,6 @@ a.cell:focus-visible {
   html { scroll-behavior: auto; }
   a.cell { transition: none; }
   a.cell:hover, a.cell:focus-visible { transform: none; }
-  .release > .card { transition: none; }
 }
 
 /* ---------- timeline: single side (mobile) ---------- */
@@ -1295,130 +1203,6 @@ a.cell:focus-visible {
   .split .release:nth-child(even)::after { left: -23px; }
 }
 
-/****************************************** blog list ******************************************/
-
-.posts {
-  display: grid;
-  gap: 14px;
-  grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
-}
-
-.post {
-  position: relative;                        /* anchors the whole-card link */
-  display: flex;
-  flex-direction: column;
-  padding: 16px 18px 16px;
-  background: var(--colour-surface);
-  border: 1px solid var(--colour-border);
-  border-top: 3px solid var(--colour-purple);
-  border-radius: 12px;
-  transition: border-color .2s, transform .2s, box-shadow .2s;
-}
-
-.post:hover,
-.post:focus-within {
-  border-color: var(--colour-amber);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
-}
-
-.post__date {
-  font-size: 11.5px;
-  font-variant-numeric: tabular-nums;
-  color: var(--colour-text-muted);
-}
-
-.post__series {
-  margin: 6px 0 0;
-  font-size: 10.5px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--colour-amber);
-}
-
-.post__title {
-  margin: 6px 0 12px;
-  font-size: 1.08rem;
-  font-weight: 600;
-  line-height: 1.35;
-}
-
-.post__link {
-  color: var(--colour-heading);
-  text-decoration: none;
-  border: 0;
-  padding: 0;
-  transition: color .2s;
-}
-
-/* stretches the title link over the whole card, so the card is one click target */
-.post__link::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 12px;
-}
-
-.post:hover .post__link,
-.post__link:focus-visible {
-  color: var(--colour-amber);
-  outline: none;
-}
-
-.post__link:focus-visible::after {
-  outline: 2px solid var(--colour-amber);
-  outline-offset: 3px;
-}
-
-/* ---------- tags ---------- */
-.post__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 0 0 14px;
-  padding: 0;
-  list-style: none;
-}
-
-.post__tags li {
-  padding: 3px 9px;
-  font-size: 11.5px;
-  line-height: 1.4;
-  color: var(--colour-text-secondary);
-  background: rgb(from var(--colour-purple) r g b / 0.08);
-  border: 1px solid rgb(from var(--colour-purple) r g b / 0.22);
-  border-radius: 999px;
-}
-
-/* ---------- read cue ---------- */
-.post__read {
-  margin-top: auto;                          /* pins it to the bottom of every card */
-  align-self: flex-end;
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--colour-text-muted);
-  transition: color .2s;
-}
-
-.post__arrow {
-  display: inline-block;
-  transition: transform .2s;
-}
-
-.post:hover .post__read,
-.post:focus-within .post__read { color: var(--colour-amber); }
-
-.post:hover .post__arrow,
-.post:focus-within .post__arrow { transform: translateX(4px); }
-
-@media (prefers-reduced-motion: reduce) {
-  .post, .post__link, .post__read, .post__arrow { transition: none; }
-  .post:hover, .post:focus-within { transform: none; }
-  .post:hover .post__arrow, .post:focus-within .post__arrow { transform: none; }
-}
-
 /****************************************** blog post ******************************************/
 
 .article {
@@ -1431,17 +1215,11 @@ a.cell:focus-visible {
   padding-bottom: 22px;
   margin-bottom: clamp(28px, 4vw, 40px);
   border-bottom: 1px solid var(--colour-border);
-  background: none;                          /* undo the global header background */
 }
 
 .article__back {
   display: inline-block;
   margin-bottom: 22px;
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--colour-text-muted);
-  transition: color .2s;
 }
 
 .article__back:hover,
@@ -1474,7 +1252,7 @@ a.cell:focus-visible {
   color: var(--colour-text-muted);
 }
 
-.article__head .post__tags { margin: 0; }
+.article__head .tags { margin: 0; }
 
 /* ---------- body ---------- */
 .prose {
@@ -1515,16 +1293,6 @@ a.cell:focus-visible {
   background: var(--colour-surface);
   border-left: 3px solid var(--colour-amber);
   border-radius: 0 8px 8px 0;
-}
-
-.prose .inline-code {
-  padding: 1px 6px;
-  border-radius: 4px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.88em;
-  color: var(--colour-text);
-  background: rgb(from var(--colour-purple) r g b / 0.12);
-  overflow-wrap: anywhere;
 }
 
 .prose pre {
@@ -1594,53 +1362,7 @@ a.cell:focus-visible {
   background: var(--colour-surface);
 }
 
-/* ---------- next post ---------- */
-.article__next {
-  display: block;
-  margin-top: clamp(32px, 5vw, 48px);
-  padding: 16px 18px;
-  background: var(--colour-surface);
-  border: 1px solid var(--colour-border);
-  border-top: 3px solid var(--colour-purple);
-  border-radius: 12px;
-  transition: border-color .2s, transform .2s, box-shadow .2s;
-}
-
-.article__next:hover,
-.article__next:focus-visible {
-  border-color: var(--colour-amber);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
-  outline: none;
-}
-
-.article__next-label {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 11.5px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--colour-text-muted);
-}
-
-.article__next-title {
-  font-size: 1.08rem;
-  font-weight: 600;
-  color: var(--colour-heading);
-  transition: color .2s;
-}
-
-.article__next:hover .article__next-title,
-.article__next:focus-visible .article__next-title { color: var(--colour-amber); }
-
-.article__next:hover .post__arrow,
-.article__next:focus-visible .post__arrow { transform: translateX(4px); }
-
-@media (prefers-reduced-motion: reduce) {
-  .article__next, .article__next-title, .article__back { transition: none; }
-  .article__next:hover, .article__next:focus-visible { transform: none; }
-  .article__next:hover .post__arrow, .article__next:focus-visible .post__arrow { transform: none; }
-}
+.article > .card { margin-top: clamp(32px, 5vw, 48px); }   /* next in the series */
 
 /****************************************** versioning ******************************************/
 
@@ -1743,10 +1465,3 @@ footer .footer-container {
     padding-bottom: 10px;
 }
 
-footer .footer-container a {
-    color: var(--colour-text-secondary) !important;
-}
-
-footer .footer-container .footer-img {
-    float: right;
-}
