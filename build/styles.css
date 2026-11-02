@@ -126,11 +126,13 @@ b { font-weight: 600; color: var(--colour-text); }
   color: var(--colour-text-muted);
 }
 
+h2.label { margin-bottom: 0.875rem; }       /* year and version headings above a group of cards */
+
 /* the coloured line at the top of a card or post: date · version · badges */
 .lead {
   display: inline-flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   gap: 0 0.5rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
@@ -534,6 +536,8 @@ footer .footer-container {
     fill: var(--colour-heading);
 }
 
+.info .badge { margin-bottom: 0.75rem; }   /* projects: space before the description */
+
 .info .image {
   position: relative;
   aspect-ratio: 16 / 10;
@@ -563,13 +567,13 @@ footer .footer-container {
 /****************************************** components - badges ******************************************/
 
 .badge {
-  align-self: flex-start;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.375rem 0.75rem;
-  margin-bottom: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border: 1px solid transparent;             /* every badge the same height, bordered or not */
   border-radius: 999px;
+  line-height: 1;
 }
 
 .badge-white {
@@ -718,6 +722,7 @@ footer .footer-container {
 /* ---------- blog listing ---------- */
 
 .posts {
+  margin-bottom: 2.125rem;                   /* room before the next year heading */
   display: grid;
   gap: 0.875rem;
   grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
@@ -780,9 +785,6 @@ a.cue:hover, a.cue:focus-visible,
 
 .post:hover .cue span,
 .post:focus-within .cue span { transform: translateX(4px); }
-
-/* the year headings between groups of cards */
-.posts, .split { margin-bottom: 2.125rem; }
 
 @media (prefers-reduced-motion: reduce) {
   .post, .post .link, .cue, .cue span { transition: none; }
@@ -1142,7 +1144,7 @@ a.cell:focus-visible {
 /* ---------- timeline: single side (mobile) ---------- */
 .split {
   position: relative;
-  margin: 0;
+  margin: 0 0 1.375rem;                      /* + each release's 0.75rem = the same gap as the blog's year headings */
   padding: 0;
 }
 
