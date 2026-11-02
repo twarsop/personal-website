@@ -2,10 +2,15 @@
 <html lang="en">
     <head>
         <title>Projects</title>
+        <meta charset="utf-8">
         <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
         <link rel="manifest" href="img/site.webmanifest">
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
         
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQ6LRSEYQ9"></script>
@@ -18,7 +23,6 @@
         </script>
         
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
         <link rel="stylesheet" href="styles.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
@@ -36,149 +40,122 @@
                     } 
                 });
                 });
-        </script>    </head>
+        </script>
+    </head>
     <body>
-        <header>
-            <div class="layout">
-                <div class="title">
-                    // TOM WARSOP
-                </div>
-            </div>
-        </header>
-        <nav class="d-none d-md-block">
-            <div class="desktop">
-                <div class="layout">
-                    <li><a href="index.html">hello</a></li>
-                    <li><a href="aboutme.html">about me</a></li>
-                    <li><a href="blog.html">blog</a></li>
-                    <li><a href="otherme.html">other me</a></li>
-                    <li><a href="projects.html" class="selected">projects</a></li>
-                </div>
-            </div>
-        </nav>
-
-        <nav class="d-md-none navbar">
-            <div class="container">
-                <div class="row mobile">
-                    <div id="menu" class="menu"><span class="hamburger"></span>menu</div>
-                    <ul id="menu-container" class="navbar-nav menu-container" style="display:none">
-                        <li class="col"><a href="index.html">hello</a></li>
-                        <li class="col"><a href="aboutme.html">about me</a></li>
-                        <li class="col"><a href="blog.html">blog</a></li>
-                        <li class="col"><a href="otherme.html">other me</a></li>
-                        <li class="col"><a href="projects.html" class="selected">projects</a></li>
+        <div class="page">
+            <header>
+            </header>
+            <nav class="nav-desktop">
+                <div class="desktop container">
+                    <h3 class="name">TOM WARSOP</h3>
+                    <ul class="layout">
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="aboutme.html">ABOUT ME</a></li>
+                        <li><a href="blog.html">BLOG</a></li>
+                        <li><a href="projects.html" class="selected">PROJECTS</a></li>
                     </ul>
                 </div>
-            </div>
-        </nav>
+            </nav>
 
-        <div class="clear-both"></div>
+            <nav class="nav-mobile">
+                <div class="desktop container bar">
+                    <h3 class="name">TOM WARSOP</h3>
+                    <button class="burger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
 
-        <div class="container mt-4 mb-4 layout">
+            <div class="clear-both"></div>
 
-            <div class="row">
-
-                <div class="col-md-6 project">
-                    <div class="row project-row">
-                        <div class="col-xl-8">
-                            <div class="description">
-                                <div class="title">Raffles Barbers Website</div>
-                                <div class="status-label">Status: Completed and Deployed</div>
-                                <div class="row progress-bar-row">
-                                    <div class="col-10">
-                                        <progress class="progress-bar" max="100" value="100" data-label="100%"></progress>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="progress-bar-value-container">
-                                            100%
-                                        </div>
-                                    </div>
-                                    <div class="clear-both"></div>
-                                </div>
-                                <div class="description-container">
-                                    <p><a href="http://rafflesbarbers.co.uk/" target="_blank">http://rafflesbarbers.co.uk/</a></p>
-                                    <p>Created a simple desktop and mobile friendly website for a local barbers. Providing information about services offered.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4">
-                            <img src="img/projects-raffles-barbers.png" width="100%">
-                        </div>
-                    </div>
+            <div class="container content layout" style="position: relative;">
+                <div class="menu" id="mobile-menu" aria-label="Main">
+                    <ul class="menu_list">
+                        <li class="menu_item">
+                            <a class="menu_link" href="index.html">Home</a>
+                        </li>
+                        <li class="menu_item">
+                            <a class="menu_link" href="aboutme.html">About me</a>
+                        </li>
+                        <li class="menu_item">
+                            <a class="menu_link" href="blog.html">Blog</a>
+                        </li>
+                        <li class="menu_item">
+                            <a class="menu_link" href="projects.html" aria-current="page">Projects</a>
+                        </li>
+                    </ul>
                 </div>
 
-                <div class="col-md-6 project">
-                    <div class="row project-row">
-                        <div class="col-xl-8">
-                            <div class="description">
-                                <div class="title">Football Calendar</div>
-                                <div class="status-label">Status: In Planning</div>
-                                <div class="row progress-bar-row">
-                                    <div class="col-10">
-                                        <progress class="progress-bar" max="100" value="5"></progress>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="progress-bar-value-container">
-                                            5%
-                                        </div>
-                                    </div>
-                                    <div class="clear-both"></div>
-                                </div>
-                                <div class="description-container">
-                                    <p>Building a web app calendar that shows the results of previous football matches and scheduled future matches. For different leagues, all in one place.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4">
-                            <img src="img/calendar.png" width="100%">
-                        </div>
-                    </div>
+                <div class="page-head">
+                    <p>Things I've built, shipped, or am still chipping away at.</p>
                 </div>
 
-                <div class="col-md-6 project">
-                    <div class="row project-row">
-                        <div class="col-xl-8">
-                            <div class="description">
-                                <div class="title">tomwarsop.com</div>
-                                <div class="status-label">Status: Deployed, Ongoing Work</div>
-                                <div class="row progress-bar-row">
-                                    <div class="col-10">
-                                        <progress class="progress-bar" max="100" value="80"></progress>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="progress-bar-value-container">
-                                            80%
-                                        </div>
-                                    </div>
-                                    <div class="clear-both"></div>
-                                </div>
-                                <div class="description-container">
-                                    <p>This website! Built my own portfolio/about me website. All hosted in AWS. Got an initial version deployed, will update/add more content later.</p>
-                                    <p>See previous versions of this site <a href="previous-versions.html">here</a></p>
-                                </div>
+                <div class="projects-grid">
+
+                    <div class="info">
+                        <div class="image">
+                            <img src="img/projects-raffles-barbers.png">
+                        </div>
+                        <div class="info_content">
+                            <h3>Raffles Barbers Website</h3>
+                            <span class="badge badge-green">Deployed · Completed</span>
+                            <p>
+                                Created a simple desktop and mobile friendly website for a local barbers,
+                                providing information about services offered.
+                            </p>
+
+                            <div class="link">
+                                <a href="http://rafflesbarbers.co.uk/" target="_blank" rel="noopener noreferrer">
+                                    rafflesbarbers.co.uk
+                                </a>
                             </div>
                         </div>
-                        <div class="col-xl-4">
-                            <img src="img/projects-this-website.png" width="100%">
+                    </div>
+
+                    <div class="info">
+                        <div class="image">
+                            <img src="img/projects-this-website.png">
+                        </div>
+                        <div class="info_content">
+                            <h3>tomwarsop.com</h3>
+                            <span class="badge badge-amber">Deployed · ongoing</span>
+                            <p>
+                                This website. Built my own portfolio and about-me site, all hosted in AWS.
+                                Got an initial version deployed, and will update and add more content later.
+                            </p>
+
+                            <div class="link">
+                                <a href="previous-versions.html">See previous versions of this site</a>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="info">
+                        <div class="image">
+                            <img src="img/calendar.png">
+                        </div>
+                        <div class="info_content">
+                            <h3>Football Calendar</h3>
+                            <span class="badge badge-pink">In planning</span>
+                            <p>
+                                Building a web app calendar that shows the results of previous football
+                                matches and scheduled future matches, for different leagues, all in one place.
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
-        
+
+            <footer>
+                <div class="container footer-container">
+                    <span>Copyright &#169; <script>document.write(new Date().getFullYear())</script> Tom Warsop</span>
+                    <span>Last Updated: 2026/11/02 (v3.0.0) &middot; <a href="versioning.html">Versioning</a></span>
+                </div>
+            </footer>
         </div>
-
-        <footer>
-            <div class="container footer-container">
-                <div class="row">
-                    <div class="col-8">
-                        Copyright &#169; <script>document.write(new Date().getFullYear())</script> Tom Warsop
-                    </div>
-                    <div class="col-4 version">
-                        Last Updated: 2026/02/07 (v2.16.2) </br>
-                        <a href="versioning.html">Versioning</a>                        
-                    </div>
-                </div>
-            </div>
-        </footer>    </body>
+        <script src="mobile-menu.js"></script>
+    </body>
 </html>

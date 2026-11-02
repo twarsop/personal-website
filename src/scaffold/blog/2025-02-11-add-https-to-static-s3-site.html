@@ -5,62 +5,56 @@
         {{{ head_blog.html }}}
     </head>
     <body>
-        {{{ header.html }}}
+        <div class="page">
+            {{{ header.html }}}
 
-        <nav class="d-none d-md-block">
-            <div class="desktop">
-                <div class="layout">
-                    <li><a href="../index.html">hello</a></li>
-                    <li><a href="../aboutme.html">about me</a></li>
-                    <li><a href="../blog.html" class="selected">blog</a></li>
-                    <li><a href="../otherme.html">other me</a></li>
-                    <li><a href="../projects.html">projects</a></li>
-                </div>
-            </div>
-        </nav>
-
-        <nav class="d-md-none navbar">
-            <div class="container">
-                <div class="row mobile">
-                    <div id="menu" class="menu"><span class="hamburger"></span>menu</div>
-                    <ul id="menu-container" class="navbar-nav menu-container" style="display:none">
-                        <li class="col"><a href="../index.html">hello</a></li>
-                        <li class="col"><a href="../aboutme.html">about me</a></li>
-                        <li class="col"><a href="../blog.html" class="selected">blog</a></li>
-                        <li class="col"><a href="../otherme.html">other me</a></li>
-                        <li class="col"><a href="../projects.html">projects</a></li>
+            <nav class="nav-desktop">
+                <div class="desktop container">
+                    <h3 class="name">TOM WARSOP</h3>
+                    <ul class="layout">
+                        <li><a href="../index.html">HOME</a></li>
+                        <li><a href="../aboutme.html">ABOUT ME</a></li>
+                        <li><a href="../blog.html" class="selected">BLOG</a></li>
+                        <li><a href="../projects.html">PROJECTS</a></li>
                     </ul>
                 </div>
-            </div>
-        </nav>
+            </nav>
 
-        <div class="clear-both"></div>
+            {{{ mobile_menu_burger.html }}}
 
-        <div class="container mt-4 mb-4 layout">
-            <div class="row justify-content-center">
-                <div class="col col-lg-6 blog">
-                    <h2>Add HTTPS to Website Hosted in S3</h2>
-                    <div class="date">2025/02/11</div>
-                    <div style="margin-bottom:40px;">
-                        <div class="tags">Tags: <span class="tag">Website Hosting</span> <span class="tag">HTTPS</span> <span class="tag">AWS</span> <span class="tag">S3</span></div> 
-                        <div style="clear: both;"></div>
-                    </div>         
-                    
-                    <h3>Introduction</h3>
+            <div class="clear-both"></div>
 
-                    <p>
-                        This post goes over the steps to add HTTPS to a website hosted in S3. It's assumed that you have already hosted a static website in S3 and have acquired the domain via Route 53. For information on how to do this see <a href="2024-05-24-hosting-a-static-website-in-aws-s3.html">Hosting a Static Website in AWS S3</a>. It is also assumed that you have a route domain (e.g. <span class="inline-code">example.com</span>) and a subdomain (e.g. <span class="inline-code">www.example.com</span>).
-                    </p>
+            <div class="container content layout" style="position: relative;">
+                {{{ mobile_menu_items_blog.html }}}
 
-                    <p>
-                        There are three steps to this process: requesting a certificate, creating a CloudFront distribution, and updating the A records in Route 53.
-                    </p>
+                <article class="article">
+                    <header class="article-head">
+                        <a class="cue" href="../blog.html"><span aria-hidden="true">&larr;</span> All posts</a>
+                        <h1>Add HTTPS to Website Hosted in S3</h1>
+                        <time class="lead" datetime="2025-02-11">2025/02/11</time>
+                        <ul class="tags" aria-label="Tags">
+                            <li>Website Hosting</li>
+                            <li>HTTPS</li>
+                            <li>AWS</li>
+                            <li>S3</li>
+                        </ul>
+                    </header>
 
-                    <h3>Step 1: Requesting a Certificate</h3>
+                    <div class="prose">
+                        <h2>Introduction</h2>
 
-                    <p><b>The following set of steps need to be performed in the US East (N. Virginia) region (us-east-1). If this region isn't selected then you won't be able to select the certificate when creating the CloudFront distribution in the next step.</b></p>
+                        <p>
+                            This post goes over the steps to add HTTPS to a website hosted in S3. It's assumed that you have already hosted a static website in S3 and have acquired the domain via Route 53. For information on how to do this see <a href="2024-05-24-hosting-a-static-website-in-aws-s3.html">Hosting a Static Website in AWS S3</a>. It is also assumed that you have a route domain (e.g. <span class="inline-code">example.com</span>) and a subdomain (e.g. <span class="inline-code">www.example.com</span>).
+                        </p>
 
-                    <p>
+                        <p>
+                            There are three steps to this process: requesting a certificate, creating a CloudFront distribution, and updating the A records in Route 53.
+                        </p>
+
+                        <h2>Step 1: Requesting a Certificate</h2>
+
+                        <p><b>The following set of steps need to be performed in the US East (N. Virginia) region (us-east-1). If this region isn't selected then you won't be able to select the certificate when creating the CloudFront distribution in the next step.</b></p>
+
                         <ul>
                             <li>Go to <b>Certificate Manager</b></li>
                             <li>Make sure the region is <b>US East (N. Virginia) (us-east-1)</b></li>
@@ -73,15 +67,13 @@
                             <li>Navigate to the certificate entry (you will probably already be taken there after selecting Request in the previous step) and select the <b>Create records in Route 53</b> option</li>
                             <li>The certificate will be have a <b>Pending validation</b> status, after a few minutes this should change to <b>Issued</b>, the you can carry on to the next step</li>
                         </ul>
-                    </p>
 
-                    <h3>Step 2: Creating a CloudFront Distribution</h3>
+                        <h2>Step 2: Creating a CloudFront Distribution</h2>
 
-                    <p>
-                        These steps need to be done for both the www and non-www (root) domains.
-                    </p>
+                        <p>
+                            These steps need to be done for both the www and non-www (root) domains.
+                        </p>
 
-                    <p>
                         <ul>
                             <li>Go to <b>CloudFront</b></li>
                             <li>Click <b>Create distribution</b></li>
@@ -97,11 +89,9 @@
                             <li>Click <b>Create distribution</b></li>
                             <li>After CloudFront creates the distribution it will deploy, this can be take a few minutes</li>
                         </ul>
-                    </p>
 
-                    <h3>Step 3: Update A Records in Route 53</h3>
+                        <h2>Step 3: Update A Records in Route 53</h2>
 
-                    <p>
                         <ul>
                             <li>Go to <b>Route 53</b></li>
                             <li>Go to <b>Hosted zones</b></li>
@@ -115,14 +105,14 @@
                                     <li>Click <b>Save</b></li>
                                 </ul>
                         </ul>
-                    </p>
 
-                    <h3>The End</h3>
-
-                </div>
+                        <h2>The End</h2>
+                    </div>
+                </article>
             </div>
-        </div>
 
-        {{{ footer_blog.html }}}
+            {{{ footer_blog.html }}}
+        </div>
+        <script src="../mobile-menu.js"></script>
     </body>
 </html>
