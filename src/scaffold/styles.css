@@ -944,7 +944,8 @@ a.cue:hover, a.cue:focus-visible,
 .activity-scroll {
   position: relative;
   overflow-x: auto;
-  padding: 0.25rem 2px 0.5rem;          /* room so hover glow isn't clipped */
+  margin-inline: -6px;
+  padding: 0.25rem 8px 0.5rem;
 }
 
 .activity-inner {
