@@ -14,7 +14,7 @@ If the bump type is not exactly one of `major`, `minor` or `patch`, stop and ask
 ## How the site is laid out
 
 - `src/` is the source. Shared snippets live in `src/components/` and are pulled into pages in `src/scaffold/` with `{{{ footer.html }}}`-style includes.
-- `build/` is the generated site, and it is committed. The build tool isn't in the repo, so **every change made in `src/` must also be made by hand in `build/`**.
+- `build/` is generated from `src/` by a separate build script. **Only edit files under `src/`. Never touch `build/`.**
 - The versioning rules are in `src/scaffold/versioning.html`. Major means existing structure changed (a rewrite), minor means new content was added, and patch means existing content was modified.
 
 ## 1. Work out the versions and the date
@@ -43,7 +43,7 @@ git status --short
 git diff -- src
 ```
 
-- Read the diff under `src/`, not just the commit messages. Commit messages are often short or vague. `build/` only mirrors `src/`, so skip it.
+- Read the diff under `src/`, not just the commit messages. Commit messages are often short or vague. `build/` is generated from `src/`, so skip it.
 - Also include uncommitted changes in the working tree.
 - Ignore any earlier version-bump edits (footer version text, release cards).
 - If there are no real changes, stop and tell the user. Don't create an empty release.
@@ -51,23 +51,22 @@ git diff -- src
 
 ## 3. Update the footer everywhere
 
-Replace `Last Updated: <old date> (v<old version>)` with `Last Updated: <new date> (v<new version>)` in:
+Replace `Last Updated: <old date> (v<old version>)` with `Last Updated: <new date> (v<new version>)` in both footer components:
 
 - `src/components/footer.html`
 - `src/components/footer_blog.html`
-- every `.html` file under `build/` (including `build/blog/`)
 
-Change only that text. Leave the rest of the line alone, including the `versioning.html` vs `../versioning.html` link. Then check that nothing was missed:
+Every page pulls in one of these, so nothing else needs changing. Change only that text. Leave the rest of the line alone, including the `versioning.html` vs `../versioning.html` link. Then check that nothing was missed:
 
 ```bash
-grep -rn "Last Updated:" src/components build | grep -v "(v<new version>)"
+grep -rn "Last Updated:" src | grep -v "(v<new version>)"
 ```
 
-The command should print nothing. (`build/previous-versions.html` also contains an old card titled "Add Last Updated Date". That's a heading, not a footer, so leave it alone.)
+The only line that should print is the old "Add Last Updated Date" card heading in `src/scaffold/previous-versions.html`. That's a heading, not a footer, so leave it alone.
 
 ## 4. Add the new release card
 
-Make the same edit in both `src/scaffold/previous-versions.html` and `build/previous-versions.html`. The two blocks are identical, including indentation.
+Edit `src/scaffold/previous-versions.html`:
 
 1. On the current top release, remove the "Current" marker:
    - change `class="release release-current"` to `class="release"`
@@ -118,7 +117,7 @@ Match the style of the existing cards:
 
 ## 5. Check and finish
 
-- Run `git diff --stat`. It should touch the two footer components, every `build/*.html` footer, and both copies of `previous-versions.html`. Nothing else should be affected.
-- Confirm that the two `previous-versions.html` blocks are still identical, and that exactly one `release-current` and one `Current` badge remain in each.
+- Run `git diff --stat`. It should list exactly three files: `src/components/footer.html`, `src/components/footer_blog.html` and `src/scaffold/previous-versions.html`. Nothing under `build/` should change.
+- Confirm that exactly one `release-current` and one `Current` badge remain in `src/scaffold/previous-versions.html`.
 - Commit with the message `Bump version to vX.Y.Z`. Don't push unless the user asks.
 - Tell the user the old and new versions, plus the card title and description you wrote, so they can tweak the wording.
