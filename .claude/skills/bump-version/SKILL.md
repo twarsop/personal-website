@@ -14,7 +14,9 @@ If the bump type is not exactly one of `major`, `minor` or `patch`, stop and ask
 ## How the site is laid out
 
 - `src/` is the source. Shared snippets live in `src/components/` and are pulled into pages in `src/scaffold/` with `{{{ footer.html }}}`-style includes.
-- `build/` is generated from `src/` by a separate build script. **Only edit files under `src/`. Never touch `build/`.**
+- `build/` is generated from `src/` by [scaffss](https://github.com/twarsop/scaffss), run as `scaffss.py -i src -o build`. It wipes `build/`, copies everything from `src/scaffold/` into it, and replaces each line holding a `{{{ component.html }}}` placeholder with that file from `src/components/`.
+- **Only edit files under `src/`. Never touch `build/`, and don't run the build.** The user builds the site themselves.
+- Includes must sit on a line of their own and are not expanded recursively, so don't add `{{{ … }}}` inside a component or alongside other markup on the same line.
 - The versioning rules are in `src/scaffold/versioning.html`. Major means existing structure changed (a rewrite), minor means new content was added, and patch means existing content was modified.
 
 ## 1. Work out the versions and the date
